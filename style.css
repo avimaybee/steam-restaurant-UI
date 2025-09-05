@@ -1,0 +1,11 @@
+:root {
+  --primary-color: #B99767;
+  --primary-color-rgb: 185, 151, 103; /* RGB values for #B99767 */
+  --accent-color: #A78B64;
+  --secondary-color: #1a1a1a; /* Used for dark backgrounds */
+  --text-light: #FFFFFF;
+  --text-muted: #E0E0E0;
+  --border-dark: #382f29; /* For dark borders */
+  --gradient-start: rgba(26, 26, 26, 0.9);
+  --gradient-end: rgba(26, 26, 26, 0.4);
+}

@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html><head>
+<meta charset="utf-8"/>
+<link crossorigin="" href="https://fonts.gstatic.com/" rel="preconnect"/>
+<link as="style" href="https://fonts.googleapis.com/css2?display=swap&amp;family=Manrope%3Awght%40400%3B500%3B700%3B800&amp;family=Noto+Sans%3Awght%40400%3B500%3B700%3B900" onload="this.rel='stylesheet'" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<title>Steam Restaurant Menu</title>
+<link href="data:image/x-icon;base64," rel="icon" type="image/x-icon"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<style type="text/tailwindcss">
+        body {
+            font-family: "Manrope", "Noto Sans", sans-serif;
+        }
+        .gradient-bg {
+            background-image: radial-gradient( circle at 10% 20%,
+            rgba(167, 139, 100, 0.1),
+            transparent 50%),
+            radial-gradient( circle at 80% 90%,
+            rgba(167, 139, 100, 0.1),
+            transparent 50%);
+        }
+        .dietary-tag {
+            @apply inline-block text-xs font-semibold text-white/50 border border-white/30 rounded-full px-2 py-0.5 ml-2;
+        }
+    </style>
+</head>
+<body class="bg-[var(--secondary-color)] text-[var(--text-light)]">
+<div class="relative flex size-full min-h-screen flex-col overflow-x-hidden">
+<div class="layout-container flex h-full grow flex-col">
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-white/10 px-10 py-5">
+<div class="flex items-center gap-3 text-[var(--accent-color)]">
+<svg fill="none" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+<path d="M12 22.9048C9.84325 22.9048 7.73491 22.2652 5.94161 20.917C4.14832 19.5688 2.75064 17.5657 1.92528 15.1731C1.09992 12.7805 0.883971 10.1293 1.30473 7.57258C1.7255 5.01587 2.76408 2.71421 4.28915 0.710854L12 12L12 22.9048Z" fill="currentColor"></path>
+</svg>
+<h1 class="text-xl font-bold tracking-tighter">Steam</h1>
+</div>
+<nav class="hidden items-center gap-8 md:flex">
+<a class="text-sm font-medium text-white/80 transition-colors hover:text-white" href="our-menu.html">Menu</a>
+<a class="text-sm font-medium text-white/80 transition-colors hover:text-white" href="table-reservations.html">Reservations</a>
+<a class="text-sm font-medium text-white/80 transition-colors hover:text-white" href="#">Private Dining</a>
+<a class="text-sm font-medium text-white/80 transition-colors hover:text-white" href="gift-vouchers.html">Gift Cards</a>
+</nav>
+<div class="flex items-center gap-4">
+<a href="oder-page.html" class="flex min-w-[120px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-[var(--accent-color)] text-black text-sm font-bold transition-opacity hover:opacity-90">
+<span class="truncate">Order Takeout</span>
+</a>
+<button class="md:hidden">
+<span class="material-symbols-outlined"> menu </span>
+</button>
+</div>
+</header>
+<main class="flex flex-1 justify-center px-4 py-12 sm:px-6 lg:px-8 gradient-bg">
+<div class="w-full max-w-4xl space-y-12">
+<div class="text-center">
+<h1 class="text-4xl font-extrabold tracking-tighter text-white sm:text-5xl md:text-6xl"> Our Menu </h1>
+<p class="mt-4 text-lg text-white/60"> A symphony of flavors, where tradition meets innovation. </p>
+</div>
+<div class="space-y-10">
+<section>
+<h2 class="mb-6 text-2xl font-bold tracking-tight text-white sm:text-3xl border-l-4 border-[var(--accent-color)] pl-4"> Banquet Style Dining </h2>
+<div class="rounded-lg border border-white/10 bg-white/5 p-6 backdrop-blur-sm">
+<div class="flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center">
+<div>
+<h3 class="text-lg font-semibold text-white"> The Steam Experience </h3>
+<p class="mt-1 text-sm text-white/60"> A curated journey through our signature dishes, including selections from each menu category. Perfect for groups of 4 or more. </p>
+</div>
+<p class="shrink-0 text-lg font-medium text-white"> $85 per person </p>
+</div>
+</div>
+</section>
+<section>
+<h2 class="mb-6 text-2xl font-bold tracking-tight text-white sm:text-3xl border-l-4 border-[var(--accent-color)] pl-4"> Oysters &amp; Raw Bar </h2>
+<div class="grid gap-6 rounded-lg border border-white/10 bg-white/5 p-6 backdrop-blur-sm md:grid-cols-2">
+<div class="flex flex-col justify-between gap-2">
+<div class="flex justify-between items-start">
+<h3 class="font-semibold text-white">Pacific Oysters</h3>
+<p class="shrink-0 font-medium text-white">$24</p>
+</div>
+<p class="text-sm text-white/60">Half dozen freshly shucked oysters with a ginger-scallion mignonette.<span class="dietary-tag">GF</span><span class="dietary-tag">LF</span></p>
+</div>
+<div class="flex flex-col justify-between gap-2">
+<div class="flex justify-between items-start">
+<h3 class="font-semibold text-white">Tuna Tataki</h3>
+<p class="shrink-0 font-medium text-white">$22</p>
+</div>
+<p class="text-sm text-white/60">Seared Ahi tuna with ponzu sauce, daikon, and microgreens.<span class="dietary-tag">LF</span></p>
+</div>
+<div class="flex flex-col justify-between gap-2">
+<div class="flex justify-between items-start">
+<h3 class="font-semibold text-white">Scallop Crudo</h3>
+<p class="shrink-0 font-medium text-white">$26</p>
+</div>
+<p class="text-sm text-white/60">Thinly sliced Hokkaido scallops, yuzu kosho, and extra virgin olive oil.<span class="dietary-tag">GF</span><span class="dietary-tag">LF</span></p>
+</div>
+<div class="flex flex-col justify-between gap-2">
+<div class="flex justify-between items-start">
+<h3 class="font-semibold text-white">Raw Bar Platter</h3>
+<p class="shrink-0 font-medium text-white">$65</p>
+</div>
+<p class="text-sm text-white/60">A grand selection of oysters, tuna tataki, and scallop crudo. Ideal for sharing.<span class="dietary-tag">LF</span></p>
+</div>
+</div>
+</section>
+<section>
+<h2 class="mb-6 text-2xl font-bold tracking-tight text-white sm:text-3xl border-l-4 border-[var(--accent-color)] pl-4"> Small Plates </h2>
+<div class="grid gap-6 rounded-lg border border-white/10 bg-white/5 p-6 backdrop-blur-sm md:grid-cols-2">
+<div class="flex flex-col justify-between gap-2">
+<div class="flex justify-between items-start">
+<h3 class="font-semibold text-white">Edamame</h3>
+<p class="shrink-0 font-medium text-white">$9</p>
+</div>
+<p class="text-sm text-white/60">Steamed young soybeans with sea salt.<span class="dietary-tag">GF</span><span class="dietary-tag">LF</span><span class="dietary-tag">V</span><span class="dietary-tag">VEG</span></p>
+</div>
+<div class="flex flex-col justify-between gap-2">
+<div class="flex justify-between items-start">
+<h3 class="font-semibold text-white">Wagyu Gyoza</h3>
+<p class="shrink-0 font-medium text-white">$18</p>
+</div>
+<p class="text-sm text-white/60">Pan-fried dumplings filled with premium Wagyu beef, served with a chili soy dipping sauce.<span class="dietary-tag">LF</span></p>
+</div>
+<div class="flex flex-col justify-between gap-2">
+<div class="flex justify-between items-start">
+<h3 class="font-semibold text-white">Rock Shrimp Tempura</h3>
+<p class="shrink-0 font-medium text-white">$19</p>
+</div>
+<p class="text-sm text-white/60">Crispy rock shrimp tossed in a creamy, spicy sauce.<span class="dietary-tag">LF</span></p>
+</div>
+<div class="flex flex-col justify-between gap-2">
+<div class="flex justify-between items-start">
+<h3 class="font-semibold text-white">Tofu Agedashi</h3>
+<p class="shrink-0 font-medium text-white">$14</p>
+</div>
+<p class="text-sm text-white/60">Lightly fried silken tofu in a warm dashi broth with bonito flakes.<span class="dietary-tag">LF</span><span class="dietary-tag">VEG</span></p>
+</div>
+</div>
+</section>
+<section>
+<h2 class="mb-6 text-2xl font-bold tracking-tight text-white sm:text-3xl border-l-4 border-[var(--accent-color)] pl-4"> Sushi Selection </h2>
+<div class="grid gap-6 rounded-lg border border-white/10 bg-white/5 p-6 backdrop-blur-sm md:grid-cols-2">
+<div class="flex flex-col justify-between gap-2">
+<div class="flex justify-between items-start">
+<h3 class="font-semibold text-white">Sashimi Selection</h3>
+<p class="shrink-0 font-medium text-white">$32</p>
+</div>
+<p class="text-sm text-white/60">Chef's choice of 9 pieces of premium sashimi. Tuna, Salmon, and Hamachi.<span class="dietary-tag">GF</span><span class="dietary-tag">LF</span></p>
+</div>
+<div class="flex flex-col justify-between gap-2">
+<div class="flex justify-between items-start">
+<h3 class="font-semibold text-white">Nigiri Omakase</h3>
+<p class="shrink-0 font-medium text-white">$38</p>
+</div>
+<p class="text-sm text-white/60">Chef's selection of 6 pieces of nigiri, highlighting the day's freshest fish.<span class="dietary-tag">LF</span></p>
+</div>
+<div class="flex flex-col justify-between gap-2">
+<div class="flex justify-between items-start">
+<h3 class="font-semibold text-white">Dragon Roll</h3>
+<p class="shrink-0 font-medium text-white">$24</p>
+</div>
+<p class="text-sm text-white/60">Eel and cucumber topped with avocado and tobiko, drizzled with eel sauce.<span class="dietary-tag">LF</span></p>
+</div>
+<div class="flex flex-col justify-between gap-2">
+<div class="flex justify-between items-start">
+<h3 class="font-semibold text-white">Spicy Tuna Roll</h3>
+<p class="shrink-0 font-medium text-white">$18</p>
+</div>
+<p class="text-sm text-white/60">Minced tuna with a spicy mayo, cucumber, and sesame seeds.<span class="dietary-tag">LF</span></p>
+</div>
+</div>
+</section>
+<section>
+<h2 class="mb-6 text-2xl font-bold tracking-tight text-white sm:text-3xl border-l-4 border-[var(--accent-color)] pl-4"> Main Plates </h2>
+<div class="grid gap-6 rounded-lg border border-white/10 bg-white/5 p-6 backdrop-blur-sm md:grid-cols-2">
+<div class="flex flex-col justify-between gap-2">
+<div class="flex justify-between items-start">
+<h3 class="font-semibold text-white">Miso Black Cod</h3>
+<p class="shrink-0 font-medium text-white">$42</p>
+</div>
+<p class="text-sm text-white/60">Marinated and broiled, served with pickled ginger stem.<span class="dietary-tag">GF</span><span class="dietary-tag">LF</span></p>
+</div>
+<div class="flex flex-col justify-between gap-2">
+<div class="flex justify-between items-start">
+<h3 class="font-semibold text-white">A5 Wagyu Sirloin</h3>
+<p class="shrink-0 font-medium text-white">$95</p>
+</div>
+<p class="text-sm text-white/60">8oz grilled Japanese A5 Wagyu, truffle soy, and assorted mushrooms.<span class="dietary-tag">LF</span></p>
+</div>
+<div class="flex flex-col justify-between gap-2">
+<div class="flex justify-between items-start">
+<h3 class="font-semibold text-white">Duck Breast</h3>
+<p class="shrink-0 font-medium text-white">$38</p>
+</div>
+<p class="text-sm text-white/60">Pan-seared duck breast with a five-spice glaze and seasonal vegetables.<span class="dietary-tag">GF</span><span class="dietary-tag">LF</span></p>
+</div>
+<div class="flex flex-col justify-between gap-2">
+<div class="flex justify-between items-start">
+<h3 class="font-semibold text-white">Vegetable Curry</h3>
+<p class="shrink-0 font-medium text-white">$28</p>
+</div>
+<p class="text-sm text-white/60">Seasonal vegetables in a rich, aromatic coconut curry sauce, served with steamed rice.<span class="dietary-tag">GF</span><span class="dietary-tag">V</span><span class="dietary-tag">VEG</span></p>
+</div>
+</div>
+</section>
+<div class="text-center text-sm text-white/50 px-6 py-4 border-t border-white/10 mt-12">
+<p class="font-bold text-[var(--accent-color)]">Allergen Information</p>
+<p>GF: Gluten-Free, LF: Lactose-Free, V: Vegan, VEG: Vegetarian.</p>
+<p class="mt-2">Please inform your server of any allergies or dietary restrictions. While we take steps to minimize risk and safely handle the foods that contain potential allergens, cross-contamination may occur.</p>
+</div>
+</div>
+</div>
+</main>
+</div>
+</div>
+
+</body></html>

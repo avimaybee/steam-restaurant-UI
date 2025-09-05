@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html><head>
+<meta charset="utf-8"/>
+<link crossorigin="" href="https://fonts.gstatic.com/" rel="preconnect"/>
+<link as="style" href="https://fonts.googleapis.com/css2?display=swap&amp;family=Manrope%3Awght%40400%3B500%3B700%3B800&amp;family=Noto+Sans%3Awght%40400%3B500%3B700%3B900" onload="this.rel='stylesheet'" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<title>Steam Restaurant Menu</title>
+<link href="data:image/x-icon;base64," rel="icon" type="image/x-icon"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<style type="text/tailwindcss">
+        body {
+            font-family: "Manrope", "Noto Sans", sans-serif;
+        }
+        .gradient-bg {
+            background-image: radial-gradient( circle at 10% 20%,
+            rgba(167, 139, 100, 0.1),
+            transparent 50%),
+            radial-gradient( circle at 80% 90%,
+            rgba(167, 139, 100, 0.1),
+            transparent 50%);
+        }
+        .dietary-tag {
+            @apply inline-block text-xs font-semibold text-white/50 border border-white/30 rounded-full px-2 py-0.5 ml-2;
+        }
+        .menu-item-container {
+            @apply flex flex-col justify-between gap-4 md:flex-row md:items-center p-4 border border-white/10 rounded-lg hover:bg-white/5 transition-colors duration-300;
+        }
+        .menu-item-details {
+            @apply flex-grow;
+        }
+        .menu-item-actions {
+            @apply flex items-center gap-4 shrink-0;
+        }
+        .quantity-selector {
+            @apply flex items-center gap-2 text-white;
+        }
+        .quantity-btn {
+            @apply size-7 flex items-center justify-center border border-white/30 rounded-full text-lg hover:bg-white/10 transition-colors;
+        }
+        .add-to-cart-btn {
+            @apply flex items-center gap-2 h-10 px-4 bg-[var(--accent-color)] text-black text-sm font-bold rounded-lg transition-opacity hover:opacity-90;
+        }
+    </style>
+</head>
+<body class="bg-[var(--secondary-color)] text-[var(--text-light)]">
+<div class="relative flex size-full min-h-screen flex-col overflow-x-hidden">
+<div class="layout-container flex h-full grow flex-col">
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-white/10 px-10 py-5">
+<div class="flex items-center gap-3 text-[var(--accent-color)]">
+<svg fill="none" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+<path d="M12 22.9048C9.84325 22.9048 7.73491 22.2652 5.94161 20.917C4.14832 19.5688 2.75064 17.5657 1.92528 15.1731C1.09992 12.7805 0.883971 10.1293 1.30473 7.57258C1.7255 5.01587 2.76408 2.71421 4.28915 0.710854L12 12L12 22.9048Z" fill="currentColor"></path>
+</svg>
+<a class="text-xl font-bold tracking-tighter" href="landing-page.html">Steam</a>
+</div>
+<nav class="hidden items-center gap-8 md:flex">
+<a class="text-sm font-medium text-white/80 transition-colors hover:text-white" href="our-menu.html">Menu</a>
+<a class="text-sm font-medium text-white/80 transition-colors hover:text-white" href="table-reservations.html">Reservations</a>
+<a class="text-sm font-medium text-white/80 transition-colors hover:text-white" href="#">Private Dining</a>
+<a class="text-sm font-medium text-white/80 transition-colors hover:text-white" href="gift-vouchers.html">Gift Cards</a>
+</nav>
+<div class="flex items-center gap-4">
+<a href="oder-page.html" class="flex min-w-[140px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-[var(--accent-color)] text-black text-sm font-bold transition-opacity hover:opacity-90">
+<span class="truncate">Order Online</span>
+</a>
+<button class="md:hidden">
+<span class="material-symbols-outlined"> menu </span>
+</button>
+</div>
+</header>
+<main class="flex flex-1 justify-center px-4 py-12 sm:px-6 lg:px-8 gradient-bg">
+<div class="w-full max-w-5xl space-y-12">
+<div class="text-center">
+<h1 class="text-4xl font-extrabold tracking-tighter text-white sm:text-5xl md:text-6xl"> Takeaway Menu </h1>
+<p class="mt-4 text-lg text-white/60"> Enjoy the Steam experience at home. Select your dishes below. </p>
+</div>
+<div class="space-y-10">
+<section>
+<h2 class="mb-6 text-2xl font-bold tracking-tight text-white sm:text-3xl border-l-4 border-[var(--accent-color)] pl-4"> Small Plates </h2>
+<div class="space-y-4">
+<div class="menu-item-container">
+<div class="menu-item-details">
+<h3 class="font-semibold text-white">Edamame <span class="dietary-tag">GF</span><span class="dietary-tag">LF</span><span class="dietary-tag">V</span><span class="dietary-tag">VEG</span></h3>
+<p class="text-sm text-white/60 mt-1">Steamed young soybeans with sea salt.</p>
+</div>
+<div class="menu-item-actions">
+<p class="font-medium text-white w-16 text-right">$9</p>
+<div class="quantity-selector">
+<button class="quantity-btn">-</button>
+<span class="w-5 text-center">1</span>
+<button class="quantity-btn">+</button>
+</div>
+<button class="add-to-cart-btn">
+<span class="material-symbols-outlined text-base">shopping_bag</span>
+<span>Add</span>
+</button>
+</div>
+</div>
+<div class="menu-item-container">
+<div class="menu-item-details">
+<h3 class="font-semibold text-white">Wagyu Gyoza <span class="dietary-tag">LF</span></h3>
+<p class="text-sm text-white/60 mt-1">Pan-fried dumplings with premium Wagyu beef, chili soy dipping sauce.</p>
+</div>
+<div class="menu-item-actions">
+<p class="font-medium text-white w-16 text-right">$18</p>
+<div class="quantity-selector hidden">
+<button class="quantity-btn">-</button>
+<span class="w-5 text-center">1</span>
+<button class="quantity-btn">+</button>
+</div>
+<button class="add-to-cart-btn">
+<span class="material-symbols-outlined text-base">shopping_bag</span>
+<span>Add</span>
+</button>
+</div>
+</div>
+<div class="menu-item-container">
+<div class="menu-item-details">
+<h3 class="font-semibold text-white">Rock Shrimp Tempura <span class="dietary-tag">LF</span></h3>
+<p class="text-sm text-white/60 mt-1">Crispy rock shrimp tossed in a creamy, spicy sauce.</p>
+</div>
+<div class="menu-item-actions">
+<p class="font-medium text-white w-16 text-right">$19</p>
+<div class="quantity-selector">
+<button class="quantity-btn">-</button>
+<span class="w-5 text-center">1</span>
+<button class="quantity-btn">+</button>
+</div>
+<button class="add-to-cart-btn">
+<span class="material-symbols-outlined text-base">shopping_bag</span>
+<span>Add</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+<section>
+<h2 class="mb-6 text-2xl font-bold tracking-tight text-white sm:text-3xl border-l-4 border-[var(--accent-color)] pl-4"> Sushi Selection </h2>
+<div class="space-y-4">
+<div class="menu-item-container">
+<div class="menu-item-details">
+<h3 class="font-semibold text-white">Sashimi Selection <span class="dietary-tag">GF</span><span class="dietary-tag">LF</span></h3>
+<p class="text-sm text-white/60 mt-1">Chef's choice of 9 pieces of premium sashimi. Tuna, Salmon, and Hamachi.</p>
+</div>
+<div class="menu-item-actions">
+<p class="font-medium text-white w-16 text-right">$32</p>
+<div class="quantity-selector hidden">
+<button class="quantity-btn">-</button>
+<span class="w-5 text-center">1</span>
+<button class="quantity-btn">+</button>
+</div>
+<button class="add-to-cart-btn">
+<span class="material-symbols-outlined text-base">shopping_bag</span>
+<span>Add</span>
+</button>
+</div>
+</div>
+<div class="menu-item-container">
+<div class="menu-item-details">
+<h3 class="font-semibold text-white">Dragon Roll <span class="dietary-tag">LF</span></h3>
+<p class="text-sm text-white/60 mt-1">Eel and cucumber topped with avocado and tobiko, drizzled with eel sauce.</p>
+</div>
+<div class="menu-item-actions">
+<p class="font-medium text-white w-16 text-right">$24</p>
+<div class="quantity-selector hidden">
+<button class="quantity-btn">-</button>
+<span class="w-5 text-center">1</span>
+<button class="quantity-btn">+</button>
+</div>
+<button class="add-to-cart-btn">
+<span class="material-symbols-outlined text-base">shopping_bag</span>
+<span>Add</span>
+</button>
+</div>
+</div>
+<div class="menu-item-container">
+<div class="menu-item-details">
+<h3 class="font-semibold text-white">Spicy Tuna Roll <span class="dietary-tag">LF</span></h3>
+<p class="text-sm text-white/60 mt-1">Minced tuna with a spicy mayo, cucumber, and sesame seeds.</p>
+</div>
+<div class="menu-item-actions">
+<p class="font-medium text-white w-16 text-right">$18</p>
+<div class="quantity-selector hidden">
+<button class="quantity-btn">-</button>
+<span class="w-5 text-center">1</span>
+<button class="quantity-btn">+</button>
+</div>
+<button class="add-to-cart-btn">
+<span class="material-symbols-outlined text-base">shopping_bag</span>
+<span>Add</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+<section>
+<h2 class="mb-6 text-2xl font-bold tracking-tight text-white sm:text-3xl border-l-4 border-[var(--accent-color)] pl-4"> Main Plates </h2>
+<div class="space-y-4">
+<div class="menu-item-container">
+<div class="menu-item-details">
+<h3 class="font-semibold text-white">Miso Black Cod <span class="dietary-tag">GF</span><span class="dietary-tag">LF</span></h3>
+<p class="text-sm text-white/60 mt-1">Marinated and broiled, served with pickled ginger stem.</p>
+</div>
+<div class="menu-item-actions">
+<p class="font-medium text-white w-16 text-right">$42</p>
+<div class="quantity-selector hidden">
+<button class="quantity-btn">-</button>
+<span class="w-5 text-center">1</span>
+<button class="quantity-btn">+</button>
+</div>
+<button class="add-to-cart-btn">
+<span class="material-symbols-outlined text-base">shopping_bag</span>
+<span>Add</span>
+</button>
+</div>
+</div>
+<div class="menu-item-container">
+<div class="menu-item-details">
+<h3 class="font-semibold text-white">Vegetable Curry <span class="dietary-tag">GF</span><span class="dietary-tag">V</span><span class="dietary-tag">VEG</span></h3>
+<p class="text-sm text-white/60 mt-1">Seasonal vegetables in a rich, aromatic coconut curry sauce, served with steamed rice.</p>
+</div>
+<div class="menu-item-actions">
+<p class="font-medium text-white w-16 text-right">$28</p>
+<div class="quantity-selector hidden">
+<button class="quantity-btn">-</button>
+<span class="w-5 text-center">1</span>
+<button class="quantity-btn">+</button>
+</div>
+<button class="add-to-cart-btn">
+<span class="material-symbols-outlined text-base">shopping_bag</span>
+<span>Add</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+<div class="text-center text-sm text-white/50 px-6 py-4 border-t border-white/10 mt-12">
+<p class="font-bold text-[var(--accent-color)]">Allergen Information</p>
+<p>GF: Gluten-Free, LF: Lactose-Free, V: Vegan, VEG: Vegetarian.</p>
+<p class="mt-2">Please be aware that our kitchen handles allergens. While we take precautions, we cannot guarantee a completely allergen-free environment.</p>
+</div>
+</div>
+</div>
+</main>
+</div>
+</div>
+
+</body></html>

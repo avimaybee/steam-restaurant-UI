@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Steam - Takeaway Combos</title>
+<link crossorigin="" href="https://fonts.gstatic.com/" rel="preconnect"/>
+<link as="style" href="https://fonts.googleapis.com/css2?display=swap&amp;family=Manrope%3Awght%40400%3B500%3B700%3B800&amp;family=Noto+Sans%3Awght%40400%3B500%3B700%3B900" onload="this.rel='stylesheet'" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<style type="text/tailwindcss">
+        body {
+            font-family: 'Manrope', 'Noto Sans', sans-serif;
+        }
+        .gradient-bg {
+            background: radial-gradient(circle at top left, rgba(167, 138, 127, 0.1), transparent 30%), radial-gradient(circle at bottom right, rgba(167, 138, 127, 0.05), transparent 40%);
+        }
+        .card-hover:hover .add-to-cart {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .add-to-cart {
+            opacity: 0;
+            transform: translateY(10px);
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+        .details-list li {
+            position: relative;
+            padding-left: 1.5rem;
+        }
+        .details-list li::before {
+            content: '•';
+            position: absolute;
+            left: 0.5rem;
+            color: var(--primary-color);
+        }
+    </style>
+</head>
+<body class="bg-[var(--secondary-color)] text-[var(--text-light)]">
+<div class="relative flex size-full min-h-screen flex-col overflow-x-hidden gradient-bg">
+<div class="layout-container flex h-full grow flex-col">
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-b-white/10 px-10 py-5">
+<a class="flex items-center gap-3 text-white" href="landing-page.html">
+<svg fill="none" height="24" viewBox="0 0 48 48" width="24" xmlns="http://www.w3.org/2000/svg">
+<path d="M24 45.8096C19.6865 45.8096 15.4698 44.5305 11.8832 42.134C8.29667 39.7376 5.50128 36.3314 3.85056 32.3462C2.19985 28.361 1.76794 23.9758 2.60947 19.7452C3.451 15.5145 5.52816 11.6284 8.57829 8.5783C11.6284 5.52817 15.5145 3.45101 19.7452 2.60948C23.9758 1.76795 28.361 2.19986 32.3462 3.85057C36.3314 5.50129 39.7376 8.29668 42.134 11.8833C44.5305 15.4698 45.8096 19.6865 45.8096 24L24 24L24 45.8096Z" fill="var(--primary-color)"></path>
+</svg>
+<h1 class="text-xl font-bold tracking-tight">Steam</h1>
+</a>
+<nav class="hidden md:flex items-center gap-8">
+<a class="text-white/80 hover:text-white transition-colors text-sm font-medium" href="our-menu.html">Menu</a>
+<a class="text-[var(--primary-color)] hover:opacity-80 transition-colors text-sm font-bold" href="takeaway-combos.html">Takeaway</a>
+<a class="text-white/80 hover:text-white transition-colors text-sm font-medium" href="about-us.html">About Us</a>
+<a class="text-white/80 hover:text-white transition-colors text-sm font-medium" href="get-in-touch.html">Contact</a>
+</nav>
+<div class="flex items-center gap-4">
+<button class="text-white/80 hover:text-white transition-colors">
+<svg fill="currentColor" height="20px" viewBox="0 0 256 256" width="20px" xmlns="http://www.w3.org/2000/svg">
+<path d="M229.66,218.34l-50.07-50.06a88.11,88.11,0,1,0-11.31,11.31l50.06,50.07a8,8,0,0,0,11.32-11.32ZM40,112a72,72,0,1,1,72,72A72.08,72.08,0,0,1,40,112Z"></path>
+</svg>
+</button>
+<a href="oder-page.html" class="bg-[var(--primary-color)] hover:opacity-90 transition-opacity text-white text-sm font-bold py-2.5 px-5 rounded-lg">
+            Order Online
+          </a>
+</div>
+</header>
+<main class="flex-1 px-4 sm:px-10 lg:px-20 py-12">
+<div class="max-w-7xl mx-auto">
+<div class="text-center mb-16">
+<h2 class="text-4xl md:text-5xl font-extrabold tracking-tighter mb-4">Takeaway Combos</h2>
+<p class="text-white/60 max-w-2xl mx-auto">Indulgent combos crafted for convenience. Perfect for any occasion, from a solo treat to a family feast. Select a pack below to start your order.</p>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+<div class="bg-white/5 rounded-xl p-6 border border-white/10 backdrop-blur-sm card-hover transition-all duration-300 hover:border-[var(--primary-color)]/50 hover:shadow-2xl hover:shadow-[var(--primary-color)]/10">
+<div class="flex flex-col sm:flex-row gap-6">
+<div class="w-full sm:w-48 h-48 sm:h-auto flex-shrink-0 bg-center bg-cover rounded-lg" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBXZoTHF-TVN9lu_mzYhRuZiPrHrmGZlMUDyasCdSd0FNe9_6U0W9J99GPncxZF4zu-dX6wsH93woBFwSAMm_m13tMKckTg4uqAKgIiuMjqigBC0tIdiwImuT_vUT_G_ejNbUzKmACwuWW-JUoKAkaBiL9uZVDW7Tw6bA3mPq8HuQ1p9qvp9f_yYJcayCBmQMqiY81btOBwf8ZG0X2E8PuEeDaLYY6T_TXLE6EnSCShuXC7dqN0E70YiovVYnk37Xt-oMYQlvt2d7Nb");'></div>
+<div class="flex flex-col flex-grow">
+<h3 class="text-2xl font-bold mb-2">Single Pack</h3>
+<p class="text-white/60 text-sm mb-4">Perfect for a satisfying solo meal, this pack offers a delicious taste of our signatures.</p>
+<ul class="text-white/80 text-sm space-y-2 details-list mb-4">
+<li>1x Steamed Dumplings (4pcs - Pork &amp; Chive or Chicken &amp; Ginger)</li>
+<li>1x Crispy Vegetable Spring Rolls (2pcs) with sweet chili sauce</li>
+<li>1x Choice of Soft Drink (Coke, Diet Coke, Sprite)</li>
+</ul>
+<div class="flex items-center justify-between mt-auto pt-4">
+<p class="text-3xl font-bold text-[var(--primary-color)]">$18.50</p>
+<button class="bg-[var(--primary-color)] text-white font-bold py-2 px-4 rounded-lg text-sm add-to-cart">Add to Cart</button>
+</div>
+</div>
+</div>
+</div>
+<div class="bg-white/5 rounded-xl p-6 border border-white/10 backdrop-blur-sm card-hover transition-all duration-300 hover:border-[var(--primary-color)]/50 hover:shadow-2xl hover:shadow-[var(--primary-color)]/10">
+<div class="flex flex-col sm:flex-row gap-6">
+<div class="w-full sm:w-48 h-48 sm:h-auto flex-shrink-0 bg-center bg-cover rounded-lg" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuD89MMd8kAIf75q77WXVEDBIlF-D6MG00i-zIMl75Kz4U7t9IJXtjROptsv-FO6MBgNcVZUgQB6gkS_t2YDJVuhInLRaUi-yIj6-RjpioVCW2YHcEI6RW08abj7rISFiAvuERHSKm0mm0NbXCYb4HvCLLagOzm07jjBpHDDAihvRyyKuLsZyZDGKcEkpbI21klHIzrQ2dmk0J1blxhxoptF0kLW7_-xt6ZIMmEPD2JVL2eAsNzkJ7gNT75IjeuSaYXGcjEiEbTbzt2S");'></div>
+<div class="flex flex-col flex-grow">
+<h3 class="text-2xl font-bold mb-2">Veggie Delight Pack</h3>
+<p class="text-white/60 text-sm mb-4">A delightful and hearty vegetarian selection, showcasing fresh and vibrant flavors.</p>
+<ul class="text-white/80 text-sm space-y-2 details-list mb-4">
+<li>1x Steamed Vegetable Dumplings (4pcs - Mushroom &amp; Tofu)</li>
+<li>1x Edamame with Himalayan Pink Sea Salt</li>
+<li>1x Steamed Bok Choy with Garlic Sauce</li>
+<li>1x Choice of Iced Tea (Jasmine or Oolong)</li>
+</ul>
+<div class="flex items-center justify-between mt-auto pt-4">
+<p class="text-3xl font-bold text-[var(--primary-color)]">$22.00</p>
+<button class="bg-[var(--primary-color)] text-white font-bold py-2 px-4 rounded-lg text-sm add-to-cart">Add to Cart</button>
+</div>
+</div>
+</div>
+</div>
+<div class="bg-white/5 rounded-xl p-6 border border-white/10 backdrop-blur-sm card-hover transition-all duration-300 hover:border-[var(--primary-color)]/50 hover:shadow-2xl hover:shadow-[var(--primary-color)]/10">
+<div class="flex flex-col sm:flex-row gap-6">
+<div class="w-full sm:w-48 h-48 sm:h-auto flex-shrink-0 bg-center bg-cover rounded-lg" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAoA6hhKqvzffRZnDy311619E7GRdTF_v8saEcirmuBho8jfG-uS9BOf__HyMMT55TCf38s7rGxdFeHBTI3bLDVbK-Ox58vQK1iv19_UyjbC8Dcl5u6CQfKE1FYUK4sqITYMB0EFe6qNw1Z7dzZEPs43jGFPnEcrrT3mxI_eK5RwcgDttvd29cO48VdQVMOl-XUoaGnbEGlK9M8_fudeO_OucGNvDNrSHaCl8mzQkNpj8xAh5RFa8N16NwZXVDVwgxznqW1Hdi2QAht");'></div>
+<div class="flex flex-col flex-grow">
+<h3 class="text-2xl font-bold mb-2">Couple's Feast</h3>
+<p class="text-white/60 text-sm mb-4">The perfect spread for two to share, featuring a variety of our most popular items.</p>
+<ul class="text-white/80 text-sm space-y-2 details-list mb-4">
+<li>2x Steamed Dumplings (Your choice of 2 from Pork, Chicken, Veggie)</li>
+<li>1x Satay Chicken Skewers (4pcs) with peanut sauce</li>
+<li>1x Large Steamed Jasmine Rice</li>
+<li>2x Choice of Premium Soft Drinks</li>
+</ul>
+<div class="flex items-center justify-between mt-auto pt-4">
+<p class="text-3xl font-bold text-[var(--primary-color)]">$38.99</p>
+<button class="bg-[var(--primary-color)] text-white font-bold py-2 px-4 rounded-lg text-sm add-to-cart">Add to Cart</button>
+</div>
+</div>
+</div>
+</div>
+<div class="bg-white/5 rounded-xl p-6 border border-white/10 backdrop-blur-sm card-hover transition-all duration-300 hover:border-[var(--primary-color)]/50 hover:shadow-2xl hover:shadow-[var(--primary-color)]/10">
+<div class="flex flex-col sm:flex-row gap-6">
+<div class="w-full sm:w-48 h-48 sm:h-auto flex-shrink-0 bg-center bg-cover rounded-lg" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDCN4T08we4kD5D0WpsVxwVolsO47GLxDql0wc-RWpnkENAKS6ZzXs5FinQxW8Ks_Eeh1EE-V5Ew87Z-jqbcyKwPCMs-xIgpYSfVg4Rk_5ttL_LVy1JqqerPYfuXmtJLWRa5KYTpH0HRPWT5X5F5kl_13f8qm2fTnx7GjqoA8YAQh0zb2J0ysA3EWA8_MUIXNQpsbZ0wUUY9u52k2j9Lx_kNlUCAVo1pjEltl-ez5qB7eKHhEt6-D2Hx73745X2Jt-49DGFPXvYPl26");'></div>
+<div class="flex flex-col flex-grow">
+<h3 class="text-2xl font-bold mb-2">Family Banquet</h3>
+<p class="text-white/60 text-sm mb-4">A generous feast for the whole family to enjoy, with something for everyone.</p>
+<ul class="text-white/80 text-sm space-y-2 details-list mb-4">
+<li>2x Steamed Dumplings (Pork &amp; Chive, 8pcs total)</li>
+<li>2x Steamed Vegetable Dumplings (Mushroom &amp; Tofu, 8pcs total)</li>
+<li>1x Crispy Prawn Wontons (8pcs) with plum sauce</li>
+<li>2x Large Steamed Jasmine Rice</li>
+<li>4x Choice of Soft Drinks (1.25L bottle option available)</li>
+</ul>
+<div class="flex items-center justify-between mt-auto pt-4">
+<p class="text-3xl font-bold text-[var(--primary-color)]">$65.50</p>
+<button class="bg-[var(--primary-color)] text-white font-bold py-2 px-4 rounded-lg text-sm add-to-cart">Add to Cart</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="text-center mt-16 border-t border-white/10 pt-8 bg-white/5 rounded-xl p-8">
+<h4 class="text-lg font-bold mb-2 text-[var(--primary-color)]">Important Information</h4>
+<p class="text-white/60 text-sm max-w-lg mx-auto"> Please be advised that combo contents are fixed and substitutions are not permitted. All packs are subject to availability. During peak hours, preparation times may be longer. We appreciate your patience and understanding.
+                        </p>
+<p class="text-white/80 mt-4 text-sm"> For dietary requirements, allergies, large orders, or special inquiries, please call us directly at <a class="font-bold text-white hover:text-[var(--primary-color)] transition-colors" href="tel:555-123-4567">(555) 123-4567</a> before placing your order.
+                        </p>
+</div>
+</div>
+</main>
+<footer class="border-t border-solid border-white/10 mt-12">
+<div class="max-w-7xl mx-auto px-4 sm:px-10 lg:px-20 py-8">
+<div class="flex flex-col sm:flex-row justify-between items-center gap-6">
+<p class="text-white/40 text-sm">© 2024 Steam. All Rights Reserved.</p>
+<div class="flex items-center gap-6">
+<a class="text-white/40 hover:text-white transition-colors text-sm" href="#">Terms of Service</a>
+<a class="text-white/40 hover:text-white transition-colors text-sm" href="#">Privacy Policy</a>
+</div>
+</div>
+</div>
+</footer>
+</div>
+</div>
+
+</body></html>
