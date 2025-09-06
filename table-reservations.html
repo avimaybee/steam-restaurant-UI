@@ -1,111 +1,77 @@
 <!DOCTYPE html>
-<html><head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<link as="style" href="https://fonts.googleapis.com/css2?display=swap&amp;family=Manrope%3Awght%40400%3B500%3B700%3B800&amp;family=Noto+Sans%3Awght%40400%3B500%3B700%3B900" onload="this.rel='stylesheet'" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
-<title>Steam - Table Reservations</title>
-<link href="data:image/x-icon;base64," rel="icon" type="image/x-icon"/>
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<style type="text/tailwindcss">
-        body {
-            background: radial-gradient(circle at top right, rgba(var(--primary-color-rgb), 0.1), transparent),
-                        radial-gradient(circle at bottom left, rgba(var(--primary-color-rgb), 0.1), transparent),
-                        var(--secondary-color);
-            font-family: 'Manrope', sans-serif;
-        }
-        .form-input {
-            appearance: none;-webkit-appearance: none;
-            -moz-appearance: none;
-        }
-        input[type="date"]::-webkit-calendar-picker-indicator,
-        input[type="time"]::-webkit-calendar-picker-indicator {
-            display: none;
-        }input[type="date"]:not(:placeholder-shown),
-        input[type="time"]:not(:placeholder-shown) {
-            color: var(--text-light);}
-        input[type="date"],
-        input[type="time"] {
-            color: var(--text-muted);}
-    </style>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Table Reservations | Steam - Modern Asian Fusion</title>
+    <meta name="description" content="Secure your table at Steam for an unforgettable dining experience. Please fill out the form below to proceed.">
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link rel="stylesheet" href="style.css">
+    <script src="app.js" defer></script>
 </head>
-<body class="text-[var(--text-muted)]">
-<div class="relative flex size-full min-h-screen flex-col bg-[var(--secondary-color)] dark group/design-root overflow-x-hidden">
-<div class="layout-container flex h-full grow flex-col">
-<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-white/10 px-4 sm:px-6 lg:px-10 py-5">
-<a class="flex items-center gap-3 text-white" href="landing-page.html">
-<svg class="h-6 w-6 text-[var(--primary-color)]" fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-<path d="M24 45.8096C19.6865 45.8096 15.4698 44.5305 11.8832 42.134C8.29667 39.7376 5.50128 36.3314 3.85056 32.3462C2.19985 28.361 1.76794 23.9758 2.60947 19.7452C3.451 15.5145 5.52816 11.6284 8.57829 8.5783C11.6284 5.52817 15.5145 3.45101 19.7452 2.60948C23.9758 1.76795 28.361 2.19986 32.3462 3.85057C36.3314 5.50129 39.7376 8.29668 42.134 11.8833C44.5305 15.4698 45.8096 19.6865 45.8096 24L24 24L24 45.8096Z" fill="currentColor"></path>
-</svg>
-<h2 class="text-white text-xl font-bold tracking-[-0.015em]">Steam</h2>
-</a>
-<nav class="hidden md:flex items-center gap-8">
-<a class="text-gray-300 hover:text-white transition-colors text-sm font-medium leading-normal" href="our-menu.html">Menu</a>
-<a class="text-gray-300 hover:text-white transition-colors text-sm font-medium leading-normal" href="about-us.html">About</a>
-<a class="text-gray-300 hover:text-white transition-colors text-sm font-medium leading-normal" href="#">Locations</a>
-<a class="text-gray-300 hover:text-white transition-colors text-sm font-medium leading-normal" href="get-in-touch.html">Contact</a>
-</nav>
-<a class="flex min-w-[120px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-6 bg-[var(--primary-color)] text-white text-sm font-bold leading-normal tracking-[0.015em] hover:bg-opacity-90 transition-colors" href="table-reservations.html">
-<span class="truncate">Reservations</span>
-</a>
-</header>
-<main class="px-4 md:px-20 lg:px-40 flex flex-1 justify-center py-12 md:py-20">
-<div class="layout-content-container flex flex-col w-full max-w-3xl">
-<div class="text-center mb-12">
-<h1 class="text-white text-4xl md:text-5xl font-bold leading-tight tracking-tight">Table Reservation</h1>
-<p class="text-gray-400 mt-4 text-base md:text-lg max-w-xl mx-auto">Secure your table at Steam for an unforgettable dining experience. Please fill out the form below to proceed.</p>
-</div>
-<form class="space-y-6 bg-[var(--secondary-color)] p-8 sm:p-10 rounded-xl border border-white/10">
-<h2 class="text-2xl font-bold text-white mb-6 border-b border-white/10 pb-4">Your Details</h2>
-<div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-<div>
-<label class="block text-gray-300 text-sm font-medium leading-normal pb-2" for="fullName">Full Name</label>
-<div class="relative">
-<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none">person</span>
-<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-[var(--primary-color)] border border-white/10 bg-[var(--secondary-color)] h-14 placeholder:text-gray-500 pl-12 pr-4 py-4 text-base font-normal leading-normal transition-colors" id="fullName" placeholder="John Doe" required="" type="text"/>
-</div>
-</div>
-<div>
-<label class="block text-gray-300 text-sm font-medium leading-normal pb-2" for="email">Email Address</label>
-<div class="relative">
-<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none">mail</span>
-<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-[var(--primary-color)] border border-white/10 bg-[var(--secondary-color)] h-14 placeholder:text-gray-500 pl-12 pr-4 py-4 text-base font-normal leading-normal transition-colors" id="email" placeholder="you@example.com" required="" type="email"/>
-</div>
-</div>
-</div>
-<h2 class="text-2xl font-bold text-white mb-6 border-b border-white/10 pb-4 pt-6">Reservation Details</h2>
-<div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
-<div class="relative">
-<label class="block text-gray-300 text-sm font-medium leading-normal pb-2" for="date">Date</label>
-<span class="material-symbols-outlined absolute right-4 top-11 text-gray-400 pointer-events-none">calendar_today</span>
-<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--primary-color)] border border-white/10 bg-[var(--secondary-color)] h-14 placeholder:text-gray-500 p-4 text-base font-normal leading-normal transition-colors" id="date" onchange="this.style.color = 'var(--text-light)'" placeholder="Select Date" required="" type="date"/>
-</div>
-<div class="relative">
-<label class="block text-gray-300 text-sm font-medium leading-normal pb-2" for="time">Time</label>
-<span class="material-symbols-outlined absolute right-4 top-11 text-gray-400 pointer-events-none">schedule</span>
-<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--primary-color)] border border-white/10 bg-[var(--secondary-color)] h-14 placeholder:text-gray-500 p-4 text-base font-normal leading-normal transition-colors" id="time" onchange="this.style.color = 'var(--text-light)'" placeholder="Select Time" required="" type="time"/>
-</div>
-<div class="relative">
-<label class="block text-gray-300 text-sm font-medium leading-normal pb-2" for="guests">Number of Guests</label>
-<span class="material-symbols-outlined absolute right-4 top-11 text-gray-400 pointer-events-none">group</span>
-<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-[var(--primary-color)] border border-white/10 bg-[var(--secondary-color)] h-14 placeholder:text-gray-500 p-4 text-base font-normal leading-normal transition-colors" id="guests" max="20" min="1" placeholder="e.g., 2" required="" type="number"/>
-</div>
-</div>
-<div>
-<label class="block text-gray-300 text-sm font-medium leading-normal pb-2" for="requests">Special Requests (Optional)</label>
-<textarea class="form-input flex w-full min-w-0 flex-1 resize-y overflow-hidden rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-[var(--primary-color)] border border-white/10 bg-[var(--secondary-color)] min-h-36 placeholder:text-gray-500 p-4 text-base font-normal leading-normal transition-colors" id="requests" placeholder="Any dietary restrictions, allergies, or special celebrations?"></textarea>
-</div>
-<div class="pt-6">
-<button class="flex w-full cursor-pointer items-center justify-center overflow-hidden rounded-lg h-14 px-6 bg-[var(--primary-color)] text-white text-base font-bold leading-normal tracking-wide shadow-lg shadow-[var(--primary-color)]/20 hover:bg-opacity-90 transition-all duration-300" type="submit">
-<span class="truncate">Confirm Reservation</span>
-</button>
-</div>
-<p class="text-center text-xs text-gray-500 pt-2">By clicking "Confirm Reservation", you agree to our reservation policy. A confirmation email will be sent to the address provided.</p>
-</form>
-</div>
-</main>
-</div>
-</div>
+<body class="reservation-gradient-bg">
 
-</body></html>
+    <header id="main-header"></header>
+
+    <main class="px-4 md:px-20 lg:px-40 flex flex-1 justify-center py-12 md:py-20">
+        <div class="layout-content-container flex flex-col w-full max-w-3xl">
+            <div class="text-center mb-12">
+                <h1 class="text-white text-4xl md:text-5xl font-bold leading-tight tracking-tight">Table Reservation</h1>
+                <p class="text-gray-400 mt-4 text-base md:text-lg max-w-xl mx-auto">Secure your table at Steam for an unforgettable dining experience. Please fill out the form below to proceed.</p>
+            </div>
+            <form class="space-y-6 bg-[var(--secondary-color)] p-8 sm:p-10 rounded-xl border border-white/10">
+                <h2 class="text-2xl font-bold text-white mb-6 border-b border-white/10 pb-4">Your Details</h2>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    <div>
+                        <label class="block text-gray-300 text-sm font-medium leading-normal pb-2" for="fullName">Full Name</label>
+                        <div class="relative">
+                            <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none">person</span>
+                            <input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-[var(--primary-color)] border border-white/10 bg-[var(--secondary-color)] h-14 placeholder:text-gray-500 pl-12 pr-4 py-4 text-base font-normal leading-normal transition-colors" id="fullName" placeholder="John Doe" required="" type="text"/>
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-gray-300 text-sm font-medium leading-normal pb-2" for="email">Email Address</label>
+                        <div class="relative">
+                            <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none">mail</span>
+                            <input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-[var(--primary-color)] border border-white/10 bg-[var(--secondary-color)] h-14 placeholder:text-gray-500 pl-12 pr-4 py-4 text-base font-normal leading-normal transition-colors" id="email" placeholder="you@example.com" required="" type="email"/>
+                        </div>
+                    </div>
+                </div>
+                <h2 class="text-2xl font-bold text-white mb-6 border-b border-white/10 pb-4 pt-6">Reservation Details</h2>
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+                    <div class="relative">
+                        <label class="block text-gray-300 text-sm font-medium leading-normal pb-2" for="date">Date</label>
+                        <span class="material-symbols-outlined absolute right-4 top-11 text-gray-400 pointer-events-none">calendar_today</span>
+                        <input class="form-input-custom flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--primary-color)] border border-white/10 bg-[var(--secondary-color)] h-14 placeholder:text-gray-500 p-4 text-base font-normal leading-normal transition-colors" id="date" placeholder="Select Date" required="" type="date"/>
+                    </div>
+                    <div class="relative">
+                        <label class="block text-gray-300 text-sm font-medium leading-normal pb-2" for="time">Time</label>
+                        <span class="material-symbols-outlined absolute right-4 top-11 text-gray-400 pointer-events-none">schedule</span>
+                        <input class="form-input-custom flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--primary-color)] border border-white/10 bg-[var(--secondary-color)] h-14 placeholder:text-gray-500 p-4 text-base font-normal leading-normal transition-colors" id="time" placeholder="Select Time" required="" type="time"/>
+                    </div>
+                    <div class="relative">
+                        <label class="block text-gray-300 text-sm font-medium leading-normal pb-2" for="guests">Number of Guests</label>
+                        <span class="material-symbols-outlined absolute right-4 top-11 text-gray-400 pointer-events-none">group</span>
+                        <input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-[var(--primary-color)] border border-white/10 bg-[var(--secondary-color)] h-14 placeholder:text-gray-500 p-4 text-base font-normal leading-normal transition-colors" id="guests" max="20" min="1" placeholder="e.g., 2" required="" type="number"/>
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-gray-300 text-sm font-medium leading-normal pb-2" for="requests">Special Requests (Optional)</label>
+                    <textarea class="form-input flex w-full min-w-0 flex-1 resize-y overflow-hidden rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-[var(--primary-color)] border border-white/10 bg-[var(--secondary-color)] min-h-36 placeholder:text-gray-500 p-4 text-base font-normal leading-normal transition-colors" id="requests" placeholder="Any dietary restrictions, allergies, or special celebrations?"></textarea>
+                </div>
+                <div class="pt-6">
+                    <button class="flex w-full cursor-pointer items-center justify-center overflow-hidden rounded-lg h-14 px-6 bg-[var(--primary-color)] text-white text-base font-bold leading-normal tracking-wide shadow-lg shadow-[var(--primary-color)]/20 hover:bg-opacity-90 transition-all duration-300" type="submit">
+                        <span class="truncate">Confirm Reservation</span>
+                    </button>
+                </div>
+                <p class="text-center text-xs text-gray-500 pt-2">By clicking "Confirm Reservation", you agree to our reservation policy. A confirmation email will be sent to the address provided.</p>
+            </form>
+        </div>
+    </main>
+
+    <footer id="main-footer"></footer>
+
+</body>
+</html>

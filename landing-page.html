@@ -1,65 +1,77 @@
 <!DOCTYPE html>
-<html lang="en"><head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Steam - Modern Asian Fusion</title>
-<link href="style.css" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com" rel="preconnect"/>
-<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&amp;display=swap" rel="stylesheet"/>
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
- 
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Steam - Modern Asian Fusion</title>
+    <meta name="description" content="Experience the art of modern Asian fusion cuisine in an elegant and sophisticated setting. Your journey into exquisite flavors starts here.">
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link rel="stylesheet" href="style.css">
+    <script src="app.js" defer></script>
 </head>
-<body class="bg-[var(--secondary-color)] text-[var(--text-primary)]">
-<div class="relative min-h-screen flex flex-col">
-<div class="absolute inset-0 hero-gradient bg-cover bg-center bg-no-repeat z-0"></div>
-<div class="relative z-10 flex flex-col h-full">
-<header class="w-full px-8 lg:px-16 py-6">
-<div class="container mx-auto flex justify-between items-center">
-<div class="flex items-center gap-3">
-<svg class="h-8 w-8 text-[var(--primary-color)]" fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-<path d="M24 45.8096C19.6865 45.8096 15.4698 44.5305 11.8832 42.134C8.29667 39.7376 5.50128 36.3314 3.85056 32.3462C2.19985 28.361 1.76794 23.9758 2.60947 19.7452C3.451 15.5145 5.52816 11.6284 8.57829 8.5783C11.6284 5.52817 15.5145 3.45101 19.7452 2.60948C23.9758 1.76795 28.361 2.19986 32.3462 3.85057C36.3314 5.50129 39.7376 8.29668 42.134 11.8833C44.5305 15.4698 45.8096 19.6865 45.8096 24L24 24L24 45.8096Z" fill="currentColor"></path>
-</svg>
-<a class="text-3xl font-bold tracking-wider uppercase text-white" href="/">Steam</a>
-</div>
-<nav class="hidden md:flex flex-grow justify-center items-center gap-10">
-<a class="nav-link text-base font-medium" href="about-us.html">About Us</a>
-<a class="nav-link text-base font-medium" href="our-menu.html">Menu</a>
-<a class="nav-link text-base font-medium" href="gallery.html">Gallery</a>
-<a class="nav-link text-base font-medium" href="table-reservations.html">Reservations</a>
-<a class="nav-link text-base font-medium" href="gift-vouchers.html">Vouchers</a>
-<a class="nav-link text-base font-medium" href="get-in-touch.html">Contact</a>
-</nav>
-<div class="hidden md:flex items-center">
-<a class="btn-secondary rounded-full py-2 px-6 text-base font-medium transition-all duration-300" href="#">Sign In</a>
-</div>
-<div class="md:hidden">
-<button class="text-white">
-<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-<path d="M4 6h16M4 12h16m-7 6h7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
-</svg>
-</button>
-</div>
-</div>
-</header>
-<main class="flex-grow flex items-center">
-<div class="container mx-auto px-8 lg:px-16 text-center">
-<div class="max-w-4xl mx-auto">
-<h1 class="text-6xl md:text-8xl font-extrabold text-white leading-tight tracking-tight mb-6 text-shadow"> Where Culinary Artistry Meets Asian Tradition </h1>
-<p class="text-xl md:text-2xl text-[var(--text-secondary)] max-w-3xl mx-auto mb-12 text-shadow"> Experience the art of modern Asian fusion cuisine in an elegant and sophisticated setting. Your journey into exquisite flavors starts here. </p>
-<div class="flex flex-col sm:flex-row items-center justify-center gap-6">
-<a class="w-full sm:w-auto btn-primary rounded-full h-16 px-12 text-xl font-bold tracking-wider transition-all duration-300 transform hover:scale-105 shadow-lg shadow-black/40 flex items-center justify-center" href="table-reservations.html"> Book a Table </a>
-<a class="w-full sm:w-auto btn-secondary rounded-full h-16 px-12 text-xl font-bold tracking-wider transition-all duration-300 transform hover:scale-105 shadow-lg shadow-black/20 flex items-center justify-center" href="oder-page.html"> Order Online </a>
-</div>
-</div>
-</div>
-</main>
-<footer class="w-full px-8 lg:px-16 py-6">
-<div class="container mx-auto text-center text-gray-400 text-base">
-<p>© 2024 Steam Restaurant. All Rights Reserved.</p>
-</div>
-</footer>
-</div>
-</div>
+<body class="bg-secondary-color text-text-primary">
 
-</body></html>
+    <div class="relative min-h-screen flex flex-col hero-gradient">
+        <div class="relative z-10 flex flex-col h-full container mx-auto px-8 lg:px-16">
+            <header id="main-header"></header>
+
+            <main class="flex-grow flex items-center justify-center">
+                <div class="text-center">
+                    <h1 class="text-6xl md:text-8xl font-extrabold text-white leading-tight tracking-tight mb-6 text-shadow"> Where Culinary Artistry Meets Asian Tradition </h1>
+                    <p class="text-xl md:text-2xl text-[var(--text-secondary)] max-w-3xl mx-auto mb-12 text-shadow"> Experience the art of modern Asian fusion cuisine in an elegant and sophisticated setting. Your journey into exquisite flavors starts here. </p>
+                    <div class="flex flex-col sm:flex-row items-center justify-center gap-6">
+                        <a class="w-full sm:w-auto bg-[var(--primary-color)] text-black rounded-full h-16 px-12 text-xl font-bold tracking-wider transition-all duration-300 transform hover:scale-105 shadow-lg shadow-black/40 flex items-center justify-center" href="table-reservations.html"> Book a Table </a>
+                        <a class="w-full sm:w-auto bg-transparent border-2 border-white text-white rounded-full h-16 px-12 text-xl font-bold tracking-wider transition-all duration-300 transform hover:scale-105 hover:bg-white hover:text-black shadow-lg shadow-black/20 flex items-center justify-center" href="order-page.html"> Order Online </a>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <main class="bg-[#101010] py-24 sm:py-32">
+        <div class="mx-auto max-w-7xl px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-x-16 gap-y-12 items-center">
+                <div class="space-y-8">
+                    <h2 class="text-4xl font-bold tracking-tight text-white sm:text-5xl">Discover Our Story</h2>
+                    <p class="text-lg leading-8 text-gray-300">At Steam, we blend time-honored Asian culinary traditions with a modern twist. Our philosophy is simple: use the freshest ingredients, honor the authentic flavors, and create an unforgettable dining experience. Every dish is a work of art, crafted with passion and precision.</p>
+                    <a href="about-us.html" class="inline-block rounded-lg bg-[var(--primary-color)] px-6 py-3 text-lg font-semibold text-black shadow-sm hover:bg-opacity-80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--primary-color)]">Learn More</a>
+                </div>
+                <!-- TODO: Replace with mock image -->
+                <div class="h-96 w-full bg-gray-800 rounded-2xl bg-cover bg-center"></div>
+            </div>
+
+            <div class="mt-32 text-center">
+                <h2 class="text-4xl font-bold tracking-tight text-white sm:text-5xl">A Taste of Our Menu</h2>
+                <p class="mt-4 text-lg leading-8 text-gray-300">From delicate dim sum to sizzling main courses, our menu is a journey through the flavors of Asia.</p>
+            </div>
+            <div class="mt-16 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+                <div class="flex flex-col items-center text-center">
+                    <!-- TODO: Replace with mock image -->
+                    <div class="h-64 w-64 rounded-full bg-gray-800 bg-cover bg-center mb-6"></div>
+                    <h3 class="text-2xl font-bold text-white">Signature Dumplings</h3>
+                    <p class="text-gray-400 mt-2">Hand-crafted parcels of joy, steamed or pan-fried to perfection.</p>
+                </div>
+                <div class="flex flex-col items-center text-center">
+                    <!-- TODO: Replace with mock image -->
+                    <div class="h-64 w-64 rounded-full bg-gray-800 bg-cover bg-center mb-6"></div>
+                    <h3 class="text-2xl font-bold text-white">Wagyu Beef Tataki</h3>
+                    <p class="text-gray-400 mt-2">Lightly seared A5 Wagyu, served with a citrus-soy dressing.</p>
+                </div>
+                <div class="flex flex-col items-center text-center">
+                    <!-- TODO: Replace with mock image -->
+                    <div class="h-64 w-64 rounded-full bg-gray-800 bg-cover bg-center mb-6"></div>
+                    <h3 class="text-2xl font-bold text-white">Miso Glazed Black Cod</h3>
+                    <p class="text-gray-400 mt-2">A delicate and flavorful classic, marinated for 48 hours.</p>
+                </div>
+            </div>
+             <div class="mt-16 text-center">
+                <a href="our-menu.html" class="inline-block rounded-lg bg-[var(--primary-color)] px-8 py-4 text-lg font-semibold text-black shadow-sm hover:bg-opacity-80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--primary-color)]">View Full Menu</a>
+            </div>
+        </div>
+    </main>
+
+    <footer id="main-footer"></footer>
+
+</body>
+</html>

@@ -1,11 +1,131 @@
 :root {
   --primary-color: #B99767;
-  --primary-color-rgb: 185, 151, 103; /* RGB values for #B99767 */
   --accent-color: #A78B64;
-  --secondary-color: #1a1a1a; /* Used for dark backgrounds */
-  --text-light: #FFFFFF;
-  --text-muted: #E0E0E0;
-  --border-dark: #382f29; /* For dark borders */
-  --gradient-start: rgba(26, 26, 26, 0.9);
-  --gradient-end: rgba(26, 26, 26, 0.4);
+  --secondary-color: #1a1a1a;
+  --text-primary: #FFFFFF;
+  --text-secondary: #E0E0E0;
+  --border-dark: #382f29;
+}
+
+body {
+    font-family: 'Manrope', sans-serif;
+    background-color: var(--secondary-color);
+    color: var(--text-primary);
+}
+
+.hero-gradient {
+    background-image: linear-gradient(to bottom, rgba(26, 26, 26, 0.9), rgba(26, 26, 26, 0.4));
+}
+
+.menu-gradient-bg {
+    background-image: radial-gradient(circle at 10% 20%, rgba(185, 151, 103, 0.1), transparent 50%),
+                      radial-gradient(circle at 80% 90%, rgba(185, 151, 103, 0.1), transparent 50%);
+}
+
+.text-shadow {
+    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+}
+
+/* Gallery Styles */
+.img-wrapper {
+    position: relative;
+    overflow: hidden;
+    border-radius: 1rem;
+    transition: transform 0.3s ease;
+}
+.img-wrapper:hover {
+    transform: scale(1.05);
+}
+.img-wrapper::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0) 50%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 1;
+}
+.img-wrapper:hover::before {
+    opacity: 1;
+}
+
+.contact-gradient-bg {
+    background-image: radial-gradient(circle at top right, #b85814 0%, transparent 40%),
+                      radial-gradient(circle at bottom left, #382f29 0%, transparent 50%);
+}
+
+.voucher-gradient-bg {
+    background-image: radial-gradient(circle at top right, rgba(156, 78, 22, 0.2), transparent 40%),
+                      radial-gradient(circle at bottom left, rgba(156, 78, 22, 0.2), transparent 50%);
+}
+
+.reservation-gradient-bg {
+    background: radial-gradient(circle at top right, rgba(185, 151, 103, 0.1), transparent),
+                radial-gradient(circle at bottom left, rgba(185, 151, 103, 0.1), transparent),
+                var(--secondary-color);
+}
+
+/* Form Styles from table-reservations.html */
+.form-input-custom {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+input[type="date"]::-webkit-calendar-picker-indicator,
+input[type="time"]::-webkit-calendar-picker-indicator {
+    display: none;
+}
+input[type="date"]:not(:placeholder-shown),
+input[type="time"]:not(:placeholder-shown) {
+    color: var(--text-primary);
+}
+input[type="date"],
+input[type="time"] {
+    color: var(--text-secondary);
+}
+
+/* Gradients from various pages */
+.beverage-gradient-bg {
+    background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460);
+}
+.takeaway-gradient-bg {
+    background: radial-gradient(circle at top left, rgba(167, 138, 127, 0.1), transparent 30%), radial-gradient(circle at bottom right, rgba(167, 138, 127, 0.05), transparent 40%);
+}
+
+/* Styles from beverage-menu.html */
+.beverage-menu-item {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: start;
+    gap: 1.5rem;
+}
+.beverage-menu-item-name {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+/* Styles from takeaway-combos.html */
+.details-list li {
+    position: relative;
+    padding-left: 1.5rem;
+}
+.details-list li::before {
+    content: '•';
+    position: absolute;
+    left: 0.5rem;
+    color: var(--primary-color);
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in {
+    animation: fadeIn 0.5s ease-in-out forwards;
 }
