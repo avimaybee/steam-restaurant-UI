@@ -23,7 +23,7 @@
                 </p>
             </div>
             <div class="grid grid-cols-1 gap-12 md:grid-cols-2">
-                <div class="space-y-8 rounded-lg bg-[#1c1815] p-8">
+                <div class="space-y-8 rounded-lg bg-[#1c1815] p-8 opacity-50">
                     <h3 class="text-2xl font-bold tracking-tight">Purchase a Voucher</h3>
                     <form class="space-y-6">
                         <div>
@@ -31,68 +31,69 @@
                             <div class="grid grid-cols-2 gap-4 sm:grid-cols-4">
                                 <label class="flex cursor-pointer items-center justify-center rounded-lg border border-[#52463d] py-3 text-sm font-medium text-white transition-all has-[:checked]:border-[var(--primary-color)] has-[:checked]:bg-[var(--primary-color)] has-[:checked]:text-white">
                                     $50
-                                    <input class="peer sr-only" name="voucher_amount" type="radio"/>
+                                    <input class="peer sr-only" name="voucher_amount" type="radio" disabled/>
                                 </label>
                                 <label class="flex cursor-pointer items-center justify-center rounded-lg border border-[#52463d] py-3 text-sm font-medium text-white transition-all has-[:checked]:border-[var(--primary-color)] has-[:checked]:bg-[var(--primary-color)] has-[:checked]:text-white">
                                     $100
-                                    <input checked="" class="peer sr-only" name="voucher_amount" type="radio"/>
+                                    <input checked="" class="peer sr-only" name="voucher_amount" type="radio" disabled/>
                                 </label>
                                 <label class="flex cursor-pointer items-center justify-center rounded-lg border border-[#52463d] py-3 text-sm font-medium text-white transition-all has-[:checked]:border-[var(--primary-color)] has-[:checked]:bg-[var(--primary-color)] has-[:checked]:text-white">
                                     $200
-                                    <input class="peer sr-only" name="voucher_amount" type="radio"/>
+                                    <input class="peer sr-only" name="voucher_amount" type="radio" disabled/>
                                 </label>
                                 <label class="flex cursor-pointer items-center justify-center rounded-lg border border-[#52463d] py-3 text-sm font-medium text-white transition-all has-[:checked]:border-[var(--primary-color)] has-[:checked]:bg-[var(--primary-color)] has-[:checked]:text-white">
                                     Custom
-                                    <input class="peer sr-only" name="voucher_amount" type="radio"/>
+                                    <input class="peer sr-only" name="voucher_amount" type="radio" disabled/>
                                 </label>
                             </div>
                         </div>
                         <div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
                             <div>
                                 <label class="mb-2 block text-sm font-medium text-gray-300" for="recipient-name">Recipient's Name</label>
-                                <input class="form-input w-full rounded-lg border-none bg-[#382f29] p-3 text-sm text-white placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-[var(--primary-color)]" id="recipient-name" placeholder="e.g., Jane Doe" type="text"/>
+                                <input class="form-input w-full rounded-lg border-none bg-[#382f29] p-3 text-sm text-white placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-[var(--primary-color)]" id="recipient-name" placeholder="e.g., Jane Doe" type="text" disabled/>
                             </div>
                             <div>
                                 <label class="mb-2 block text-sm font-medium text-gray-300" for="recipient-email">Recipient's Email</label>
-                                <input class="form-input w-full rounded-lg border-none bg-[#382f29] p-3 text-sm text-white placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-[var(--primary-color)]" id="recipient-email" placeholder="e.g., jane.doe@example.com" type="email"/>
+                                <input class="form-input w-full rounded-lg border-none bg-[#382f29] p-3 text-sm text-white placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-[var(--primary-color)]" id="recipient-email" placeholder="e.g., jane.doe@example.com" type="email" disabled/>
                             </div>
                         </div>
                         <div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
                             <div>
                                 <label class="mb-2 block text-sm font-medium text-gray-300" for="your-name">Your Name</label>
-                                <input class="form-input w-full rounded-lg border-none bg-[#382f29] p-3 text-sm text-white placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-[var(--primary-color)]" id="your-name" placeholder="e.g., John Smith" type="text"/>
+                                <input class="form-input w-full rounded-lg border-none bg-[#382f29] p-3 text-sm text-white placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-[var(--primary-color)]" id="your-name" placeholder="e.g., John Smith" type="text" disabled/>
                             </div>
                             <div>
                                 <label class="mb-2 block text-sm font-medium text-gray-300" for="your-email">Your Email</label>
-                                <input class="form-input w-full rounded-lg border-none bg-[#382f29] p-3 text-sm text-white placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-[var(--primary-color)]" id="your-email" placeholder="e.g., john.smith@example.com" type="email"/>
+                                <input class="form-input w-full rounded-lg border-none bg-[#382f29] p-3 text-sm text-white placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-[var(--primary-color)]" id="your-email" placeholder="e.g., john.smith@example.com" type="email" disabled/>
                             </div>
                         </div>
                         <div>
                             <label class="mb-2 block text-sm font-medium text-gray-300" for="card-number">Card Number</label>
-                            <input class="form-input w-full rounded-lg border-none bg-[#382f29] p-3 text-sm text-white placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-[var(--primary-color)]" id="card-number" placeholder="•••• •••• •••• ••••" type="text"/>
+                            <input class="form-input w-full rounded-lg border-none bg-[#382f29] p-3 text-sm text-white placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-[var(--primary-color)]" id="card-number" placeholder="•••• •••• •••• ••••" type="text" disabled/>
                         </div>
                         <div class="grid grid-cols-2 gap-6">
                             <div>
                                 <label class="mb-2 block text-sm font-medium text-gray-300" for="expiry-date">Expiry Date</label>
-                                <input class="form-input w-full rounded-lg border-none bg-[#382f29] p-3 text-sm text-white placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-[var(--primary-color)]" id="expiry-date" placeholder="MM / YY" type="text"/>
+                                <input class="form-input w-full rounded-lg border-none bg-[#382f29] p-3 text-sm text-white placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-[var(--primary-color)]" id="expiry-date" placeholder="MM / YY" type="text" disabled/>
                             </div>
                             <div>
                                 <label class="mb-2 block text-sm font-medium text-gray-300" for="cvv">CVV</label>
-                                <input class="form-input w-full rounded-lg border-none bg-[#382f29] p-3 text-sm text-white placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-[var(--primary-color)]" id="cvv" placeholder="•••" type="text"/>
+                                <input class="form-input w-full rounded-lg border-none bg-[#382f29] p-3 text-sm text-white placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-[var(--primary-color)]" id="cvv" placeholder="•••" type="text" disabled/>
                             </div>
                         </div>
-                        <button class="w-full cursor-pointer rounded-lg bg-[var(--primary-color)] py-3 text-base font-bold text-white transition-opacity hover:opacity-90">
+                        <button class="w-full cursor-pointer rounded-lg bg-[var(--primary-color)] py-3 text-base font-bold text-white transition-opacity hover:opacity-90" disabled>
                             Purchase Voucher
                         </button>
+                        <p class="text-center text-sm text-gray-400">Online vouchers coming soon!</p>
                     </form>
                 </div>
-                <div class="space-y-8 rounded-lg bg-[#1c1815] p-8">
+                <div class="space-y-8 rounded-lg bg-[#1c1815] p-8 opacity-50">
                     <div class="space-y-4">
                         <h3 class="text-2xl font-bold tracking-tight">Have a Promo Code?</h3>
                         <p class="text-gray-400">Apply your promotional code here to receive a discount.</p>
                         <form class="flex items-center gap-4">
-                            <input class="form-input flex-1 rounded-lg border-none bg-[#382f29] p-3 text-sm text-white placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-[var(--primary-color)]" placeholder="Enter Promo Code" type="text"/>
-                            <button class="cursor-pointer rounded-lg bg-[#382f29] px-6 py-3 text-sm font-bold text-white transition-colors hover:bg-opacity-80">
+                            <input class="form-input flex-1 rounded-lg border-none bg-[#382f29] p-3 text-sm text-white placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-[var(--primary-color)]" placeholder="Enter Promo Code" type="text" disabled/>
+                            <button class="cursor-pointer rounded-lg bg-[#382f29] px-6 py-3 text-sm font-bold text-white transition-colors hover:bg-opacity-80" disabled>
                                 Apply
                             </button>
                         </form>

@@ -1,0 +1,74 @@
+[
+  {
+    "id": 1,
+    "name": "Pacific Oysters",
+    "description": "Half dozen freshly shucked oysters with a ginger-scallion mignonette.",
+    "price": 24.00,
+    "image": "https://via.placeholder.com/150",
+    "category": "dine-in",
+    "subCategory": "raw-bar"
+  },
+  {
+    "id": 2,
+    "name": "Wagyu Gyoza",
+    "description": "Pan-fried dumplings filled with premium Wagyu beef, served with a chili soy dipping sauce.",
+    "price": 18.00,
+    "image": "https://via.placeholder.com/150",
+    "category": "dine-in",
+    "subCategory": "small-plates"
+  },
+  {
+    "id": 3,
+    "name": "Miso Black Cod",
+    "description": "Marinated and broiled, served with pickled ginger stem.",
+    "price": 42.00,
+    "image": "https://via.placeholder.com/150",
+    "category": "dine-in",
+    "subCategory": "main-plates"
+  },
+  {
+    "id": 4,
+    "name": "Dragon's Breath",
+    "description": "A fiery blend of premium vodka, ginger liqueur, and a hint of chili, garnished with a smoked cinnamon stick.",
+    "price": 18.00,
+    "image": "https://via.placeholder.com/150",
+    "category": "beverages",
+    "subCategory": "cocktails"
+  },
+  {
+    "id": 5,
+    "name": "Yamazaki 12 Year Single Malt",
+    "description": "Rich, fruity, Mizunara oak finish.",
+    "price": 30.00,
+    "image": "https://via.placeholder.com/150",
+    "category": "beverages",
+    "subCategory": "whisky"
+  },
+  {
+    "id": 6,
+    "name": "Crispy Duck Rolls",
+    "description": "Tender duck meat, shredded and mixed with fresh vegetables, wrapped in a crispy spring roll shell.",
+    "price": 12.00,
+    "image": "https://via.placeholder.com/150",
+    "category": "takeaway",
+    "subCategory": "small-plates"
+  },
+  {
+    "id": 7,
+    "name": "Single Pack",
+    "description": "1x Steamed Dumplings (4pcs), 1x Crispy Vegetable Spring Rolls (2pcs), 1x Choice of Soft Drink.",
+    "price": 18.50,
+    "image": "https://via.placeholder.com/150",
+    "category": "combos",
+    "subCategory": "takeaway-combos"
+  },
+  {
+    "id": 8,
+    "name": "TWOBAYS",
+    "description": "A refreshing, gluten-free beer with a crisp finish.",
+    "price": 12.00,
+    "image": "https://via.placeholder.com/150",
+    "category": "specials",
+    "subCategory": "beer"
+  }
+]
