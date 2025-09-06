@@ -17,32 +17,32 @@
     <header id="main-header"></header>
 
     <main class="flex flex-1 justify-center py-10 px-4 sm:px-10">
-        <div class="flex w-full max-w-7xl">
-            <div class="w-2/3 pr-10">
+        <div class="flex flex-col lg:flex-row w-full max-w-7xl gap-10">
+            <div class="w-full lg:w-2/3">
                 <h2 class="text-4xl font-bold tracking-tight">Order Online</h2>
                 <p class="text-gray-400 mt-2">Customize your order. Select your favorites for delivery or pickup.</p>
                 <div class="mt-8 border-b border-[#382f29]">
-                    <div class="flex gap-8">
+                    <div class="flex gap-4 sm:gap-8 overflow-x-auto pb-3">
                         <a class="flex flex-col items-center justify-center border-b-2 border-b-white pb-3 pt-2" href="#">
-                            <p class="text-white text-sm font-bold">Featured</p>
+                            <p class="text-white text-sm font-bold whitespace-nowrap">Featured</p>
                         </a>
                         <a class="flex flex-col items-center justify-center border-b-2 border-b-transparent text-gray-400 hover:text-white hover:border-white/50 transition-colors pb-3 pt-2" href="#">
-                            <p class="text-sm font-bold">Appetizers</p>
+                            <p class="text-sm font-bold whitespace-nowrap">Appetizers</p>
                         </a>
                         <a class="flex flex-col items-center justify-center border-b-2 border-b-transparent text-gray-400 hover:text-white hover:border-white/50 transition-colors pb-3 pt-2" href="#">
-                            <p class="text-sm font-bold">Main Courses</p>
+                            <p class="text-sm font-bold whitespace-nowrap">Main Courses</p>
                         </a>
                         <a class="flex flex-col items-center justify-center border-b-2 border-b-transparent text-gray-400 hover:text-white hover:border-white/50 transition-colors pb-3 pt-2" href="#">
-                            <p class="text-sm font-bold">Desserts</p>
+                            <p class="text-sm font-bold whitespace-nowrap">Desserts</p>
                         </a>
                         <a class="flex flex-col items-center justify-center border-b-2 border-b-transparent text-gray-400 hover:text-white hover:border-white/50 transition-colors pb-3 pt-2" href="#">
-                            <p class="text-sm font-bold">Drinks</p>
+                            <p class="text-sm font-bold whitespace-nowrap">Drinks</p>
                         </a>
                     </div>
                 </div>
-                <div id="menu-items-container" class="mt-8 grid grid-cols-1 gap-8"></div>
+                <div id="menu-items-container" class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-8"></div>
             </div>
-            <aside class="w-1/3 pl-10 sticky top-28 self-start">
+            <aside class="w-full lg:w-1/3 lg:pl-10 sticky top-28 self-start">
                 <div class="rounded-lg bg-[#1c1815] p-6">
                     <div class="flex items-center justify-between border-b border-[#382f29] pb-4">
                         <h3 class="text-xl font-bold">Your Order</h3>

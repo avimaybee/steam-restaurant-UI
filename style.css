@@ -73,18 +73,22 @@ body {
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
+    color: var(--text-primary); /* Default text color */
 }
 input[type="date"]::-webkit-calendar-picker-indicator,
 input[type="time"]::-webkit-calendar-picker-indicator {
     display: none;
+    background: none;
 }
-input[type="date"]:not(:placeholder-shown),
-input[type="time"]:not(:placeholder-shown) {
+/* Set color for date/time value when it is NOT the placeholder */
+input[type="date"]:valid,
+input[type="time"]:valid {
     color: var(--text-primary);
 }
+/* Set color for the placeholder text */
 input[type="date"],
 input[type="time"] {
-    color: var(--text-secondary);
+    color: #6b7280; /* Corresponds to Tailwind's text-gray-500 */
 }
 
 /* Gradients from various pages */
@@ -128,4 +132,23 @@ input[type="time"] {
 
 .fade-in {
     animation: fadeIn 0.5s ease-in-out forwards;
+}
+
+/* Form Validation Styles */
+.form-input.border-red-500, .form-input-custom.border-red-500 {
+    border-color: #ef4444 !important; /* Red-500 */
+}
+
+.text-red-500 {
+    color: #ef4444; /* Red-500 */
+}
+
+/* Hover effect for menu cards */
+#menu-container > section .grid {
+    transition: all 0.3s ease-in-out;
+}
+
+#menu-container > section:hover .grid {
+    transform: scale(1.02);
+    border-color: var(--accent-color);
 }
