@@ -16,14 +16,14 @@ def run_verification():
         page.screenshot(path="jules-scratch/verification/01-landing-page.png")
 
         # 2. Verify Navigation to Menu Page
-        menu_link = page.locator("nav").get_by_role("link", name="Menu")
+        menu_link = page.locator("#main-header nav").get_by_role("link", name="Menu")
         menu_link.click()
         page.wait_for_selector("#main-header nav") # Wait for header to load
         expect(page).to_have_title("Our Menu | Steam - Modern Asian Fusion")
         page.screenshot(path="jules-scratch/verification/02-menu-page.png")
 
         # 3. Verify Navigation to Gallery Page
-        gallery_link = page.locator("nav").get_by_role("link", name="Gallery")
+        gallery_link = page.locator("#main-header nav").get_by_role("link", name="Gallery")
         gallery_link.click()
         page.wait_for_selector("#main-header nav") # Wait for header to load
         expect(page).to_have_title("Gallery | Steam - Modern Asian Fusion")
