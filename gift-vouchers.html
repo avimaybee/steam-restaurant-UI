@@ -1,145 +1,118 @@
-<html><head>
-<meta charset="utf-8"/>
-<link crossorigin="" href="https://fonts.gstatic.com/" rel="preconnect"/>
-<link as="style" href="https://fonts.googleapis.com/css2?display=swap&amp;family=Manrope%3Awght%40400%3B500%3B700%3B800&amp;family=Noto+Sans%3Awght%40400%3B500%3B700%3B900" onload="this.rel='stylesheet'" rel="stylesheet"/>
-<title>Stitch Design</title>
-<link href="data:image/x-icon;base64," rel="icon" type="image/x-icon"/>
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<style type="text/tailwindcss">
-      :root {
-        --primary-color: #9c4e16;
-      }
-      body {
-        font-family: "Manrope", "Noto Sans", sans-serif;
-      }
-      .gradient-bg {
-        background-image: radial-gradient(circle at top right, rgba(156, 78, 22, 0.2), transparent 40%),
-                          radial-gradient(circle at bottom left, rgba(156, 78, 22, 0.2), transparent 50%);
-      }
-    </style>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gift Vouchers | Steam - Modern Asian Fusion</title>
+    <meta name="description" content="Give the gift of an exceptional dining experience with Steam gift vouchers. Perfect for any occasion.">
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link rel="stylesheet" href="style.css">
+    <script src="app.js" defer></script>
 </head>
-<body class="bg-[#171411] text-white">
-<div class="relative flex size-full min-h-screen flex-col overflow-x-hidden gradient-bg">
-<div class="layout-container flex h-full grow flex-col">
-<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-b-[#382f29] px-10 py-4">
-<a class="flex items-center gap-3 text-white" href="landing-page.html">
-<svg class="h-6 w-6 text-[var(--primary-color)]" fill="currentColor" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-<path d="M24 45.8096C19.6865 45.8096 15.4698 44.5305 11.8832 42.134C8.29667 39.7376 5.50128 36.3314 3.85056 32.3462C2.19985 28.361 1.76794 23.9758 2.60947 19.7452C3.451 15.5145 5.52816 11.6284 8.57829 8.5783C11.6284 5.52817 15.5145 3.45101 19.7452 2.60948C23.9758 1.76795 28.361 2.19986 32.3462 3.85057C36.3314 5.50129 39.7376 8.29668 42.134 11.8833C44.5305 15.4698 45.8096 19.6865 45.8096 24L24 24L24 45.8096Z"></path>
-</svg>
-<h1 class="text-xl font-bold tracking-tight">Steam</h1>
-</a>
-<nav class="flex items-center gap-8">
-<a class="text-sm font-medium text-gray-300 transition-colors hover:text-white" href="our-menu.html">Menu</a>
-<a class="text-sm font-medium text-gray-300 transition-colors hover:text-white" href="table-reservations.html">Reservations</a>
-<a class="text-sm font-medium text-gray-300 transition-colors hover:text-white" href="#">Private Dining</a>
-<a class="text-sm font-medium text-white" href="gift-vouchers.html">Vouchers</a>
-<a class="text-sm font-medium text-gray-300 transition-colors hover:text-white" href="#">Contact</a>
-</nav>
-<div class="flex items-center gap-4">
-<a href="oder-page.html" class="flex min-w-[120px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-6 bg-[#382f29] text-sm font-bold text-white transition-colors hover:bg-opacity-80">
-              Order Takeout
-            </a>
-<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBmJbL3ArUzMZC97IudcIA3SHV7TmXc1-QOSyeU2Vhcg9UjK0rXmp7RJlqV7WRYJEQOwHGdRjogflu5gU16V0LQQVKI34U3ry8kDGDRV_M3AGldiPOeNyNOiln_j7W8dnH7pfwQBcKrpilA8YxgVX-KrOYAmy9ytPgSpCwOjG6ol4yawT6pKG4OXb0IJF1cgudg9cndRWbGiVW-c5MjZX0tp3tqZFuZlJdp8qXd-8JUB4I1053S5UN4Hm8dNfUvYcL1O8R1VkpjZ_Xu");'></div>
-</div>
-</header>
-<main class="flex-1 px-10 py-16 lg:px-20 xl:px-40">
-<div class="mx-auto max-w-4xl">
-<div class="mb-12 text-center">
-<h2 class="text-4xl font-bold tracking-tighter sm:text-5xl">Gift Vouchers</h2>
-<p class="mt-4 text-lg text-gray-400">
-                Give the gift of an exceptional dining experience with Steam vouchers. Perfect for any occasion.
-              </p>
-</div>
-<div class="grid grid-cols-1 gap-12 md:grid-cols-2">
-<div class="space-y-8 rounded-lg bg-[#1c1815] p-8">
-<h3 class="text-2xl font-bold tracking-tight">Purchase a Voucher</h3>
-<form class="space-y-6">
-<div>
-<label class="mb-2 block text-sm font-medium text-gray-300">Select Voucher Value</label>
-<div class="grid grid-cols-2 gap-4 sm:grid-cols-4">
-<label class="flex cursor-pointer items-center justify-center rounded-lg border border-[#52463d] py-3 text-sm font-medium text-white transition-all has-[:checked]:border-[var(--primary-color)] has-[:checked]:bg-[var(--primary-color)] has-[:checked]:text-white">
-                        $50
-                        <input class="peer sr-only" name="voucher_amount" type="radio"/>
-</label>
-<label class="flex cursor-pointer items-center justify-center rounded-lg border border-[#52463d] py-3 text-sm font-medium text-white transition-all has-[:checked]:border-[var(--primary-color)] has-[:checked]:bg-[var(--primary-color)] has-[:checked]:text-white">
-                        $100
-                        <input checked="" class="peer sr-only" name="voucher_amount" type="radio"/>
-</label>
-<label class="flex cursor-pointer items-center justify-center rounded-lg border border-[#52463d] py-3 text-sm font-medium text-white transition-all has-[:checked]:border-[var(--primary-color)] has-[:checked]:bg-[var(--primary-color)] has-[:checked]:text-white">
-                        $200
-                        <input class="peer sr-only" name="voucher_amount" type="radio"/>
-</label>
-<label class="flex cursor-pointer items-center justify-center rounded-lg border border-[#52463d] py-3 text-sm font-medium text-white transition-all has-[:checked]:border-[var(--primary-color)] has-[:checked]:bg-[var(--primary-color)] has-[:checked]:text-white">
-                        Custom
-                        <input class="peer sr-only" name="voucher_amount" type="radio"/>
-</label>
-</div>
-</div>
-<div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
-<div>
-<label class="mb-2 block text-sm font-medium text-gray-300" for="recipient-name">Recipient's Name</label>
-<input class="form-input w-full rounded-lg border-none bg-[#382f29] p-3 text-sm text-white placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-[var(--primary-color)]" id="recipient-name" placeholder="e.g., Jane Doe" type="text"/>
-</div>
-<div>
-<label class="mb-2 block text-sm font-medium text-gray-300" for="recipient-email">Recipient's Email</label>
-<input class="form-input w-full rounded-lg border-none bg-[#382f29] p-3 text-sm text-white placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-[var(--primary-color)]" id="recipient-email" placeholder="e.g., jane.doe@example.com" type="email"/>
-</div>
-</div>
-<div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
-<div>
-<label class="mb-2 block text-sm font-medium text-gray-300" for="your-name">Your Name</label>
-<input class="form-input w-full rounded-lg border-none bg-[#382f29] p-3 text-sm text-white placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-[var(--primary-color)]" id="your-name" placeholder="e.g., John Smith" type="text"/>
-</div>
-<div>
-<label class="mb-2 block text-sm font-medium text-gray-300" for="your-email">Your Email</label>
-<input class="form-input w-full rounded-lg border-none bg-[#382f29] p-3 text-sm text-white placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-[var(--primary-color)]" id="your-email" placeholder="e.g., john.smith@example.com" type="email"/>
-</div>
-</div>
-<div>
-<label class="mb-2 block text-sm font-medium text-gray-300" for="card-number">Card Number</label>
-<input class="form-input w-full rounded-lg border-none bg-[#382f29] p-3 text-sm text-white placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-[var(--primary-color)]" id="card-number" placeholder="•••• •••• •••• ••••" type="text"/>
-</div>
-<div class="grid grid-cols-2 gap-6">
-<div>
-<label class="mb-2 block text-sm font-medium text-gray-300" for="expiry-date">Expiry Date</label>
-<input class="form-input w-full rounded-lg border-none bg-[#382f29] p-3 text-sm text-white placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-[var(--primary-color)]" id="expiry-date" placeholder="MM / YY" type="text"/>
-</div>
-<div>
-<label class="mb-2 block text-sm font-medium text-gray-300" for="cvv">CVV</label>
-<input class="form-input w-full rounded-lg border-none bg-[#382f29] p-3 text-sm text-white placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-[var(--primary-color)]" id="cvv" placeholder="•••" type="text"/>
-</div>
-</div>
-<button class="w-full cursor-pointer rounded-lg bg-[var(--primary-color)] py-3 text-base font-bold text-white transition-opacity hover:opacity-90">
-                    Purchase Voucher
-                  </button>
-</form>
-</div>
-<div class="space-y-8 rounded-lg bg-[#1c1815] p-8">
-<div class="space-y-4">
-<h3 class="text-2xl font-bold tracking-tight">Have a Promo Code?</h3>
-<p class="text-gray-400">Apply your promotional code here to receive a discount.</p>
-<form class="flex items-center gap-4">
-<input class="form-input flex-1 rounded-lg border-none bg-[#382f29] p-3 text-sm text-white placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-[var(--primary-color)]" placeholder="Enter Promo Code" type="text"/>
-<button class="cursor-pointer rounded-lg bg-[#382f29] px-6 py-3 text-sm font-bold text-white transition-colors hover:bg-opacity-80">
-                      Apply
-                    </button>
-</form>
-</div>
-<div class="space-y-4 border-t border-[#382f29] pt-8">
-<h3 class="text-2xl font-bold tracking-tight">Terms of Use</h3>
-<ul class="space-y-2 text-sm text-gray-400 list-disc list-inside">
-<li>Vouchers are valid for 12 months from the date of purchase.</li>
-<li>Vouchers can be used for dine-in and takeout orders.</li>
-<li>This voucher cannot be exchanged for cash.</li>
-<li>No change will be given if the bill is less than the voucher amount.</li>
-<li>Vouchers are non-transferable and can only be used once.</li>
-</ul>
-</div>
-</div>
-</div>
-</div>
-</main>
-</div>
-</div>
+<body class="voucher-gradient-bg">
 
-</body></html>
+    <header id="main-header"></header>
+
+    <main class="flex-1 px-10 py-16 lg:px-20 xl:px-40">
+        <div class="mx-auto max-w-4xl">
+            <div class="mb-12 text-center">
+                <h2 class="text-4xl font-bold tracking-tighter sm:text-5xl">Gift Vouchers</h2>
+                <p class="mt-4 text-lg text-gray-400">
+                    Give the gift of an exceptional dining experience with Steam vouchers. Perfect for any occasion.
+                </p>
+            </div>
+            <div class="grid grid-cols-1 gap-12 md:grid-cols-2">
+                <div class="space-y-8 rounded-lg bg-[#1c1815] p-8">
+                    <h3 class="text-2xl font-bold tracking-tight">Purchase a Voucher</h3>
+                    <form class="space-y-6">
+                        <div>
+                            <label class="mb-2 block text-sm font-medium text-gray-300">Select Voucher Value</label>
+                            <div class="grid grid-cols-2 gap-4 sm:grid-cols-4">
+                                <label class="flex cursor-pointer items-center justify-center rounded-lg border border-[#52463d] py-3 text-sm font-medium text-white transition-all has-[:checked]:border-[var(--primary-color)] has-[:checked]:bg-[var(--primary-color)] has-[:checked]:text-white">
+                                    $50
+                                    <input class="peer sr-only" name="voucher_amount" type="radio"/>
+                                </label>
+                                <label class="flex cursor-pointer items-center justify-center rounded-lg border border-[#52463d] py-3 text-sm font-medium text-white transition-all has-[:checked]:border-[var(--primary-color)] has-[:checked]:bg-[var(--primary-color)] has-[:checked]:text-white">
+                                    $100
+                                    <input checked="" class="peer sr-only" name="voucher_amount" type="radio"/>
+                                </label>
+                                <label class="flex cursor-pointer items-center justify-center rounded-lg border border-[#52463d] py-3 text-sm font-medium text-white transition-all has-[:checked]:border-[var(--primary-color)] has-[:checked]:bg-[var(--primary-color)] has-[:checked]:text-white">
+                                    $200
+                                    <input class="peer sr-only" name="voucher_amount" type="radio"/>
+                                </label>
+                                <label class="flex cursor-pointer items-center justify-center rounded-lg border border-[#52463d] py-3 text-sm font-medium text-white transition-all has-[:checked]:border-[var(--primary-color)] has-[:checked]:bg-[var(--primary-color)] has-[:checked]:text-white">
+                                    Custom
+                                    <input class="peer sr-only" name="voucher_amount" type="radio"/>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
+                            <div>
+                                <label class="mb-2 block text-sm font-medium text-gray-300" for="recipient-name">Recipient's Name</label>
+                                <input class="form-input w-full rounded-lg border-none bg-[#382f29] p-3 text-sm text-white placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-[var(--primary-color)]" id="recipient-name" placeholder="e.g., Jane Doe" type="text"/>
+                            </div>
+                            <div>
+                                <label class="mb-2 block text-sm font-medium text-gray-300" for="recipient-email">Recipient's Email</label>
+                                <input class="form-input w-full rounded-lg border-none bg-[#382f29] p-3 text-sm text-white placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-[var(--primary-color)]" id="recipient-email" placeholder="e.g., jane.doe@example.com" type="email"/>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
+                            <div>
+                                <label class="mb-2 block text-sm font-medium text-gray-300" for="your-name">Your Name</label>
+                                <input class="form-input w-full rounded-lg border-none bg-[#382f29] p-3 text-sm text-white placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-[var(--primary-color)]" id="your-name" placeholder="e.g., John Smith" type="text"/>
+                            </div>
+                            <div>
+                                <label class="mb-2 block text-sm font-medium text-gray-300" for="your-email">Your Email</label>
+                                <input class="form-input w-full rounded-lg border-none bg-[#382f29] p-3 text-sm text-white placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-[var(--primary-color)]" id="your-email" placeholder="e.g., john.smith@example.com" type="email"/>
+                            </div>
+                        </div>
+                        <div>
+                            <label class="mb-2 block text-sm font-medium text-gray-300" for="card-number">Card Number</label>
+                            <input class="form-input w-full rounded-lg border-none bg-[#382f29] p-3 text-sm text-white placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-[var(--primary-color)]" id="card-number" placeholder="•••• •••• •••• ••••" type="text"/>
+                        </div>
+                        <div class="grid grid-cols-2 gap-6">
+                            <div>
+                                <label class="mb-2 block text-sm font-medium text-gray-300" for="expiry-date">Expiry Date</label>
+                                <input class="form-input w-full rounded-lg border-none bg-[#382f29] p-3 text-sm text-white placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-[var(--primary-color)]" id="expiry-date" placeholder="MM / YY" type="text"/>
+                            </div>
+                            <div>
+                                <label class="mb-2 block text-sm font-medium text-gray-300" for="cvv">CVV</label>
+                                <input class="form-input w-full rounded-lg border-none bg-[#382f29] p-3 text-sm text-white placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-[var(--primary-color)]" id="cvv" placeholder="•••" type="text"/>
+                            </div>
+                        </div>
+                        <button class="w-full cursor-pointer rounded-lg bg-[var(--primary-color)] py-3 text-base font-bold text-white transition-opacity hover:opacity-90">
+                            Purchase Voucher
+                        </button>
+                    </form>
+                </div>
+                <div class="space-y-8 rounded-lg bg-[#1c1815] p-8">
+                    <div class="space-y-4">
+                        <h3 class="text-2xl font-bold tracking-tight">Have a Promo Code?</h3>
+                        <p class="text-gray-400">Apply your promotional code here to receive a discount.</p>
+                        <form class="flex items-center gap-4">
+                            <input class="form-input flex-1 rounded-lg border-none bg-[#382f29] p-3 text-sm text-white placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-[var(--primary-color)]" placeholder="Enter Promo Code" type="text"/>
+                            <button class="cursor-pointer rounded-lg bg-[#382f29] px-6 py-3 text-sm font-bold text-white transition-colors hover:bg-opacity-80">
+                                Apply
+                            </button>
+                        </form>
+                    </div>
+                    <div class="space-y-4 border-t border-[#382f29] pt-8">
+                        <h3 class="text-2xl font-bold tracking-tight">Terms of Use</h3>
+                        <ul class="space-y-2 text-sm text-gray-400 list-disc list-inside">
+                            <li>Vouchers are valid for 12 months from the date of purchase.</li>
+                            <li>Vouchers can be used for dine-in and takeout orders.</li>
+                            <li>This voucher cannot be exchanged for cash.</li>
+                            <li>No change will be given if the bill is less than the voucher amount.</li>
+                            <li>Vouchers are non-transferable and can only be used once.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer id="main-footer"></footer>
+
+</body>
+</html>

@@ -1,98 +1,59 @@
 <!DOCTYPE html>
-<html lang="en"><head>
-<meta charset="utf-8"/>
-<link crossorigin="" href="https://fonts.gstatic.com/" rel="preconnect"/>
-<link as="style" href="https://fonts.googleapis.com/css2?display=swap&amp;family=Manrope%3Awght%40400%3B500%3B700%3B800&amp;family=Noto+Sans%3Awght%40400%3B500%3B700%3B900" onload="this.rel='stylesheet'" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
-<title>Steam - About Us</title>
-<link href="style.css" rel="stylesheet"/>
-<link href="data:image/x-icon;base64," rel="icon" type="image/x-icon"/>
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
- 
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | Steam - Modern Asian Fusion</title>
+    <meta name="description" content="Learn about the philosophy and commitment to excellence at Steam, where we blend Asian culinary traditions with contemporary techniques.">
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link rel="stylesheet" href="style.css">
+    <script src="app.js" defer></script>
 </head>
-<body class="bg-[var(--secondary-color)] text-white">
-<div class="relative flex size-full min-h-screen flex-col dark group/design-root overflow-x-hidden">
-<div class="layout-container flex h-full grow flex-col">
-<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-b-[var(--secondary-color)] px-6 sm:px-10 py-4 sticky top-0 z-50 bg-[var(--secondary-color)]/80 backdrop-blur-sm">
-<a class="flex items-center gap-3 text-white" href="landing-page.html">
-<svg class="size-6 text-[var(--primary-color)]" fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-<path d="M24 45.8096C19.6865 45.8096 15.4698 44.5305 11.8832 42.134C8.29667 39.7376 5.50128 36.3314 3.85056 32.3462C2.19985 28.361 1.76794 23.9758 2.60947 19.7452C3.451 15.5145 5.52816 11.6284 8.57829 8.5783C11.6284 5.52817 15.5145 3.45101 19.7452 2.60948C23.9758 1.76795 28.361 2.19986 32.3462 3.85057C36.3314 5.50129 39.7376 8.29668 42.134 11.8833C44.5305 15.4698 45.8096 19.6865 45.8096 24L24 24L24 45.8096Z" fill="currentColor"></path>
-</svg>
-<h1 class="text-xl font-bold leading-tight tracking-[-0.015em]">
-              Steam
-            </h1>
-</a>
-<nav class="hidden md:flex items-center gap-8">
-<a class="text-neutral-300 hover:text-white transition-colors duration-300 text-sm font-medium leading-normal" href="our-menu.html">Menu</a>
-<a class="text-neutral-300 hover:text-white transition-colors duration-300 text-sm font-medium leading-normal" href="table-reservations.html">Reservations</a>
-<a class="text-white text-sm font-semibold leading-normal border-b-2 border-[var(--primary-color)] pb-1" href="about-us.html">About Us</a>
-<a class="text-neutral-300 hover:text-white transition-colors duration-300 text-sm font-medium leading-normal" href="get-in-touch.html">Contact</a>
-</nav>
-<div class="flex items-center gap-4">
-<a class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-5 bg-[var(--primary-color)] hover:bg-[color-mix(in srgb, var(--primary-color) 80%, black)] transition-colors duration-300 text-white text-sm font-bold leading-normal tracking-[0.015em]" href="oder-page.html">
-<span class="truncate">Order Online</span>
-</a>
-<button class="md:hidden p-2 rounded-md hover:bg-[var(--secondary-color)] transition-colors">
-<span class="material-symbols-outlined"> menu </span>
-</button>
-</div>
-</header>
-<main class="flex-1 px-6 sm:px-10 py-16 md:py-24">
-<div class="mx-auto max-w-4xl gradient-bg rounded-2xl p-8 md:p-16 relative overflow-hidden">
-<div class="space-y-12">
-<div class="text-center space-y-4">
-<h1 class="text-4xl md:text-5xl font-bold leading-tight tracking-tighter">
-                  Our Philosophy
-                </h1>
-<p class="text-neutral-300 max-w-3xl mx-auto text-lg leading-relaxed">
-                  At Steam, we are dedicated to redefining the culinary landscape
-                  by seamlessly blending the rich traditions of Asian cuisine with
-                  contemporary techniques and flavors. Our philosophy centers on
-                  creating a dining experience that is both innovative and
-                  deeply rooted in authenticity.
-                </p>
-</div>
-<div class="grid md:grid-cols-2 gap-12 items-center">
-<div class="space-y-4">
-<h2 class="text-3xl font-bold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-[#D4A373] to-[#FDEBD0]">
-                    To Our Valued Guests
-                  </h2>
-<p class="text-neutral-300 leading-relaxed">
-                    Our commitment to excellence extends beyond the kitchen. We
-                    strive to provide an atmosphere that is both elegant and
-                    welcoming, where every guest feels valued and pampered. From
-                    the moment you step through our doors, you will be enveloped
-                    in an ambiance of sophistication, enhanced by our attentive
-                    service and meticulous attention to detail.
-                  </p>
-</div>
-<div class="h-64 rounded-lg bg-cover bg-center" style="
-                    background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBVhF18ncg_HIKKd4IUVjC8dB2lmoV3IxOjYcANsOGk_Vr5Nhc7kECWqPQ-LHwHSjZM4P5Hx9gH6Sja_7yWSYltDnZfUEZnfc_0FfpD32Zy4KlHOyPDag0Q_HIxoSpyNmEFsG3S_1plfnhghJeRKnl_-5XihYAlGzSv-u6yq-YbAKRk5eC22d2qbVlrOL__8ZIqZMvB1q95XcNdzU5x74czMeLqr9mC3_WJhZjeclzMGSZl7ftch3fGYM38Ug4MsxOYmQ8Nf03UEyW_');
-                  "></div>
-</div>
-<div class="grid md:grid-cols-2 gap-12 items-center">
-<div class="h-64 rounded-lg bg-cover bg-center order-last md:order-first" style="
-                    background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBVhF18ncg_HIKKd4IUVjC8dB2lmoV3IxOjYcANsOGk_Vr5Nhc7kECWqPQ-LHwHSjZM4P5Hx9gH6Sja_7yWSYltDnZfUEZnfc_0FfpD32Zy4KlHOyPDag0Q_HIxoSpyNmEFsG3S_1plfnhghJeRKnl_-5XihYAlGzSv-u6yq-YbAKRk5eC22d2qbVlrOL__8ZIqZMvB1q95XcNdzU5x74czMeLqr9mC3_WJhZjeclzMGSZl7ftch3fGYM38Ug4MsxOYmQ8Nf03UEyW_');
-                  "></div>
-<div class="space-y-4">
-<h2 class="text-3xl font-bold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-[#D4A373] to-[#FDEBD0]">
-                    The Experience Matters
-                  </h2>
-<p class="text-neutral-300 leading-relaxed">
-                    At Steam, we believe that dining is more than just a meal;
-                    it's an experience. Our goal is to create memorable moments
-                    for our guests. We are dedicated to exceeding expectations,
-                    ensuring that every visit is a testament to our commitment
-                    to quality, innovation, and exceptional service. Join us and
-                    discover a world where culinary artistry meets unparalleled
-                    hospitality.
-                  </p>
-</div>
-</div>
-</div>
-</div>
-</main>
-</div>
-</div>
+<body>
 
-</body></html>
+    <header id="main-header"></header>
+
+    <main class="flex-1 px-6 sm:px-10 py-16 md:py-24">
+        <div class="mx-auto max-w-4xl menu-gradient-bg rounded-2xl p-8 md:p-16 relative overflow-hidden">
+            <div class="space-y-12">
+                <div class="text-center space-y-4">
+                    <h1 class="text-4xl md:text-5xl font-bold leading-tight tracking-tighter">
+                        Our Philosophy
+                    </h1>
+                    <p class="text-neutral-300 max-w-3xl mx-auto text-lg leading-relaxed">
+                        At Steam, we are dedicated to redefining the culinary landscape by seamlessly blending the rich traditions of Asian cuisine with contemporary techniques and flavors. Our philosophy centers on creating a dining experience that is both innovative and deeply rooted in authenticity.
+                    </p>
+                </div>
+                <div class="grid md:grid-cols-2 gap-12 items-center">
+                    <div class="space-y-4">
+                        <h2 class="text-3xl font-bold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-[#D4A373] to-[#FDEBD0]">
+                            To Our Valued Guests
+                        </h2>
+                        <p class="text-neutral-300 leading-relaxed">
+                            Our commitment to excellence extends beyond the kitchen. We strive to provide an atmosphere that is both elegant and welcoming, where every guest feels valued and pampered. From the moment you step through our doors, you will be enveloped in an ambiance of sophistication, enhanced by our attentive service and meticulous attention to detail.
+                        </p>
+                    </div>
+                    <!-- TODO: Replace with mock image -->
+                    <div class="h-64 rounded-lg bg-cover bg-center bg-gray-700"></div>
+                </div>
+                <div class="grid md:grid-cols-2 gap-12 items-center">
+                    <!-- TODO: Replace with mock image -->
+                    <div class="h-64 rounded-lg bg-cover bg-center order-last md:order-first bg-gray-700"></div>
+                    <div class="space-y-4">
+                        <h2 class="text-3xl font-bold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-[#D4A373] to-[#FDEBD0]">
+                            The Experience Matters
+                        </h2>
+                        <p class="text-neutral-300 leading-relaxed">
+                            At Steam, we believe that dining is more than just a meal; it's an experience. Our goal is to create memorable moments for our guests. We are dedicated to exceeding expectations, ensuring that every visit is a testament to our commitment to quality, innovation, and exceptional service. Join us and discover a world where culinary artistry meets unparalleled hospitality.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer id="main-footer"></footer>
+
+</body>
+</html>
