@@ -12,8 +12,8 @@ async function enhanceMenuItems(items) {
     const allReviews = await store.getReviews();
     return items.map(item => {
         const tags = new Set();
-        const description = (item.description || '').toLowerCase();
-        const name = (item.name || '').toLowerCase();
+        const description = store.get(`menu_item_${item.id}_description`).toLowerCase();
+        const name = store.get(`menu_item_${item.id}_name`).toLowerCase();
 
         if (name.includes('vegan') || description.includes(' vegan') || description.includes('veg.')) tags.add('vegan');
         if (tags.has('vegan') || description.includes(' v.')) tags.add('vegetarian');
@@ -113,10 +113,11 @@ function applyFilters() {
         filteredItems = filteredItems.filter(item => item.category.includes(categoryFilter));
     }
     if (searchTerm) {
-        filteredItems = filteredItems.filter(item =>
-            item.name.toLowerCase().includes(searchTerm) ||
-            item.description.toLowerCase().includes(searchTerm)
-        );
+        filteredItems = filteredItems.filter(item => {
+            const itemName = store.get(`menu_item_${item.id}_name`).toLowerCase();
+            const itemDescription = store.get(`menu_item_${item.id}_description`).toLowerCase();
+            return itemName.includes(searchTerm) || itemDescription.includes(searchTerm);
+        });
     }
     if (selectedTags.length > 0) {
         filteredItems = filteredItems.filter(item =>
