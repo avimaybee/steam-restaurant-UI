@@ -80,6 +80,82 @@ function applyFadeInAnimation() {
     }
 }
 
+function initializeThemeSwitcher() {
+    const themeToggleBtn = document.getElementById('theme-toggle');
+    const themeToggleMobileBtn = document.getElementById('theme-toggle-mobile');
+
+    const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
+    const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+    const themeToggleDarkIconMobile = document.getElementById('theme-toggle-dark-icon-mobile');
+    const themeToggleLightIconMobile = document.getElementById('theme-toggle-light-icon-mobile');
+
+    if (!themeToggleBtn) return;
+
+    // Function to update icon visibility
+    const updateIcons = (theme) => {
+        if (theme === 'dark') {
+            themeToggleDarkIcon.classList.remove('hidden');
+            themeToggleLightIcon.classList.add('hidden');
+            themeToggleDarkIconMobile.classList.remove('hidden');
+            themeToggleLightIconMobile.classList.add('hidden');
+        } else {
+            themeToggleDarkIcon.classList.add('hidden');
+            themeToggleLightIcon.classList.remove('hidden');
+            themeToggleDarkIconMobile.classList.add('hidden');
+            themeToggleLightIconMobile.classList.remove('hidden');
+        }
+    };
+
+    // Check for saved theme in localStorage or use system preference
+    let theme = localStorage.getItem('theme');
+    if (!theme) {
+        theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    }
+
+    document.documentElement.setAttribute('data-theme', theme);
+    updateIcons(theme);
+
+    const toggleTheme = () => {
+        const currentTheme = document.documentElement.getAttribute('data-theme');
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', newTheme);
+        localStorage.setItem('theme', newTheme);
+        updateIcons(newTheme);
+    };
+
+    themeToggleBtn.addEventListener('click', toggleTheme);
+    themeToggleMobileBtn.addEventListener('click', toggleTheme);
+}
+
+function handle404() {
+    const validPageNames = [
+        '/',
+        'index.html',
+        'about-us.html',
+        'admin.html',
+        'gallery.html',
+        'get-in-touch.html',
+        'gift-vouchers.html',
+        'landing-page.html',
+        'order-page.html',
+        'our-menu.html',
+        'table-reservations.html',
+        '404.html'
+    ];
+
+    const currentPath = window.location.pathname.split('/').pop();
+
+    if (!validPageNames.includes(currentPath)) {
+        // This is a client-side fallback for servers that don't handle 404s correctly.
+        // A properly configured server would serve the 404.html page directly.
+        // We check if the body has content other than the header/footer.
+        const mainContent = document.querySelector('main');
+        if (!mainContent || mainContent.children.length === 0) {
+             window.location.href = '404.html';
+        }
+    }
+}
+
 async function initApp() {
     await loadHeader();
     await loadFooter();
@@ -89,6 +165,9 @@ async function initApp() {
     setActiveNavLink();
     initializeScrollAnimations();
     applyFadeInAnimation();
+    initializeThemeSwitcher();
+
+    handle404();
 
     // Page-specific initializations
     const path = window.location.pathname;
