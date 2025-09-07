@@ -55,6 +55,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function validateForm() {
         let isValid = true;
+        let firstInvalidField = null;
         const fields = ['fullName', 'email', 'date', 'time', 'guests'];
 
         fields.forEach(id => {
@@ -68,6 +69,9 @@ document.addEventListener('DOMContentLoaded', function() {
                     errorElement.classList.remove('hidden');
                 }
                 isValid = false;
+                if (!firstInvalidField) {
+                    firstInvalidField = input;
+                }
             } else {
                 input.classList.remove('border-red-500');
                 if (errorElement) {
@@ -87,6 +91,13 @@ document.addEventListener('DOMContentLoaded', function() {
                 emailError.classList.remove('hidden');
             }
             isValid = false;
+            if (!firstInvalidField) {
+                firstInvalidField = emailInput;
+            }
+        }
+
+        if (firstInvalidField) {
+            firstInvalidField.focus();
         }
 
         return isValid;

@@ -9,6 +9,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function renderMenuItems(items) {
         if (!menuItemsContainer) return;
+        const loadingSpinner = document.getElementById('loading-spinner');
+        if (loadingSpinner) {
+            loadingSpinner.style.display = 'none';
+        }
         menuItemsContainer.innerHTML = '';
         items.forEach(item => {
             const menuItemElement = document.createElement('div');
