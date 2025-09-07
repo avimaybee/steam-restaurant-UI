@@ -25,7 +25,7 @@ export async function initProfilePage() {
         e.preventDefault();
         const amount = parseInt(redeemForm.amount.value);
         if (isNaN(amount) || amount <= 0) {
-            redeemMessage.textContent = 'Please enter a valid amount.';
+            redeemMessage.textContent = store.get('profile_loyalty_error_amount');
             redeemMessage.classList.remove('hidden', 'text-green-500');
             redeemMessage.classList.add('text-red-500');
             return;
@@ -35,7 +35,7 @@ export async function initProfilePage() {
 
         if (success) {
             const voucherValue = (amount / 1000) * 10;
-            redeemMessage.textContent = `Success! Your voucher code for $${voucherValue} is: VOUCHER${Date.now()}`;
+            redeemMessage.textContent = store.get('profile_loyalty_success', { value: voucherValue, timestamp: Date.now() });
             redeemMessage.classList.remove('hidden', 'text-red-500');
             redeemMessage.classList.add('text-green-500');
             // Update points display
@@ -43,7 +43,7 @@ export async function initProfilePage() {
             loyaltyPointsSpan.textContent = updatedUser.loyaltyPoints;
             redeemForm.reset();
         } else {
-            redeemMessage.textContent = 'Not enough points to redeem this amount.';
+            redeemMessage.textContent = store.get('profile_loyalty_error_insufficient');
             redeemMessage.classList.remove('hidden', 'text-green-500');
             redeemMessage.classList.add('text-red-500');
         }
@@ -55,7 +55,7 @@ export async function initProfilePage() {
     if (orders.length > 0) {
         orderHistoryContainer.innerHTML = createHistoryTable(orders, ['Order ID', 'Date', 'Status', 'Total']);
     } else {
-        orderHistoryContainer.innerHTML = '<p class="text-gray-400">You have no past orders.</p>';
+        orderHistoryContainer.innerHTML = `<p class="text-gray-400">${store.get('profile_orders_none')}</p>`;
     }
 
     // Fetch and display reservation history
@@ -64,7 +64,7 @@ export async function initProfilePage() {
     if (reservations.length > 0) {
         reservationHistoryContainer.innerHTML = createHistoryTable(reservations, ['Reservation ID', 'Date', 'Time', 'Guests', 'Status']);
     } else {
-        reservationHistoryContainer.innerHTML = '<p class="text-gray-400">You have no past reservations.</p>';
+        reservationHistoryContainer.innerHTML = `<p class="text-gray-400">${store.get('profile_reservations_none')}</p>`;
     }
 }
 

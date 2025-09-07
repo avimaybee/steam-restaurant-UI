@@ -15,27 +15,27 @@
     <div id="main-header"></div>
 
     <main id="profile-page" class="container mx-auto px-8 lg:px-16 py-32">
-        <h1 class="text-4xl font-bold text-white mb-8">My Profile</h1>
+        <h1 class="text-4xl font-bold text-white mb-8" data-i18n-key="profile_title">My Profile</h1>
 
         <div id="user-info" class="bg-[#1C1C1C] p-8 rounded-lg mb-12">
-            <h2 class="text-2xl font-bold text-white mb-4">Welcome, <span id="user-name"></span>!</h2>
-            <p class="text-gray-400">Here you can view your order and reservation history.</p>
+            <h2 class="text-2xl font-bold text-white mb-4" data-i18n-key="profile_welcome" data-i18n-replacements='{"name": "<span id=\"user-name\"></span>"}'>Welcome, <span id="user-name"></span>!</h2>
+            <p class="text-gray-400" data-i18n-key="profile_subtitle">Here you can view your order and reservation history.</p>
         </div>
 
         <!-- Loyalty Program -->
         <div class="bg-[#1C1C1C] p-8 rounded-lg mb-12">
-            <h2 class="text-2xl font-bold text-white mb-6">Loyalty Program</h2>
+            <h2 class="text-2xl font-bold text-white mb-6" data-i18n-key="profile_loyalty_title">Loyalty Program</h2>
             <div class="flex flex-wrap items-center justify-between gap-4">
                 <div>
-                    <p class="text-gray-400">Your current balance:</p>
-                    <p class="text-3xl font-bold text-primary-color"><span id="loyalty-points">0</span> points</p>
+                    <p class="text-gray-400" data-i18n-key="profile_loyalty_balance">Your current balance:</p>
+                    <p class="text-3xl font-bold text-primary-color"><span id="loyalty-points">0</span> <span data-i18n-key="profile_loyalty_points">points</span></p>
                 </div>
                 <form id="redeem-form" class="flex items-end gap-4">
                     <div>
-                        <label for="redeem-amount" class="block text-sm font-medium text-gray-300 mb-2">Redeem for a voucher (1000 points = $10)</label>
+                        <label for="redeem-amount" class="block text-sm font-medium text-gray-300 mb-2" data-i18n-key="profile_loyalty_redeem_label">Redeem for a voucher (1000 points = $10)</label>
                         <input type="number" id="redeem-amount" name="amount" class="w-full bg-gray-800 border-gray-700 text-white rounded-md" placeholder="1000" step="1000" min="1000">
                     </div>
-                    <button type="submit" class="btn btn-secondary">Redeem</button>
+                    <button type="submit" class="btn btn-secondary" data-i18n-key="profile_loyalty_redeem_button">Redeem</button>
                 </form>
             </div>
             <div id="redeem-message" class="mt-4 text-green-500 hidden"></div>
@@ -43,19 +43,19 @@
 
         <!-- Order History -->
         <div class="bg-[#1C1C1C] p-8 rounded-lg mb-12">
-            <h2 class="text-2xl font-bold text-white mb-6">My Orders</h2>
+            <h2 class="text-2xl font-bold text-white mb-6" data-i18n-key="profile_orders_title">My Orders</h2>
             <div id="order-history-container" class="overflow-x-auto">
                 <!-- Orders will be injected by JavaScript -->
-                <p class="text-gray-400">No orders found.</p>
+                <p class="text-gray-400" data-i18n-key="profile_orders_none">No orders found.</p>
             </div>
         </div>
 
         <!-- Reservation History -->
         <div class="bg-[#1C1C1C] p-8 rounded-lg">
-            <h2 class="text-2xl font-bold text-white mb-6">My Reservations</h2>
+            <h2 class="text-2xl font-bold text-white mb-6" data-i18n-key="profile_reservations_title">My Reservations</h2>
             <div id="reservation-history-container" class="overflow-x-auto">
                 <!-- Reservations will be injected by JavaScript -->
-                <p class="text-gray-400">No reservations found.</p>
+                <p class="text-gray-400" data-i18n-key="profile_reservations_none">No reservations found.</p>
             </div>
         </div>
     </main>

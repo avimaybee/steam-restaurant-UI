@@ -44,8 +44,8 @@ function renderMenuTable() {
             <td class="px-6 py-4">$${item.price.toFixed(2)}</td>
             <td class="px-6 py-4">${item.category} / ${item.subCategory}</td>
             <td class="px-6 py-4 flex gap-4">
-                <button class="font-medium text-blue-500 hover:underline edit-btn" data-id="${item.id}">Edit</button>
-                <button class="font-medium text-red-500 hover:underline delete-btn" data-id="${item.id}">Delete</button>
+                <button class="font-medium text-blue-500 hover:underline edit-btn" data-id="${item.id}">${store.get('admin_menu_edit')}</button>
+                <button class="font-medium text-red-500 hover:underline delete-btn" data-id="${item.id}">${store.get('admin_menu_delete')}</button>
             </td>
         `;
     });
@@ -70,7 +70,7 @@ function renderOrdersTable() {
             </td>
             <td class="px-6 py-4">$${order.total.toFixed(2)}</td>
             <td class="px-6 py-4">
-                <button class="font-medium text-red-500 hover:underline delete-order-btn" data-id="${order.id}">Delete</button>
+                <button class="font-medium text-red-500 hover:underline delete-order-btn" data-id="${order.id}">${store.get('admin_menu_delete')}</button>
             </td>
         `;
     });
@@ -96,7 +96,7 @@ function renderReservationsTable() {
                 </select>
             </td>
             <td class="px-6 py-4">
-                <button class="font-medium text-red-500 hover:underline delete-reservation-btn" data-id="${res.id}">Delete</button>
+                <button class="font-medium text-red-500 hover:underline delete-reservation-btn" data-id="${res.id}">${store.get('admin_menu_delete')}</button>
             </td>
         `;
     });
@@ -106,18 +106,18 @@ function renderReservationsTable() {
 // --- MENU FORM LOGIC ---
 
 function resetMenuForm() {
-    menuForm.title.textContent = 'Add New Menu Item';
+    menuForm.title.textContent = store.get('admin_menu_form_title');
     menuForm.form.reset();
     menuForm.id.value = '';
     menuForm.cancelBtn.classList.add('hidden');
-    menuForm.submitBtn.textContent = 'Save Item';
+    menuForm.submitBtn.textContent = store.get('admin_menu_form_save');
 }
 
 function populateMenuForm(itemId) {
     const item = menuItems.find(i => i.id == itemId);
     if (!item) return;
 
-    menuForm.title.textContent = `Editing: ${item.name}`;
+    menuForm.title.textContent = `${store.get('admin_menu_edit')}: ${item.name}`;
     menuForm.id.value = item.id;
     menuForm.name.value = item.name;
     menuForm.price.value = item.price;
@@ -127,7 +127,7 @@ function populateMenuForm(itemId) {
     menuForm.image.value = item.image;
 
     menuForm.cancelBtn.classList.remove('hidden');
-    menuForm.submitBtn.textContent = 'Update Item';
+    menuForm.submitBtn.textContent = store.get('admin_menu_form_update');
     window.scrollTo(0, 0);
 }
 
@@ -164,7 +164,7 @@ async function handleMenuTableClick(event) {
     const target = event.target;
     if (target.classList.contains('delete-btn')) {
         const itemId = target.dataset.id;
-        if (confirm('Are you sure you want to delete this item?')) {
+        if (confirm(store.get('admin_menu_delete_confirm'))) {
             await store.deleteMenuItem(parseInt(itemId));
             menuItems = await store.getMenu(true);
             renderMenuTable();
@@ -196,7 +196,7 @@ async function handleReservationsTableChange(event) {
 async function handleOrdersTableClick(event) {
     if (event.target.classList.contains('delete-order-btn')) {
         const orderId = parseInt(event.target.dataset.id);
-        if (confirm('Are you sure you want to delete this order?')) {
+        if (confirm(store.get('admin_orders_delete_confirm'))) {
             await store.deleteOrder(orderId);
             orders = await store.getOrders();
             renderOrdersTable();
@@ -207,7 +207,7 @@ async function handleOrdersTableClick(event) {
 async function handleReservationsTableClick(event) {
     if (event.target.classList.contains('delete-reservation-btn')) {
         const resId = parseInt(event.target.dataset.id);
-        if (confirm('Are you sure you want to delete this reservation?')) {
+        if (confirm(store.get('admin_reservations_delete_confirm'))) {
             await store.deleteReservation(resId);
             reservations = await store.getReservations();
             renderReservationsTable();

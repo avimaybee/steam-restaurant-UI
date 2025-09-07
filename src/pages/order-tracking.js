@@ -19,7 +19,7 @@ function updateTrackerUI(status) {
 
     // Update status text
     const currentStatusText = document.getElementById('current-status-text');
-    currentStatusText.textContent = `Current Status: ${status}`;
+    currentStatusText.textContent = store.get('order_tracking_current_status', { status });
 
     // Update status points
     const points = document.querySelectorAll('.status-point');
@@ -91,18 +91,18 @@ export async function initOrderTrackingPage() {
     const orderIdDisplay = document.getElementById('order-id-display');
 
     if (!orderId) {
-        orderIdDisplay.textContent = 'No order ID provided.';
+        orderIdDisplay.textContent = store.get('order_tracking_no_id');
         return;
     }
 
     const order = await store.getOrderById(orderId);
 
     if (!order) {
-        orderIdDisplay.textContent = `Order #${orderId} not found.`;
+        orderIdDisplay.textContent = store.get('order_tracking_not_found', { id: orderId });
         return;
     }
 
-    orderIdDisplay.textContent = `Order #${order.id} - For ${order.customer}`;
+    orderIdDisplay.textContent = store.get('order_tracking_order_for', { id: order.id, customer: order.customer });
 
     updateTrackerUI(order.status);
     renderOrderItems(order.items);

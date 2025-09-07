@@ -20,7 +20,7 @@ export function initLoginPage() {
         if (user) {
             window.location.href = 'profile.html';
         } else {
-            errorDiv.textContent = 'Invalid email or password.';
+            errorDiv.textContent = store.get('login_error');
             errorDiv.classList.remove('hidden');
         }
     });

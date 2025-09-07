@@ -49,7 +49,7 @@ function renderMenu(itemsToRender) {
     menuContainer.innerHTML = '';
 
     if (itemsToRender.length === 0) {
-        menuContainer.innerHTML = '<p class="text-center text-white/60">No items match your filters.</p>';
+        menuContainer.innerHTML = `<p class="text-center text-white/60">${store.get('menu_no_items')}</p>`;
         return;
     }
 
@@ -84,10 +84,10 @@ function renderMenu(itemsToRender) {
                 <div class="flex items-center justify-between mt-2">
                     <div class="flex items-center gap-2">
                         ${renderStarRating(item.averageRating)}
-                        <span class="text-xs text-gray-400">(${item.reviews.length} reviews)</span>
+                        <span class="text-xs text-gray-400">(${item.reviews.length} ${store.get('menu_reviews')})</span>
                     </div>
                     <button class="leave-review-btn text-sm text-primary-color hover:underline" data-item-id="${item.id}" data-item-name="${item.name}">
-                        Leave a review
+                        ${store.get('menu_leave_review')}
                     </button>
                 </div>
             `;
@@ -173,6 +173,8 @@ function initReviewModal() {
     const reviewForm = document.getElementById('review-form');
     const starRatingContainer = document.getElementById('star-rating');
 
+    if (!modal) return; // In case modal is not on the page
+
     // Star rating interaction
     for (let i = 1; i <= 5; i++) {
         const star = document.createElement('span');
@@ -199,7 +201,7 @@ function initReviewModal() {
         if (e.target.classList.contains('leave-review-btn')) {
             const user = store.getCurrentUser();
             if (!user) {
-                alert('You must be logged in to leave a review.');
+                alert(store.get('review_modal_login_alert'));
                 window.location.href = 'login.html';
                 return;
             }
@@ -238,7 +240,7 @@ function initReviewModal() {
         const errorDiv = document.getElementById('review-error');
 
         if (currentStarRating === 0) {
-            errorDiv.textContent = 'Please select a star rating.';
+            errorDiv.textContent = store.get('review_modal_error_rating');
             errorDiv.classList.remove('hidden');
             return;
         }

@@ -17,7 +17,7 @@ export function initRegisterPage() {
         const password = form.password.value;
 
         if (!name || !email || !password) {
-            errorDiv.textContent = 'Please fill out all fields.';
+            errorDiv.textContent = store.get('register_error_fields');
             errorDiv.classList.remove('hidden');
             return;
         }
@@ -27,7 +27,7 @@ export function initRegisterPage() {
         if (user) {
             window.location.href = 'profile.html';
         } else {
-            errorDiv.textContent = 'An account with this email already exists.';
+            errorDiv.textContent = store.get('register_error_exists');
             errorDiv.classList.remove('hidden');
         }
     });

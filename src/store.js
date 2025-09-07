@@ -6,12 +6,15 @@ const state = {
     reservations: [],
     users: [],
     currentUser: null,
-    reviews: {} // { itemId: [review, review] }
+    reviews: {}, // { itemId: [review, review] }
+    currentLanguage: 'en',
+    translations: {}
 };
 
 const MENU_STORAGE_KEY = 'restaurantMenu';
 const USER_SESSION_KEY = 'restaurantUser';
 const REVIEWS_STORAGE_KEY = 'restaurantReviews';
+const LANG_STORAGE_KEY = 'restaurantLang';
 
 // Function to save menu to localStorage
 function saveMenuToStorage() {
@@ -56,6 +59,16 @@ function loadReviewsFromStorage() {
 // Function to save reviews to localStorage
 function saveReviewsToStorage() {
     localStorage.setItem(REVIEWS_STORAGE_KEY, JSON.stringify(state.reviews));
+}
+
+// Function to save language to localStorage
+function saveLanguageToStorage(lang) {
+    localStorage.setItem(LANG_STORAGE_KEY, lang);
+}
+
+// Function to load language from localStorage
+function loadLanguageFromStorage() {
+    return localStorage.getItem(LANG_STORAGE_KEY) || 'en';
 }
 
 
@@ -227,6 +240,38 @@ export const store = {
             return true;
         }
         return false;
+    },
+
+    // Language Management
+    setLanguage: async (lang) => {
+        state.currentLanguage = lang;
+        saveLanguageToStorage(lang);
+        await store.loadTranslations();
+    },
+    loadTranslations: async () => {
+        try {
+            const response = await fetch(`locales/${state.currentLanguage}.json`);
+            if (!response.ok) throw new Error('Translation file not found');
+            state.translations = await response.json();
+        } catch (error) {
+            console.error('Error loading translations:', error);
+            // Fallback to English if the chosen language fails
+            if (state.currentLanguage !== 'en') {
+                state.currentLanguage = 'en';
+                await store.loadTranslations();
+            }
+        }
+    },
+    get: (key, replacements = {}) => {
+        let translation = state.translations[key] || key;
+        for (const placeholder in replacements) {
+            translation = translation.replace(`{${placeholder}}`, replacements[placeholder]);
+        }
+        return translation;
+    },
+    initLanguage: () => {
+        const savedLang = loadLanguageFromStorage();
+        state.currentLanguage = savedLang;
     }
 };
 
