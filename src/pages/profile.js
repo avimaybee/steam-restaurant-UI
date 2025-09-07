@@ -14,6 +14,41 @@ export async function initProfilePage() {
     // Display user's name
     document.getElementById('user-name').textContent = user.name;
 
+    // Display loyalty points
+    const loyaltyPointsSpan = document.getElementById('loyalty-points');
+    loyaltyPointsSpan.textContent = user.loyaltyPoints || 0;
+
+    // Handle redeem form
+    const redeemForm = document.getElementById('redeem-form');
+    const redeemMessage = document.getElementById('redeem-message');
+    redeemForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const amount = parseInt(redeemForm.amount.value);
+        if (isNaN(amount) || amount <= 0) {
+            redeemMessage.textContent = 'Please enter a valid amount.';
+            redeemMessage.classList.remove('hidden', 'text-green-500');
+            redeemMessage.classList.add('text-red-500');
+            return;
+        }
+
+        const success = await store.redeemLoyaltyPoints(user.id, amount);
+
+        if (success) {
+            const voucherValue = (amount / 1000) * 10;
+            redeemMessage.textContent = `Success! Your voucher code for $${voucherValue} is: VOUCHER${Date.now()}`;
+            redeemMessage.classList.remove('hidden', 'text-red-500');
+            redeemMessage.classList.add('text-green-500');
+            // Update points display
+            const updatedUser = store.getCurrentUser();
+            loyaltyPointsSpan.textContent = updatedUser.loyaltyPoints;
+            redeemForm.reset();
+        } else {
+            redeemMessage.textContent = 'Not enough points to redeem this amount.';
+            redeemMessage.classList.remove('hidden', 'text-green-500');
+            redeemMessage.classList.add('text-red-500');
+        }
+    });
+
     // Fetch and display order history
     const orderHistoryContainer = document.getElementById('order-history-container');
     const orders = await store.getOrdersByCustomer(user.name);

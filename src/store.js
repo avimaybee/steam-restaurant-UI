@@ -64,8 +64,8 @@ function generateFakeData() {
     // Check if data already exists to avoid re-populating on hot-reloads
     if (state.users.length === 0) {
         state.users.push(
-            { id: 1, name: 'John Doe', email: 'john.doe@example.com', password: 'password123' },
-            { id: 2, name: 'Jane Smith', email: 'jane.smith@example.com', password: 'password456' }
+            { id: 1, name: 'John Doe', email: 'john.doe@example.com', password: 'password123', loyaltyPoints: 1250 },
+            { id: 2, name: 'Jane Smith', email: 'jane.smith@example.com', password: 'password456', loyaltyPoints: 450 }
         );
     }
     if (state.orders.length === 0) {
@@ -198,12 +198,35 @@ export const store = {
             id: Date.now(),
             name,
             email,
-            password
+            password,
+            loyaltyPoints: 0 // New users start with 0 points
         };
         state.users.push(newUser);
         state.currentUser = newUser;
         saveUserToSession(newUser);
         return newUser;
+    },
+
+    // Loyalty Points Management
+    addLoyaltyPoints: async (userId, points) => {
+        const user = state.users.find(u => u.id === userId);
+        if (user) {
+            user.loyaltyPoints += points;
+            if (state.currentUser && state.currentUser.id === userId) {
+                saveUserToSession(user);
+            }
+        }
+    },
+    redeemLoyaltyPoints: async (userId, points) => {
+        const user = state.users.find(u => u.id === userId);
+        if (user && user.loyaltyPoints >= points) {
+            user.loyaltyPoints -= points;
+            if (state.currentUser && state.currentUser.id === userId) {
+                saveUserToSession(user);
+            }
+            return true;
+        }
+        return false;
     }
 };
 
