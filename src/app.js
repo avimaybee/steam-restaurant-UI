@@ -1,7 +1,49 @@
-import { loadHeader, loadFooter } from './components.js';
+import { loadHeader, loadFooter, updateAuthLinks } from './components.js';
+import { store } from './store.js';
 import { initMenuPage } from './pages/menu.js';
 import { initOrderPage } from './pages/order.js';
 import { initAdminPage } from './pages/admin.js';
+import { initLoginPage } from './pages/login.js';
+import { initRegisterPage } from './pages/register.js';
+import { initProfilePage } from './pages/profile.js';
+import { initOrderTrackingPage } from './pages/order-tracking.js';
+import { initAnalyticsPage } from './pages/analytics.js';
+
+function translatePage() {
+    document.querySelectorAll('[data-i18n-key]').forEach(el => {
+        const key = el.dataset.i18nKey;
+        const replacements = el.dataset.i18nReplacements ? JSON.parse(el.dataset.i18nReplacements) : {};
+        el.innerHTML = store.get(key, replacements);
+    });
+    document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+        const key = el.dataset.i18nPlaceholder;
+        el.placeholder = store.get(key);
+    });
+}
+
+async function initializeI18n() {
+    store.initLanguage();
+    await store.loadTranslations();
+    translatePage();
+
+    const langSelect = document.getElementById('language-select');
+    const langSelectMobile = document.getElementById('language-select-mobile');
+
+    if (langSelect) {
+        langSelect.value = store.state.currentLanguage;
+        langSelect.addEventListener('change', async (e) => {
+            await store.setLanguage(e.target.value);
+            window.location.reload(); // Simple way to re-render everything
+        });
+    }
+    if (langSelectMobile) {
+        langSelectMobile.value = store.state.currentLanguage;
+        langSelectMobile.addEventListener('change', async (e) => {
+            await store.setLanguage(e.target.value);
+            window.location.reload();
+        });
+    }
+}
 
 function initializeMobileMenu() {
     const mobileMenuButton = document.getElementById('mobile-menu-button');
@@ -137,9 +179,14 @@ function handle404() {
         'get-in-touch.html',
         'gift-vouchers.html',
         'landing-page.html',
+        'login.html',
+        'profile.html',
+        'register.html',
         'order-page.html',
+        'order-tracking.html',
         'our-menu.html',
         'table-reservations.html',
+        'analytics.html',
         '404.html'
     ];
 
@@ -156,7 +203,22 @@ function handle404() {
     }
 }
 
+function setupLogout() {
+    // Use event delegation on a parent element
+    document.body.addEventListener('click', (e) => {
+        if (e.target.matches('#logout-btn') || e.target.matches('#logout-btn-mobile')) {
+            store.logout();
+            updateAuthLinks();
+            if (document.getElementById('profile-page')) {
+                window.location.href = 'login.html';
+            }
+        }
+    });
+}
+
 async function initApp() {
+    await initializeI18n();
+
     await loadHeader();
     await loadFooter();
 
@@ -166,20 +228,21 @@ async function initApp() {
     initializeScrollAnimations();
     applyFadeInAnimation();
     initializeThemeSwitcher();
+    updateAuthLinks();
+    setupLogout();
 
     handle404();
 
     // Page-specific initializations
     const path = window.location.pathname;
-    if (path.endsWith('our-menu.html')) {
-        initMenuPage();
-    }
-    if (path.endsWith('order-page.html')) {
-        initOrderPage();
-    }
-    if (path.endsWith('admin.html')) {
-        initAdminPage();
-    }
+    if (path.endsWith('our-menu.html')) initMenuPage();
+    if (path.endsWith('order-page.html')) initOrderPage();
+    if (path.endsWith('admin.html')) initAdminPage();
+    if (path.endsWith('login.html')) initLoginPage();
+    if (path.endsWith('register.html')) initRegisterPage();
+    if (path.endsWith('profile.html')) initProfilePage();
+    if (path.endsWith('order-tracking.html')) initOrderTrackingPage();
+    if (path.endsWith('analytics.html')) initAnalyticsPage();
 }
 
 document.addEventListener('DOMContentLoaded', initApp);

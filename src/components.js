@@ -32,6 +32,40 @@ export async function loadHeader() {
 }
 
 /**
+ * Updates the authentication links in the header based on user login status.
+ */
+import { store } from './store.js';
+
+export function updateAuthLinks() {
+    const user = store.getCurrentUser();
+    const authLinks = document.getElementById('auth-links');
+    const authLinksMobile = document.getElementById('auth-links-mobile');
+
+    if (!authLinks || !authLinksMobile) return;
+
+    const loggedInLinks = `
+        <a href="profile.html" class="text-base font-medium text-gray-300 hover:text-white transition-colors duration-300">Profile</a>
+        <button id="logout-btn" class="text-base font-medium text-gray-300 hover:text-white transition-colors duration-300">Logout</button>
+    `;
+    const loggedOutLinks = `
+        <a href="login.html" class="text-base font-medium text-gray-300 hover:text-white transition-colors duration-300">Login</a>
+    `;
+
+    const loggedInLinksMobile = `
+        <a href="profile.html" class="text-base font-medium text-gray-300 hover:text-white transition-colors duration-300">Profile</a>
+        <button id="logout-btn-mobile" class="text-base font-medium text-gray-300 hover:text-white transition-colors duration-300">Logout</button>
+    `;
+
+    if (user) {
+        authLinks.innerHTML = loggedInLinks;
+        authLinksMobile.innerHTML = loggedInLinksMobile;
+    } else {
+        authLinks.innerHTML = loggedOutLinks;
+        authLinksMobile.innerHTML = loggedOutLinks;
+    }
+}
+
+/**
  * Loads the footer component.
  */
 export async function loadFooter() {
