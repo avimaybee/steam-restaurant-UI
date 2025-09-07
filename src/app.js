@@ -6,6 +6,7 @@ import { initAdminPage } from './pages/admin.js';
 import { initLoginPage } from './pages/login.js';
 import { initRegisterPage } from './pages/register.js';
 import { initProfilePage } from './pages/profile.js';
+import { initOrderTrackingPage } from './pages/order-tracking.js';
 
 function initializeMobileMenu() {
     const mobileMenuButton = document.getElementById('mobile-menu-button');
@@ -145,6 +146,7 @@ function handle404() {
         'profile.html',
         'register.html',
         'order-page.html',
+        'order-tracking.html',
         'our-menu.html',
         'table-reservations.html',
         '404.html'
@@ -199,6 +201,7 @@ async function initApp() {
     if (path.endsWith('login.html')) initLoginPage();
     if (path.endsWith('register.html')) initRegisterPage();
     if (path.endsWith('profile.html')) initProfilePage();
+    if (path.endsWith('order-tracking.html')) initOrderTrackingPage();
 }
 
 document.addEventListener('DOMContentLoaded', initApp);

@@ -99,6 +99,10 @@ export const store = {
 
     // Order Management
     getOrders: async () => state.orders,
+    getOrderById: async (orderId) => {
+        // The + converts orderId to a number in case it's a string
+        return state.orders.find(o => o.id === +orderId);
+    },
     getOrdersByCustomer: async (customerName) => {
         return state.orders.filter(o => o.customer === customerName);
     },

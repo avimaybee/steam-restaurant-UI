@@ -34,6 +34,11 @@ export async function initProfilePage() {
 }
 
 function createHistoryTable(items, headers) {
+    const isOrderTable = headers.includes('Total');
+    if (isOrderTable) {
+        headers.push('Actions');
+    }
+
     let table = '<table class="min-w-full text-sm text-left text-gray-400">';
     // Table header
     table += '<thead class="text-xs text-gray-300 uppercase bg-gray-700">';
@@ -47,11 +52,17 @@ function createHistoryTable(items, headers) {
     table += '<tbody>';
     items.forEach(item => {
         table += '<tr class="bg-gray-800 border-b border-gray-700">';
-        if (item.hasOwnProperty('total')) { // It's an order
+        if (isOrderTable) { // It's an order
             table += `<td class="px-6 py-4 font-medium text-white">#${item.id}</td>`;
             table += `<td class="px-6 py-4">${item.date}</td>`;
             table += `<td class="px-6 py-4">${item.status}</td>`;
             table += `<td class="px-6 py-4">$${item.total.toFixed(2)}</td>`;
+            // Actions column
+            table += '<td class="px-6 py-4">';
+            if (['Pending', 'Confirmed', 'Preparing', 'Out for Delivery'].includes(item.status)) {
+                table += `<a href="order-tracking.html?id=${item.id}" class="btn btn-secondary btn-sm">Track Order</a>`;
+            }
+            table += '</td>';
         } else { // It's a reservation
             table += `<td class="px-6 py-4 font-medium text-white">#${item.id}</td>`;
             table += `<td class="px-6 py-4">${item.date}</td>`;
