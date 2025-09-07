@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - Menu Management</title>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link rel="stylesheet" href="style.css">
+    <script type="module" src="src/app.js" defer></script>
+</head>
+<body class="bg-secondary-color text-text-primary">
+
+    <div id="main-header"></div>
+
+    <main id="admin-management" class="container mx-auto px-8 lg:px-16 py-12">
+        <h1 class="text-4xl font-bold text-white mb-8">Menu Management</h1>
+
+        <!-- Add/Edit Form -->
+        <div class="bg-[#1C1C1C] p-8 rounded-lg mb-12">
+            <h2 class="text-2xl font-bold text-white mb-6" id="form-title">Add New Menu Item</h2>
+            <form id="menu-item-form" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <input type="hidden" id="item-id">
+                <div>
+                    <label for="item-name" class="block text-sm font-medium text-gray-300 mb-2">Name</label>
+                    <input type="text" id="item-name" name="name" class="w-full bg-gray-800 border-gray-700 text-white rounded-md" required>
+                </div>
+                <div>
+                    <label for="item-price" class="block text-sm font-medium text-gray-300 mb-2">Price</label>
+                    <input type="number" id="item-price" name="price" class="w-full bg-gray-800 border-gray-700 text-white rounded-md" required step="0.01">
+                </div>
+                <div class="md:col-span-2">
+                    <label for="item-description" class="block text-sm font-medium text-gray-300 mb-2">Description</label>
+                    <textarea id="item-description" name="description" rows="3" class="w-full bg-gray-800 border-gray-700 text-white rounded-md"></textarea>
+                </div>
+                <div>
+                    <label for="item-category" class="block text-sm font-medium text-gray-300 mb-2">Category</label>
+                    <input type="text" id="item-category" name="category" class="w-full bg-gray-800 border-gray-700 text-white rounded-md" required>
+                </div>
+                <div>
+                    <label for="item-subCategory" class="block text-sm font-medium text-gray-300 mb-2">Sub-Category</label>
+                    <input type="text" id="item-subCategory" name="subCategory" class="w-full bg-gray-800 border-gray-700 text-white rounded-md" required>
+                </div>
+                <div class="md:col-span-2">
+                    <label for="item-image" class="block text-sm font-medium text-gray-300 mb-2">Image URL</label>
+                    <input type="url" id="item-image" name="image" class="w-full bg-gray-800 border-gray-700 text-white rounded-md">
+                </div>
+                <div class="md:col-span-2 flex justify-end gap-4">
+                    <button type="button" id="cancel-edit-btn" class="bg-gray-600 text-white rounded-full h-12 px-8 font-bold hidden">Cancel</button>
+                    <button type="submit" class="bg-[var(--primary-color)] text-black rounded-full h-12 px-8 font-bold">Save Item</button>
+                </div>
+            </form>
+        </div>
+
+        <!-- Menu Items Table -->
+        <div class="bg-[#1C1C1C] p-8 rounded-lg">
+            <h2 class="text-2xl font-bold text-white mb-6">Current Menu</h2>
+            <div class="overflow-x-auto">
+                <table class="min-w-full text-sm text-left text-gray-400">
+                    <thead class="text-xs text-gray-300 uppercase bg-gray-700">
+                        <tr>
+                            <th scope="col" class="px-6 py-3">Name</th>
+                            <th scope="col" class="px-6 py-3">Price</th>
+                            <th scope="col" class="px-6 py-3">Category</th>
+                            <th scope="col" class="px-6 py-3">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="menu-items-table-body">
+                        <!-- Rows will be injected by JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+
+    <div id="main-footer"></div>
+
+</body>
+</html>

@@ -1,6 +1,7 @@
 import { loadHeader, loadFooter } from './components.js';
 import { initMenuPage } from './pages/menu.js';
 import { initOrderPage } from './pages/order.js';
+import { initAdminPage } from './pages/admin.js';
 
 function initializeMobileMenu() {
     const mobileMenuButton = document.getElementById('mobile-menu-button');
@@ -96,6 +97,9 @@ async function initApp() {
     }
     if (path.endsWith('order-page.html')) {
         initOrderPage();
+    }
+    if (path.endsWith('admin.html')) {
+        initAdminPage();
     }
 }
 
