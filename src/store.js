@@ -3,10 +3,13 @@ import { config } from './config.js';
 const state = {
     menu: [],
     orders: [],
-    reservations: []
+    reservations: [],
+    users: [],
+    currentUser: null
 };
 
 const MENU_STORAGE_KEY = 'restaurantMenu';
+const USER_SESSION_KEY = 'restaurantUser';
 
 // Function to save menu to localStorage
 function saveMenuToStorage() {
@@ -23,9 +26,30 @@ function loadMenuFromStorage() {
     return false;
 }
 
+// Function to save user session to sessionStorage
+function saveUserToSession(user) {
+    sessionStorage.setItem(USER_SESSION_KEY, JSON.stringify(user));
+}
+
+// Function to load user from sessionStorage
+function loadUserFromSession() {
+    const userFromSession = sessionStorage.getItem(USER_SESSION_KEY);
+    if (userFromSession) {
+        state.currentUser = JSON.parse(userFromSession);
+        return true;
+    }
+    return false;
+}
+
 // --- FAKE DATA ---
 function generateFakeData() {
     // Check if data already exists to avoid re-populating on hot-reloads
+    if (state.users.length === 0) {
+        state.users.push(
+            { id: 1, name: 'John Doe', email: 'john.doe@example.com', password: 'password123' },
+            { id: 2, name: 'Jane Smith', email: 'jane.smith@example.com', password: 'password456' }
+        );
+    }
     if (state.orders.length === 0) {
         state.orders.push(
             { id: 1, customer: 'John Doe', date: '2023-10-27', status: 'Pending', total: 55.00, items: [{ name: 'Ramen', quantity: 2 }] },
@@ -37,20 +61,17 @@ function generateFakeData() {
         state.reservations.push(
             { id: 101, customer: 'Alice Williams', date: '2023-11-05', time: '19:00', guests: 2, status: 'Confirmed' },
             { id: 102, customer: 'Bob Brown', date: '2023-11-06', time: '20:30', guests: 4, status: 'Pending' },
-            { id: 103, customer: 'Charlie Davis', date: '2023-11-06', time: '18:00', guests: 3, status: 'Confirmed' }
+            { id: 103, customer: 'John Doe', date: '2023-11-08', time: '19:30', guests: 2, status: 'Confirmed' }
         );
     }
 }
 
 // --- STORE ---
 export const store = {
+    // Menu Management
     getMenu: async (forceRefresh = false) => {
-        if (!forceRefresh && state.menu.length > 0) {
-            return state.menu;
-        }
-        if (!forceRefresh && loadMenuFromStorage()) {
-            return state.menu;
-        }
+        if (!forceRefresh && state.menu.length > 0) return state.menu;
+        if (!forceRefresh && loadMenuFromStorage()) return state.menu;
         try {
             const response = await fetch(config.api.menuUrl);
             if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
@@ -58,9 +79,7 @@ export const store = {
             saveMenuToStorage();
         } catch (error) {
             console.error("Could not fetch menu:", error);
-            if (!loadMenuFromStorage()) {
-                return [];
-            }
+            if (!loadMenuFromStorage()) return [];
         }
         return state.menu;
     },
@@ -70,10 +89,8 @@ export const store = {
     },
     updateMenuItem: async (updatedItem) => {
         const index = state.menu.findIndex(item => item.id === updatedItem.id);
-        if (index !== -1) {
-            state.menu[index] = updatedItem;
-            saveMenuToStorage();
-        }
+        if (index !== -1) state.menu[index] = updatedItem;
+        saveMenuToStorage();
     },
     deleteMenuItem: async (itemId) => {
         state.menu = state.menu.filter(item => item.id !== itemId);
@@ -81,31 +98,65 @@ export const store = {
     },
 
     // Order Management
-    getOrders: async () => {
-        return state.orders;
+    getOrders: async () => state.orders,
+    getOrdersByCustomer: async (customerName) => {
+        return state.orders.filter(o => o.customer === customerName);
     },
     updateOrderStatus: async (orderId, newStatus) => {
         const order = state.orders.find(o => o.id === orderId);
-        if (order) {
-            order.status = newStatus;
-        }
+        if (order) order.status = newStatus;
     },
     deleteOrder: async (orderId) => {
         state.orders = state.orders.filter(o => o.id !== orderId);
     },
 
     // Reservation Management
-    getReservations: async () => {
-        return state.reservations;
+    getReservations: async () => state.reservations,
+    getReservationsByCustomer: async (customerName) => {
+        return state.reservations.filter(r => r.customer === customerName);
     },
     updateReservationStatus: async (reservationId, newStatus) => {
         const reservation = state.reservations.find(r => r.id === reservationId);
-        if (reservation) {
-            reservation.status = newStatus;
-        }
+        if (reservation) reservation.status = newStatus;
     },
     deleteReservation: async (reservationId) => {
         state.reservations = state.reservations.filter(r => r.id !== reservationId);
+    },
+
+    // Auth Management
+    getCurrentUser: () => {
+        if (!state.currentUser) {
+            loadUserFromSession();
+        }
+        return state.currentUser;
+    },
+    login: async (email, password) => {
+        const user = state.users.find(u => u.email === email && u.password === password);
+        if (user) {
+            state.currentUser = user;
+            saveUserToSession(user);
+            return user;
+        }
+        return null;
+    },
+    logout: () => {
+        state.currentUser = null;
+        sessionStorage.removeItem(USER_SESSION_KEY);
+    },
+    register: async (name, email, password) => {
+        if (state.users.some(u => u.email === email)) {
+            return null; // User already exists
+        }
+        const newUser = {
+            id: Date.now(),
+            name,
+            email,
+            password
+        };
+        state.users.push(newUser);
+        state.currentUser = newUser;
+        saveUserToSession(newUser);
+        return newUser;
     }
 };
 

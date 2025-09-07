@@ -1,7 +1,11 @@
-import { loadHeader, loadFooter } from './components.js';
+import { loadHeader, loadFooter, updateAuthLinks } from './components.js';
+import { store } from './store.js';
 import { initMenuPage } from './pages/menu.js';
 import { initOrderPage } from './pages/order.js';
 import { initAdminPage } from './pages/admin.js';
+import { initLoginPage } from './pages/login.js';
+import { initRegisterPage } from './pages/register.js';
+import { initProfilePage } from './pages/profile.js';
 
 function initializeMobileMenu() {
     const mobileMenuButton = document.getElementById('mobile-menu-button');
@@ -137,6 +141,9 @@ function handle404() {
         'get-in-touch.html',
         'gift-vouchers.html',
         'landing-page.html',
+        'login.html',
+        'profile.html',
+        'register.html',
         'order-page.html',
         'our-menu.html',
         'table-reservations.html',
@@ -156,6 +163,19 @@ function handle404() {
     }
 }
 
+function setupLogout() {
+    // Use event delegation on a parent element
+    document.body.addEventListener('click', (e) => {
+        if (e.target.matches('#logout-btn') || e.target.matches('#logout-btn-mobile')) {
+            store.logout();
+            updateAuthLinks();
+            if (document.getElementById('profile-page')) {
+                window.location.href = 'login.html';
+            }
+        }
+    });
+}
+
 async function initApp() {
     await loadHeader();
     await loadFooter();
@@ -166,20 +186,19 @@ async function initApp() {
     initializeScrollAnimations();
     applyFadeInAnimation();
     initializeThemeSwitcher();
+    updateAuthLinks();
+    setupLogout();
 
     handle404();
 
     // Page-specific initializations
     const path = window.location.pathname;
-    if (path.endsWith('our-menu.html')) {
-        initMenuPage();
-    }
-    if (path.endsWith('order-page.html')) {
-        initOrderPage();
-    }
-    if (path.endsWith('admin.html')) {
-        initAdminPage();
-    }
+    if (path.endsWith('our-menu.html')) initMenuPage();
+    if (path.endsWith('order-page.html')) initOrderPage();
+    if (path.endsWith('admin.html')) initAdminPage();
+    if (path.endsWith('login.html')) initLoginPage();
+    if (path.endsWith('register.html')) initRegisterPage();
+    if (path.endsWith('profile.html')) initProfilePage();
 }
 
 document.addEventListener('DOMContentLoaded', initApp);
