@@ -5,11 +5,13 @@ const state = {
     orders: [],
     reservations: [],
     users: [],
-    currentUser: null
+    currentUser: null,
+    reviews: {} // { itemId: [review, review] }
 };
 
 const MENU_STORAGE_KEY = 'restaurantMenu';
 const USER_SESSION_KEY = 'restaurantUser';
+const REVIEWS_STORAGE_KEY = 'restaurantReviews';
 
 // Function to save menu to localStorage
 function saveMenuToStorage() {
@@ -41,6 +43,22 @@ function loadUserFromSession() {
     return false;
 }
 
+// Function to load reviews from localStorage
+function loadReviewsFromStorage() {
+    const reviewsFromStorage = localStorage.getItem(REVIEWS_STORAGE_KEY);
+    if (reviewsFromStorage) {
+        state.reviews = JSON.parse(reviewsFromStorage);
+        return true;
+    }
+    return false;
+}
+
+// Function to save reviews to localStorage
+function saveReviewsToStorage() {
+    localStorage.setItem(REVIEWS_STORAGE_KEY, JSON.stringify(state.reviews));
+}
+
+
 // --- FAKE DATA ---
 function generateFakeData() {
     // Check if data already exists to avoid re-populating on hot-reloads
@@ -63,6 +81,19 @@ function generateFakeData() {
             { id: 102, customer: 'Bob Brown', date: '2023-11-06', time: '20:30', guests: 4, status: 'Pending' },
             { id: 103, customer: 'John Doe', date: '2023-11-08', time: '19:30', guests: 2, status: 'Confirmed' }
         );
+    }
+    // Generate fake reviews only if none exist in storage
+    if (Object.keys(state.reviews).length === 0 && !loadReviewsFromStorage()) {
+        state.reviews = {
+            '13': [ // Spicy Wagyu Dumplings
+                { user: 'Jane Smith', rating: 5, comment: 'Absolutely amazing, the right amount of kick!' },
+                { user: 'John Doe', rating: 4, comment: 'Very tasty, but a bit too spicy for me.' }
+            ],
+            '37': [ // Korean Beef Bulgogi
+                { user: 'Mike Johnson', rating: 5, comment: 'Best bulgogi in town. A must-try!' }
+            ]
+        };
+        saveReviewsToStorage();
     }
 }
 
@@ -125,6 +156,18 @@ export const store = {
     },
     deleteReservation: async (reservationId) => {
         state.reservations = state.reservations.filter(r => r.id !== reservationId);
+    },
+
+    // Review Management
+    getReviews: async (itemId) => {
+        return state.reviews[itemId] || [];
+    },
+    addReview: async (itemId, review) => {
+        if (!state.reviews[itemId]) {
+            state.reviews[itemId] = [];
+        }
+        state.reviews[itemId].unshift(review); // Add to the beginning
+        saveReviewsToStorage();
     },
 
     // Auth Management

@@ -1,16 +1,15 @@
 import { store } from '../store.js';
 
-let allMenuItems = []; // This will hold the original, unmodified menu items.
-let processedMenuItems = []; // This will hold items with tags and popularity.
+let allMenuItems = [];
+let processedMenuItems = [];
+let currentStarRating = 0;
 
 function toTitleCase(str) {
     return str.replace(/\w\S*/g, txt => txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase());
 }
 
-/**
- * Processes raw menu items to add tags and a consistent popularity score.
- */
-function enhanceMenuItems(items) {
+async function enhanceMenuItems(items) {
+    const allReviews = await store.getReviews();
     return items.map(item => {
         const tags = new Set();
         const description = (item.description || '').toLowerCase();
@@ -23,16 +22,23 @@ function enhanceMenuItems(items) {
         if (description.includes('spicy')) tags.add('spicy');
         if (name.includes('pescatarian')) tags.add('pescatarian');
 
-        // Pseudo-random popularity based on ID for consistency
         const popularity = (item.id * 37) % 5 + 1;
+        const reviews = allReviews[item.id] || [];
+        const averageRating = reviews.length > 0 ? reviews.reduce((acc, r) => acc + r.rating, 0) / reviews.length : 0;
 
-        return { ...item, tags: Array.from(tags), popularity };
+        return { ...item, tags: Array.from(tags), popularity, reviews, averageRating };
     });
 }
 
-/**
- * Renders the menu based on a given set of items.
- */
+function renderStarRating(rating) {
+    let stars = '';
+    for (let i = 1; i <= 5; i++) {
+        const icon = i <= rating ? 'star' : 'star_outline';
+        stars += `<span class="material-symbols-outlined text-yellow-400">${icon}</span>`;
+    }
+    return `<div class="flex items-center">${stars}</div>`;
+}
+
 function renderMenu(itemsToRender) {
     const menuContainer = document.getElementById('menu-container');
     if (!menuContainer) return;
@@ -63,17 +69,26 @@ function renderMenu(itemsToRender) {
 
         itemsBySubCategory[subCategory].forEach(item => {
             const menuItemElement = document.createElement('div');
-            menuItemElement.className = 'flex flex-col justify-between gap-2';
+            menuItemElement.className = 'flex flex-col justify-between gap-3';
             menuItemElement.innerHTML = `
-                <div class="flex items-center gap-4">
+                <div class="flex items-start gap-4">
                     <img src="${item.image}" alt="${item.name}" class="h-16 w-16 rounded-md object-cover">
                     <div class="flex-grow">
                         <div class="flex justify-between items-start">
                             <h3 class="font-semibold text-white">${item.name}</h3>
                             <p class="shrink-0 font-medium text-white">$${item.price.toFixed(2)}</p>
                         </div>
-                        <p class="text-sm text-white/60">${item.description}</p>
+                        <p class="text-sm text-white/60 mt-1">${item.description}</p>
                     </div>
+                </div>
+                <div class="flex items-center justify-between mt-2">
+                    <div class="flex items-center gap-2">
+                        ${renderStarRating(item.averageRating)}
+                        <span class="text-xs text-gray-400">(${item.reviews.length} reviews)</span>
+                    </div>
+                    <button class="leave-review-btn text-sm text-primary-color hover:underline" data-item-id="${item.id}" data-item-name="${item.name}">
+                        Leave a review
+                    </button>
                 </div>
             `;
             grid.appendChild(menuItemElement);
@@ -84,9 +99,6 @@ function renderMenu(itemsToRender) {
     }
 }
 
-/**
- * Applies all active filters and sorting to the menu items.
- */
 function applyFilters() {
     const categoryFilter = document.querySelector('.menu-filter-btn.active').dataset.category;
     const searchTerm = document.getElementById('search-input').value.toLowerCase();
@@ -95,27 +107,21 @@ function applyFilters() {
 
     let filteredItems = processedMenuItems;
 
-    // 1. Filter by category
     if (categoryFilter !== 'all') {
         filteredItems = filteredItems.filter(item => item.category.includes(categoryFilter));
     }
-
-    // 2. Filter by search term
     if (searchTerm) {
         filteredItems = filteredItems.filter(item =>
             item.name.toLowerCase().includes(searchTerm) ||
             item.description.toLowerCase().includes(searchTerm)
         );
     }
-
-    // 3. Filter by dietary tags
     if (selectedTags.length > 0) {
         filteredItems = filteredItems.filter(item =>
             selectedTags.every(tag => item.tags.includes(tag))
         );
     }
 
-    // 4. Apply sorting
     switch (sortBy) {
         case 'popularity':
             filteredItems.sort((a, b) => b.popularity - a.popularity);
@@ -126,15 +132,14 @@ function applyFilters() {
         case 'price-desc':
             filteredItems.sort((a, b) => b.price - a.price);
             break;
-        // 'default' case does nothing, preserving original order
+        case 'rating':
+            filteredItems.sort((a, b) => b.averageRating - a.averageRating);
+            break;
     }
 
     renderMenu(filteredItems);
 }
 
-/**
- * Initializes all event listeners for the filter controls.
- */
 function initFilterListeners() {
     const categoryFilters = document.getElementById('menu-filters');
     const advancedFilters = document.getElementById('advanced-filters');
@@ -149,29 +154,117 @@ function initFilterListeners() {
     });
 
     advancedFilters.addEventListener('input', event => {
-        // Use 'input' for instant search feedback
         if (event.target.matches('#search-input, #sort-by')) {
             applyFilters();
         }
     });
 
     advancedFilters.addEventListener('change', event => {
-        // Use 'change' for checkboxes
         if (event.target.matches('input[type="checkbox"]')) {
             applyFilters();
         }
     });
 }
 
-/**
- * Initializes the entire menu page.
- */
+function initReviewModal() {
+    const modal = document.getElementById('review-modal');
+    const menuContainer = document.getElementById('menu-container');
+    const closeModalBtn = document.getElementById('close-modal-btn');
+    const reviewForm = document.getElementById('review-form');
+    const starRatingContainer = document.getElementById('star-rating');
+
+    // Star rating interaction
+    for (let i = 1; i <= 5; i++) {
+        const star = document.createElement('span');
+        star.className = 'material-symbols-outlined text-gray-400 cursor-pointer';
+        star.textContent = 'star_outline';
+        star.dataset.value = i;
+        starRatingContainer.appendChild(star);
+    }
+
+    starRatingContainer.addEventListener('click', e => {
+        if (e.target.dataset.value) {
+            currentStarRating = parseInt(e.target.dataset.value);
+            const stars = starRatingContainer.querySelectorAll('span');
+            stars.forEach(star => {
+                star.textContent = parseInt(star.dataset.value) <= currentStarRating ? 'star' : 'star_outline';
+                star.classList.toggle('text-yellow-400', parseInt(star.dataset.value) <= currentStarRating);
+                star.classList.toggle('text-gray-400', parseInt(star.dataset.value) > currentStarRating);
+            });
+        }
+    });
+
+    // Open modal
+    menuContainer.addEventListener('click', e => {
+        if (e.target.classList.contains('leave-review-btn')) {
+            const user = store.getCurrentUser();
+            if (!user) {
+                alert('You must be logged in to leave a review.');
+                window.location.href = 'login.html';
+                return;
+            }
+            const itemId = e.target.dataset.itemId;
+            const itemName = e.target.dataset.itemName;
+            document.getElementById('review-item-id').value = itemId;
+            document.getElementById('review-item-name').textContent = itemName;
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
+    });
+
+    // Close modal
+    const closeModal = () => {
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
+        reviewForm.reset();
+        currentStarRating = 0; // Reset rating
+        const stars = starRatingContainer.querySelectorAll('span');
+        stars.forEach(star => {
+            star.textContent = 'star_outline';
+            star.classList.remove('text-yellow-400');
+            star.classList.add('text-gray-400');
+        });
+    };
+    closeModalBtn.addEventListener('click', closeModal);
+    modal.addEventListener('click', e => {
+        if (e.target === modal) closeModal();
+    });
+
+    // Handle form submission
+    reviewForm.addEventListener('submit', async e => {
+        e.preventDefault();
+        const itemId = document.getElementById('review-item-id').value;
+        const comment = document.getElementById('review-comment').value;
+        const errorDiv = document.getElementById('review-error');
+
+        if (currentStarRating === 0) {
+            errorDiv.textContent = 'Please select a star rating.';
+            errorDiv.classList.remove('hidden');
+            return;
+        }
+        errorDiv.classList.add('hidden');
+
+        const user = store.getCurrentUser();
+        const newReview = {
+            user: user.name,
+            rating: currentStarRating,
+            comment: comment
+        };
+
+        await store.addReview(itemId, newReview);
+        processedMenuItems = await enhanceMenuItems(allMenuItems);
+        applyFilters();
+        closeModal();
+    });
+}
+
 export async function initMenuPage() {
     if (!document.getElementById('menu-container')) return;
 
     allMenuItems = await store.getMenu();
-    processedMenuItems = enhanceMenuItems(allMenuItems);
+    processedMenuItems = await enhanceMenuItems(allMenuItems);
 
-    applyFilters(); // Initial render
+    applyFilters();
     initFilterListeners();
+    initReviewModal();
 }
