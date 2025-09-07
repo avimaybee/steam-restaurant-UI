@@ -8,6 +8,7 @@ import { initRegisterPage } from './pages/register.js';
 import { initProfilePage } from './pages/profile.js';
 import { initOrderTrackingPage } from './pages/order-tracking.js';
 import { initAnalyticsPage } from './pages/analytics.js';
+import { initLandingPage } from './pages/landing.js';
 
 function translatePage() {
     document.querySelectorAll('[data-i18n-key]').forEach(el => {
@@ -243,6 +244,7 @@ async function initApp() {
     if (path.endsWith('profile.html')) initProfilePage();
     if (path.endsWith('order-tracking.html')) initOrderTrackingPage();
     if (path.endsWith('analytics.html')) initAnalyticsPage();
+    if (path.endsWith('landing-page.html')) initLandingPage();
 }
 
 document.addEventListener('DOMContentLoaded', initApp);

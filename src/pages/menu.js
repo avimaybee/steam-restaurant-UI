@@ -70,15 +70,17 @@ function renderMenu(itemsToRender) {
         itemsBySubCategory[subCategory].forEach(item => {
             const menuItemElement = document.createElement('div');
             menuItemElement.className = 'flex flex-col justify-between gap-3';
+            const itemName = store.get(`menu_item_${item.id}_name`);
+            const itemDescription = store.get(`menu_item_${item.id}_description`);
             menuItemElement.innerHTML = `
                 <div class="flex items-start gap-4">
-                    <img src="${item.image}" alt="${item.name}" class="h-16 w-16 rounded-md object-cover">
+                    <img src="${item.image}" alt="${itemName}" class="h-16 w-16 rounded-md object-cover">
                     <div class="flex-grow">
                         <div class="flex justify-between items-start">
-                            <h3 class="font-semibold text-white">${item.name}</h3>
+                            <h3 class="font-semibold text-white">${itemName}</h3>
                             <p class="shrink-0 font-medium text-white">$${item.price.toFixed(2)}</p>
                         </div>
-                        <p class="text-sm text-white/60 mt-1">${item.description}</p>
+                        <p class="text-sm text-white/60 mt-1">${itemDescription}</p>
                     </div>
                 </div>
                 <div class="flex items-center justify-between mt-2">
@@ -86,7 +88,7 @@ function renderMenu(itemsToRender) {
                         ${renderStarRating(item.averageRating)}
                         <span class="text-xs text-gray-400">(${item.reviews.length} ${store.get('menu_reviews')})</span>
                     </div>
-                    <button class="leave-review-btn text-sm text-primary-color hover:underline" data-item-id="${item.id}" data-item-name="${item.name}">
+                    <button class="leave-review-btn text-sm text-primary-color hover:underline" data-item-id="${item.id}" data-item-name="${itemName}">
                         ${store.get('menu_leave_review')}
                     </button>
                 </div>
