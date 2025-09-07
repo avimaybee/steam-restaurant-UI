@@ -7,6 +7,7 @@ import { initLoginPage } from './pages/login.js';
 import { initRegisterPage } from './pages/register.js';
 import { initProfilePage } from './pages/profile.js';
 import { initOrderTrackingPage } from './pages/order-tracking.js';
+import { initAnalyticsPage } from './pages/analytics.js';
 
 function translatePage() {
     document.querySelectorAll('[data-i18n-key]').forEach(el => {
@@ -185,6 +186,7 @@ function handle404() {
         'order-tracking.html',
         'our-menu.html',
         'table-reservations.html',
+        'analytics.html',
         '404.html'
     ];
 
@@ -240,6 +242,7 @@ async function initApp() {
     if (path.endsWith('register.html')) initRegisterPage();
     if (path.endsWith('profile.html')) initProfilePage();
     if (path.endsWith('order-tracking.html')) initOrderTrackingPage();
+    if (path.endsWith('analytics.html')) initAnalyticsPage();
 }
 
 document.addEventListener('DOMContentLoaded', initApp);

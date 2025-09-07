@@ -145,5 +145,10 @@
   "admin_reservations_header_guests": "Comensales",
   "admin_reservations_header_status": "Estado",
   "admin_reservations_header_actions": "Acciones",
-  "admin_reservations_delete_confirm": "¿Estás seguro de que quieres eliminar esta reserva?"
+  "admin_reservations_delete_confirm": "¿Estás seguro de que quieres eliminar esta reserva?",
+
+  "analytics_title": "Panel de Analíticas",
+  "analytics_sales_title": "Ventas a lo largo del tiempo",
+  "analytics_popular_items_title": "Artículos más populares",
+  "analytics_reservations_title": "Tendencias de reserva"
 }

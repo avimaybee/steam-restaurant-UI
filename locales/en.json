@@ -145,5 +145,10 @@
   "admin_reservations_header_guests": "Guests",
   "admin_reservations_header_status": "Status",
   "admin_reservations_header_actions": "Actions",
-  "admin_reservations_delete_confirm": "Are you sure you want to delete this reservation?"
+  "admin_reservations_delete_confirm": "Are you sure you want to delete this reservation?",
+
+  "analytics_title": "Analytics Dashboard",
+  "analytics_sales_title": "Sales Over Time",
+  "analytics_popular_items_title": "Most Popular Items",
+  "analytics_reservations_title": "Reservation Trends"
 }
