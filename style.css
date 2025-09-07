@@ -14,7 +14,7 @@ body {
 }
 
 .hero-gradient {
-    background-image: linear-gradient(to bottom, rgba(26, 26, 26, 0.9), rgba(26, 26, 26, 0.4));
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8));
 }
 
 .menu-gradient-bg {
@@ -32,6 +32,12 @@ body {
     overflow: hidden;
     border-radius: 1rem;
     transition: transform 0.3s ease;
+    /* Removed min-height */
+}
+.img-wrapper img {
+    display: block;
+    width: 100%;
+    height: auto;
 }
 .img-wrapper:hover {
     transform: scale(1.05);
@@ -49,6 +55,27 @@ body {
     z-index: 1;
 }
 .img-wrapper:hover::before {
+    opacity: 1;
+}
+
+/* Gallery Image Overlay for Name */
+.img-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0));
+    color: white;
+    padding: 1rem;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 2;
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.125rem;
+}
+
+.img-wrapper:hover .img-overlay {
     opacity: 1;
 }
 
@@ -151,4 +178,38 @@ input[type="time"] {
 #menu-container > section:hover .grid {
     transform: scale(1.02);
     border-color: var(--accent-color);
+}
+
+/* Active Nav Link Style */
+.active-link {
+    color: var(--primary-color) !important;
+    font-weight: 700; /* bold */
+}
+
+/* Active Menu Filter Button Style */
+.menu-filter-btn.active {
+    color: var(--primary-color);
+    font-weight: 700; /* bold */
+}
+
+/* Scroll Animation */
+.scroll-animate {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.scroll-animate.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Enhanced Hover Effects */
+.btn-lift {
+    transition: all 0.3s ease;
+}
+
+.btn-lift:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }

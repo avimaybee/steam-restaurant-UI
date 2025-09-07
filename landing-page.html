@@ -12,17 +12,20 @@
 </head>
 <body class="bg-secondary-color text-text-primary">
 
-    <div class="relative min-h-screen flex flex-col hero-gradient">
-        <div class="relative z-10 flex flex-col h-full container mx-auto px-8 lg:px-16">
+    <div class="relative min-h-screen flex flex-col bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1579871494447-9811cf80d66c?q=80&w=2070&auto=format&fit=crop');">
+        <!-- New Overlay Div -->
+        <div class="absolute inset-0 bg-black/70 z-10"></div>
+        
+        <div class="relative z-20 flex flex-col h-full container mx-auto px-8 lg:px-16">
             <header id="main-header"></header>
 
-            <main class="flex-grow flex items-center justify-center">
+            <main class="flex-grow flex items-center justify-center pt-40">
                 <div class="text-center">
                     <h1 class="text-5xl md:text-8xl font-extrabold text-white leading-tight tracking-tight mb-6 text-shadow"> Where Culinary Artistry Meets Asian Tradition </h1>
                     <p class="text-xl md:text-2xl text-[var(--text-secondary)] max-w-3xl mx-auto mb-12 text-shadow"> Experience the art of modern Asian fusion cuisine in an elegant and sophisticated setting. Your journey into exquisite flavors starts here. </p>
                     <div class="flex flex-col sm:flex-row items-center justify-center gap-6">
-                        <a class="w-full sm:w-auto bg-[var(--primary-color)] text-black rounded-full h-16 px-12 text-xl font-bold tracking-wider transition-all duration-300 transform hover:scale-105 shadow-lg shadow-black/40 flex items-center justify-center" href="table-reservations.html"> Book a Table </a>
-                        <a class="w-full sm:w-auto bg-transparent border-2 border-white text-white rounded-full h-16 px-12 text-xl font-bold tracking-wider transition-all duration-300 transform hover:scale-105 hover:bg-white hover:text-black shadow-lg shadow-black/20 flex items-center justify-center" href="order-page.html"> Order Online </a>
+                        <a class="w-full sm:w-auto bg-[var(--primary-color)] text-black rounded-full h-16 px-12 text-xl font-bold tracking-wider flex items-center justify-center btn-lift" href="table-reservations.html"> Book a Table </a>
+                        <a class="w-full sm:w-auto bg-transparent border-2 border-white text-white rounded-full h-16 px-12 text-xl font-bold tracking-wider hover:bg-white hover:text-black flex items-center justify-center btn-lift" href="order-page.html"> Order Online </a>
                     </div>
                 </div>
             </main>
@@ -31,7 +34,7 @@
 
     <main class="bg-[#101010] py-24 sm:py-32">
         <div class="mx-auto max-w-7xl px-6 lg:px-8">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-x-16 gap-y-12 items-center">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-x-16 gap-y-12 items-center scroll-animate">
                 <div class="space-y-8">
                     <h2 class="text-4xl font-bold tracking-tight text-white sm:text-5xl">Discover Our Story</h2>
                     <p class="text-lg leading-8 text-gray-300">At Steam, we blend time-honored Asian culinary traditions with a modern twist. Our philosophy is simple: use the freshest ingredients, honor the authentic flavors, and create an unforgettable dining experience. Every dish is a work of art, crafted with passion and precision.</p>
@@ -40,7 +43,7 @@
                 <div class="h-96 w-full rounded-2xl bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1755409022230-7d96727f4b69?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA==')"></div>
             </div>
 
-            <div class="mt-32 text-center">
+            <div class="mt-32 text-center scroll-animate">
                 <h2 class="text-4xl font-bold tracking-tight text-white sm:text-5xl">A Taste of Our Menu</h2>
                 <p class="mt-4 text-lg leading-8 text-gray-300">From delicate dim sum to sizzling main courses, our menu is a journey through the flavors of Asia.</p>
             </div>

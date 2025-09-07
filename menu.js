@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function renderMenu(category) {
         menuContainer.innerHTML = '';
-        const filteredItems = category === 'all' ? menuItems : menuItems.filter(item => item.category === category);
+        const filteredItems = category === 'all' ? menuItems : menuItems.filter(item => item.category.includes(category));
 
         const itemsBySubCategory = filteredItems.reduce((acc, item) => {
             const subCategory = item.subCategory;
