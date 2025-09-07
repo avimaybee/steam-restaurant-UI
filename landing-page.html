@@ -9,6 +9,7 @@
     <link rel="shortcut icon" href="icons/favicon.svg">
     <meta name="description" content="Experience the art of modern Asian fusion cuisine in an elegant and sophisticated setting. Your journey into exquisite flavors starts here.">
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <link rel="stylesheet" href="style.css">
@@ -18,7 +19,7 @@
 
     <div class="relative min-h-screen flex flex-col bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1579871494447-9811cf80d66c?q=80&w=2070&auto=format&fit=crop');" role="img" aria-label="A close-up of a chef preparing a dish with chopsticks.">
         <!-- New Overlay Div -->
-        <div class="absolute inset-0 bg-black/70 z-10"></div>
+        <div class="absolute inset-0 hero-overlay z-10"></div>
         
         <div class="relative z-20 flex flex-col h-full container mx-auto px-8 lg:px-16">
             <header id="main-header"></header>
@@ -39,7 +40,7 @@
     <main class="bg-[#101010] py-24 sm:py-32">
         <div class="mx-auto max-w-7xl px-6 lg:px-8">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-x-16 gap-y-12 items-center scroll-animate">
-                <div class="space-y-8">
+                <div class="space-y-8 glass-card p-8 rounded-2xl">
                     <h2 class="text-4xl font-bold tracking-tight text-white sm:text-5xl" data-i18n-key="landing_story_title">Discover Our Story</h2>
                     <p class="text-lg leading-8 text-gray-300" data-i18n-key="landing_story_p">At Steam, we blend time-honored Asian culinary traditions with a modern twist. Our philosophy is simple: use the freshest ingredients, honor the authentic flavors, and create an unforgettable dining experience. Every dish is a work of art, crafted with passion and precision.</p>
                     <a href="about-us.html" class="btn btn-primary" data-i18n-key="landing_story_learn_more">Learn More</a>

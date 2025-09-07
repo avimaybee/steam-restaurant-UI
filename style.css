@@ -22,6 +22,7 @@
   --border-dark: #382f29;
   --bg-form: #1C1C1C;
   --bg-form-input: #382f29;
+  --font-serif: 'Playfair Display', serif;
 }
 
 html[data-theme="light"] {
@@ -39,6 +40,10 @@ body {
     font-family: 'Manrope', sans-serif;
     background-color: var(--secondary-color);
     color: var(--text-primary);
+}
+
+h1, h2, h3 {
+    font-family: var(--font-serif);
 }
 
 .hero-gradient {
@@ -299,4 +304,15 @@ html[data-theme="light"] .btn-primary {
 /* Shape modifiers */
 .btn-pill {
     border-radius: 9999px;
+}
+
+.hero-overlay {
+  background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.4) 100%);
+}
+
+.glass-card {
+  background: rgba(26, 26, 26, 0.5);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
