@@ -22,6 +22,10 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     function renderMenu(category) {
+        const loadingSpinner = document.getElementById('loading-spinner');
+        if (loadingSpinner) {
+            loadingSpinner.style.display = 'none';
+        }
         menuContainer.innerHTML = '';
         const filteredItems = category === 'all' ? menuItems : menuItems.filter(item => item.category.includes(category));
 
@@ -45,11 +49,16 @@ document.addEventListener('DOMContentLoaded', function() {
                 const menuItemElement = document.createElement('div');
                 menuItemElement.classList.add('flex', 'flex-col', 'justify-between', 'gap-2');
                 menuItemElement.innerHTML = `
-                    <div class="flex justify-between items-start">
-                        <h3 class="font-semibold text-white">${item.name}</h3>
-                        <p class="shrink-0 font-medium text-white">$${item.price.toFixed(2)}</p>
+                    <div class="flex items-center gap-4">
+                        <img src="${item.image}" alt="${item.name}" class="h-16 w-16 rounded-md object-cover">
+                        <div class="flex-grow">
+                            <div class="flex justify-between items-start">
+                                <h3 class="font-semibold text-white">${item.name}</h3>
+                                <p class="shrink-0 font-medium text-white">$${item.price.toFixed(2)}</p>
+                            </div>
+                            <p class="text-sm text-white/60">${item.description}</p>
+                        </div>
                     </div>
-                    <p class="text-sm text-white/60">${item.description}</p>
                 `;
                 grid.appendChild(menuItemElement);
             });

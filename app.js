@@ -18,10 +18,34 @@ document.addEventListener("DOMContentLoaded", function() {
         const mobileMenu = document.getElementById('mobile-menu');
 
         if (mobileMenuButton && mobileMenu) {
+            const menuLinks = mobileMenu.querySelectorAll('a');
+            const firstLink = menuLinks[0];
+            const lastLink = menuLinks[menuLinks.length - 1];
+
             mobileMenuButton.addEventListener('click', () => {
                 const isExpanded = mobileMenuButton.getAttribute('aria-expanded') === 'true';
                 mobileMenuButton.setAttribute('aria-expanded', !isExpanded);
                 mobileMenu.classList.toggle('hidden');
+
+                if (!isExpanded) {
+                    firstLink.focus();
+                }
+            });
+
+            mobileMenu.addEventListener('keydown', (e) => {
+                if (e.key === 'Tab') {
+                    if (e.shiftKey) { // Shift + Tab
+                        if (document.activeElement === firstLink) {
+                            e.preventDefault();
+                            lastLink.focus();
+                        }
+                    } else { // Tab
+                        if (document.activeElement === lastLink) {
+                            e.preventDefault();
+                            firstLink.focus();
+                        }
+                    }
+                }
             });
         }
     }
