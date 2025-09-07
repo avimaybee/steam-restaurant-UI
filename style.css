@@ -20,6 +20,19 @@
   --text-primary: #FFFFFF;
   --text-secondary: #E0E0E0;
   --border-dark: #382f29;
+  --bg-form: #1C1C1C;
+  --bg-form-input: #382f29;
+}
+
+html[data-theme="light"] {
+    --primary-color: #8a704c;
+    --accent-color: #a78b64;
+    --secondary-color: #f5f5f5;
+    --text-primary: #121212;
+    --text-secondary: #555555;
+    --border-dark: #e0e0e0;
+    --bg-form: #ffffff;
+    --bg-form-input: #e0e0e0;
 }
 
 body {
@@ -227,4 +240,63 @@ input[type="time"] {
 .btn-lift:hover {
     transform: translateY(-3px);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* =========================================
+   Button Styles
+   ========================================= */
+.btn {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem; /* rounded-lg */
+    font-weight: 600; /* semibold */
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border: 2px solid transparent; /* for consistent sizing */
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    border-color: var(--primary-color);
+}
+
+html[data-theme="light"] .btn-primary {
+    color: #FFFFFF;
+}
+
+.btn-primary:hover {
+    background-color: var(--accent-color);
+    border-color: var(--accent-color);
+}
+
+.btn-secondary {
+    background-color: transparent;
+    color: var(--text-primary);
+    border-color: var(--text-primary);
+}
+
+.btn-secondary:hover {
+    background-color: var(--text-primary);
+    color: var(--secondary-color);
+}
+
+/* Size modifiers */
+.btn-lg {
+    padding: 1rem 2.5rem;
+    font-size: 1.125rem; /* text-xl */
+    font-weight: 700; /* bold */
+    letter-spacing: 0.05em; /* tracking-wider */
+}
+
+/* Shape modifiers */
+.btn-pill {
+    border-radius: 9999px;
 }
