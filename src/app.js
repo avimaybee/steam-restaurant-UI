@@ -10,42 +10,6 @@ import { initOrderTrackingPage } from './pages/order-tracking.js';
 import { initAnalyticsPage } from './pages/analytics.js';
 import { initLandingPage } from './pages/landing.js';
 
-function translatePage() {
-    document.querySelectorAll('[data-i18n-key]').forEach(el => {
-        const key = el.dataset.i18nKey;
-        const replacements = el.dataset.i18nReplacements ? JSON.parse(el.dataset.i18nReplacements) : {};
-        el.innerHTML = store.get(key, replacements);
-    });
-    document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
-        const key = el.dataset.i18nPlaceholder;
-        el.placeholder = store.get(key);
-    });
-}
-
-async function initializeI18n() {
-    store.initLanguage();
-    await store.loadTranslations();
-    translatePage();
-
-    const langSelect = document.getElementById('language-select');
-    const langSelectMobile = document.getElementById('language-select-mobile');
-
-    if (langSelect) {
-        langSelect.value = store.state.currentLanguage;
-        langSelect.addEventListener('change', async (e) => {
-            await store.setLanguage(e.target.value);
-            window.location.reload(); // Simple way to re-render everything
-        });
-    }
-    if (langSelectMobile) {
-        langSelectMobile.value = store.state.currentLanguage;
-        langSelectMobile.addEventListener('change', async (e) => {
-            await store.setLanguage(e.target.value);
-            window.location.reload();
-        });
-    }
-}
-
 function initializeMobileMenu() {
     const mobileMenuButton = document.getElementById('mobile-menu-button');
     const mobileMenu = document.getElementById('mobile-menu');
@@ -218,8 +182,6 @@ function setupLogout() {
 }
 
 async function initApp() {
-    await initializeI18n();
-
     await loadHeader();
     await loadFooter();
 
