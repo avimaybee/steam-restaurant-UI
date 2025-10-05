@@ -12,8 +12,10 @@ const state = {
 };
 
 const MENU_STORAGE_KEY = 'restaurantMenu';
-const USER_SESSION_KEY = 'restaurantUser';
+const USER_STORAGE_KEY = 'restaurantUser';
 const REVIEWS_STORAGE_KEY = 'restaurantReviews';
+const CART_STORAGE_KEY = 'restaurantCart';
+const ORDERS_STORAGE_KEY = 'restaurantOrders';
 const LANG_STORAGE_KEY = 'restaurantLang';
 
 // Function to save menu to localStorage
@@ -31,16 +33,41 @@ function loadMenuFromStorage() {
     return false;
 }
 
-// Function to save user session to sessionStorage
-function saveUserToSession(user) {
-    sessionStorage.setItem(USER_SESSION_KEY, JSON.stringify(user));
+// Function to load orders from localStorage
+function loadOrdersFromStorage() {
+    const ordersFromStorage = localStorage.getItem(ORDERS_STORAGE_KEY);
+    if (ordersFromStorage) {
+        state.orders = JSON.parse(ordersFromStorage);
+        return true;
+    }
+    return false;
 }
 
-// Function to load user from sessionStorage
-function loadUserFromSession() {
-    const userFromSession = sessionStorage.getItem(USER_SESSION_KEY);
+// Function to save user session to localStorage
+function saveUserToLocalStorage(user) {
+    localStorage.setItem(USER_STORAGE_KEY, JSON.stringify(user));
+}
+
+// Function to load user from localStorage
+function loadUserFromLocalStorage() {
+    const userFromSession = localStorage.getItem(USER_STORAGE_KEY);
     if (userFromSession) {
         state.currentUser = JSON.parse(userFromSession);
+        return true;
+    }
+    return false;
+}
+
+// Function to save cart to localStorage
+function saveCartToStorage() {
+    localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(state.cart));
+}
+
+// Function to load cart from localStorage
+function loadCartFromStorage() {
+    const cartFromStorage = localStorage.getItem(CART_STORAGE_KEY);
+    if (cartFromStorage) {
+        state.cart = JSON.parse(cartFromStorage);
         return true;
     }
     return false;
@@ -136,6 +163,47 @@ export const store = {
         if (index !== -1) state.menu[index] = updatedItem;
         saveMenuToStorage();
     },
+    // Cart Management
+    getCart: () => {
+        if (state.cart.length === 0) {
+            loadCartFromStorage();
+        }
+        return state.cart;
+    },
+    addToCart: (itemId, quantity = 1) => {
+        const itemToAdd = state.menu.find(item => item.id === itemId);
+        if (!itemToAdd) {
+            console.error(`Item with id ${itemId} not found in menu.`);
+            return;
+        }
+
+        const existingItem = state.cart.find(cartItem => cartItem.id === itemId);
+        if (existingItem) {
+            existingItem.quantity += quantity;
+        } else {
+            state.cart.push({ ...itemToAdd, quantity });
+        }
+        saveCartToStorage();
+    },
+    updateCartItemQuantity: (itemId, quantity) => {
+        const itemInCart = state.cart.find(cartItem => cartItem.id === itemId);
+        if (itemInCart) {
+            itemInCart.quantity = quantity;
+            if (itemInCart.quantity <= 0) {
+                store.removeFromCart(itemId);
+            } else {
+                saveCartToStorage();
+            }
+        }
+    },
+    removeFromCart: (itemId) => {
+        state.cart = state.cart.filter(cartItem => cartItem.id !== itemId);
+        saveCartToStorage();
+    },
+    clearCart: () => {
+        state.cart = [];
+        saveCartToStorage();
+    },
     deleteMenuItem: async (itemId) => {
         state.menu = state.menu.filter(item => item.id !== itemId);
         saveMenuToStorage();
@@ -144,8 +212,8 @@ export const store = {
     // Order Management
     getOrders: async () => state.orders,
     getOrderById: async (orderId) => {
-        // The + converts orderId to a number in case it's a string
-        return state.orders.find(o => o.id === +orderId);
+        // Find order by string ID
+        return state.orders.find(o => o.id === orderId);
     },
     getOrdersByCustomer: async (customerName) => {
         return state.orders.filter(o => o.customer === customerName);
@@ -186,7 +254,7 @@ export const store = {
     // Auth Management
     getCurrentUser: () => {
         if (!state.currentUser) {
-            loadUserFromSession();
+            loadUserFromLocalStorage();
         }
         return state.currentUser;
     },
@@ -194,14 +262,14 @@ export const store = {
         const user = state.users.find(u => u.email === email && u.password === password);
         if (user) {
             state.currentUser = user;
-            saveUserToSession(user);
+            saveUserToLocalStorage(user);
             return user;
         }
         return null;
     },
     logout: () => {
         state.currentUser = null;
-        sessionStorage.removeItem(USER_SESSION_KEY);
+        localStorage.removeItem(USER_STORAGE_KEY);
     },
     register: async (name, email, password) => {
         if (state.users.some(u => u.email === email)) {
@@ -215,8 +283,10 @@ export const store = {
             loyaltyPoints: 0 // New users start with 0 points
         };
         state.users.push(newUser);
-        state.currentUser = newUser;
-        saveUserToSession(newUser);
+        // Do not automatically log in the user after registration
+        // Do not automatically log in the user after registration
+        // state.currentUser = newUser;
+        // saveUserToLocalStorage(newUser);
         return newUser;
     },
 
@@ -226,7 +296,7 @@ export const store = {
         if (user) {
             user.loyaltyPoints += points;
             if (state.currentUser && state.currentUser.id === userId) {
-                saveUserToSession(user);
+                saveUserToLocalStorage(user);
             }
         }
     },
@@ -235,7 +305,7 @@ export const store = {
         if (user && user.loyaltyPoints >= points) {
             user.loyaltyPoints -= points;
             if (state.currentUser && state.currentUser.id === userId) {
-                saveUserToSession(user);
+                saveUserToLocalStorage(user);
             }
             return true;
         }
@@ -275,5 +345,8 @@ export const store = {
     }
 };
 
-// Initialize fake data
+// Initialize state from storage first
+loadOrdersFromStorage();
+
+// Initialize fake data if storage is empty
 generateFakeData();

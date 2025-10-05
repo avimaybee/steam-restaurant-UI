@@ -8,131 +8,77 @@ import { initRegisterPage } from './pages/register.js';
 import { initProfilePage } from './pages/profile.js';
 import { initOrderTrackingPage } from './pages/order-tracking.js';
 import { initAnalyticsPage } from './pages/analytics.js';
-
-function translatePage() {
-    document.querySelectorAll('[data-i18n-key]').forEach(el => {
-        const key = el.dataset.i18nKey;
-        const replacements = el.dataset.i18nReplacements ? JSON.parse(el.dataset.i18nReplacements) : {};
-        const translated = store.get(key, replacements);
-        // Avoid replacing the content if it's a container with other elements
-        if (el.children.length === 0 || el.dataset.i18nReplacements) {
-            el.innerHTML = translated;
-        }
-    });
-    document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
-        const key = el.dataset.i18nPlaceholder;
-        el.placeholder = store.get(key);
-    });
-}
-
-async function loadAndTranslate() {
-    store.initLanguage();
-    await store.loadTranslations();
-    // Translate the initial static content
-    translatePage();
-}
-
-function initializeI18nListeners() {
-    const langSelect = document.getElementById('language-select');
-    const langSelectMobile = document.getElementById('language-select-mobile');
-    const currentLang = store.state.currentLanguage;
-
-    const setLanguageAndReload = async (lang) => {
-        await store.setLanguage(lang);
-        window.location.reload();
-    };
-
-    if (langSelect) {
-        langSelect.value = currentLang;
-        langSelect.addEventListener('change', (e) => setLanguageAndReload(e.target.value));
-    }
-    if (langSelectMobile) {
-        langSelectMobile.value = currentLang;
-        langSelectMobile.addEventListener('change', (e) => setLanguageAndReload(e.target.value));
-    }
-}
+import { initLandingPage } from './pages/landing.js';
+import { initCheckoutPage } from './pages/checkout.js';
+import { initVouchersPage } from './pages/vouchers.js';
+import { initGalleryPage } from './pages/gallery.js';
+import { initAboutPage } from './pages/about.js';
+import { initContactPage } from './pages/contact.js';
 
 function initializeMobileMenu() {
     const mobileMenuButton = document.getElementById('mobile-menu-button');
     const mobileMenu = document.getElementById('mobile-menu');
 
-    if (mobileMenuButton && mobileMenu) {
-        const menuLinks = mobileMenu.querySelectorAll('a');
-        if (menuLinks.length === 0) return;
-        const firstLink = menuLinks[0];
-        const lastLink = menuLinks[menuLinks.length - 1];
+    if (!mobileMenuButton || !mobileMenu) return;
 
-        mobileMenuButton.addEventListener('click', () => {
-            const isExpanded = mobileMenuButton.getAttribute('aria-expanded') === 'true';
-            mobileMenuButton.setAttribute('aria-expanded', !isExpanded);
-            mobileMenu.classList.toggle('hidden');
+    const openMenu = () => {
+        mobileMenu.classList.remove('hidden');
+        mobileMenu.classList.add('open');
+        mobileMenuButton.setAttribute('aria-expanded', 'true');
+        document.body.classList.add('body-no-scroll');
+        const firstFocusable = mobileMenu.querySelector('a, button');
+        if (firstFocusable) firstFocusable.focus();
+    };
 
-            if (!isExpanded) {
-                firstLink.focus();
-            }
-        });
+    const closeMenu = () => {
+        mobileMenu.classList.remove('open');
+        mobileMenu.addEventListener('transitionend', () => {
+            mobileMenu.classList.add('hidden');
+        }, { once: true });
+        mobileMenuButton.setAttribute('aria-expanded', 'false');
+        document.body.classList.remove('body-no-scroll');
+        mobileMenuButton.focus();
+    };
 
-        mobileMenu.addEventListener('keydown', (e) => {
-            if (e.key === 'Tab') {
-                if (e.shiftKey) { // Shift + Tab
-                    if (document.activeElement === firstLink) {
-                        e.preventDefault();
-                        lastLink.focus();
-                    }
-                } else { // Tab
-                    if (document.activeElement === lastLink) {
-                        e.preventDefault();
-                        firstLink.focus();
-                    }
-                }
-            }
-        });
-    }
+    mobileMenuButton.addEventListener('click', () => {
+        const isExpanded = mobileMenuButton.getAttribute('aria-expanded') === 'true';
+        isExpanded ? closeMenu() : openMenu();
+    });
+
+    mobileMenu.addEventListener('keydown', (e) => {
+        if (e.key !== 'Tab') return;
+        const focusableElements = mobileMenu.querySelectorAll('a, button');
+        const firstElement = focusableElements[0];
+        const lastElement = focusableElements[focusableElements.length - 1];
+        if (e.shiftKey && document.activeElement === firstElement) {
+            e.preventDefault();
+            lastElement.focus();
+        } else if (!e.shiftKey && document.activeElement === lastElement) {
+            e.preventDefault();
+            firstElement.focus();
+        }
+    });
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && mobileMenu.classList.contains('open')) {
+            closeMenu();
+        }
+    });
 }
 
 function setActiveNavLink() {
     const navLinks = document.querySelectorAll('#main-header nav a, #mobile-menu nav a');
     const currentPageUrl = window.location.pathname;
-
     navLinks.forEach(link => {
-        const linkPath = new URL(link.href).pathname;
-        if (linkPath === currentPageUrl) {
+        if (new URL(link.href).pathname === currentPageUrl) {
             link.classList.add('active-link');
         }
     });
 }
 
-function initializeScrollAnimations() {
-    const animatedElements = document.querySelectorAll('.scroll-animate');
-    if (!animatedElements.length) return;
-
-    const observer = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
-                observer.unobserve(entry.target);
-            }
-        });
-    }, {
-        threshold: 0.1
-    });
-
-    animatedElements.forEach(element => {
-        observer.observe(element);
-    });
-}
-
-function applyFadeInAnimation() {
-    const mainContent = document.querySelector('main');
-    if (mainContent) {
-        mainContent.classList.add('fade-in');
-    }
-}
-
 function initializeThemeSwitcher() {
     const themeToggleBtn = document.getElementById('theme-toggle');
     const themeToggleMobileBtn = document.getElementById('theme-toggle-mobile');
-
     const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
     const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
     const themeToggleDarkIconMobile = document.getElementById('theme-toggle-dark-icon-mobile');
@@ -140,27 +86,15 @@ function initializeThemeSwitcher() {
 
     if (!themeToggleBtn) return;
 
-    // Function to update icon visibility
     const updateIcons = (theme) => {
-        if (theme === 'dark') {
-            themeToggleDarkIcon.classList.remove('hidden');
-            themeToggleLightIcon.classList.add('hidden');
-            themeToggleDarkIconMobile.classList.remove('hidden');
-            themeToggleLightIconMobile.classList.add('hidden');
-        } else {
-            themeToggleDarkIcon.classList.add('hidden');
-            themeToggleLightIcon.classList.remove('hidden');
-            themeToggleDarkIconMobile.classList.add('hidden');
-            themeToggleLightIconMobile.classList.remove('hidden');
-        }
+        const isDark = theme === 'dark';
+        themeToggleDarkIcon.classList.toggle('hidden', !isDark);
+        themeToggleLightIcon.classList.toggle('hidden', isDark);
+        themeToggleDarkIconMobile.classList.toggle('hidden', !isDark);
+        themeToggleLightIconMobile.classList.toggle('hidden', isDark);
     };
 
-    // Check for saved theme in localStorage or use system preference
-    let theme = localStorage.getItem('theme');
-    if (!theme) {
-        theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-    }
-
+    let theme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
     document.documentElement.setAttribute('data-theme', theme);
     updateIcons(theme);
 
@@ -176,47 +110,12 @@ function initializeThemeSwitcher() {
     themeToggleMobileBtn.addEventListener('click', toggleTheme);
 }
 
-function handle404() {
-    const validPageNames = [
-        '/',
-        'index.html',
-        'about-us.html',
-        'admin.html',
-        'gallery.html',
-        'get-in-touch.html',
-        'gift-vouchers.html',
-        'landing-page.html',
-        'login.html',
-        'profile.html',
-        'register.html',
-        'order-page.html',
-        'order-tracking.html',
-        'our-menu.html',
-        'table-reservations.html',
-        'analytics.html',
-        '404.html'
-    ];
-
-    const currentPath = window.location.pathname.split('/').pop();
-
-    if (!validPageNames.includes(currentPath)) {
-        // This is a client-side fallback for servers that don't handle 404s correctly.
-        // A properly configured server would serve the 404.html page directly.
-        // We check if the body has content other than the header/footer.
-        const mainContent = document.querySelector('main');
-        if (!mainContent || mainContent.children.length === 0) {
-             window.location.href = '404.html';
-        }
-    }
-}
-
 function setupLogout() {
-    // Use event delegation on a parent element
     document.body.addEventListener('click', (e) => {
-        if (e.target.matches('#logout-btn') || e.target.matches('#logout-btn-mobile')) {
+        if (e.target.matches('#logout-btn, #logout-btn-mobile')) {
             store.logout();
             updateAuthLinks();
-            if (document.getElementById('profile-page')) {
+            if (window.location.pathname.endsWith('profile.html')) {
                 window.location.href = 'login.html';
             }
         }
@@ -224,38 +123,39 @@ function setupLogout() {
 }
 
 async function initApp() {
-    // 1. Load language data first
-    await loadAndTranslate();
+    // Wait for header and footer to load before initializing dependent components
+    await Promise.all([loadHeader(), loadFooter()]);
 
-    // 2. Load dynamic HTML content
-    await loadHeader();
-    await loadFooter();
-
-    // 3. Translate the newly loaded content
-    translatePage();
-
-    // 4. Initialize all other components and event listeners
+    // Now that the header and footer are loaded, we can initialize everything else.
     initializeMobileMenu();
     setActiveNavLink();
-    initializeScrollAnimations();
-    applyFadeInAnimation();
+
     initializeThemeSwitcher();
     updateAuthLinks();
     setupLogout();
-    initializeI18nListeners();
 
-    handle404();
-
-    // 5. Page-specific initializations
     const path = window.location.pathname;
-    if (path.endsWith('our-menu.html')) initMenuPage();
-    if (path.endsWith('order-page.html')) initOrderPage();
-    if (path.endsWith('admin.html')) initAdminPage();
-    if (path.endsWith('login.html')) initLoginPage();
-    if (path.endsWith('register.html')) initRegisterPage();
-    if (path.endsWith('profile.html')) initProfilePage();
-    if (path.endsWith('order-tracking.html')) initOrderTrackingPage();
-    if (path.endsWith('analytics.html')) initAnalyticsPage();
+    const pageInitializers = {
+        '/our-menu.html': initMenuPage,
+        '/order-page.html': initOrderPage,
+        '/admin.html': initAdminPage,
+        '/login.html': initLoginPage,
+        '/register.html': initRegisterPage,
+        '/profile.html': initProfilePage,
+        '/order-tracking.html': initOrderTrackingPage,
+        '/analytics.html': initAnalyticsPage,
+        '/landing-page.html': initLandingPage,
+        '/checkout.html': initCheckoutPage,
+        '/gift-vouchers.html': initVouchersPage,
+        '/gallery.html': initGalleryPage,
+        '/about-us.html': initAboutPage,
+        '/get-in-touch.html': initContactPage
+    };
+
+    const initializer = Object.keys(pageInitializers).find(key => path.endsWith(key));
+    if (initializer) {
+        pageInitializers[initializer]();
+    }
 }
 
 document.addEventListener('DOMContentLoaded', initApp);

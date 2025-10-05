@@ -14,40 +14,39 @@
 }
 
 :root {
-  --primary-color: #B99767;
-  --accent-color: #A78B64;
-  --secondary-color: #1a1a1a;
-  --text-primary: #FFFFFF;
-  --text-secondary: #E0E0E0;
-  --border-dark: #382f29;
-  --bg-form: #1C1C1C;
-  --bg-form-input: #382f29;
+  --primary-color: #C0A062; /* A more elegant, desaturated gold */
+  --accent-color: #A98C54; /* A slightly darker gold for hovers */
+  --secondary-color: #121212; /* A very dark, near-black for background */
+  --surface-color: #1E1E1E; /* A slightly lighter gray for cards/surfaces */
+  --text-primary: #F5F5F5; /* A soft, off-white for main text */
+  --text-secondary: #A0A0A0; /* A lighter gray for secondary text */
+  --border-color: #2A2A2A; /* A subtle border color */
+  --font-serif: 'Playfair Display', serif;
+  --font-sans: 'Manrope', sans-serif;
 }
 
 html[data-theme="light"] {
     --primary-color: #8a704c;
     --accent-color: #a78b64;
-    --secondary-color: #f5f5f5;
+    --secondary-color: #FFFFFF;
+    --surface-color: #F5F5F5;
     --text-primary: #121212;
     --text-secondary: #555555;
-    --border-dark: #e0e0e0;
-    --bg-form: #ffffff;
-    --bg-form-input: #e0e0e0;
+    --border-color: #EAEAEA;
 }
 
 body {
-    font-family: 'Manrope', sans-serif;
+    font-family: var(--font-sans);
     background-color: var(--secondary-color);
     color: var(--text-primary);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
-.hero-gradient {
-    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8));
-}
-
-.menu-gradient-bg {
-    background-image: radial-gradient(circle at 10% 20%, rgba(185, 151, 103, 0.1), transparent 50%),
-                      radial-gradient(circle at 80% 90%, rgba(185, 151, 103, 0.1), transparent 50%);
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-serif);
+    color: var(--text-primary);
+    letter-spacing: 0.02em;
 }
 
 .text-shadow {
@@ -107,21 +106,6 @@ body {
     opacity: 1;
 }
 
-.contact-gradient-bg {
-    background-image: radial-gradient(circle at top right, #b85814 0%, transparent 40%),
-                      radial-gradient(circle at bottom left, #382f29 0%, transparent 50%);
-}
-
-.voucher-gradient-bg {
-    background-image: radial-gradient(circle at top right, rgba(156, 78, 22, 0.2), transparent 40%),
-                      radial-gradient(circle at bottom left, rgba(156, 78, 22, 0.2), transparent 50%);
-}
-
-.reservation-gradient-bg {
-    background: radial-gradient(circle at top right, rgba(185, 151, 103, 0.1), transparent),
-                radial-gradient(circle at bottom left, rgba(185, 151, 103, 0.1), transparent),
-                var(--secondary-color);
-}
 
 /* Form Styles from table-reservations.html */
 .form-input-custom {
@@ -179,16 +163,6 @@ input[type="time"] {
     color: var(--primary-color);
 }
 
-/* Animations */
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-.fade-in {
-    animation: fadeIn 0.5s ease-in-out forwards;
-}
-
 /* Form Validation Styles */
 .form-input.border-red-500, .form-input-custom.border-red-500 {
     border-color: #ef4444 !important; /* Red-500 */
@@ -214,22 +188,174 @@ input[type="time"] {
     font-weight: 700; /* bold */
 }
 
-/* Active Menu Filter Button Style */
-.menu-filter-btn.active {
+/* Header Styles */
+#header-wrapper.scrolled {
+    background-color: var(--surface-color);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.nav-link {
+    position: relative;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+    color: var(--text-primary);
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: var(--primary-color);
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.nav-link:hover::after,
+.nav-link.active-link::after {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+#mobile-menu {
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    transform: translateY(-10px);
+    opacity: 0;
+}
+
+#mobile-menu.open {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.body-no-scroll {
+    overflow: hidden;
+}
+
+/* Admin Table Styles */
+#admin-management .overflow-x-auto {
+    -webkit-overflow-scrolling: touch;
+}
+
+#admin-management table {
+    min-width: 640px; /* Force horizontal scroll on small screens */
+}
+
+#admin-management thead {
+    background-color: var(--surface-color);
+}
+
+#admin-management tbody tr {
+    border-bottom: 1px solid var(--border-color);
+}
+
+#admin-management tbody tr:last-of-type {
+    border-bottom: none;
+}
+
+#admin-management .admin-tab {
+    border-bottom-width: 2px;
+    padding-bottom: 0.5rem;
+    padding-top: 0.5rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+#admin-management .admin-tab.active, #admin-management .admin-tab:hover {
     color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.nav-link-footer {
+    color: var(--text-secondary);
+    transition: color 0.3s ease;
+}
+
+.nav-link-footer:hover {
+    color: var(--primary-color);
+}
+
+/* Active Menu Filter Button Style */
+.menu-filter-btn {
+    padding: 0.5rem 1rem;
+    border-radius: 9999px;
+    background-color: transparent;
+    border: 1px solid var(--border-color);
+    color: var(--text-secondary);
+    transition: all 0.3s ease;
+}
+
+.menu-filter-btn:hover {
+    background-color: var(--surface-color);
+    color: var(--text-primary);
+}
+
+.menu-filter-btn.active {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    color: #121212;
     font-weight: 700; /* bold */
 }
 
 /* Scroll Animation */
-.scroll-animate {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+.menu-item-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.scroll-animate.visible {
-    opacity: 1;
-    transform: translateY(0);
+.menu-item-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+#advanced-filters input, #advanced-filters select {
+    background-color: var(--surface-color);
+    border: 1px solid var(--border-color);
+    border-radius: 0.5rem;
+    padding: 0.75rem 1rem;
+    color: var(--text-primary);
+    transition: border-color 0.3s ease;
+}
+
+#advanced-filters input:focus, #advanced-filters select:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px rgba(192, 160, 98, 0.2);
+}
+
+#dietary-tags .form-checkbox {
+    border-radius: 0.25rem;
+    border: 1px solid var(--border-color);
+    background-color: var(--surface-color);
+    color: var(--primary-color);
+}
+
+#dietary-tags .form-checkbox:checked {
+    background-color: var(--primary-color);
+}
+
+.form-input {
+    background-color: var(--surface-color);
+    border: 1px solid var(--border-color);
+    border-radius: 0.5rem;
+    padding: 0.75rem 1rem;
+    color: var(--text-primary);
+    transition: border-color 0.3s ease;
+}
+
+.form-input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px rgba(192, 160, 98, 0.2);
 }
 
 /* Enhanced Hover Effects */
@@ -250,42 +376,40 @@ input[type="time"] {
     justify-content: center;
     align-items: center;
     padding: 0.75rem 1.5rem;
-    border-radius: 0.5rem; /* rounded-lg */
+    border-radius: 9999px; /* Fully rounded for a modern pill shape */
     font-weight: 600; /* semibold */
     text-decoration: none;
     transition: all 0.3s ease;
-    border: 2px solid transparent; /* for consistent sizing */
+    border: 1px solid transparent;
+    letter-spacing: 0.05em;
 }
 
 .btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+    transform: scale(1.05); /* A more subtle hover effect */
 }
 
 .btn-primary {
     background-color: var(--primary-color);
-    color: var(--secondary-color);
+    color: #121212; /* Dark text on a light button for contrast */
     border-color: var(--primary-color);
-}
-
-html[data-theme="light"] .btn-primary {
-    color: #FFFFFF;
 }
 
 .btn-primary:hover {
     background-color: var(--accent-color);
     border-color: var(--accent-color);
+    box-shadow: 0 0 20px rgba(192, 160, 98, 0.3); /* Subtle glow */
 }
 
 .btn-secondary {
     background-color: transparent;
     color: var(--text-primary);
-    border-color: var(--text-primary);
+    border-color: var(--border-color);
 }
 
 .btn-secondary:hover {
-    background-color: var(--text-primary);
-    color: var(--secondary-color);
+    background-color: var(--surface-color);
+    border-color: var(--primary-color);
+    color: var(--primary-color);
 }
 
 /* Size modifiers */
@@ -299,4 +423,27 @@ html[data-theme="light"] .btn-primary {
 /* Shape modifiers */
 .btn-pill {
     border-radius: 9999px;
+}
+
+.hero-overlay {
+  background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.4) 100%);
+}
+
+.glass-card {
+  background: rgba(30, 30, 30, 0.5); /* Updated to use surface color with alpha */
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--border-color); /* Use CSS variable */
+}
+
+.menu-card {
+    background-color: var(--surface-color);
+    border-radius: 0.75rem; /* rounded-xl */
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.menu-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
 }

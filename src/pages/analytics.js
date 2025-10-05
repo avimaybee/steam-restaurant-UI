@@ -116,6 +116,12 @@ function renderReservationsChart(reservationData) {
 export async function initAnalyticsPage() {
     if (!document.getElementById('analytics-page')) return;
 
+    const currentUser = store.getCurrentUser();
+    if (!currentUser) {
+        window.location.href = 'login.html';
+        return;
+    }
+
     [allOrders, allMenuItems, allReservations] = await Promise.all([
         store.getOrders(),
         store.getMenu(),

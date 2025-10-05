@@ -9,7 +9,7 @@
     <link rel="shortcut icon" href="icons/favicon.svg">
     <meta name="description" content="Secure your table at Steam for an unforgettable dining experience. Please fill out the form below to proceed.">
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <link rel="stylesheet" href="style.css">
     <script type="module" src="src/app.js" defer></script>
@@ -21,14 +21,14 @@
     <main id="main-content" class="px-4 md:px-20 lg:px-40 flex flex-1 justify-center py-12 md:py-20 pt-32">
         <div class="layout-content-container flex flex-col w-full max-w-3xl">
             <div class="text-center mb-12">
-                <h1 class="text-white text-4xl md:text-5xl font-bold leading-tight tracking-tight" data-i18n-key="reservations_title">Table Reservation</h1>
-                <p class="text-gray-400 mt-4 text-base md:text-lg max-w-xl mx-auto" data-i18n-key="reservations_subtitle">Secure your table at Steam for an unforgettable dining experience. Please fill out the form below to proceed.</p>
+                <h1 class="text-white text-4xl md:text-5xl font-bold leading-tight tracking-tight">Table Reservation</h1>
+                <p class="text-gray-400 mt-4 text-base md:text-lg max-w-xl mx-auto">Secure your table at Steam for an unforgettable dining experience. Please fill out the form below to proceed.</p>
             </div>
             <form class="space-y-6 bg-[var(--secondary-color)] p-8 sm:p-10 rounded-xl border border-white/10" novalidate>
-                <h2 class="text-2xl font-bold text-white mb-6 border-b border-white/10 pb-4" data-i18n-key="reservations_details_title">Your Details</h2>
+                <h2 class="text-2xl font-bold text-white mb-6 border-b border-white/10 pb-4">Your Details</h2>
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
                     <div>
-                        <label class="block text-gray-300 text-sm font-medium leading-normal pb-2" for="fullName" data-i18n-key="reservations_form_name">Full Name</label>
+                        <label class="block text-gray-300 text-sm font-medium leading-normal pb-2" for="fullName">Full Name</label>
                         <div class="relative">
                             <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none">person</span>
                             <input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-[var(--primary-color)] border border-white/10 bg-[var(--secondary-color)] h-14 placeholder:text-gray-500 pl-12 pr-4 py-4 text-base font-normal leading-normal transition-colors" id="fullName" name="fullName" placeholder="John Doe" required="" type="text"/>
@@ -36,7 +36,7 @@
                         <p id="fullName-error" class="text-red-500 text-sm mt-1 hidden"></p>
                     </div>
                     <div>
-                        <label class="block text-gray-300 text-sm font-medium leading-normal pb-2" for="email" data-i18n-key="reservations_form_email">Email Address</label>
+                        <label class="block text-gray-300 text-sm font-medium leading-normal pb-2" for="email">Email Address</label>
                         <div class="relative">
                             <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none">mail</span>
                             <input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-[var(--primary-color)] border border-white/10 bg-[var(--secondary-color)] h-14 placeholder:text-gray-500 pl-12 pr-4 py-4 text-base font-normal leading-normal transition-colors" id="email" name="email" placeholder="you@example.com" required="" type="email"/>
@@ -44,10 +44,10 @@
                         <p id="email-error" class="text-red-500 text-sm mt-1 hidden"></p>
                     </div>
                 </div>
-                <h2 class="text-2xl font-bold text-white mb-6 border-b border-white/10 pb-4 pt-6" data-i18n-key="reservations_details_subtitle">Reservation Details</h2>
+                <h2 class="text-2xl font-bold text-white mb-6 border-b border-white/10 pb-4 pt-6">Reservation Details</h2>
                 <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
                     <div>
-                        <label class="block text-gray-300 text-sm font-medium leading-normal pb-2" for="date" data-i18n-key="reservations_form_date">Date</label>
+                        <label class="block text-gray-300 text-sm font-medium leading-normal pb-2" for="date">Date</label>
                         <div class="relative">
                             <span class="material-symbols-outlined absolute right-4 top-11 text-gray-400 pointer-events-none">calendar_today</span>
                             <input class="form-input-custom flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--primary-color)] border border-white/10 bg-[var(--secondary-color)] h-14 placeholder:text-gray-500 p-4 text-base font-normal leading-normal transition-colors" id="date" name="date" placeholder="Select Date" required="" type="date"/>
@@ -55,7 +55,7 @@
                         <p id="date-error" class="text-red-500 text-sm mt-1 hidden"></p>
                     </div>
                     <div>
-                        <label class="block text-gray-300 text-sm font-medium leading-normal pb-2" for="time" data-i18n-key="reservations_form_time">Time</label>
+                        <label class="block text-gray-300 text-sm font-medium leading-normal pb-2" for="time">Time</label>
                         <div class="relative">
                             <span class="material-symbols-outlined absolute right-4 top-11 text-gray-400 pointer-events-none">schedule</span>
                             <input class="form-input-custom flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--primary-color)] border border-white/10 bg-[var(--secondary-color)] h-14 placeholder:text-gray-500 p-4 text-base font-normal leading-normal transition-colors" id="time" name="time" placeholder="Select Time" required="" type="time"/>
@@ -63,7 +63,7 @@
                         <p id="time-error" class="text-red-500 text-sm mt-1 hidden"></p>
                     </div>
                     <div>
-                        <label class="block text-gray-300 text-sm font-medium leading-normal pb-2" for="guests" data-i18n-key="reservations_form_guests">Number of Guests</label>
+                        <label class="block text-gray-300 text-sm font-medium leading-normal pb-2" for="guests">Number of Guests</label>
                         <div class="relative">
                             <span class="material-symbols-outlined absolute right-4 top-11 text-gray-400 pointer-events-none">group</span>
                             <input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-[var(--primary-color)] border border-white/10 bg-[var(--secondary-color)] h-14 placeholder:text-gray-500 p-4 text-base font-normal leading-normal transition-colors" id="guests" name="guests" max="20" min="1" placeholder="e.g., 2" required="" type="number"/>
@@ -72,15 +72,15 @@
                     </div>
                 </div>
                 <div>
-                    <label class="block text-gray-300 text-sm font-medium leading-normal pb-2" for="requests" data-i18n-key="reservations_form_requests">Special Requests (Optional)</label>
+                    <label class="block text-gray-300 text-sm font-medium leading-normal pb-2" for="requests">Special Requests (Optional)</label>
                     <textarea class="form-input flex w-full min-w-0 flex-1 resize-y overflow-hidden rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-[var(--primary-color)] border border-white/10 bg-[var(--secondary-color)] min-h-36 placeholder:text-gray-500 p-4 text-base font-normal leading-normal transition-colors" id="requests" placeholder="Any dietary restrictions, allergies, or special celebrations?"></textarea>
                 </div>
                 <div class="pt-6">
                     <button class="btn btn-primary w-full" type="submit">
-                        <span class="truncate" data-i18n-key="reservations_form_confirm">Confirm Reservation</span>
+                        <span class="truncate">Confirm Reservation</span>
                     </button>
                 </div>
-                <p class="text-center text-xs text-gray-500 pt-2" data-i18n-key="reservations_policy">By clicking "Confirm Reservation", you agree to our reservation policy. A confirmation email will be sent to the address provided.</p>
+                <p class="text-center text-xs text-gray-500 pt-2">By clicking "Confirm Reservation", you agree to our reservation policy. A confirmation email will be sent to the address provided.</p>
             </form>
         </div>
     </main>

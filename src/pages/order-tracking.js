@@ -86,7 +86,7 @@ export async function initOrderTrackingPage() {
     if (!page) return;
 
     const params = new URLSearchParams(window.location.search);
-    const orderId = params.get('id');
+    const orderId = params.get('order_id');
 
     const orderIdDisplay = document.getElementById('order-id-display');
 

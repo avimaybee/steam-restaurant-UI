@@ -10,6 +10,7 @@
     <link rel="shortcut icon" href="icons/favicon.svg">
     <meta name="description" content="Explore our menu of modern Asian fusion cuisine, featuring a symphony of flavors where tradition meets innovation.">
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <link rel="stylesheet" href="style.css">
     <script type="module" src="src/app.js" defer></script>
@@ -21,66 +22,66 @@
     <main id="main-content" class="flex flex-1 justify-center px-4 py-12 sm:px-6 lg:px-8 menu-gradient-bg pt-32">
         <div class="w-full max-w-4xl space-y-12">
             <div class="text-center">
-                <h1 class="text-4xl font-extrabold tracking-tighter text-white sm:text-5xl md:text-6xl" data-i18n-key="menu_title"> Our Menu </h1>
-                <p class="mt-4 text-lg text-white/60" data-i18n-key="menu_subtitle"> A symphony of flavors, where tradition meets innovation. </p>
+                <h1 class="text-4xl font-extrabold tracking-tighter text-white sm:text-5xl md:text-6xl"> Our Menu </h1>
+                <p class="mt-4 text-lg text-white/60"> A symphony of flavors, where tradition meets innovation. </p>
             </div>
             <div class="space-y-8">
                 <!-- Advanced Filters -->
                 <div id="advanced-filters" class="bg-white/5 border border-white/10 rounded-lg p-6 space-y-6">
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div>
-                            <label for="search-input" class="block text-sm font-medium text-gray-300 mb-2" data-i18n-key="menu_search_label">Search</label>
-                            <input type="search" id="search-input" placeholder="Search by name or keyword..." class="w-full bg-gray-800 border-gray-700 text-white rounded-md" data-i18n-placeholder="menu_search_placeholder">
+                            <label for="search-input" class="block text-sm font-medium text-gray-300 mb-2">Search</label>
+                            <input type="search" id="search-input" placeholder="Search by name or keyword..." class="w-full bg-gray-800 border-gray-700 text-white rounded-md">
                         </div>
                         <div>
-                            <label for="sort-by" class="block text-sm font-medium text-gray-300 mb-2" data-i18n-key="menu_sort_by">Sort By</label>
+                            <label for="sort-by" class="block text-sm font-medium text-gray-300 mb-2">Sort By</label>
                             <select id="sort-by" class="w-full bg-gray-800 border-gray-700 text-white rounded-md">
-                                <option value="default" data-i18n-key="menu_sort_default">Default</option>
-                                <option value="popularity" data-i18n-key="menu_sort_popularity">Popularity</option>
-                                <option value="price-asc" data-i18n-key="menu_sort_price_asc">Price: Low to High</option>
-                                <option value="price-desc" data-i18n-key="menu_sort_price_desc">Price: High to Low</option>
-                                <option value="rating" data-i18n-key="menu_sort_rating">Rating</option>
+                                <option value="default">Default</option>
+                                <option value="popularity">Popularity</option>
+                                <option value="price-asc">Price: Low to High</option>
+                                <option value="price-desc">Price: High to Low</option>
+                                <option value="rating">Rating</option>
                             </select>
                         </div>
                     </div>
                     <div>
-                        <label class="block text-sm font-medium text-gray-300 mb-2" data-i18n-key="menu_dietary_options">Dietary Options</label>
+                        <label class="block text-sm font-medium text-gray-300 mb-2">Dietary Options</label>
                         <div id="dietary-tags" class="flex flex-wrap gap-x-6 gap-y-2">
                             <label class="inline-flex items-center">
                                 <input type="checkbox" class="form-checkbox bg-gray-800 border-gray-700 text-primary-color" value="vegan">
-                                <span class="ml-2 text-gray-300" data-i18n-key="menu_tag_vegan">Vegan</span>
+                                <span class="ml-2 text-gray-300">Vegan</span>
                             </label>
                             <label class="inline-flex items-center">
                                 <input type="checkbox" class="form-checkbox bg-gray-800 border-gray-700 text-primary-color" value="vegetarian">
-                                <span class="ml-2 text-gray-300" data-i18n-key="menu_tag_vegetarian">Vegetarian</span>
+                                <span class="ml-2 text-gray-300">Vegetarian</span>
                             </label>
                              <label class="inline-flex items-center">
                                 <input type="checkbox" class="form-checkbox bg-gray-800 border-gray-700 text-primary-color" value="gluten-free">
-                                <span class="ml-2 text-gray-300" data-i18n-key="menu_tag_gluten_free">Gluten-Free</span>
+                                <span class="ml-2 text-gray-300">Gluten-Free</span>
                             </label>
                              <label class="inline-flex items-center">
                                 <input type="checkbox" class="form-checkbox bg-gray-800 border-gray-700 text-primary-color" value="dairy-free">
-                                <span class="ml-2 text-gray-300" data-i18n-key="menu_tag_dairy_free">Dairy-Free</span>
+                                <span class="ml-2 text-gray-300">Dairy-Free</span>
                             </label>
                              <label class="inline-flex items-center">
                                 <input type="checkbox" class="form-checkbox bg-gray-800 border-gray-700 text-primary-color" value="spicy">
-                                <span class="ml-2 text-gray-300" data-i18n-key="menu_tag_spicy">Spicy</span>
+                                <span class="ml-2 text-gray-300">Spicy</span>
                             </label>
                         </div>
                     </div>
                 </div>
                 <!-- Category Filters -->
                 <div id="menu-filters" class="flex flex-wrap justify-center gap-4">
-                    <button class="menu-filter-btn active" data-category="all" data-i18n-key="menu_cat_all">All</button>
-                    <button class="menu-filter-btn" data-category="dine-in" data-i18n-key="menu_cat_dine_in">Dine-in</button>
-                    <button class="menu-filter-btn" data-category="beverages" data-i18n-key="menu_cat_beverages">Beverages</button>
-                    <button class="menu-filter-btn" data-category="combos" data-i18n-key="menu_cat_combos">Combos</button>
-                    <button class="menu-filter-btn" data-category="specials" data-i18n-key="menu_cat_specials">Specials</button>
+                    <button class="menu-filter-btn active" data-category="all">All</button>
+                    <button class="menu-filter-btn" data-category="dine-in">Dine-in</button>
+                    <button class="menu-filter-btn" data-category="beverages">Beverages</button>
+                    <button class="menu-filter-btn" data-category="combos">Combos</button>
+                    <button class="menu-filter-btn" data-category="specials">Specials</button>
                 </div>
             </div>
             <div id="menu-container" class="space-y-10">
                 <div id="loading-spinner" class="text-center">
-                    <p class="text-white text-lg" data-i18n-key="menu_loading">Loading menu...</p>
+                    <p class="text-white text-lg">Loading menu...</p>
                 </div>
             </div>
         </div>
@@ -92,25 +93,25 @@
     <div id="review-modal" class="fixed inset-0 bg-black bg-opacity-75 z-50 hidden items-center justify-center">
         <div class="bg-[#1C1C1C] rounded-lg p-8 max-w-md w-full m-4">
             <div class="flex justify-between items-center mb-4">
-                <h2 class="text-2xl font-bold text-white" data-i18n-key="review_modal_title">Leave a Review for <span id="review-item-name"></span></h2>
+                <h2 class="text-2xl font-bold text-white">Leave a Review for <span id="review-item-name"></span></h2>
                 <button id="close-modal-btn" class="text-gray-400 hover:text-white">&times;</button>
             </div>
             <form id="review-form">
                 <input type="hidden" id="review-item-id">
                 <div class="space-y-4">
                     <div>
-                        <label class="block text-sm font-medium text-gray-300 mb-2" data-i18n-key="review_modal_rating">Your Rating</label>
+                        <label class="block text-sm font-medium text-gray-300 mb-2">Your Rating</label>
                         <div id="star-rating" class="flex items-center space-x-1">
                             <!-- Stars will be generated by JS -->
                         </div>
                     </div>
                     <div>
-                        <label for="review-comment" class="block text-sm font-medium text-gray-300 mb-2" data-i18n-key="review_modal_comment">Your Review</label>
+                        <label for="review-comment" class="block text-sm font-medium text-gray-300 mb-2">Your Review</label>
                         <textarea id="review-comment" rows="4" class="w-full bg-gray-800 border-gray-700 text-white rounded-md" required></textarea>
                     </div>
                     <div id="review-error" class="text-red-500 text-sm hidden"></div>
                     <div class="flex justify-end">
-                        <button type="submit" class="btn btn-primary" data-i18n-key="review_modal_submit">Submit Review</button>
+                        <button type="submit" class="btn btn-primary">Submit Review</button>
                     </div>
                 </div>
             </form>
