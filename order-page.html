@@ -14,33 +14,33 @@
     <link rel="stylesheet" href="style.css">
     <script type="module" src="src/app.js" defer></script>
 </head>
-<body class="bg-[#101010] text-white">
+<body class="bg-secondary-color text-text-primary">
 
-    <header id="main-header"></header>
+    <div id="main-header"></div>
 
     <main id="order-page" class="container mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24 pt-32">
         <div class="max-w-4xl mx-auto">
-            <h1 class="text-4xl font-extrabold tracking-tight text-white sm:text-5xl mb-12">Your Cart</h1>
+            <h1 class="text-4xl font-extrabold tracking-tight sm:text-5xl mb-12">Your Cart</h1>
 
             <div id="cart-container" class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
-                <!-- Cart Items will be dynamically inserted here -->
-                <div id="cart-items-container" class="lg:col-span-2 bg-[#1C1C1C] rounded-lg shadow-lg p-6 space-y-6">
-                    <!-- Placeholder for empty cart -->
+                <!-- Cart Items -->
+                <div id="cart-items-container" class="lg:col-span-2 bg-surface-color rounded-lg shadow-lg p-6 space-y-6">
+                    <!-- JS will populate this or show an empty message -->
                 </div>
 
                 <!-- Order Summary -->
-                <div id="order-summary" class="lg:col-span-1 bg-[#1C1C1C] rounded-lg shadow-lg p-6 sticky top-32">
-                    <h2 class="text-2xl font-bold text-white border-b border-gray-700 pb-4">Order Summary</h2>
+                <div id="order-summary" class="lg:col-span-1 bg-surface-color rounded-lg shadow-lg p-6 sticky top-32">
+                    <h2 class="text-2xl font-bold border-b border-border-color pb-4">Order Summary</h2>
                     <div class="space-y-4 mt-4">
-                        <div class="flex justify-between text-gray-300">
+                        <div class="flex justify-between text-text-secondary">
                             <span>Subtotal</span>
                             <span id="summary-subtotal">$0.00</span>
                         </div>
-                        <div class="flex justify-between text-gray-300">
+                        <div class="flex justify-between text-text-secondary">
                             <span>Taxes (10%)</span>
                             <span id="summary-taxes">$0.00</span>
                         </div>
-                        <div class="flex justify-between text-xl font-bold text-white border-t border-gray-700 pt-4 mt-4">
+                        <div class="flex justify-between text-xl font-bold text-text-primary border-t border-border-color pt-4 mt-4">
                             <span>Total</span>
                             <span id="summary-total">$0.00</span>
                         </div>
@@ -53,7 +53,7 @@
         </div>
     </main>
 
-    <footer id="main-footer"></footer>
+    <div id="main-footer"></div>
 
 </body>
 </html>

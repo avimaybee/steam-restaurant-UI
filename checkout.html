@@ -14,60 +14,60 @@
     <link rel="stylesheet" href="style.css">
     <script type="module" src="src/app.js" defer></script>
 </head>
-<body class="bg-[#101010] text-white">
+<body class="bg-secondary-color text-text-primary">
 
-    <header id="main-header"></header>
+    <div id="main-header"></div>
 
     <main id="checkout-page" class="container mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24 pt-32">
         <div class="max-w-4xl mx-auto">
-            <h1 class="text-4xl font-extrabold tracking-tight text-white sm:text-5xl mb-12">Checkout</h1>
+            <h1 class="text-4xl font-extrabold tracking-tight sm:text-5xl mb-12">Checkout</h1>
 
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
-                <div class="lg:col-span-2 bg-[#1C1C1C] rounded-lg shadow-lg p-8">
+                <div class="lg:col-span-2 bg-surface-color rounded-lg shadow-lg p-8">
                     <form id="checkout-form" class="space-y-8">
                         <!-- Shipping Information -->
                         <section>
-                            <h2 class="text-2xl font-bold text-white mb-6">Shipping Information</h2>
+                            <h2 class="text-2xl font-bold text-text-primary mb-6">Shipping Information</h2>
                             <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
                                 <div>
-                                    <label for="fullName" class="block text-sm font-medium text-gray-300 mb-2">Full Name</label>
-                                    <input type="text" id="fullName" name="fullName" class="w-full bg-gray-800 border-gray-700 text-white rounded-md" required>
+                                    <label for="fullName" class="block text-sm font-medium text-text-secondary mb-2">Full Name</label>
+                                    <input type="text" id="fullName" name="fullName" class="form-input w-full" required>
                                 </div>
                                 <div>
-                                    <label for="email" class="block text-sm font-medium text-gray-300 mb-2">Email</label>
-                                    <input type="email" id="email" name="email" class="w-full bg-gray-800 border-gray-700 text-white rounded-md" required>
+                                    <label for="email" class="block text-sm font-medium text-text-secondary mb-2">Email</label>
+                                    <input type="email" id="email" name="email" class="form-input w-full" required>
                                 </div>
                                 <div class="sm:col-span-2">
-                                    <label for="address" class="block text-sm font-medium text-gray-300 mb-2">Address</label>
-                                    <input type="text" id="address" name="address" class="w-full bg-gray-800 border-gray-700 text-white rounded-md" required>
+                                    <label for="address" class="block text-sm font-medium text-text-secondary mb-2">Address</label>
+                                    <input type="text" id="address" name="address" class="form-input w-full" required>
                                 </div>
                                 <div>
-                                    <label for="city" class="block text-sm font-medium text-gray-300 mb-2">City</label>
-                                    <input type="text" id="city" name="city" class="w-full bg-gray-800 border-gray-700 text-white rounded-md" required>
+                                    <label for="city" class="block text-sm font-medium text-text-secondary mb-2">City</label>
+                                    <input type="text" id="city" name="city" class="form-input w-full" required>
                                 </div>
                                 <div>
-                                    <label for="zip" class="block text-sm font-medium text-gray-300 mb-2">ZIP Code</label>
-                                    <input type="text" id="zip" name="zip" class="w-full bg-gray-800 border-gray-700 text-white rounded-md" required>
+                                    <label for="zip" class="block text-sm font-medium text-text-secondary mb-2">ZIP Code</label>
+                                    <input type="text" id="zip" name="zip" class="form-input w-full" required>
                                 </div>
                             </div>
                         </section>
 
                         <!-- Payment Information -->
                         <section>
-                            <h2 class="text-2xl font-bold text-white mb-6 pt-8 border-t border-gray-800">Payment Information</h2>
+                            <h2 class="text-2xl font-bold text-text-primary mb-6 pt-8 border-t border-border-color">Payment Information</h2>
                             <div class="space-y-6">
                                 <div>
-                                    <label for="card-number" class="block text-sm font-medium text-gray-300 mb-2">Card Number</label>
-                                    <input type="text" id="card-number" name="card-number" placeholder="**** **** **** ****" class="w-full bg-gray-800 border-gray-700 text-white rounded-md" required>
+                                    <label for="card-number" class="block text-sm font-medium text-text-secondary mb-2">Card Number</label>
+                                    <input type="text" id="card-number" name="card-number" placeholder="**** **** **** ****" class="form-input w-full" required>
                                 </div>
                                 <div class="grid grid-cols-2 gap-6">
                                     <div>
-                                        <label for="expiry-date" class="block text-sm font-medium text-gray-300 mb-2">Expiry Date</label>
-                                        <input type="text" id="expiry-date" name="expiry-date" placeholder="MM/YY" class="w-full bg-gray-800 border-gray-700 text-white rounded-md" required>
+                                        <label for="expiry-date" class="block text-sm font-medium text-text-secondary mb-2">Expiry Date</label>
+                                        <input type="text" id="expiry-date" name="expiry-date" placeholder="MM/YY" class="form-input w-full" required>
                                     </div>
                                     <div>
-                                        <label for="cvc" class="block text-sm font-medium text-gray-300 mb-2">CVC</label>
-                                        <input type="text" id="cvc" name="cvc" placeholder="***" class="w-full bg-gray-800 border-gray-700 text-white rounded-md" required>
+                                        <label for="cvc" class="block text-sm font-medium text-text-secondary mb-2">CVC</label>
+                                        <input type="text" id="cvc" name="cvc" placeholder="***" class="form-input w-full" required>
                                     </div>
                                 </div>
                             </div>
@@ -76,21 +76,21 @@
                 </div>
 
                 <!-- Order Summary -->
-                <div id="order-summary-checkout" class="lg:col-span-1 bg-[#1C1C1C] rounded-lg shadow-lg p-6 sticky top-32">
-                    <h2 class="text-2xl font-bold text-white border-b border-gray-700 pb-4">Order Summary</h2>
+                <div id="order-summary-checkout" class="lg:col-span-1 bg-surface-color rounded-lg shadow-lg p-6 sticky top-32">
+                    <h2 class="text-2xl font-bold text-text-primary border-b border-border-color pb-4">Order Summary</h2>
                     <div id="summary-items" class="space-y-4 my-4 max-h-60 overflow-y-auto">
                         <!-- Summary items will be dynamically inserted here -->
                     </div>
-                    <div class="space-y-4 border-t border-gray-800 pt-4">
-                        <div class="flex justify-between text-gray-300">
+                    <div class="space-y-4 border-t border-border-color pt-4">
+                        <div class="flex justify-between text-text-secondary">
                             <span>Subtotal</span>
                             <span id="summary-subtotal">$0.00</span>
                         </div>
-                        <div class="flex justify-between text-gray-300">
+                        <div class="flex justify-between text-text-secondary">
                             <span>Taxes (10%)</span>
                             <span id="summary-taxes">$0.00</span>
                         </div>
-                        <div class="flex justify-between text-xl font-bold text-white border-t border-gray-700 pt-4 mt-4">
+                        <div class="flex justify-between text-xl font-bold text-text-primary border-t border-border-color pt-4 mt-4">
                             <span>Total</span>
                             <span id="summary-total">$0.00</span>
                         </div>
@@ -103,7 +103,7 @@
         </div>
     </main>
 
-    <footer id="main-footer"></footer>
+    <div id="main-footer"></div>
 
 </body>
 </html>

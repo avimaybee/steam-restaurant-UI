@@ -17,38 +17,65 @@ function initializeMobileMenu() {
     const mobileMenuButton = document.getElementById('mobile-menu-button');
     const mobileMenu = document.getElementById('mobile-menu');
 
-    if (mobileMenuButton && mobileMenu) {
-        const menuLinks = mobileMenu.querySelectorAll('a');
-        if (menuLinks.length === 0) return;
-        const firstLink = menuLinks[0];
-        const lastLink = menuLinks[menuLinks.length - 1];
+    if (!mobileMenuButton || !mobileMenu) return;
 
-        mobileMenuButton.addEventListener('click', () => {
-            const isExpanded = mobileMenuButton.getAttribute('aria-expanded') === 'true';
-            mobileMenuButton.setAttribute('aria-expanded', !isExpanded);
-            mobileMenu.classList.toggle('hidden');
+    const openMenu = () => {
+        mobileMenu.classList.remove('hidden');
+        mobileMenu.classList.add('open');
+        mobileMenuButton.setAttribute('aria-expanded', 'true');
+        document.body.classList.add('body-no-scroll');
+        // Focus on the first focusable element in the menu
+        const firstFocusable = mobileMenu.querySelector('a, button');
+        if (firstFocusable) firstFocusable.focus();
+    };
 
-            if (!isExpanded) {
-                firstLink.focus();
+    const closeMenu = () => {
+        mobileMenu.classList.remove('open');
+        // Listen for the transition to end before hiding the element
+        mobileMenu.addEventListener('transitionend', () => {
+            mobileMenu.classList.add('hidden');
+        }, { once: true });
+        mobileMenuButton.setAttribute('aria-expanded', 'false');
+        document.body.classList.remove('body-no-scroll');
+        mobileMenuButton.focus(); // Return focus to the menu button
+    };
+
+    mobileMenuButton.addEventListener('click', () => {
+        const isExpanded = mobileMenuButton.getAttribute('aria-expanded') === 'true';
+        if (isExpanded) {
+            closeMenu();
+        } else {
+            openMenu();
+        }
+    });
+
+    // Focus trapping
+    mobileMenu.addEventListener('keydown', (e) => {
+        if (e.key !== 'Tab') return;
+
+        const focusableElements = mobileMenu.querySelectorAll('a, button');
+        const firstElement = focusableElements[0];
+        const lastElement = focusableElements[focusableElements.length - 1];
+
+        if (e.shiftKey) { // Shift + Tab
+            if (document.activeElement === firstElement) {
+                e.preventDefault();
+                lastElement.focus();
             }
-        });
-
-        mobileMenu.addEventListener('keydown', (e) => {
-            if (e.key === 'Tab') {
-                if (e.shiftKey) { // Shift + Tab
-                    if (document.activeElement === firstLink) {
-                        e.preventDefault();
-                        lastLink.focus();
-                    }
-                } else { // Tab
-                    if (document.activeElement === lastLink) {
-                        e.preventDefault();
-                        firstLink.focus();
-                    }
-                }
+        } else { // Tab
+            if (document.activeElement === lastElement) {
+                e.preventDefault();
+                firstElement.focus();
             }
-        });
-    }
+        }
+    });
+
+    // Close on Escape key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && mobileMenu.classList.contains('open')) {
+            closeMenu();
+        }
+    });
 }
 
 function setActiveNavLink() {

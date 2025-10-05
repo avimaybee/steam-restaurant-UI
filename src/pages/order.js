@@ -10,8 +10,9 @@ function renderCart() {
     if (cart.length === 0) {
         cartItemsContainer.innerHTML = `
             <div class="text-center py-12">
-                <h2 class="text-2xl font-bold text-white">Your cart is empty.</h2>
-                <p class="text-gray-400 mt-2">Looks like you haven't added anything to your cart yet.</p>
+                <span class="material-symbols-outlined text-6xl text-text-secondary">shopping_cart</span>
+                <h2 class="text-2xl font-bold text-text-primary mt-4">Your cart is empty</h2>
+                <p class="text-text-secondary mt-2">Looks like you haven't added anything to your cart yet.</p>
                 <a href="our-menu.html" class="btn btn-primary mt-6">Browse Menu</a>
             </div>
         `;
@@ -24,23 +25,27 @@ function renderCart() {
 
     cart.forEach(item => {
         const itemElement = document.createElement('div');
-        itemElement.className = 'flex items-center justify-between gap-4 border-b border-gray-800 pb-4';
+        itemElement.className = 'flex items-center justify-between gap-4 border-b border-border-color pb-4';
         itemElement.innerHTML = `
             <div class="flex items-center gap-4">
-                <img src="${item.image}" alt="${item.name}" class="h-16 w-16 rounded-md object-cover">
+                <img src="${item.image}" alt="${item.name}" class="h-20 w-20 rounded-lg object-cover">
                 <div>
-                    <h3 class="font-semibold text-white">${item.name}</h3>
-                    <p class="text-sm text-gray-400">$${item.price.toFixed(2)} each</p>
+                    <h3 class="font-semibold text-text-primary">${item.name}</h3>
+                    <p class="text-sm text-text-secondary">$${item.price.toFixed(2)} each</p>
+                    <button class="remove-item-btn text-sm text-primary-color hover:underline mt-1" data-item-id="${item.id}">Remove</button>
                 </div>
             </div>
             <div class="flex items-center gap-4">
-                <div class="flex items-center border border-gray-700 rounded-md">
-                    <button class="quantity-change-btn p-2" data-item-id="${item.id}" data-amount="-1">-</button>
-                    <span class="px-3">${item.quantity}</span>
-                    <button class="quantity-change-btn p-2" data-item-id="${item.id}" data-amount="1">+</button>
+                <div class="flex items-center border border-border-color rounded-full">
+                    <button class="quantity-change-btn p-2" data-item-id="${item.id}" data-amount="-1">
+                        <span class="material-symbols-outlined text-sm">remove</span>
+                    </button>
+                    <span class="px-3 text-text-primary">${item.quantity}</span>
+                    <button class="quantity-change-btn p-2" data-item-id="${item.id}" data-amount="1">
+                        <span class="material-symbols-outlined text-sm">add</span>
+                    </button>
                 </div>
-                <p class="font-bold text-white w-20 text-right">$${(item.price * item.quantity).toFixed(2)}</p>
-                <button class="remove-item-btn text-gray-500 hover:text-red-500" data-item-id="${item.id}">&times;</button>
+                <p class="font-bold text-text-primary w-20 text-right">$${(item.price * item.quantity).toFixed(2)}</p>
             </div>
         `;
         cartItemsContainer.appendChild(itemElement);

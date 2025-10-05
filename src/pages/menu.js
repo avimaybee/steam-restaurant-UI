@@ -49,7 +49,7 @@ function renderMenu(itemsToRender) {
     menuContainer.innerHTML = '';
 
     if (itemsToRender.length === 0) {
-        menuContainer.innerHTML = `<p class="text-center text-white/60">${store.get('menu_no_items')}</p>`;
+        menuContainer.innerHTML = `<p class="text-center text-text-secondary">${store.get('menu_no_items')}</p>`;
         return;
     }
 
@@ -62,41 +62,37 @@ function renderMenu(itemsToRender) {
 
     for (const subCategory in itemsBySubCategory) {
         const section = document.createElement('section');
-        section.innerHTML = `<h2 class="mb-6 text-2xl font-bold tracking-tight text-white sm:text-3xl border-l-4 border-[var(--accent-color)] pl-4">${toTitleCase(subCategory.replace('-', ' '))}</h2>`;
+        section.innerHTML = `<h2 class="mb-8 text-3xl font-bold tracking-tight text-white sm:text-4xl border-l-4 border-primary-color pl-4">${toTitleCase(subCategory.replace('-', ' '))}</h2>`;
 
         const grid = document.createElement('div');
-        grid.className = 'grid gap-6 rounded-lg border border-white/10 bg-white/5 p-6 backdrop-blur-sm md:grid-cols-2';
+        grid.className = 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8';
 
         itemsBySubCategory[subCategory].forEach(item => {
             const menuItemElement = document.createElement('div');
-            menuItemElement.className = 'flex flex-col justify-between gap-3';
+            menuItemElement.className = 'menu-item-card group bg-surface-color rounded-lg shadow-lg overflow-hidden flex flex-col';
             const itemName = store.get(`menu_item_${item.id}_name`);
             const itemDescription = store.get(`menu_item_${item.id}_description`);
             menuItemElement.innerHTML = `
-                <div class="flex items-start gap-4">
-                    <img src="${item.image}" alt="${itemName}" class="h-16 w-16 rounded-md object-cover">
-                    <div class="flex-grow">
-                        <div class="flex justify-between items-start">
-                            <h3 class="font-semibold text-white">${itemName}</h3>
-                            <p class="shrink-0 font-medium text-white">$${item.price.toFixed(2)}</p>
+                <div class="relative">
+                    <img src="${item.image}" alt="${itemName}" class="w-full h-56 object-cover transition-transform duration-300 group-hover:scale-110">
+                    <div class="absolute top-4 right-4 bg-primary-color text-black font-bold text-lg py-1 px-3 rounded-full shadow-md">$${item.price.toFixed(2)}</div>
+                </div>
+                <div class="p-6 flex-grow flex flex-col">
+                    <h3 class="text-2xl font-bold text-white mb-2">${itemName}</h3>
+                    <p class="text-text-secondary mb-4 flex-grow">${itemDescription}</p>
+                    <div class="flex items-center justify-between mt-4">
+                        <div class="flex items-center gap-2">
+                            ${renderStarRating(item.averageRating)}
+                            <span class="text-xs text-text-secondary">(${item.reviews.length} reviews)</span>
                         </div>
-                        <p class="text-sm text-white/60 mt-1">${itemDescription}</p>
+                        <button class="leave-review-btn text-sm text-primary-color hover:underline" data-item-id="${item.id}" data-item-name="${itemName}">Leave a review</button>
                     </div>
                 </div>
-                <div class="flex items-center justify-between mt-2">
-                    <div class="flex items-center gap-2">
-                        ${renderStarRating(item.averageRating)}
-                        <span class="text-xs text-gray-400">(${item.reviews.length} ${store.get('menu_reviews')})</span>
-                    </div>
-                    <div class="flex items-center gap-4">
-                        <button class="leave-review-btn text-sm text-primary-color hover:underline" data-item-id="${item.id}" data-item-name="${itemName}">
-                            ${store.get('menu_leave_review')}
-                        </button>
-                        <button class="add-to-cart-btn btn btn-sm btn-secondary" data-item-id="${item.id}">
-                            <span class="material-symbols-outlined">shopping_bag</span>
-                            <span>Add to Cart</span>
-                        </button>
-                    </div>
+                <div class="p-6 bg-secondary-color mt-auto">
+                     <button class="add-to-cart-btn btn btn-primary w-full flex items-center justify-center gap-2" data-item-id="${item.id}">
+                        <span class="material-symbols-outlined">shopping_bag</span>
+                        <span>Add to Cart</span>
+                    </button>
                 </div>
             `;
             grid.appendChild(menuItemElement);
