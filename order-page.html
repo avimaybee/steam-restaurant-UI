@@ -3,52 +3,51 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Order Online | Steam - Modern Asian Fusion</title>
+    <title>Your Cart | Steam - Modern Asian Fusion</title>
     <link rel="icon" href="icons/favicon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="icons/favicon.svg">
     <link rel="shortcut icon" href="icons/favicon.svg">
-    <meta name="description" content="Customize your order for delivery or pickup. Select your favorite dishes from our online menu.">
+    <meta name="description" content="Review your order and proceed to checkout.">
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <link rel="stylesheet" href="style.css">
     <script type="module" src="src/app.js" defer></script>
-    <link rel="preconnect" href="https://app.snipcart.com">
-    <link rel="preconnect" href="https://cdn.snipcart.com">
-    <link rel="stylesheet" href="https://cdn.snipcart.com/themes/v3.7.1/default/snipcart.css" />
 </head>
-<body class="bg-[#171411] text-white">
+<body class="bg-[#101010] text-white">
 
     <header id="main-header"></header>
 
-    <main id="main-content" class="flex flex-1 justify-center py-10 px-4 sm:px-10 pt-32">
-        <div class="flex flex-col lg:flex-row w-full max-w-7xl gap-10">
-            <div class="w-full">
-                <h2 class="text-4xl font-bold tracking-tight">Order Online</h2>
-                <p class="text-gray-400 mt-2">Customize your order. Select your favorites for delivery or pickup.</p>
-                <div class="mt-8 border-b border-[#382f29]">
-                    <div class="flex gap-4 sm:gap-8 overflow-x-auto pb-3">
-                        <a class="flex flex-col items-center justify-center border-b-2 border-b-white pb-3 pt-2" href="#">
-                            <p class="text-white text-sm font-bold whitespace-nowrap">Featured</p>
-                        </a>
-                        <a class="flex flex-col items-center justify-center border-b-2 border-b-transparent text-gray-400 hover:text-white hover:border-white/50 transition-colors pb-3 pt-2" href="#">
-                            <p class="text-sm font-bold whitespace-nowrap">Appetizers</p>
-                        </a>
-                        <a class="flex flex-col items-center justify-center border-b-2 border-b-transparent text-gray-400 hover:text-white hover:border-white/50 transition-colors pb-3 pt-2" href="#">
-                            <p class="text-sm font-bold whitespace-nowrap">Main Courses</p>
-                        </a>
-                        <a class="flex flex-col items-center justify-center border-b-2 border-b-transparent text-gray-400 hover:text-white hover:border-white/50 transition-colors pb-3 pt-2" href="#">
-                            <p class="text-sm font-bold whitespace-nowrap">Desserts</p>
-                        </a>
-                        <a class="flex flex-col items-center justify-center border-b-2 border-b-transparent text-gray-400 hover:text-white hover:border-white/50 transition-colors pb-3 pt-2" href="#">
-                            <p class="text-sm font-bold whitespace-nowrap">Drinks</p>
-                        </a>
-                    </div>
+    <main id="order-page" class="container mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24 pt-32">
+        <div class="max-w-4xl mx-auto">
+            <h1 class="text-4xl font-extrabold tracking-tight text-white sm:text-5xl mb-12">Your Cart</h1>
+
+            <div id="cart-container" class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
+                <!-- Cart Items will be dynamically inserted here -->
+                <div id="cart-items-container" class="lg:col-span-2 bg-[#1C1C1C] rounded-lg shadow-lg p-6 space-y-6">
+                    <!-- Placeholder for empty cart -->
                 </div>
-                <div id="menu-items-container" class="mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <div id="loading-spinner" class="text-center">
-                        <p class="text-white text-lg">Loading menu...</p>
+
+                <!-- Order Summary -->
+                <div id="order-summary" class="lg:col-span-1 bg-[#1C1C1C] rounded-lg shadow-lg p-6 sticky top-32">
+                    <h2 class="text-2xl font-bold text-white border-b border-gray-700 pb-4">Order Summary</h2>
+                    <div class="space-y-4 mt-4">
+                        <div class="flex justify-between text-gray-300">
+                            <span>Subtotal</span>
+                            <span id="summary-subtotal">$0.00</span>
+                        </div>
+                        <div class="flex justify-between text-gray-300">
+                            <span>Taxes (10%)</span>
+                            <span id="summary-taxes">$0.00</span>
+                        </div>
+                        <div class="flex justify-between text-xl font-bold text-white border-t border-gray-700 pt-4 mt-4">
+                            <span>Total</span>
+                            <span id="summary-total">$0.00</span>
+                        </div>
                     </div>
+                    <button id="checkout-btn" class="btn btn-primary w-full mt-8">
+                        Proceed to Checkout
+                    </button>
                 </div>
             </div>
         </div>
@@ -56,7 +55,5 @@
 
     <footer id="main-footer"></footer>
 
-    <script async src="https://cdn.snipcart.com/themes/v3.7.1/default/snipcart.js"></script>
-    <div hidden id="snipcart" data-api-key="YOUR_PUBLIC_API_KEY"></div>
 </body>
 </html>

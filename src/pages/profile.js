@@ -95,7 +95,7 @@ function createHistoryTable(items, headers) {
             // Actions column
             table += '<td class="px-6 py-4">';
             if (['Pending', 'Confirmed', 'Preparing', 'Out for Delivery'].includes(item.status)) {
-                table += `<a href="order-tracking.html?id=${item.id}" class="btn btn-secondary btn-sm">Track Order</a>`;
+                table += `<a href="order-tracking.html?order_id=${item.id}" class="btn btn-secondary btn-sm">Track Order</a>`;
             }
             table += '</td>';
         } else { // It's a reservation

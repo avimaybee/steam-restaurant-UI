@@ -25,7 +25,7 @@ export function initRegisterPage() {
         const user = await store.register(name, email, password);
 
         if (user) {
-            window.location.href = 'profile.html';
+            window.location.href = 'login.html?registered=true';
         } else {
             errorDiv.textContent = store.get('register_error_exists');
             errorDiv.classList.remove('hidden');

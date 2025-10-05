@@ -9,6 +9,9 @@ import { initProfilePage } from './pages/profile.js';
 import { initOrderTrackingPage } from './pages/order-tracking.js';
 import { initAnalyticsPage } from './pages/analytics.js';
 import { initLandingPage } from './pages/landing.js';
+import { initCheckoutPage } from './pages/checkout.js';
+import { initVouchersPage } from './pages/vouchers.js';
+import { initGalleryPage } from './pages/gallery.js';
 
 function initializeMobileMenu() {
     const mobileMenuButton = document.getElementById('mobile-menu-button');
@@ -207,6 +210,9 @@ async function initApp() {
     if (path.endsWith('order-tracking.html')) initOrderTrackingPage();
     if (path.endsWith('analytics.html')) initAnalyticsPage();
     if (path.endsWith('landing-page.html')) initLandingPage();
+    if (path.endsWith('checkout.html')) initCheckoutPage();
+    if (path.endsWith('gift-vouchers.html')) initVouchersPage();
+    if (path.endsWith('gallery.html')) initGalleryPage();
 }
 
 document.addEventListener('DOMContentLoaded', initApp);

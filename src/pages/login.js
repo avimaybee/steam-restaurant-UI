@@ -6,6 +6,16 @@ export function initLoginPage() {
 
     const form = document.getElementById('login-form');
     const errorDiv = document.getElementById('login-error');
+    const successDiv = document.createElement('div');
+    successDiv.className = 'text-green-500 text-sm text-center mb-4';
+    successDiv.style.display = 'none';
+    form.parentNode.insertBefore(successDiv, form);
+
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.has('registered')) {
+        successDiv.textContent = 'Registration successful! Please log in.';
+        successDiv.style.display = 'block';
+    }
 
     form.addEventListener('submit', async (e) => {
         e.preventDefault();

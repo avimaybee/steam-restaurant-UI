@@ -88,9 +88,15 @@ function renderMenu(itemsToRender) {
                         ${renderStarRating(item.averageRating)}
                         <span class="text-xs text-gray-400">(${item.reviews.length} ${store.get('menu_reviews')})</span>
                     </div>
-                    <button class="leave-review-btn text-sm text-primary-color hover:underline" data-item-id="${item.id}" data-item-name="${itemName}">
-                        ${store.get('menu_leave_review')}
-                    </button>
+                    <div class="flex items-center gap-4">
+                        <button class="leave-review-btn text-sm text-primary-color hover:underline" data-item-id="${item.id}" data-item-name="${itemName}">
+                            ${store.get('menu_leave_review')}
+                        </button>
+                        <button class="add-to-cart-btn btn btn-sm btn-secondary" data-item-id="${item.id}">
+                            <span class="material-symbols-outlined">shopping_bag</span>
+                            <span>Add to Cart</span>
+                        </button>
+                    </div>
                 </div>
             `;
             grid.appendChild(menuItemElement);
@@ -141,6 +147,30 @@ function applyFilters() {
     }
 
     renderMenu(filteredItems);
+    initAddToCartListeners();
+}
+
+function initAddToCartListeners() {
+    const menuContainer = document.getElementById('menu-container');
+    menuContainer.addEventListener('click', e => {
+        const button = e.target.closest('.add-to-cart-btn');
+        if (button) {
+            const itemId = parseInt(button.dataset.itemId, 10);
+            store.addToCart(itemId);
+
+            // Provide visual feedback
+            const originalText = button.innerHTML;
+            button.innerHTML = `
+                <span class="material-symbols-outlined">check_circle</span>
+                <span>Added!</span>
+            `;
+            button.disabled = true;
+            setTimeout(() => {
+                button.innerHTML = originalText;
+                button.disabled = false;
+            }, 1500);
+        }
+    });
 }
 
 function initFilterListeners() {
