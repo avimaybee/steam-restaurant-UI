@@ -26,12 +26,6 @@ async function loadComponent(componentPath, elementId) {
  * Loads the header component and initializes its functionality.
  */
 export async function loadHeader() {
-    // The main-header div from the old structure is no longer used.
-    // We target the body and prepend the header.
-    const headerPlaceholder = document.createElement('div');
-    headerPlaceholder.id = 'main-header';
-    document.body.prepend(headerPlaceholder);
-
     await loadComponent('header.html', 'main-header');
 
     const headerWrapper = document.getElementById('header-wrapper');
