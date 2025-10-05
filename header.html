@@ -28,11 +28,17 @@
                 <svg id="theme-toggle-light-icon" class="w-6 h-6 hidden" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 5.05A1 1 0 003.636 6.464l.707.707a1 1 0 001.414-1.414l-.707-.707zM3 11a1 1 0 100-2H2a1 1 0 100 2h1zM6.464 16.364a1 1 0 01-1.414 0l-.707-.707a1 1 0 011.414-1.414l.707.707a1 1 0 010 1.414z"></path></svg>
             </button>
         </div>
-        <div class="md:hidden">
-            <button id="mobile-menu-button" class="text-white" aria-label="Open main menu" aria-controls="mobile-menu" aria-expanded="false">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M4 6h16M4 12h16m-7 6h7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
-                </svg>
+        <div class="md:hidden flex items-center">
+             <a href="order-page.html" id="cart-icon-wrapper-mobile" class="relative p-2 mr-2">
+                <span class="material-symbols-outlined">shopping_bag</span>
+                <span id="cart-item-count-mobile" class="absolute -top-1 -right-1 bg-primary-color text-black text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center hidden">0</span>
+            </a>
+            <button id="mobile-menu-button" class="relative z-50 h-10 w-10 text-white flex flex-col justify-center items-center" aria-label="Open main menu" aria-controls="mobile-menu" aria-expanded="false">
+                <div id="hamburger-icon" class="space-y-1.5">
+                    <span class="block w-6 h-0.5 bg-white transition-transform duration-300 ease-in-out"></span>
+                    <span class="block w-6 h-0.5 bg-white transition-opacity duration-300 ease-in-out"></span>
+                    <span class="block w-6 h-0.5 bg-white transition-transform duration-300 ease-in-out"></span>
+                </div>
             </button>
         </div>
     </header>

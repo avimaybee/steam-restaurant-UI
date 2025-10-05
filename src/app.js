@@ -16,12 +16,11 @@ import { initAboutPage } from './pages/about.js';
 import { initContactPage } from './pages/contact.js';
 
 function initializeMobileMenu() {
-    const mobileMenuButton = document.getElementById('mobile-menu-button');
-    const mobileMenu = document.getElementById('mobile-menu');
-
-    if (!mobileMenuButton || !mobileMenu) return;
-
     const openMenu = () => {
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        if (!mobileMenu || !mobileMenuButton) return;
+
         mobileMenu.classList.remove('hidden');
         mobileMenu.classList.add('open');
         mobileMenuButton.setAttribute('aria-expanded', 'true');
@@ -31,6 +30,10 @@ function initializeMobileMenu() {
     };
 
     const closeMenu = () => {
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        if (!mobileMenu || !mobileMenuButton) return;
+
         mobileMenu.classList.remove('open');
         mobileMenu.addEventListener('transitionend', () => {
             mobileMenu.classList.add('hidden');
@@ -40,28 +43,45 @@ function initializeMobileMenu() {
         mobileMenuButton.focus();
     };
 
-    mobileMenuButton.addEventListener('click', () => {
-        const isExpanded = mobileMenuButton.getAttribute('aria-expanded') === 'true';
-        isExpanded ? closeMenu() : openMenu();
-    });
+    // Use event delegation for all interactions
+    document.body.addEventListener('click', (e) => {
+        // Handle menu button click
+        if (e.target.closest('#mobile-menu-button')) {
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            if (mobileMenuButton) {
+                const isExpanded = mobileMenuButton.getAttribute('aria-expanded') === 'true';
+                isExpanded ? closeMenu() : openMenu();
+            }
+        }
 
-    mobileMenu.addEventListener('keydown', (e) => {
-        if (e.key !== 'Tab') return;
-        const focusableElements = mobileMenu.querySelectorAll('a, button');
-        const firstElement = focusableElements[0];
-        const lastElement = focusableElements[focusableElements.length - 1];
-        if (e.shiftKey && document.activeElement === firstElement) {
-            e.preventDefault();
-            lastElement.focus();
-        } else if (!e.shiftKey && document.activeElement === lastElement) {
-            e.preventDefault();
-            firstElement.focus();
+        // Handle menu link click
+        const mobileMenu = document.getElementById('mobile-menu');
+        if (mobileMenu && mobileMenu.classList.contains('open') && e.target.tagName === 'A' && mobileMenu.contains(e.target)) {
+            closeMenu();
         }
     });
 
     document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && mobileMenu.classList.contains('open')) {
+        const mobileMenu = document.getElementById('mobile-menu');
+        if (!mobileMenu || !mobileMenu.classList.contains('open')) return;
+
+        // Handle Escape key
+        if (e.key === 'Escape') {
             closeMenu();
+        }
+
+        // Handle Tab key for focus trapping
+        if (e.key === 'Tab') {
+            const focusableElements = mobileMenu.querySelectorAll('a, button');
+            const firstElement = focusableElements[0];
+            const lastElement = focusableElements[focusableElements.length - 1];
+            if (e.shiftKey && document.activeElement === firstElement) {
+                e.preventDefault();
+                lastElement.focus();
+            } else if (!e.shiftKey && document.activeElement === lastElement) {
+                e.preventDefault();
+                firstElement.focus();
+            }
         }
     });
 }
@@ -129,7 +149,6 @@ async function initApp() {
     // Now that the header and footer are loaded, we can initialize everything else.
     initializeMobileMenu();
     setActiveNavLink();
-
     initializeThemeSwitcher();
     updateAuthLinks();
     setupLogout();

@@ -48,17 +48,23 @@ import { store } from './store.js';
 
 export function updateCartCount() {
     const cart = store.getCart();
-    const cartItemCount = document.getElementById('cart-item-count');
-    if (!cartItemCount) return;
-
     const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
 
-    if (totalItems > 0) {
-        cartItemCount.textContent = totalItems;
-        cartItemCount.classList.remove('hidden');
-    } else {
-        cartItemCount.classList.add('hidden');
-    }
+    const cartItemCount = document.getElementById('cart-item-count');
+    const cartItemCountMobile = document.getElementById('cart-item-count-mobile');
+
+    const update = (element) => {
+        if (!element) return;
+        if (totalItems > 0) {
+            element.textContent = totalItems;
+            element.classList.remove('hidden');
+        } else {
+            element.classList.add('hidden');
+        }
+    };
+
+    update(cartItemCount);
+    update(cartItemCountMobile);
 }
 
 export function updateAuthLinks() {

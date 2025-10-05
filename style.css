@@ -317,6 +317,35 @@ input[type="time"] {
     box-shadow: 0 10px 20px rgba(0,0,0,0.2);
 }
 
+/* Gallery Masonry Grid */
+.masonry-grid {
+    column-gap: var(--masonry-gap, 1.5rem);
+    column-count: 1;
+}
+@media (min-width: 640px) {
+    .masonry-grid {
+        column-count: 2;
+    }
+}
+@media (min-width: 1024px) {
+    .masonry-grid {
+        column-count: 3;
+    }
+}
+
+/* Mobile Hamburger Icon Animation */
+#mobile-menu-button[aria-expanded="true"] #hamburger-icon span:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+}
+
+#mobile-menu-button[aria-expanded="true"] #hamburger-icon span:nth-child(2) {
+    opacity: 0;
+}
+
+#mobile-menu-button[aria-expanded="true"] #hamburger-icon span:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+}
+
 #advanced-filters input, #advanced-filters select {
     background-color: var(--surface-color);
     border: 1px solid var(--border-color);

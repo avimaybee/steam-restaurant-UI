@@ -18,62 +18,62 @@
 
     <header id="main-header"></header>
 
-    <main id="main-content" class="px-4 md:px-20 lg:px-40 flex flex-1 justify-center py-12 md:py-20 pt-32">
+    <main id="main-content" class="px-4 sm:px-6 flex flex-1 justify-center py-12 md:py-20 pt-32">
         <div class="layout-content-container flex flex-col w-full max-w-3xl">
             <div class="text-center mb-12">
                 <h1 class="text-white text-4xl md:text-5xl font-bold leading-tight tracking-tight">Table Reservation</h1>
                 <p class="text-gray-400 mt-4 text-base md:text-lg max-w-xl mx-auto">Secure your table at Steam for an unforgettable dining experience. Please fill out the form below to proceed.</p>
             </div>
-            <form class="space-y-6 bg-[var(--secondary-color)] p-8 sm:p-10 rounded-xl border border-white/10" novalidate>
-                <h2 class="text-2xl font-bold text-white mb-6 border-b border-white/10 pb-4">Your Details</h2>
+            <form class="space-y-6 bg-surface-color p-6 sm:p-8 rounded-xl border border-border-color" novalidate>
+                <h2 class="text-2xl font-bold text-white mb-6 border-b border-border-color pb-4">Your Details</h2>
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
                     <div>
-                        <label class="block text-gray-300 text-sm font-medium leading-normal pb-2" for="fullName">Full Name</label>
+                        <label class="block text-text-secondary text-sm font-medium leading-normal pb-2" for="fullName">Full Name</label>
                         <div class="relative">
-                            <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none">person</span>
-                            <input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-[var(--primary-color)] border border-white/10 bg-[var(--secondary-color)] h-14 placeholder:text-gray-500 pl-12 pr-4 py-4 text-base font-normal leading-normal transition-colors" id="fullName" name="fullName" placeholder="John Doe" required="" type="text"/>
+                            <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none">person</span>
+                            <input class="form-input w-full pl-10" id="fullName" name="fullName" placeholder="John Doe" required type="text"/>
                         </div>
                         <p id="fullName-error" class="text-red-500 text-sm mt-1 hidden"></p>
                     </div>
                     <div>
-                        <label class="block text-gray-300 text-sm font-medium leading-normal pb-2" for="email">Email Address</label>
+                        <label class="block text-text-secondary text-sm font-medium leading-normal pb-2" for="email">Email Address</label>
                         <div class="relative">
-                            <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none">mail</span>
-                            <input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-[var(--primary-color)] border border-white/10 bg-[var(--secondary-color)] h-14 placeholder:text-gray-500 pl-12 pr-4 py-4 text-base font-normal leading-normal transition-colors" id="email" name="email" placeholder="you@example.com" required="" type="email"/>
+                            <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none">mail</span>
+                            <input class="form-input w-full pl-10" id="email" name="email" placeholder="you@example.com" required type="email"/>
                         </div>
                         <p id="email-error" class="text-red-500 text-sm mt-1 hidden"></p>
                     </div>
                 </div>
-                <h2 class="text-2xl font-bold text-white mb-6 border-b border-white/10 pb-4 pt-6">Reservation Details</h2>
-                <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+                <h2 class="text-2xl font-bold text-white mb-6 border-b border-border-color pb-4 pt-6">Reservation Details</h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                     <div>
-                        <label class="block text-gray-300 text-sm font-medium leading-normal pb-2" for="date">Date</label>
+                        <label class="block text-text-secondary text-sm font-medium leading-normal pb-2" for="date">Date</label>
                         <div class="relative">
-                            <span class="material-symbols-outlined absolute right-4 top-11 text-gray-400 pointer-events-none">calendar_today</span>
-                            <input class="form-input-custom flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--primary-color)] border border-white/10 bg-[var(--secondary-color)] h-14 placeholder:text-gray-500 p-4 text-base font-normal leading-normal transition-colors" id="date" name="date" placeholder="Select Date" required="" type="date"/>
+                             <input class="form-input-custom form-input w-full" id="date" name="date" required type="date"/>
+                             <span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none">calendar_today</span>
                         </div>
                         <p id="date-error" class="text-red-500 text-sm mt-1 hidden"></p>
                     </div>
                     <div>
-                        <label class="block text-gray-300 text-sm font-medium leading-normal pb-2" for="time">Time</label>
+                        <label class="block text-text-secondary text-sm font-medium leading-normal pb-2" for="time">Time</label>
                         <div class="relative">
-                            <span class="material-symbols-outlined absolute right-4 top-11 text-gray-400 pointer-events-none">schedule</span>
-                            <input class="form-input-custom flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--primary-color)] border border-white/10 bg-[var(--secondary-color)] h-14 placeholder:text-gray-500 p-4 text-base font-normal leading-normal transition-colors" id="time" name="time" placeholder="Select Time" required="" type="time"/>
+                            <input class="form-input-custom form-input w-full" id="time" name="time" required type="time"/>
+                            <span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none">schedule</span>
                         </div>
                         <p id="time-error" class="text-red-500 text-sm mt-1 hidden"></p>
                     </div>
                     <div>
-                        <label class="block text-gray-300 text-sm font-medium leading-normal pb-2" for="guests">Number of Guests</label>
+                        <label class="block text-text-secondary text-sm font-medium leading-normal pb-2" for="guests">Number of Guests</label>
                         <div class="relative">
-                            <span class="material-symbols-outlined absolute right-4 top-11 text-gray-400 pointer-events-none">group</span>
-                            <input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-[var(--primary-color)] border border-white/10 bg-[var(--secondary-color)] h-14 placeholder:text-gray-500 p-4 text-base font-normal leading-normal transition-colors" id="guests" name="guests" max="20" min="1" placeholder="e.g., 2" required="" type="number"/>
+                            <input class="form-input w-full" id="guests" name="guests" max="20" min="1" placeholder="e.g., 2" required type="number"/>
+                            <span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none">group</span>
                         </div>
                         <p id="guests-error" class="text-red-500 text-sm mt-1 hidden"></p>
                     </div>
                 </div>
                 <div>
-                    <label class="block text-gray-300 text-sm font-medium leading-normal pb-2" for="requests">Special Requests (Optional)</label>
-                    <textarea class="form-input flex w-full min-w-0 flex-1 resize-y overflow-hidden rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-[var(--primary-color)] border border-white/10 bg-[var(--secondary-color)] min-h-36 placeholder:text-gray-500 p-4 text-base font-normal leading-normal transition-colors" id="requests" placeholder="Any dietary restrictions, allergies, or special celebrations?"></textarea>
+                    <label class="block text-text-secondary text-sm font-medium leading-normal pb-2" for="requests">Special Requests (Optional)</label>
+                    <textarea class="form-input w-full min-h-36" id="requests" placeholder="Any dietary restrictions, allergies, or special celebrations?"></textarea>
                 </div>
                 <div class="pt-6">
                     <button class="btn btn-primary w-full" type="submit">

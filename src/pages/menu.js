@@ -78,7 +78,7 @@ function renderMenu(itemsToRender) {
                     <div class="absolute top-4 right-4 bg-primary-color text-black font-bold text-lg py-1 px-3 rounded-full shadow-md">$${item.price.toFixed(2)}</div>
                 </div>
                 <div class="p-6 flex-grow flex flex-col">
-                    <h3 class="text-2xl font-bold text-white mb-2">${itemName}</h3>
+                    <h3 class="text-xl sm:text-2xl font-bold text-white mb-2">${itemName}</h3>
                     <p class="text-text-secondary mb-4 flex-grow">${itemDescription}</p>
                     <div class="flex items-center justify-between mt-4">
                         <div class="flex items-center gap-2">
