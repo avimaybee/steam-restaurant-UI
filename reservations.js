@@ -19,40 +19,37 @@ document.addEventListener('DOMContentLoaded', function() {
             const formData = new FormData(reservationForm);
             const data = Object.fromEntries(formData.entries());
 
-            // --- Faked Backend Logic ---
-            // Simulate a network delay
-            setTimeout(() => {
-                try {
-                    // Get existing reservations from localStorage or initialize an empty array
-                    const reservations = JSON.parse(localStorage.getItem('reservations')) || [];
-
-                    // Create a new reservation object
-                    const newReservation = {
-                        id: Date.now(), // Simple unique ID
-                        ...data,
-                        status: 'Confirmed' // Default status
-                    };
-
-                    // Add the new reservation and save back to localStorage
-                    reservations.push(newReservation);
-                    localStorage.setItem('reservations', JSON.stringify(reservations));
-
-                    // Show confirmation message
-                    formContainer.innerHTML = `
-                        <div class="text-center text-white">
-                            <h1 class="text-4xl md:text-5xl font-bold">Thank You!</h1>
-                            <p class="mt-4 text-lg">Your reservation request has been received. We will contact you shortly to confirm.</p>
-                            <a href="landing-page.html" class="mt-8 inline-block rounded-lg bg-[var(--primary-color)] px-8 py-4 text-lg font-semibold text-white shadow-sm hover:bg-opacity-80">Back to Home</a>
-                        </div>
-                    `;
-                } catch (error) {
-                    console.error('Error saving reservation to localStorage:', error);
-                    // Restore button state and show an error to the user
-                    submitButton.disabled = false;
-                    submitButton.innerHTML = originalButtonText;
-                    alert('There was an error submitting your reservation. Please try again.');
+            fetch(formEndpoint, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify(data)
+            })
+            .then(response => {
+                if (response.ok) {
+                    return response.json();
                 }
-            }, 1000); // 1-second delay to simulate a server response
+                throw new Error('Network response was not ok.');
+            })
+            .then(data => {
+                formContainer.innerHTML = `
+                    <div class="text-center text-white">
+                        <h1 class="text-4xl md:text-5xl font-bold">Thank You!</h1>
+                        <p class="mt-4 text-lg">Your reservation request has been received. We will contact you shortly to confirm.</p>
+                        <a href="landing-page.html" class="mt-8 inline-block rounded-lg bg-[var(--primary-color)] px-8 py-4 text-lg font-semibold text-white shadow-sm hover:bg-opacity-80">Back to Home</a>
+                    </div>
+                `;
+            })
+            .catch(error => {
+                console.error('There was a problem with the fetch operation:', error);
+                // Restore button state and show an error to the user
+                submitButton.disabled = false;
+                submitButton.innerHTML = originalButtonText;
+                // You could add a user-facing error message here
+                alert('There was an error submitting your reservation. Please try again.');
+            });
         });
     }
 

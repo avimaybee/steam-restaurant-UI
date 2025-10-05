@@ -16,24 +16,24 @@
     <div id="main-header"></div>
 
     <main id="analytics-page" class="container mx-auto px-8 lg:px-16 py-32">
-        <h1 class="text-4xl font-bold mb-8">Analytics Dashboard</h1>
+        <h1 class="text-4xl font-bold text-white mb-8" data-i18n-key="analytics_title">Analytics Dashboard</h1>
 
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
             <!-- Sales Chart -->
-            <div class="bg-surface-color p-8 rounded-lg">
-                <h2 class="text-2xl font-bold text-text-primary mb-6">Sales Over Time</h2>
+            <div class="bg-[#1C1C1C] p-8 rounded-lg">
+                <h2 class="text-2xl font-bold text-white mb-6" data-i18n-key="analytics_sales_title">Sales Over Time</h2>
                 <canvas id="sales-chart"></canvas>
             </div>
 
             <!-- Popular Items Chart -->
-            <div class="bg-surface-color p-8 rounded-lg">
-                <h2 class="text-2xl font-bold text-text-primary mb-6">Most Popular Items</h2>
+            <div class="bg-[#1C1C1C] p-8 rounded-lg">
+                <h2 class="text-2xl font-bold text-white mb-6" data-i18n-key="analytics_popular_items_title">Most Popular Items</h2>
                 <canvas id="popular-items-chart"></canvas>
             </div>
 
             <!-- Reservation Trends Chart -->
-            <div class="bg-surface-color p-8 rounded-lg lg:col-span-2">
-                <h2 class="text-2xl font-bold text-text-primary mb-6">Reservation Trends</h2>
+            <div class="bg-[#1C1C1C] p-8 rounded-lg lg:col-span-2">
+                <h2 class="text-2xl font-bold text-white mb-6" data-i18n-key="analytics_reservations_title">Reservation Trends</h2>
                 <canvas id="reservations-chart"></canvas>
             </div>
         </div>

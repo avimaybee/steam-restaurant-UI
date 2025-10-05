@@ -27,39 +27,14 @@ async function loadComponent(componentPath, elementId) {
  */
 export async function loadHeader() {
     await loadComponent('header.html', 'main-header');
-
-    const headerWrapper = document.getElementById('header-wrapper');
-    if (headerWrapper) {
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 10) {
-                headerWrapper.classList.add('scrolled');
-            } else {
-                headerWrapper.classList.remove('scrolled');
-            }
-        });
-    }
-    updateCartCount();
+    // We will need to re-attach event listeners for the mobile menu
+    // This will be handled in the main app.js after the header is loaded.
 }
 
 /**
  * Updates the authentication links in the header based on user login status.
  */
 import { store } from './store.js';
-
-export function updateCartCount() {
-    const cart = store.getCart();
-    const cartItemCount = document.getElementById('cart-item-count');
-    if (!cartItemCount) return;
-
-    const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
-
-    if (totalItems > 0) {
-        cartItemCount.textContent = totalItems;
-        cartItemCount.classList.remove('hidden');
-    } else {
-        cartItemCount.classList.add('hidden');
-    }
-}
 
 export function updateAuthLinks() {
     const user = store.getCurrentUser();
@@ -69,16 +44,16 @@ export function updateAuthLinks() {
     if (!authLinks || !authLinksMobile) return;
 
     const loggedInLinks = `
-        <a href="profile.html" class="nav-link">Profile</a>
-        <button id="logout-btn" class="nav-link">Logout</button>
+        <a href="profile.html" class="text-base font-medium text-gray-300 hover:text-white transition-colors duration-300">Profile</a>
+        <button id="logout-btn" class="text-base font-medium text-gray-300 hover:text-white transition-colors duration-300">Logout</button>
     `;
     const loggedOutLinks = `
-        <a href="login.html" class="nav-link">Login</a>
+        <a href="login.html" class="text-base font-medium text-gray-300 hover:text-white transition-colors duration-300">Login</a>
     `;
 
     const loggedInLinksMobile = `
-        <a href="profile.html" class="nav-link">Profile</a>
-        <button id="logout-btn-mobile" class="nav-link">Logout</button>
+        <a href="profile.html" class="text-base font-medium text-gray-300 hover:text-white transition-colors duration-300">Profile</a>
+        <button id="logout-btn-mobile" class="text-base font-medium text-gray-300 hover:text-white transition-colors duration-300">Logout</button>
     `;
 
     if (user) {
@@ -95,25 +70,4 @@ export function updateAuthLinks() {
  */
 export async function loadFooter() {
     await loadComponent('footer.html', 'main-footer');
-
-    const backToTopButton = document.getElementById('back-to-top');
-
-    if (backToTopButton) {
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 300) {
-                backToTopButton.classList.remove('hidden');
-                backToTopButton.classList.add('opacity-100');
-            } else {
-                backToTopButton.classList.remove('opacity-100');
-                backToTopButton.classList.add('hidden');
-            }
-        });
-
-        backToTopButton.addEventListener('click', () => {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        });
-    }
 }

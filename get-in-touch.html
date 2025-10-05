@@ -9,57 +9,54 @@
     <link rel="shortcut icon" href="icons/favicon.svg">
     <meta name="description" content="Get in touch with Steam. Find our contact details, address, and send us a message through our contact form.">
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <link rel="stylesheet" href="style.css">
     <script type="module" src="src/app.js" defer></script>
 </head>
-<body class="bg-secondary-color text-text-primary">
+<body class="contact-gradient-bg">
 
-    <div id="main-header"></div>
+    <header id="main-header"></header>
 
-    <main class="py-24 sm:py-32 pt-32">
-        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16 scroll-animate">
-                <h1 class="text-4xl md:text-5xl font-bold tracking-tight">Get in Touch</h1>
-                <p class="mt-4 text-lg text-text-secondary max-w-2xl mx-auto">
-                    We'd love to hear from you. Whether you have a question, feedback, or a special request, our team is ready to assist you.
-                </p>
-            </div>
-
+    <main id="main-content" class="flex-1 pt-32">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
-                <!-- Contact Info & Map -->
-                <div class="space-y-12 scroll-animate">
-                    <div class="space-y-8">
+                <div class="space-y-8">
+                    <div class="space-y-4">
+                        <h2 class="text-4xl md:text-5xl font-bold tracking-tight text-white">Get in Touch</h2>
+                        <p class="text-lg text-[var(--text-secondary)]">
+                            We'd love to hear from you. Whether you have a question, feedback, or a special request, our team is ready to assist you.
+                        </p>
+                    </div>
+                    <div class="space-y-6">
                         <div class="flex items-start gap-4">
-                            <div class="flex-shrink-0 flex items-center justify-center rounded-full bg-surface-color size-12">
-                                <span class="material-symbols-outlined text-primary-color">call</span>
+                            <div class="flex-shrink-0 flex items-center justify-center rounded-lg bg-[var(--secondary-color)] size-12">
+                                <span class="material-symbols-outlined text-[var(--primary-color)]">call</span>
                             </div>
                             <div>
-                                <h3 class="text-lg font-semibold">Phone</h3>
-                                <p class="text-text-secondary">Call us for immediate assistance.</p>
-                                <a class="mt-1 block text-primary-color font-medium hover:underline" href="tel:+15551234567">+1 (555) 123-4567</a>
+                                <h3 class="text-lg font-semibold text-white">Phone</h3>
+                                <p class="text-[var(--text-secondary)]">Call us during business hours for immediate assistance.</p>
+                                <a class="mt-1 block text-white font-medium hover:text-[var(--primary-color)] transition-colors" href="tel:+15551234567">+1 (555) 123-4567</a>
                             </div>
                         </div>
                         <div class="flex items-start gap-4">
-                            <div class="flex-shrink-0 flex items-center justify-center rounded-full bg-surface-color size-12">
-                                <span class="material-symbols-outlined text-primary-color">email</span>
+                            <div class="flex-shrink-0 flex items-center justify-center rounded-lg bg-[var(--secondary-color)] size-12">
+                                <span class="material-symbols-outlined text-[var(--primary-color)]">email</span>
                             </div>
                             <div>
-                                <h3 class="text-lg font-semibold">Email</h3>
-                                <p class="text-text-secondary">Email us anytime for inquiries.</p>
-                                <a class="mt-1 block text-primary-color font-medium hover:underline" href="mailto:info@steamrestaurant.com">info@steamrestaurant.com</a>
+                                <h3 class="text-lg font-semibold text-white">Email</h3>
+                                <p class="text-[var(--text-secondary)]">Email us anytime and we'll get back to you shortly.</p>
+                                <a class="mt-1 block text-white font-medium hover:text-[var(--primary-color)] transition-colors" href="mailto:info@steamrestaurant.com">info@steamrestaurant.com</a>
                             </div>
                         </div>
                         <div class="flex items-start gap-4">
-                            <div class="flex-shrink-0 flex items-center justify-center rounded-full bg-surface-color size-12">
-                                <span class="material-symbols-outlined text-primary-color">location_on</span>
+                            <div class="flex-shrink-0 flex items-center justify-center rounded-lg bg-[var(--secondary-color)] size-12">
+                                <span class="material-symbols-outlined text-[var(--primary-color)]">location_on</span>
                             </div>
                             <div>
-                                <h3 class="text-lg font-semibold">Address</h3>
-                                <p class="text-text-secondary">Visit our main location.</p>
-                                <address class="mt-1 not-italic font-medium">123 Fusion Street, Metro City, 10001</address>
+                                <h3 class="text-lg font-semibold text-white">Address</h3>
+                                <p class="text-[var(--text-secondary)]">Visit our main location in the heart of the city.</p>
+                                <address class="mt-1 not-italic text-white font-medium">123 Fusion Street, Metro City, 10001</address>
                             </div>
                         </div>
                     </div>
@@ -75,32 +72,30 @@
                         </iframe>
                     </div>
                 </div>
-
-                <!-- Contact Form -->
-                <div class="bg-surface-color p-8 sm:p-12 rounded-2xl shadow-2xl scroll-animate">
+                <div class="bg-[var(--secondary-color)]/50 backdrop-blur-sm p-8 sm:p-12 rounded-2xl shadow-2xl border border-white/10">
                     <form action="#" class="space-y-6" method="POST">
                         <div>
                             <label class="sr-only" for="name">Your Name</label>
-                            <input class="form-input w-full" id="name" name="name" placeholder="Your Name" type="text"/>
+                            <input class="form-input block w-full rounded-xl bg-black/30 border-white/10 text-white placeholder:text-gray-400 focus:border-[var(--primary-color)] focus:ring-[var(--primary-color)] h-14 px-4 text-base" id="name" name="name" placeholder="Your Name" type="text"/>
                             <p id="name-error" class="text-red-500 text-sm mt-1 hidden"></p>
                         </div>
                         <div>
                             <label class="sr-only" for="email">Your Email</label>
-                            <input class="form-input w-full" id="email" name="email" placeholder="Your Email" type="email"/>
+                            <input class="form-input block w-full rounded-xl bg-black/30 border-white/10 text-white placeholder:text-gray-400 focus:border-[var(--primary-color)] focus:ring-[var(--primary-color)] h-14 px-4 text-base" id="email" name="email" placeholder="Your Email" type="email"/>
                             <p id="email-error" class="text-red-500 text-sm mt-1 hidden"></p>
                         </div>
                         <div>
                             <label class="sr-only" for="subject">Subject</label>
-                            <input class="form-input w-full" id="subject" name="subject" placeholder="Subject" type="text"/>
+                            <input class="form-input block w-full rounded-xl bg-black/30 border-white/10 text-white placeholder:text-gray-400 focus:border-[var(--primary-color)] focus:ring-[var(--primary-color)] h-14 px-4 text-base" id="subject" name="subject" placeholder="Subject" type="text"/>
                             <p id="subject-error" class="text-red-500 text-sm mt-1 hidden"></p>
                         </div>
                         <div>
                             <label class="sr-only" for="message">Your Message</label>
-                            <textarea class="form-input w-full" id="message" name="message" placeholder="Your Message" rows="6"></textarea>
+                            <textarea class="form-textarea block w-full rounded-xl bg-black/30 border-white/10 text-white placeholder:text-gray-400 focus:border-[var(--primary-color)] focus:ring-[var(--primary-color)] p-4 text-base" id="message" name="message" placeholder="Your Message" rows="6"></textarea>
                             <p id="message-error" class="text-red-500 text-sm mt-1 hidden"></p>
                         </div>
                         <div class="pt-4">
-                            <button class="btn btn-primary w-full" type="submit">
+                            <button class="btn btn-primary btn-pill w-full" type="submit">
                                 <span>Send Message</span>
                             </button>
                         </div>
@@ -110,7 +105,7 @@
         </div>
     </main>
 
-    <div id="main-footer"></div>
+    <footer id="main-footer"></footer>
 
 </body>
 </html>

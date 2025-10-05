@@ -8,74 +8,86 @@ import { initRegisterPage } from './pages/register.js';
 import { initProfilePage } from './pages/profile.js';
 import { initOrderTrackingPage } from './pages/order-tracking.js';
 import { initAnalyticsPage } from './pages/analytics.js';
-import { initLandingPage } from './pages/landing.js';
-import { initCheckoutPage } from './pages/checkout.js';
-import { initVouchersPage } from './pages/vouchers.js';
-import { initGalleryPage } from './pages/gallery.js';
+
+function translatePage() {
+    document.querySelectorAll('[data-i18n-key]').forEach(el => {
+        const key = el.dataset.i18nKey;
+        const replacements = el.dataset.i18nReplacements ? JSON.parse(el.dataset.i18nReplacements) : {};
+        const translated = store.get(key, replacements);
+        // Avoid replacing the content if it's a container with other elements
+        if (el.children.length === 0 || el.dataset.i18nReplacements) {
+            el.innerHTML = translated;
+        }
+    });
+    document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+        const key = el.dataset.i18nPlaceholder;
+        el.placeholder = store.get(key);
+    });
+}
+
+async function loadAndTranslate() {
+    store.initLanguage();
+    await store.loadTranslations();
+    // Translate the initial static content
+    translatePage();
+}
+
+function initializeI18nListeners() {
+    const langSelect = document.getElementById('language-select');
+    const langSelectMobile = document.getElementById('language-select-mobile');
+    const currentLang = store.state.currentLanguage;
+
+    const setLanguageAndReload = async (lang) => {
+        await store.setLanguage(lang);
+        window.location.reload();
+    };
+
+    if (langSelect) {
+        langSelect.value = currentLang;
+        langSelect.addEventListener('change', (e) => setLanguageAndReload(e.target.value));
+    }
+    if (langSelectMobile) {
+        langSelectMobile.value = currentLang;
+        langSelectMobile.addEventListener('change', (e) => setLanguageAndReload(e.target.value));
+    }
+}
 
 function initializeMobileMenu() {
     const mobileMenuButton = document.getElementById('mobile-menu-button');
     const mobileMenu = document.getElementById('mobile-menu');
 
-    if (!mobileMenuButton || !mobileMenu) return;
+    if (mobileMenuButton && mobileMenu) {
+        const menuLinks = mobileMenu.querySelectorAll('a');
+        if (menuLinks.length === 0) return;
+        const firstLink = menuLinks[0];
+        const lastLink = menuLinks[menuLinks.length - 1];
 
-    const openMenu = () => {
-        mobileMenu.classList.remove('hidden');
-        mobileMenu.classList.add('open');
-        mobileMenuButton.setAttribute('aria-expanded', 'true');
-        document.body.classList.add('body-no-scroll');
-        // Focus on the first focusable element in the menu
-        const firstFocusable = mobileMenu.querySelector('a, button');
-        if (firstFocusable) firstFocusable.focus();
-    };
+        mobileMenuButton.addEventListener('click', () => {
+            const isExpanded = mobileMenuButton.getAttribute('aria-expanded') === 'true';
+            mobileMenuButton.setAttribute('aria-expanded', !isExpanded);
+            mobileMenu.classList.toggle('hidden');
 
-    const closeMenu = () => {
-        mobileMenu.classList.remove('open');
-        // Listen for the transition to end before hiding the element
-        mobileMenu.addEventListener('transitionend', () => {
-            mobileMenu.classList.add('hidden');
-        }, { once: true });
-        mobileMenuButton.setAttribute('aria-expanded', 'false');
-        document.body.classList.remove('body-no-scroll');
-        mobileMenuButton.focus(); // Return focus to the menu button
-    };
-
-    mobileMenuButton.addEventListener('click', () => {
-        const isExpanded = mobileMenuButton.getAttribute('aria-expanded') === 'true';
-        if (isExpanded) {
-            closeMenu();
-        } else {
-            openMenu();
-        }
-    });
-
-    // Focus trapping
-    mobileMenu.addEventListener('keydown', (e) => {
-        if (e.key !== 'Tab') return;
-
-        const focusableElements = mobileMenu.querySelectorAll('a, button');
-        const firstElement = focusableElements[0];
-        const lastElement = focusableElements[focusableElements.length - 1];
-
-        if (e.shiftKey) { // Shift + Tab
-            if (document.activeElement === firstElement) {
-                e.preventDefault();
-                lastElement.focus();
+            if (!isExpanded) {
+                firstLink.focus();
             }
-        } else { // Tab
-            if (document.activeElement === lastElement) {
-                e.preventDefault();
-                firstElement.focus();
-            }
-        }
-    });
+        });
 
-    // Close on Escape key
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && mobileMenu.classList.contains('open')) {
-            closeMenu();
-        }
-    });
+        mobileMenu.addEventListener('keydown', (e) => {
+            if (e.key === 'Tab') {
+                if (e.shiftKey) { // Shift + Tab
+                    if (document.activeElement === firstLink) {
+                        e.preventDefault();
+                        lastLink.focus();
+                    }
+                } else { // Tab
+                    if (document.activeElement === lastLink) {
+                        e.preventDefault();
+                        firstLink.focus();
+                    }
+                }
+            }
+        });
+    }
 }
 
 function setActiveNavLink() {
@@ -212,10 +224,17 @@ function setupLogout() {
 }
 
 async function initApp() {
+    // 1. Load language data first
+    await loadAndTranslate();
+
+    // 2. Load dynamic HTML content
     await loadHeader();
     await loadFooter();
 
-    // Initialize components that are loaded dynamically
+    // 3. Translate the newly loaded content
+    translatePage();
+
+    // 4. Initialize all other components and event listeners
     initializeMobileMenu();
     setActiveNavLink();
     initializeScrollAnimations();
@@ -223,10 +242,11 @@ async function initApp() {
     initializeThemeSwitcher();
     updateAuthLinks();
     setupLogout();
+    initializeI18nListeners();
 
     handle404();
 
-    // Page-specific initializations
+    // 5. Page-specific initializations
     const path = window.location.pathname;
     if (path.endsWith('our-menu.html')) initMenuPage();
     if (path.endsWith('order-page.html')) initOrderPage();
@@ -236,10 +256,6 @@ async function initApp() {
     if (path.endsWith('profile.html')) initProfilePage();
     if (path.endsWith('order-tracking.html')) initOrderTrackingPage();
     if (path.endsWith('analytics.html')) initAnalyticsPage();
-    if (path.endsWith('landing-page.html')) initLandingPage();
-    if (path.endsWith('checkout.html')) initCheckoutPage();
-    if (path.endsWith('gift-vouchers.html')) initVouchersPage();
-    if (path.endsWith('gallery.html')) initGalleryPage();
 }
 
 document.addEventListener('DOMContentLoaded', initApp);

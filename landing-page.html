@@ -9,88 +9,71 @@
     <link rel="shortcut icon" href="icons/favicon.svg">
     <meta name="description" content="Experience the art of modern Asian fusion cuisine in an elegant and sophisticated setting. Your journey into exquisite flavors starts here.">
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <link rel="stylesheet" href="style.css">
     <script type="module" src="src/app.js" defer></script>
 </head>
 <body class="bg-secondary-color text-text-primary">
 
-    <div id="main-header"></div>
+    <div class="relative min-h-screen flex flex-col bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1579871494447-9811cf80d66c?q=80&w=2070&auto=format&fit=crop');" role="img" aria-label="A close-up of a chef preparing a dish with chopsticks.">
+        <!-- New Overlay Div -->
+        <div class="absolute inset-0 bg-black/70 z-10"></div>
 
-    <!-- Hero Section -->
-    <section class="relative min-h-screen flex items-center justify-center bg-cover bg-center text-center" style="background-image: url('https://images.unsplash.com/photo-1579871494447-9811cf80d66c?q=80&w=2070&auto=format&fit=crop');" role="img" aria-label="A close-up of a chef preparing a dish with chopsticks.">
-        <div class="absolute inset-0 hero-overlay z-10"></div>
-        <div class="relative z-20 px-8">
-            <h1 class="text-5xl md:text-8xl font-extrabold text-white leading-tight tracking-tight mb-6 text-shadow">Where Culinary Artistry Meets Asian Tradition</h1>
-            <p class="text-xl md:text-2xl text-text-secondary max-w-3xl mx-auto mb-12 text-shadow">Experience the art of modern Asian fusion cuisine in an elegant and sophisticated setting.</p>
-            <div class="flex flex-col sm:flex-row items-center justify-center gap-6">
-                <a href="table-reservations.html" class="btn btn-primary btn-lg">Book a Table</a>
-                <a href="our-menu.html" class="btn btn-secondary btn-lg">View Menu</a>
-            </div>
-        </div>
-    </section>
+        <div class="relative z-20 flex flex-col h-full container mx-auto px-8 lg:px-16">
+            <header id="main-header"></header>
 
-    <!-- Main Content -->
-    <main class="bg-secondary-color py-24 sm:py-32">
-        <div class="mx-auto max-w-7xl px-6 lg:px-8 space-y-32">
-
-            <!-- Discover Our Story Section -->
-            <section class="grid grid-cols-1 lg:grid-cols-2 gap-x-16 gap-y-12 items-center scroll-animate">
-                <div class="space-y-8 glass-card p-8 rounded-2xl">
-                    <h2 class="text-4xl font-bold tracking-tight text-white sm:text-5xl">Discover Our Story</h2>
-                    <p class="text-lg leading-8 text-text-secondary">At Steam, we blend time-honored Asian culinary traditions with a modern twist. Our philosophy is simple: use the freshest ingredients, honor the authentic flavors, and create an unforgettable dining experience.</p>
-                    <a href="about-us.html" class="btn btn-primary">Learn More</a>
-                </div>
-                <div class="h-96 w-full rounded-2xl bg-cover bg-center shadow-2xl" style="background-image: url('https://images.unsplash.com/photo-1755409022230-7d96727f4b69?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA==')" role="img" aria-label="A vibrant and colorful dish served in a black bowl."></div>
-            </section>
-
-            <!-- A Taste of Our Menu Section -->
-            <section class="scroll-animate">
+            <main id="main-content" class="flex-grow flex items-center justify-center pt-40">
                 <div class="text-center">
-                    <h2 class="text-4xl font-bold tracking-tight text-white sm:text-5xl">A Taste of Our Menu</h2>
-                    <p class="mt-4 text-lg leading-8 text-text-secondary">From delicate dim sum to sizzling main courses, our menu is a journey through the flavors of Asia.</p>
-                </div>
-                <div class="mt-16 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
-                    <!-- Menu Item Card 1 -->
-                    <div class="menu-card group">
-                        <div class="overflow-hidden rounded-lg">
-                            <img src="https://images.unsplash.com/photo-1496116218417-1a781b1c416c?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fGFzaWFuJTIwZm9vZHxlbnwwfHwwfHx8MA==" alt="Signature Dumplings" class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110">
-                        </div>
-                        <div class="p-6 bg-surface-color rounded-b-lg">
-                            <h3 class="text-2xl font-bold text-white">Signature Dumplings</h3>
-                            <p class="text-text-secondary mt-2">Hand-crafted parcels of joy, steamed or pan-fried to perfection.</p>
-                        </div>
-                    </div>
-                    <!-- Menu Item Card 2 -->
-                    <div class="menu-card group">
-                        <div class="overflow-hidden rounded-lg">
-                            <img src="https://images.unsplash.com/photo-1622643944007-450264a5f9a9?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8YXNpYW4lMjBmb29kfGVufDB8fDB8fHww" alt="Wagyu Beef Tataki" class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110">
-                        </div>
-                        <div class="p-6 bg-surface-color rounded-b-lg">
-                            <h3 class="text-2xl font-bold text-white">Wagyu Beef Tataki</h3>
-                            <p class="text-text-secondary mt-2">Lightly seared A5 Wagyu, served with a citrus-soy dressing.</p>
-                        </div>
-                    </div>
-                    <!-- Menu Item Card 3 -->
-                    <div class="menu-card group">
-                        <div class="overflow-hidden rounded-lg">
-                             <img src="https://images.unsplash.com/photo-1526318896980-cf78c088247c?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjB8fGFzaWFuJTIwZm9vZHxlbnwwfHwwfHx8MA==" alt="Miso Glazed Black Cod" class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110">
-                        </div>
-                         <div class="p-6 bg-surface-color rounded-b-lg">
-                            <h3 class="text-2xl font-bold text-white">Miso Glazed Black Cod</h3>
-                            <p class="text-text-secondary mt-2">A delicate and flavorful classic, marinated for 48 hours.</p>
-                        </div>
+                    <h1 class="text-5xl md:text-8xl font-extrabold text-white leading-tight tracking-tight mb-6 text-shadow" data-i18n-key="landing_title"> Where Culinary Artistry Meets Asian Tradition </h1>
+                    <p class="text-xl md:text-2xl text-[var(--text-secondary)] max-w-3xl mx-auto mb-12 text-shadow" data-i18n-key="landing_subtitle"> Experience the art of modern Asian fusion cuisine in an elegant and sophisticated setting. Your journey into exquisite flavors starts here. </p>
+                    <div class="flex flex-col sm:flex-row items-center justify-center gap-6">
+                        <a href="table-reservations.html" class="btn btn-primary btn-lg btn-pill" data-i18n-key="landing_book_now"> Book a Table </a>
+                        <a href="order-page.html" class="btn btn-secondary btn-lg btn-pill" data-i18n-key="header_order_online"> Order Online </a>
                     </div>
                 </div>
-                <div class="mt-16 text-center">
-                    <a href="our-menu.html" class="btn btn-primary btn-lg">View Full Menu</a>
+            </main>
+        </div>
+    </div>
+
+    <main class="bg-[#101010] py-24 sm:py-32">
+        <div class="mx-auto max-w-7xl px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-x-16 gap-y-12 items-center scroll-animate">
+                <div class="space-y-8">
+                    <h2 class="text-4xl font-bold tracking-tight text-white sm:text-5xl" data-i18n-key="landing_story_title">Discover Our Story</h2>
+                    <p class="text-lg leading-8 text-gray-300" data-i18n-key="landing_story_p">At Steam, we blend time-honored Asian culinary traditions with a modern twist. Our philosophy is simple: use the freshest ingredients, honor the authentic flavors, and create an unforgettable dining experience. Every dish is a work of art, crafted with passion and precision.</p>
+                    <a href="about-us.html" class="btn btn-primary" data-i18n-key="landing_story_learn_more">Learn More</a>
                 </div>
-            </section>
+                <div class="h-96 w-full rounded-2xl bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1755409022230-7d96727f4b69?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA==')" role="img" aria-label="A vibrant and colorful dish served in a black bowl."></div>
+            </div>
+
+            <div class="mt-32 text-center scroll-animate">
+                <h2 class="text-4xl font-bold tracking-tight text-white sm:text-5xl" data-i18n-key="landing_taste_title">A Taste of Our Menu</h2>
+                <p class="mt-4 text-lg leading-8 text-gray-300" data-i18n-key="landing_taste_p">From delicate dim sum to sizzling main courses, our menu is a journey through the flavors of Asia.</p>
+            </div>
+            <div class="mt-16 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+                <div class="flex flex-col items-center text-center">
+                    <div class="h-64 w-64 rounded-full bg-cover bg-center mb-6" style="background-image: url('https://images.unsplash.com/photo-1496116218417-1a781b1c416c?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fGFzaWFuJTIwZm9vZHxlbnwwfHwwfHx8MA==')" role="img" aria-label="A variety of Asian food including dumplings and other small plates."></div>
+                    <h3 class="text-2xl font-bold text-white" data-i18n-key="landing_taste_item1_title">Signature Dumplings</h3>
+                    <p class="text-gray-400 mt-2" data-i18n-key="landing_taste_item1_p">Hand-crafted parcels of joy, steamed or pan-fried to perfection.</p>
+                </div>
+                <div class="flex flex-col items-center text-center">
+                    <div class="h-64 w-64 rounded-full bg-cover bg-center mb-6" style="background-image: url('https://images.unsplash.com/photo-1622643944007-450264a5f9a9?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8YXNpYW4lMjBmb29kfGVufDB8fDB8fHww')" role="img" aria-label="A beautifully plated dish with seared meat and a side of vegetables."></div>
+                    <h3 class="text-2xl font-bold text-white" data-i18n-key="landing_taste_item2_title">Wagyu Beef Tataki</h3>
+                    <p class="text-gray-400 mt-2" data-i18n-key="landing_taste_item2_p">Lightly seared A5 Wagyu, served with a citrus-soy dressing.</p>
+                </div>
+                <div class="flex flex-col items-center text-center">
+                    <div class="h-64 w-64 rounded-full bg-cover bg-center mb-6" style="background-image: url('https://images.unsplash.com/photo-1526318896980-cf78c088247c?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjB8fGFzaWFuJTIwZm9vZHxlbnwwfHwwfHx8MA==')" role="img" aria-label="A bowl of noodles with a rich broth and various toppings."></div>
+                    <h3 class="text-2xl font-bold text-white" data-i18n-key="landing_taste_item3_title">Miso Glazed Black Cod</h3>
+                    <p class="text-gray-400 mt-2" data-i18n-key="landing_taste_item3_p">A delicate and flavorful classic, marinated for 48 hours.</p>
+                </div>
+            </div>
+             <div class="mt-16 text-center">
+                <a href="our-menu.html" class="btn btn-primary btn-lg" data-i18n-key="landing_taste_view_full">View Full Menu</a>
+            </div>
         </div>
     </main>
 
-    <div id="main-footer"></div>
+    <footer id="main-footer"></footer>
+
 </body>
 </html>

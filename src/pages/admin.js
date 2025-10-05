@@ -246,12 +246,6 @@ function handleTabClick(event) {
 export async function initAdminPage() {
     if (!adminPage) return;
 
-    const currentUser = store.getCurrentUser();
-    if (!currentUser) {
-        window.location.href = 'login.html';
-        return;
-    }
-
     // Fetch all data
     [menuItems, orders, reservations] = await Promise.all([
         store.getMenu(),

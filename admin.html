@@ -16,68 +16,68 @@
 
     <div id="main-header"></div>
 
-    <main id="admin-management" class="container mx-auto px-8 lg:px-16 py-32">
-        <h1 class="text-4xl font-bold mb-8">Admin Dashboard</h1>
+    <main id="admin-management" class="container mx-auto px-8 lg:px-16 py-12">
+        <h1 class="text-4xl font-bold text-white mb-8" data-i18n-key="admin_dashboard_title">Admin Dashboard</h1>
 
         <!-- Admin Navigation -->
-        <div class="mb-8 border-b border-border-color">
+        <div class="mb-8 border-b border-gray-700">
             <nav id="admin-nav" class="flex space-x-8" aria-label="Tabs">
-                <button data-tab="menu" class="admin-tab active">Menu Management</button>
-                <button data-tab="orders" class="admin-tab">Order Management</button>
-                <button data-tab="reservations" class="admin-tab">Reservations</button>
-                <a href="analytics.html" class="admin-tab">Analytics Dashboard</a>
+                <button data-tab="menu" class="admin-tab text-white border-primary-color border-b-2 py-4 px-1 text-sm font-medium" data-i18n-key="admin_tab_menu">Menu Management</button>
+                <button data-tab="orders" class="admin-tab text-gray-400 hover:text-white hover:border-gray-500 border-transparent border-b-2 py-4 px-1 text-sm font-medium" data-i18n-key="admin_tab_orders">Order Management</button>
+                <button data-tab="reservations" class="admin-tab text-gray-400 hover:text-white hover:border-gray-500 border-transparent border-b-2 py-4 px-1 text-sm font-medium" data-i18n-key="admin_tab_reservations">Reservations</button>
+                <a href="analytics.html" class="text-gray-400 hover:text-white hover:border-gray-500 border-transparent border-b-2 py-4 px-1 text-sm font-medium" data-i18n-key="analytics_title">Analytics Dashboard</a>
             </nav>
         </div>
 
         <!-- View: Menu Management -->
         <div id="admin-view-menu" data-view="menu" class="admin-view">
             <!-- Add/Edit Form -->
-            <div class="bg-surface-color p-8 rounded-lg mb-12">
-                <h2 class="text-2xl font-bold mb-6" id="form-title">Add New Menu Item</h2>
+            <div class="bg-[#1C1C1C] p-8 rounded-lg mb-12">
+                <h2 class="text-2xl font-bold text-white mb-6" id="form-title" data-i18n-key="admin_menu_form_title">Add New Menu Item</h2>
                 <form id="menu-item-form" class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <input type="hidden" id="item-id">
                     <div>
-                        <label for="item-name" class="block text-sm font-medium text-text-secondary mb-2">Name</label>
-                        <input type="text" id="item-name" name="name" class="form-input w-full" required>
+                        <label for="item-name" class="block text-sm font-medium text-gray-300 mb-2" data-i18n-key="admin_menu_form_name">Name</label>
+                        <input type="text" id="item-name" name="name" class="w-full bg-gray-800 border-gray-700 text-white rounded-md" required>
                     </div>
                     <div>
-                        <label for="item-price" class="block text-sm font-medium text-text-secondary mb-2">Price</label>
-                        <input type="number" id="item-price" name="price" class="form-input w-full" required step="0.01">
+                        <label for="item-price" class="block text-sm font-medium text-gray-300 mb-2" data-i18n-key="admin_menu_form_price">Price</label>
+                        <input type="number" id="item-price" name="price" class="w-full bg-gray-800 border-gray-700 text-white rounded-md" required step="0.01">
                     </div>
                     <div class="md:col-span-2">
-                        <label for="item-description" class="block text-sm font-medium text-text-secondary mb-2">Description</label>
-                        <textarea id="item-description" name="description" rows="3" class="form-input w-full"></textarea>
+                        <label for="item-description" class="block text-sm font-medium text-gray-300 mb-2" data-i18n-key="admin_menu_form_description">Description</label>
+                        <textarea id="item-description" name="description" rows="3" class="w-full bg-gray-800 border-gray-700 text-white rounded-md"></textarea>
                     </div>
                     <div>
-                        <label for="item-category" class="block text-sm font-medium text-text-secondary mb-2">Category</label>
-                        <input type="text" id="item-category" name="category" class="form-input w-full" required>
+                        <label for="item-category" class="block text-sm font-medium text-gray-300 mb-2" data-i18n-key="admin_menu_form_category">Category</label>
+                        <input type="text" id="item-category" name="category" class="w-full bg-gray-800 border-gray-700 text-white rounded-md" required>
                     </div>
                     <div>
-                        <label for="item-subCategory" class="block text-sm font-medium text-text-secondary mb-2">Sub-Category</label>
-                        <input type="text" id="item-subCategory" name="subCategory" class="form-input w-full" required>
+                        <label for="item-subCategory" class="block text-sm font-medium text-gray-300 mb-2" data-i18n-key="admin_menu_form_subcategory">Sub-Category</label>
+                        <input type="text" id="item-subCategory" name="subCategory" class="w-full bg-gray-800 border-gray-700 text-white rounded-md" required>
                     </div>
                     <div class="md:col-span-2">
-                        <label for="item-image" class="block text-sm font-medium text-text-secondary mb-2">Image URL</label>
-                        <input type="url" id="item-image" name="image" class="form-input w-full">
+                        <label for="item-image" class="block text-sm font-medium text-gray-300 mb-2" data-i18n-key="admin_menu_form_image">Image URL</label>
+                        <input type="url" id="item-image" name="image" class="w-full bg-gray-800 border-gray-700 text-white rounded-md">
                     </div>
                     <div class="md:col-span-2 flex justify-end gap-4">
-                        <button type="button" id="cancel-edit-btn" class="btn btn-secondary hidden">Cancel</button>
-                        <button type="submit" class="btn btn-primary">Save Item</button>
+                        <button type="button" id="cancel-edit-btn" class="btn btn-secondary btn-pill hidden" data-i18n-key="admin_menu_form_cancel">Cancel</button>
+                        <button type="submit" class="btn btn-primary btn-pill" data-i18n-key="admin_menu_form_save">Save Item</button>
                     </div>
                 </form>
             </div>
 
             <!-- Menu Items Table -->
-            <div class="bg-surface-color p-8 rounded-lg">
-                <h2 class="text-2xl font-bold mb-6">Current Menu</h2>
+            <div class="bg-[#1C1C1C] p-8 rounded-lg">
+                <h2 class="text-2xl font-bold text-white mb-6" data-i18n-key="admin_menu_table_title">Current Menu</h2>
                 <div class="overflow-x-auto">
-                    <table class="min-w-full text-sm text-left text-text-secondary">
-                        <thead>
+                    <table class="min-w-full text-sm text-left text-gray-400">
+                        <thead class="text-xs text-gray-300 uppercase bg-gray-700">
                             <tr>
-                                <th scope="col" class="px-6 py-3">Name</th>
-                                <th scope="col" class="px-6 py-3">Price</th>
-                                <th scope="col" class="px-6 py-3">Category</th>
-                                <th scope="col" class="px-6 py-3">Actions</th>
+                                <th scope="col" class="px-6 py-3" data-i18n-key="admin_menu_table_header_name">Name</th>
+                                <th scope="col" class="px-6 py-3" data-i18n-key="admin_menu_table_header_price">Price</th>
+                                <th scope="col" class="px-6 py-3" data-i18n-key="admin_menu_table_header_category">Category</th>
+                                <th scope="col" class="px-6 py-3" data-i18n-key="admin_menu_table_header_actions">Actions</th>
                             </tr>
                         </thead>
                         <tbody id="menu-items-table-body">
@@ -90,18 +90,18 @@
 
         <!-- View: Order Management -->
         <div id="admin-view-orders" data-view="orders" class="admin-view hidden">
-            <div class="bg-surface-color p-8 rounded-lg">
-                <h2 class="text-2xl font-bold mb-6">Order Management</h2>
+            <div class="bg-[#1C1C1C] p-8 rounded-lg">
+                <h2 class="text-2xl font-bold text-white mb-6" data-i18n-key="admin_orders_title">Order Management</h2>
                 <div class="overflow-x-auto">
-                    <table class="min-w-full text-sm text-left text-text-secondary">
-                        <thead>
+                    <table class="min-w-full text-sm text-left text-gray-400">
+                        <thead class="text-xs text-gray-300 uppercase bg-gray-700">
                             <tr>
-                                <th scope="col" class="px-6 py-3">Order ID</th>
-                                <th scope="col" class="px-6 py-3">Customer</th>
-                                <th scope="col" class="px-6 py-3">Date</th>
-                                <th scope="col" class="px-6 py-3">Status</th>
-                                <th scope="col" class="px-6 py-3">Total</th>
-                                <th scope="col" class="px-6 py-3">Actions</th>
+                                <th scope="col" class="px-6 py-3" data-i18n-key="admin_orders_header_id">Order ID</th>
+                                <th scope="col" class="px-6 py-3" data-i18n-key="admin_orders_header_customer">Customer</th>
+                                <th scope="col" class="px-6 py-3" data-i18n-key="admin_orders_header_date">Date</th>
+                                <th scope="col" class="px-6 py-3" data-i18n-key="admin_orders_header_status">Status</th>
+                                <th scope="col" class="px-6 py-3" data-i18n-key="admin_orders_header_total">Total</th>
+                                <th scope="col" class="px-6 py-3" data-i18n-key="admin_orders_header_actions">Actions</th>
                             </tr>
                         </thead>
                         <tbody id="orders-table-body">
@@ -114,19 +114,19 @@
 
         <!-- View: Reservation Management -->
         <div id="admin-view-reservations" data-view="reservations" class="admin-view hidden">
-            <div class="bg-surface-color p-8 rounded-lg">
-                <h2 class="text-2xl font-bold mb-6">Reservation Management</h2>
+            <div class="bg-[#1C1C1C] p-8 rounded-lg">
+                <h2 class="text-2xl font-bold text-white mb-6" data-i18n-key="admin_reservations_title">Reservation Management</h2>
                 <div class="overflow-x-auto">
-                    <table class="min-w-full text-sm text-left text-text-secondary">
-                        <thead>
+                    <table class="min-w-full text-sm text-left text-gray-400">
+                        <thead class="text-xs text-gray-300 uppercase bg-gray-700">
                             <tr>
-                                <th scope="col" class="px-6 py-3">Reservation ID</th>
-                                <th scope="col" class="px-6 py-3">Customer</th>
-                                <th scope="col" class="px-6 py-3">Date</th>
-                                <th scope="col" class="px-6 py-3">Time</th>
-                                <th scope="col" class="px-6 py-3">Guests</th>
-                                <th scope="col" class="px-6 py-3">Status</th>
-                                <th scope="col" class="px-6 py-3">Actions</th>
+                                <th scope="col" class="px-6 py-3" data-i18n-key="admin_reservations_header_id">Reservation ID</th>
+                                <th scope="col" class="px-6 py-3" data-i18n-key="admin_reservations_header_customer">Customer</th>
+                                <th scope="col" class="px-6 py-3" data-i18n-key="admin_reservations_header_date">Date</th>
+                                <th scope="col" class="px-6 py-3" data-i18n-key="admin_reservations_header_time">Time</th>
+                                <th scope="col" class="px-6 py-3" data-i18n-key="admin_reservations_header_guests">Guests</th>
+                                <th scope="col" class="px-6 py-3" data-i18n-key="admin_reservations_header_status">Status</th>
+                                <th scope="col" class="px-6 py-3" data-i18n-key="admin_reservations_header_actions">Actions</th>
                             </tr>
                         </thead>
                         <tbody id="reservations-table-body">
@@ -139,5 +139,6 @@
     </main>
 
     <div id="main-footer"></div>
+
 </body>
 </html>
