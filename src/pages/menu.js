@@ -127,7 +127,7 @@ export async function initMenuPage() {
     loadingSpinner.classList.remove('hidden');
 
     try {
-        const rawItems = await store.getMenu();
+        const rawItems = await store.dispatch('getMenu');
         allMenuItems = enhanceMenuItems(rawItems);
         renderMenu();
     } catch (error) {

@@ -22,7 +22,7 @@ export function initRegisterPage() {
             return;
         }
 
-        const user = await store.register(name, email, password);
+        const user = await store.dispatch('register', { name, email, password });
 
         if (user) {
             window.location.href = 'login.html?registered=true';
