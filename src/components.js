@@ -47,7 +47,7 @@ export async function loadHeader() {
 import { store } from './store.js';
 
 export function updateCartCount() {
-    const cart = store.dispatch('getCart');
+    const cart = store.getCart();
     const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
 
     const cartItemCount = document.getElementById('cart-item-count');
@@ -68,7 +68,7 @@ export function updateCartCount() {
 }
 
 export function updateAuthLinks() {
-    const user = store.dispatch('getCurrentUser');
+    const user = store.getCurrentUser();
     const authLinks = document.getElementById('auth-links');
     const authLinksMobile = document.getElementById('auth-links-mobile');
 

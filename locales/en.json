@@ -1,5 +1,0 @@
-{
-    "login_error": "Invalid email or password. Please try again.",
-    "register_error_fields": "Please fill in all fields.",
-    "register_error_exists": "A user with this email already exists."
-}

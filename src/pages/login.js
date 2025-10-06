@@ -25,7 +25,7 @@ export function initLoginPage() {
         const email = form.email.value;
         const password = form.password.value;
 
-        const user = await store.dispatch('login', { email, password });
+        const user = await store.login(email, password);
 
         if (user) {
             window.location.href = 'profile.html';

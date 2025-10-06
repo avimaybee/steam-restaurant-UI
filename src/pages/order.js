@@ -1,126 +1,62 @@
 import { store } from '../store.js';
 
-let allMenuItems = [];
-let categorizedItems = {};
-
-const CATEGORY_MAP = {
-    'featured': ['special-beer', 'cellar-classics', 'add-ons'],
-    'appetizers': ['small-plates', 'raw-bar', 'sushi'],
-    'main courses': ['main-plates', 'banquet'],
-    'desserts': ['desserts'],
-    'drinks': ['hot-beverages', 'cold-beverages', 'cocktails', 'mocktails', 'beer-cider', 'sake', 'japanese-whisky', 'sparkling-wine', 'white-wine', 'rose-wine', 'red-wine']
-};
-
-function categorizeMenuItems(items) {
-    const categories = {
-        'Featured': [],
-        'Appetizers': [],
-        'Main Courses': [],
-        'Desserts': [],
-        'Drinks': []
-    };
-
-    // A few hand-picked featured items
-    const featuredIds = [12, 13, 37, 40, 69, 77];
-
-    items.forEach(item => {
-        if (featuredIds.includes(item.id)) {
-            categories['Featured'].push(item);
-        }
-        if (CATEGORY_MAP['appetizers'].includes(item.subCategory)) {
-            categories['Appetizers'].push(item);
-        }
-        if (CATEGORY_MAP['main courses'].includes(item.subCategory)) {
-            categories['Main Courses'].push(item);
-        }
-        if (CATEGORY_MAP['desserts'].includes(item.subCategory)) {
-            categories['Desserts'].push(item);
-        }
-        if (CATEGORY_MAP['drinks'].includes(item.subCategory)) {
-            categories['Drinks'].push(item);
-        }
-    });
-    return categories;
-}
-
-function renderTabs() {
-    const tabsContainer = document.getElementById('category-tabs');
-    if (!tabsContainer) return;
-
-    const tabNames = Object.keys(categorizedItems);
-    tabsContainer.innerHTML = tabNames.map((name, index) => `
-        <button class="category-tab ${index === 0 ? 'active' : ''} py-4 px-1 border-b-2 font-medium text-sm whitespace-nowrap">
-            ${name}
-        </button>
-    `).join('');
-
-    document.querySelectorAll('.category-tab').forEach((tab, index) => {
-        tab.addEventListener('click', () => {
-            document.querySelector('.category-tab.active').classList.remove('active');
-            tab.classList.add('active');
-            renderMenuItems(tabNames[index]);
-        });
-    });
-}
-
-function renderMenuItems(category) {
-    const menuContainer = document.getElementById('menu-items-container');
-    if (!menuContainer) return;
-
-    const items = categorizedItems[category];
-    if (!items) {
-        menuContainer.innerHTML = '<p>No items in this category.</p>';
-        return;
-    }
-
-    menuContainer.innerHTML = items.map(item => `
-        <div class="menu-item-card flex items-center gap-6 bg-surface-color p-4 rounded-xl" style="background-color: #1E1E1E;">
-            <img src="${item.image.replace('150', '200')}" alt="${item.name}" class="w-24 h-24 sm:w-32 sm:h-32 object-cover rounded-lg">
-            <div class="flex-1">
-                <h3 class="text-lg sm:text-xl font-bold text-white">${item.name}</h3>
-                <p class="text-sm text-text-secondary mt-1 sm:mt-2">${item.description}</p>
-                <p class="text-lg font-bold text-primary-color mt-2 sm:mt-4">$${item.price.toFixed(2)}</p>
-            </div>
-            <button class="add-to-cart-btn self-start" data-item-id="${item.id}">
-                <span class="material-symbols-outlined text-3xl p-2 rounded-full bg-gray-700 hover:bg-primary-color hover:text-black transition-colors duration-300">add_circle</span>
-            </button>
-        </div>
-    `).join('');
-}
-
-function renderCart() {
+function renderOrderPage() {
     const cart = store.getCart();
-    const cartItemsContainer = document.getElementById('cart-items-container');
+    const orderItemsContainer = document.getElementById('order-items-container');
+    const orderSummary = document.getElementById('order-summary');
+
+    if (!orderItemsContainer) return;
 
     if (cart.length === 0) {
-        cartItemsContainer.innerHTML = `
-            <div class="text-center py-8">
-                <span class="material-symbols-outlined text-5xl text-text-secondary">shopping_cart</span>
-                <p class="text-text-secondary mt-2">Your cart is empty.</p>
+        orderItemsContainer.innerHTML = `
+            <div class="text-center py-16">
+                <span class="material-symbols-outlined text-6xl text-text-secondary">shopping_cart</span>
+                <h2 class="text-2xl font-bold text-white mt-4">Your Cart is Empty</h2>
+                <p class="text-text-secondary mt-2">Looks like you haven't added anything to your cart yet.</p>
+                <a href="menu.html" class="mt-6 inline-block bg-primary-color text-black font-bold py-3 px-6 rounded-lg hover:bg-opacity-80 transition-colors">
+                    Browse Menu
+                </a>
             </div>
         `;
+        if (orderSummary) {
+            orderSummary.classList.add('hidden');
+        }
     } else {
-        cartItemsContainer.innerHTML = cart.map(item => `
-            <div class="flex items-center justify-between gap-4">
-                <div>
-                    <h4 class="font-semibold text-white">${item.name}</h4>
-                    <p class="text-primary-color font-bold">$${item.price.toFixed(2)}</p>
-                </div>
-                <div class="flex items-center gap-3">
-                    <div class="flex items-center border border-border-color rounded-full">
-                        <button class="quantity-change-btn p-1" data-item-id="${item.id}" data-amount="-1">
-                            <span class="material-symbols-outlined text-sm">remove</span>
-                        </button>
-                        <span class="px-2 text-white text-sm">${item.quantity}</span>
-                        <button class="quantity-change-btn p-1" data-item-id="${item.id}" data-amount="1">
-                            <span class="material-symbols-outlined text-sm">add</span>
-                        </button>
+        if (orderSummary) {
+            orderSummary.classList.remove('hidden');
+        }
+        orderItemsContainer.innerHTML = cart.map(item => `
+            <div class="cart-item-card flex items-start gap-4 sm:gap-6 bg-surface-color p-4 rounded-xl">
+                <img src="${item.image}" alt="${item.name}" class="w-24 h-24 sm:w-32 sm:h-32 object-cover rounded-lg">
+                <div class="flex-1 flex flex-col h-full">
+                    <div class="flex-1">
+                        <h3 class="text-lg sm:text-xl font-bold text-white">${item.name}</h3>
+                        <p class="text-primary-color font-bold text-base sm:text-lg mt-1">$${item.price.toFixed(2)}</p>
                     </div>
-                    <p class="font-bold text-white w-16 text-right">$${(item.price * item.quantity).toFixed(2)}</p>
+                    <div class="flex items-center gap-3 mt-2">
+                        <div class="flex items-center border border-border-color rounded-full">
+                            <button class="quantity-change-btn p-1" data-item-id="${item.id}" data-amount="-1">
+                                <span class="material-symbols-outlined text-sm">remove</span>
+                            </button>
+                            <span class="px-3 text-white text-sm font-medium">${item.quantity}</span>
+                            <button class="quantity-change-btn p-1" data-item-id="${item.id}" data-amount="1">
+                                <span class="material-symbols-outlined text-sm">add</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex flex-col items-end h-full">
+                     <p class="text-lg sm:text-xl font-bold text-white flex-1">$${(item.price * item.quantity).toFixed(2)}</p>
+                     <button class="remove-from-cart-btn text-text-secondary hover:text-red-500 transition-colors" data-item-id="${item.id}">
+                        <span class="material-symbols-outlined">delete</span>
+                    </button>
                 </div>
             </div>
         `).join('');
     }
+    updateOrderSummary();
+}
+
     updateOrderSummary();
 }
 
@@ -130,14 +66,20 @@ function updateOrderSummary() {
     const taxes = subtotal * 0.08; // 8% tax
     const total = subtotal + taxes;
 
-    document.getElementById('summary-subtotal').textContent = `$${subtotal.toFixed(2)}`;
-    document.getElementById('summary-taxes').textContent = `$${taxes.toFixed(2)}`;
-    document.getElementById('summary-total').textContent = `$${total.toFixed(2)}`;
-
+    const summarySubtotal = document.getElementById('summary-subtotal');
+    const summaryTaxes = document.getElementById('summary-taxes');
+    const summaryTotal = document.getElementById('summary-total');
     const checkoutBtn = document.getElementById('checkout-btn');
-    checkoutBtn.disabled = cart.length === 0;
-    checkoutBtn.classList.toggle('opacity-50', cart.length === 0);
-    checkoutBtn.classList.toggle('cursor-not-allowed', cart.length === 0);
+
+    if (summarySubtotal) summarySubtotal.textContent = `$${subtotal.toFixed(2)}`;
+    if (summaryTaxes) summaryTaxes.textContent = `$${taxes.toFixed(2)}`;
+    if (summaryTotal) summaryTotal.textContent = `$${total.toFixed(2)}`;
+
+    if (checkoutBtn) {
+        checkoutBtn.disabled = cart.length === 0;
+        checkoutBtn.classList.toggle('opacity-50', cart.length === 0);
+        checkoutBtn.classList.toggle('cursor-not-allowed', cart.length === 0);
+    }
 }
 
 function initEventListeners() {
@@ -145,42 +87,43 @@ function initEventListeners() {
     if (!orderPage) return;
 
     orderPage.addEventListener('click', e => {
-        const addToCartBtn = e.target.closest('.add-to-cart-btn');
         const quantityBtn = e.target.closest('.quantity-change-btn');
+        const removeBtn = e.target.closest('.remove-from-cart-btn');
         const checkoutBtn = e.target.closest('#checkout-btn');
 
-        if (addToCartBtn) {
-            const itemId = parseInt(addToCartBtn.dataset.itemId, 10);
-            store.addToCart(itemId);
-            renderCart();
-            return;
-        }
-
         if (quantityBtn) {
-            const itemId = parseInt(quantityBtn.dataset.itemId);
-            const amount = parseInt(quantityBtn.dataset.amount);
+            const itemId = parseInt(quantityBtn.dataset.itemId, 10);
+            const amount = parseInt(quantityBtn.dataset.amount, 10);
             const currentItem = store.getCart().find(item => item.id === itemId);
             if (currentItem) {
                 store.updateCartItemQuantity(itemId, currentItem.quantity + amount);
-                renderCart();
+                renderOrderPage(); // Re-render the whole page to reflect changes
             }
             return;
         }
 
-        if (checkoutBtn && store.getCart().length > 0) {
-            window.location.href = 'checkout.html';
+        if (removeBtn) {
+            const itemId = parseInt(removeBtn.dataset.itemId, 10);
+            store.removeFromCart(itemId);
+            renderOrderPage(); // Re-render the whole page
+            return;
+        }
+
+        if (checkoutBtn && !checkoutBtn.disabled) {
+            // Placeholder for checkout logic
+            alert('Proceeding to checkout...');
+            // window.location.href = 'checkout.html';
         }
     });
 }
 
+
 export async function initOrderPage() {
     if (!document.getElementById('order-page')) return;
 
-    allMenuItems = await store.getMenu();
-    categorizedItems = categorizeMenuItems(allMenuItems);
+    // Ensure menu is loaded so we can get item details if needed, though cart should have them
+    await store.getMenu();
 
-    renderTabs();
-    renderMenuItems('Featured'); // Show featured items by default
-    renderCart();
+    renderOrderPage();
     initEventListeners();
 }

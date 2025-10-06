@@ -133,7 +133,7 @@ function initializeThemeSwitcher() {
 function setupLogout() {
     document.body.addEventListener('click', (e) => {
         if (e.target.matches('#logout-btn, #logout-btn-mobile')) {
-            store.dispatch('logout');
+            store.logout();
             updateAuthLinks();
             if (window.location.pathname.endsWith('profile.html')) {
                 window.location.href = 'login.html';
@@ -143,9 +143,6 @@ function setupLogout() {
 }
 
 async function initApp() {
-    // Initialize the store first to ensure data is loaded
-    await store.init();
-
     // Wait for header and footer to load before initializing dependent components
     await Promise.all([loadHeader(), loadFooter()]);
 

@@ -4,7 +4,7 @@ export async function initProfilePage() {
     const profilePage = document.getElementById('profile-page');
     if (!profilePage) return;
 
-    const user = store.dispatch('getCurrentUser');
+    const user = store.getCurrentUser();
 
     if (!user) {
         window.location.href = 'login.html';
@@ -31,7 +31,7 @@ export async function initProfilePage() {
             return;
         }
 
-        const success = await store.dispatch('redeemLoyaltyPoints', { userId: user.id, points: amount });
+        const success = await store.redeemLoyaltyPoints(user.id, amount);
 
         if (success) {
             const voucherValue = (amount / 1000) * 10;
@@ -39,7 +39,7 @@ export async function initProfilePage() {
             redeemMessage.classList.remove('hidden', 'text-red-500');
             redeemMessage.classList.add('text-green-500');
             // Update points display
-            const updatedUser = store.dispatch('getCurrentUser');
+            const updatedUser = store.getCurrentUser();
             loyaltyPointsSpan.textContent = updatedUser.loyaltyPoints;
             redeemForm.reset();
         } else {
@@ -51,7 +51,7 @@ export async function initProfilePage() {
 
     // Fetch and display order history
     const orderHistoryContainer = document.getElementById('order-history-container');
-    const orders = await store.dispatch('getOrdersByCustomer', user.name);
+    const orders = await store.getOrdersByCustomer(user.name);
     if (orders.length > 0) {
         orderHistoryContainer.innerHTML = createHistoryTable(orders, ['Order ID', 'Date', 'Status', 'Total']);
     } else {
@@ -60,7 +60,7 @@ export async function initProfilePage() {
 
     // Fetch and display reservation history
     const reservationHistoryContainer = document.getElementById('reservation-history-container');
-    const reservations = await store.dispatch('getReservationsByCustomer', user.name);
+    const reservations = await store.getReservationsByCustomer(user.name);
     if (reservations.length > 0) {
         reservationHistoryContainer.innerHTML = createHistoryTable(reservations, ['Reservation ID', 'Date', 'Time', 'Guests', 'Status']);
     } else {
