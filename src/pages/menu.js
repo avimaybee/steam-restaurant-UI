@@ -9,14 +9,14 @@ function toTitleCase(str) {
 }
 
 async function enhanceMenuItems(items) {
-    const allReviews = await store.getReviews();
+    const allReviews = await store.getAllReviews();
     return items.map(item => {
         const tags = new Set();
-        const description = store.get(`menu_item_${item.id}_description`).toLowerCase();
-        const name = store.get(`menu_item_${item.id}_name`).toLowerCase();
+        const description = (item.description || "").toLowerCase();
+        const name = (item.name || "").toLowerCase();
 
-        if (name.includes('vegan') || description.includes(' vegan') || description.includes('veg.')) tags.add('vegan');
-        if (tags.has('vegan') || description.includes(' v.')) tags.add('vegetarian');
+        if (name.includes('vegan') || description.includes(' vegan') || description.includes(' v.')) tags.add('vegan');
+        if (tags.has('vegan') || description.includes('vegetarian') || description.includes('veg.')) tags.add('vegetarian');
         if (name.includes('gf') || description.includes('gf')) tags.add('gluten-free');
         if (description.includes('df')) tags.add('dairy-free');
         if (description.includes('spicy')) tags.add('spicy');
@@ -70,8 +70,8 @@ function renderMenu(itemsToRender) {
         itemsBySubCategory[subCategory].forEach(item => {
             const menuItemElement = document.createElement('div');
             menuItemElement.className = 'menu-item-card group bg-surface-color rounded-lg shadow-lg overflow-hidden flex flex-col';
-            const itemName = store.get(`menu_item_${item.id}_name`);
-            const itemDescription = store.get(`menu_item_${item.id}_description`);
+            const itemName = item.name;
+            const itemDescription = item.description;
             menuItemElement.innerHTML = `
                 <div class="relative">
                     <img src="${item.image}" alt="${itemName}" class="w-full h-56 object-cover transition-transform duration-300 group-hover:scale-110">
@@ -116,8 +116,8 @@ function applyFilters() {
     }
     if (searchTerm) {
         filteredItems = filteredItems.filter(item => {
-            const itemName = store.get(`menu_item_${item.id}_name`).toLowerCase();
-            const itemDescription = store.get(`menu_item_${item.id}_description`).toLowerCase();
+            const itemName = (item.name || "").toLowerCase();
+            const itemDescription = (item.description || "").toLowerCase();
             return itemName.includes(searchTerm) || itemDescription.includes(searchTerm);
         });
     }

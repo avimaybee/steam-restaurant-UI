@@ -2,6 +2,7 @@ import { config } from './config.js';
 
 const state = {
     menu: [],
+    cart: [],
     orders: [],
     reservations: [],
     users: [],
@@ -242,6 +243,9 @@ export const store = {
     // Review Management
     getReviews: async (itemId) => {
         return state.reviews[itemId] || [];
+    },
+    getAllReviews: async () => {
+        return state.reviews;
     },
     addReview: async (itemId, review) => {
         if (!state.reviews[itemId]) {
