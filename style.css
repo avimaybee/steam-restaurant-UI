@@ -317,38 +317,6 @@ input[type="time"] {
     box-shadow: 0 10px 20px rgba(0,0,0,0.2);
 }
 
-/* Responsive Tables */
-@media (max-width: 768px) {
-    .responsive-table thead {
-        display: none;
-    }
-    .responsive-table tr {
-        display: block;
-        margin-bottom: 1rem;
-        border: 1px solid var(--border-color);
-        border-radius: 0.5rem;
-        overflow: hidden;
-    }
-    .responsive-table td {
-        display: block;
-        padding: 0.75rem 1rem;
-        text-align: right;
-        position: relative;
-        border-bottom: 1px solid var(--border-color);
-    }
-    .responsive-table td:last-child {
-        border-bottom: none;
-    }
-    .responsive-table td::before {
-        content: attr(data-label);
-        position: absolute;
-        left: 1rem;
-        font-weight: bold;
-        text-align: left;
-        color: var(--text-secondary);
-    }
-}
-
 /* Gallery Masonry Grid */
 .masonry-grid {
     column-gap: var(--masonry-gap, 1.5rem);
@@ -471,6 +439,23 @@ input[type="time"] {
     background-color: var(--surface-color);
     border-color: var(--primary-color);
     color: var(--primary-color);
+}
+
+/* Order Page Tab Styles */
+.category-tab {
+    color: var(--text-secondary);
+    border-color: transparent;
+    transition: all 0.3s ease;
+}
+
+.category-tab:hover {
+    color: var(--text-primary);
+}
+
+.category-tab.active {
+    color: var(--primary-color);
+    border-color: var(--primary-color);
+    font-weight: 600;
 }
 
 /* Size modifiers */

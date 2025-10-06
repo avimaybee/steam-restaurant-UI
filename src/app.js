@@ -143,9 +143,6 @@ function setupLogout() {
 }
 
 async function initApp() {
-    // Initialize the store first to ensure data is loaded
-    await store.init();
-
     // Wait for header and footer to load before initializing dependent components
     await Promise.all([loadHeader(), loadFooter()]);
 

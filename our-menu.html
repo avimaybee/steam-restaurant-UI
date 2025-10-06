@@ -19,70 +19,25 @@
 
     <header id="main-header"></header>
 
-    <main id="main-content" class="flex flex-1 justify-center px-4 py-12 sm:px-6 lg:px-8 menu-gradient-bg pt-32">
-        <div class="w-full max-w-4xl space-y-12">
+    <main id="main-content" class="flex flex-1 justify-center px-4 py-12 sm:px-6 lg:px-8 pt-32" style="background-color: #121212;">
+        <div class="w-full max-w-7xl space-y-16">
             <div class="text-center">
-                <h1 class="text-4xl font-extrabold tracking-tighter text-white sm:text-5xl md:text-6xl"> Our Menu </h1>
-                <p class="mt-4 text-lg text-white/60"> A symphony of flavors, where tradition meets innovation. </p>
+                <h1 class="text-5xl font-bold tracking-tight text-white sm:text-6xl md:text-7xl font-serif">Our Menu</h1>
+                <p class="mt-6 text-lg text-text-secondary max-w-2xl mx-auto">A symphony of flavors, where tradition meets innovation.</p>
             </div>
-            <div class="space-y-8">
-                <!-- Advanced Filters -->
-                <div id="advanced-filters" class="bg-white/5 border border-white/10 rounded-lg p-6 space-y-6">
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div>
-                            <label for="search-input" class="block text-sm font-medium text-gray-300 mb-2">Search</label>
-                            <input type="search" id="search-input" placeholder="Search by name or keyword..." class="w-full bg-gray-800 border-gray-700 text-white rounded-md">
-                        </div>
-                        <div>
-                            <label for="sort-by" class="block text-sm font-medium text-gray-300 mb-2">Sort By</label>
-                            <select id="sort-by" class="w-full bg-gray-800 border-gray-700 text-white rounded-md">
-                                <option value="default">Default</option>
-                                <option value="popularity">Popularity</option>
-                                <option value="price-asc">Price: Low to High</option>
-                                <option value="price-desc">Price: High to Low</option>
-                                <option value="rating">Rating</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div>
-                        <label class="block text-sm font-medium text-gray-300 mb-2">Dietary Options</label>
-                        <div id="dietary-tags" class="flex flex-wrap gap-x-6 gap-y-2">
-                            <label class="inline-flex items-center">
-                                <input type="checkbox" class="form-checkbox bg-gray-800 border-gray-700 text-primary-color" value="vegan">
-                                <span class="ml-2 text-gray-300">Vegan</span>
-                            </label>
-                            <label class="inline-flex items-center">
-                                <input type="checkbox" class="form-checkbox bg-gray-800 border-gray-700 text-primary-color" value="vegetarian">
-                                <span class="ml-2 text-gray-300">Vegetarian</span>
-                            </label>
-                             <label class="inline-flex items-center">
-                                <input type="checkbox" class="form-checkbox bg-gray-800 border-gray-700 text-primary-color" value="gluten-free">
-                                <span class="ml-2 text-gray-300">Gluten-Free</span>
-                            </label>
-                             <label class="inline-flex items-center">
-                                <input type="checkbox" class="form-checkbox bg-gray-800 border-gray-700 text-primary-color" value="dairy-free">
-                                <span class="ml-2 text-gray-300">Dairy-Free</span>
-                            </label>
-                             <label class="inline-flex items-center">
-                                <input type="checkbox" class="form-checkbox bg-gray-800 border-gray-700 text-primary-color" value="spicy">
-                                <span class="ml-2 text-gray-300">Spicy</span>
-                            </label>
-                        </div>
-                    </div>
-                </div>
-                <!-- Category Filters -->
-                <div id="menu-filters" class="flex flex-wrap justify-center gap-4">
-                    <button class="menu-filter-btn active" data-category="all">All</button>
-                    <button class="menu-filter-btn" data-category="dine-in">Dine-in</button>
-                    <button class="menu-filter-btn" data-category="beverages">Beverages</button>
-                    <button class="menu-filter-btn" data-category="combos">Combos</button>
-                    <button class="menu-filter-btn" data-category="specials">Specials</button>
-                </div>
+
+            <div id="menu-container" class="space-y-16">
+                <!-- Menu items will be dynamically inserted here -->
             </div>
-            <div id="menu-container" class="space-y-10">
-                <div id="loading-spinner" class="text-center">
-                    <p class="text-white text-lg">Loading menu...</p>
-                </div>
+
+            <div class="text-center text-sm text-text-secondary mt-16">
+                <h3 class="font-bold text-base text-white mb-2">Allergen Information</h3>
+                <p>GF: Gluten-Free, LF: Lactose-Free, V: Vegan, VGO: Vegetarian.</p>
+                <p class="mt-2 max-w-3xl mx-auto">Please be aware that our kitchen handles allergens. While we take precautions, we cannot guarantee a completely allergen-free environment. Please inform your server of any allergies or dietary restrictions.</p>
+            </div>
+
+            <div id="loading-spinner" class="text-center hidden">
+                <p class="text-white text-lg">Loading menu...</p>
             </div>
         </div>
     </main>
