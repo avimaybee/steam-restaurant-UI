@@ -25,7 +25,7 @@ function renderCart() {
 
     cart.forEach(item => {
         const itemElement = document.createElement('div');
-        itemElement.className = 'flex items-center justify-between gap-4 border-b border-border-color pb-4';
+        itemElement.className = 'flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-b border-border-color pb-4';
         itemElement.innerHTML = `
             <div class="flex items-center gap-4">
                 <img src="${item.image}" alt="${item.name}" class="h-20 w-20 rounded-lg object-cover">

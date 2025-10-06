@@ -2,7 +2,6 @@ import { config } from './config.js';
 
 const state = {
     menu: [],
-    cart: [],
     orders: [],
     reservations: [],
     users: [],
@@ -29,6 +28,16 @@ function loadMenuFromStorage() {
     const menuFromStorage = localStorage.getItem(MENU_STORAGE_KEY);
     if (menuFromStorage) {
         state.menu = JSON.parse(menuFromStorage);
+        return true;
+    }
+    return false;
+}
+
+// Function to load reservations from localStorage
+function loadReservationsFromStorage() {
+    const reservationsFromStorage = localStorage.getItem('restaurantReservations');
+    if (reservationsFromStorage) {
+        state.reservations = JSON.parse(reservationsFromStorage);
         return true;
     }
     return false;
@@ -211,12 +220,17 @@ export const store = {
     },
 
     // Order Management
-    getOrders: async () => state.orders,
+    getOrders: async () => {
+        if (state.orders.length === 0) loadOrdersFromStorage();
+        return state.orders
+    },
     getOrderById: async (orderId) => {
+        if (state.orders.length === 0) loadOrdersFromStorage();
         // Find order by string ID
         return state.orders.find(o => o.id === orderId);
     },
     getOrdersByCustomer: async (customerName) => {
+        if (state.orders.length === 0) loadOrdersFromStorage();
         return state.orders.filter(o => o.customer === customerName);
     },
     updateOrderStatus: async (orderId, newStatus) => {
@@ -228,24 +242,27 @@ export const store = {
     },
 
     // Reservation Management
-    getReservations: async () => state.reservations,
+    getReservations: async () => {
+        if (state.reservations.length === 0) loadReservationsFromStorage();
+        return state.reservations;
+    },
     getReservationsByCustomer: async (customerName) => {
+        if (state.reservations.length === 0) loadReservationsFromStorage();
         return state.reservations.filter(r => r.customer === customerName);
     },
     updateReservationStatus: async (reservationId, newStatus) => {
+        if (state.reservations.length === 0) loadReservationsFromStorage();
         const reservation = state.reservations.find(r => r.id === reservationId);
         if (reservation) reservation.status = newStatus;
     },
     deleteReservation: async (reservationId) => {
+        if (state.reservations.length === 0) loadReservationsFromStorage();
         state.reservations = state.reservations.filter(r => r.id !== reservationId);
     },
 
     // Review Management
     getReviews: async (itemId) => {
         return state.reviews[itemId] || [];
-    },
-    getAllReviews: async () => {
-        return state.reviews;
     },
     addReview: async (itemId, review) => {
         if (!state.reviews[itemId]) {
@@ -349,8 +366,19 @@ export const store = {
     }
 };
 
-// Initialize state from storage first
-loadOrdersFromStorage();
+    init: async () => {
+        // Initialize state from storage first
+        loadUserFromLocalStorage();
+        loadCartFromStorage();
+        loadOrdersFromStorage();
+        loadReservationsFromStorage();
+        loadReviewsFromStorage();
+        store.initLanguage();
+        await store.loadTranslations();
 
-// Initialize fake data if storage is empty
-generateFakeData();
+        // Initialize fake data if storage is empty
+        generateFakeData();
+    }
+};
+
+// No automatic initialization here. It will be called from app.js

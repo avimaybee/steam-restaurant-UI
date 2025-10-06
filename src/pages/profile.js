@@ -70,11 +70,12 @@ export async function initProfilePage() {
 
 function createHistoryTable(items, headers) {
     const isOrderTable = headers.includes('Total');
+    const originalHeaders = [...headers]; // For data-label attributes
     if (isOrderTable) {
         headers.push('Actions');
     }
 
-    let table = '<table class="min-w-full text-sm text-left text-gray-400">';
+    let table = '<table class="w-full responsive-table text-sm text-left text-gray-400">';
     // Table header
     table += '<thead class="text-xs text-gray-300 uppercase bg-gray-700">';
     table += '<tr>';
@@ -88,22 +89,22 @@ function createHistoryTable(items, headers) {
     items.forEach(item => {
         table += '<tr class="bg-gray-800 border-b border-gray-700">';
         if (isOrderTable) { // It's an order
-            table += `<td class="px-6 py-4 font-medium text-white">#${item.id}</td>`;
-            table += `<td class="px-6 py-4">${item.date}</td>`;
-            table += `<td class="px-6 py-4">${item.status}</td>`;
-            table += `<td class="px-6 py-4">$${item.total.toFixed(2)}</td>`;
+            table += `<td data-label="${originalHeaders[0]}" class="px-6 py-4 font-medium text-white">#${item.id}</td>`;
+            table += `<td data-label="${originalHeaders[1]}" class="px-6 py-4">${item.date}</td>`;
+            table += `<td data-label="${originalHeaders[2]}" class="px-6 py-4">${item.status}</td>`;
+            table += `<td data-label="${originalHeaders[3]}" class="px-6 py-4">$${item.total.toFixed(2)}</td>`;
             // Actions column
-            table += '<td class="px-6 py-4">';
+            table += '<td data-label="Actions" class="px-6 py-4">';
             if (['Pending', 'Confirmed', 'Preparing', 'Out for Delivery'].includes(item.status)) {
                 table += `<a href="order-tracking.html?order_id=${item.id}" class="btn btn-secondary btn-sm">Track Order</a>`;
             }
             table += '</td>';
         } else { // It's a reservation
-            table += `<td class="px-6 py-4 font-medium text-white">#${item.id}</td>`;
-            table += `<td class="px-6 py-4">${item.date}</td>`;
-            table += `<td class="px-6 py-4">${item.time}</td>`;
-            table += `<td class="px-6 py-4">${item.guests}</td>`;
-            table += `<td class="px-6 py-4">${item.status}</td>`;
+            table += `<td data-label="${originalHeaders[0]}" class="px-6 py-4 font-medium text-white">#${item.id}</td>`;
+            table += `<td data-label="${originalHeaders[1]}" class="px-6 py-4">${item.date}</td>`;
+            table += `<td data-label="${originalHeaders[2]}" class="px-6 py-4">${item.time}</td>`;
+            table += `<td data-label="${originalHeaders[3]}" class="px-6 py-4">${item.guests}</td>`;
+            table += `<td data-label="${originalHeaders[4]}" class="px-6 py-4">${item.status}</td>`;
         }
         table += '</tr>';
     });

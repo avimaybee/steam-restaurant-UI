@@ -40,10 +40,10 @@ function renderMenuTable() {
         const row = menuTableBody.insertRow();
         row.className = 'bg-gray-800 border-b border-gray-700';
         row.innerHTML = `
-            <td class="px-6 py-4 font-medium text-white">${item.name}</td>
-            <td class="px-6 py-4">$${item.price.toFixed(2)}</td>
-            <td class="px-6 py-4">${item.category} / ${item.subCategory}</td>
-            <td class="px-6 py-4 flex gap-4">
+            <td data-label="Name" class="px-6 py-4 font-medium text-white">${item.name}</td>
+            <td data-label="Price" class="px-6 py-4">$${item.price.toFixed(2)}</td>
+            <td data-label="Category" class="px-6 py-4">${item.category} / ${item.subCategory}</td>
+            <td data-label="Actions" class="px-6 py-4 flex gap-4">
                 <button class="font-medium text-blue-500 hover:underline edit-btn" data-id="${item.id}">${store.get('admin_menu_edit')}</button>
                 <button class="font-medium text-red-500 hover:underline delete-btn" data-id="${item.id}">${store.get('admin_menu_delete')}</button>
             </td>
@@ -58,18 +58,18 @@ function renderOrdersTable() {
         const row = ordersTableBody.insertRow();
         row.className = 'bg-gray-800 border-b border-gray-700';
         row.innerHTML = `
-            <td class="px-6 py-4 font-medium text-white">#${order.id}</td>
-            <td class="px-6 py-4">${order.customer}</td>
-            <td class="px-6 py-4">${order.date}</td>
-            <td class="px-6 py-4">
+            <td data-label="Order ID" class="px-6 py-4 font-medium text-white">#${order.id}</td>
+            <td data-label="Customer" class="px-6 py-4">${order.customer}</td>
+            <td data-label="Date" class="px-6 py-4">${order.date}</td>
+            <td data-label="Status" class="px-6 py-4">
                 <select class="order-status-select bg-gray-700 text-white rounded-md p-2" data-id="${order.id}">
                     <option value="Pending" ${order.status === 'Pending' ? 'selected' : ''}>Pending</option>
                     <option value="Completed" ${order.status === 'Completed' ? 'selected' : ''}>Completed</option>
                     <option value="Cancelled" ${order.status === 'Cancelled' ? 'selected' : ''}>Cancelled</option>
                 </select>
             </td>
-            <td class="px-6 py-4">$${order.total.toFixed(2)}</td>
-            <td class="px-6 py-4">
+            <td data-label="Total" class="px-6 py-4">$${order.total.toFixed(2)}</td>
+            <td data-label="Actions" class="px-6 py-4">
                 <button class="font-medium text-red-500 hover:underline delete-order-btn" data-id="${order.id}">${store.get('admin_menu_delete')}</button>
             </td>
         `;
@@ -83,19 +83,19 @@ function renderReservationsTable() {
         const row = reservationsTableBody.insertRow();
         row.className = 'bg-gray-800 border-b border-gray-700';
         row.innerHTML = `
-            <td class="px-6 py-4 font-medium text-white">#${res.id}</td>
-            <td class="px-6 py-4">${res.customer}</td>
-            <td class="px-6 py-4">${res.date}</td>
-            <td class="px-6 py-4">${res.time}</td>
-            <td class="px-6 py-4">${res.guests}</td>
-            <td class="px-6 py-4">
+            <td data-label="Reservation ID" class="px-6 py-4 font-medium text-white">#${res.id}</td>
+            <td data-label="Customer" class="px-6 py-4">${res.customer}</td>
+            <td data-label="Date" class="px-6 py-4">${res.date}</td>
+            <td data-label="Time" class="px-6 py-4">${res.time}</td>
+            <td data-label="Guests" class="px-6 py-4">${res.guests}</td>
+            <td data-label="Status" class="px-6 py-4">
                  <select class="reservation-status-select bg-gray-700 text-white rounded-md p-2" data-id="${res.id}">
                     <option value="Pending" ${res.status === 'Pending' ? 'selected' : ''}>Pending</option>
                     <option value="Confirmed" ${res.status === 'Confirmed' ? 'selected' : ''}>Confirmed</option>
                     <option value="Cancelled" ${res.status === 'Cancelled' ? 'selected' : ''}>Cancelled</option>
                 </select>
             </td>
-            <td class="px-6 py-4">
+            <td data-label="Actions" class="px-6 py-4">
                 <button class="font-medium text-red-500 hover:underline delete-reservation-btn" data-id="${res.id}">${store.get('admin_menu_delete')}</button>
             </td>
         `;
