@@ -21,9 +21,6 @@
   --text-primary: #F5F5F5; /* A soft, off-white for main text */
   --text-secondary: #A0A0A0; /* A lighter gray for secondary text */
   --border-color: #2A2A2A; /* A subtle border color */
-  --success-color: #28a745; /* Green for success states */
-  --error-color: #dc3545; /* Red for error states */
-  --warning-color: #ffc107; /* Yellow for warning states */
   --font-serif: 'Playfair Display', serif;
   --font-sans: 'Manrope', sans-serif;
 }
