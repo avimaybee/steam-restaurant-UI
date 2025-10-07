@@ -19,7 +19,7 @@ import { initGalleryPage } from './pages/gallery.js';
 import { initAboutPage } from './pages/about.js';
 import { initContactPage } from './pages/contact.js';
 import { initReservationsPage } from './pages/reservations.js';
-import { initBackToTopButton, initScrollAnimations, initRippleEffect, initHeroAnimation } from './ui.js';
+import { initBackToTopButton, initRippleEffect, initHeroAnimation } from './ui.js';
 
 
 async function initApp() {
@@ -28,7 +28,7 @@ async function initApp() {
     initializeMobileMenu();
     setActiveNavLink();
     initBackToTopButton();
-    initScrollAnimations();
+    initHeroAnimation();
     initRippleEffect();
 
     updateAuthLinks();

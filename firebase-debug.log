@@ -1,0 +1,106 @@
+[debug] [2025-10-07T08:37:52.611Z] ----------------------------------------------------------------------
+[debug] [2025-10-07T08:37:52.614Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\lenovo\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy --only hosting --project steam-rest
+[debug] [2025-10-07T08:37:52.614Z] CLI Version:   14.18.0
+[debug] [2025-10-07T08:37:52.614Z] Platform:      win32
+[debug] [2025-10-07T08:37:52.614Z] Node Version:  v22.15.0
+[debug] [2025-10-07T08:37:52.615Z] Time:          Tue Oct 07 2025 14:07:52 GMT+0530 (India Standard Time)
+[debug] [2025-10-07T08:37:52.615Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2025-10-07T08:37:52.837Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-10-07T08:37:52.838Z] > authorizing via signed-in user (avimaybe7@gmail.com)
+[debug] [2025-10-07T08:37:52.838Z] [iam] checking project steam-rest for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2025-10-07T08:37:52.839Z] Checked if tokens are valid: false, expires at: 1755956085034
+[debug] [2025-10-07T08:37:52.839Z] Checked if tokens are valid: false, expires at: 1755956085034
+[debug] [2025-10-07T08:37:52.839Z] > refreshing access token with scopes: []
+[debug] [2025-10-07T08:37:52.841Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2025-10-07T08:37:52.841Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2025-10-07T08:37:53.413Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 400
+[debug] [2025-10-07T08:37:53.413Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2025-10-07T08:37:53.413Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/steam-rest:testIamPermissions [none]
+[debug] [2025-10-07T08:37:53.413Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/steam-rest:testIamPermissions x-goog-quota-user=projects/steam-rest
+[debug] [2025-10-07T08:37:53.414Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/steam-rest:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2025-10-07T08:37:54.912Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/steam-rest:testIamPermissions 401
+[debug] [2025-10-07T08:37:54.912Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/steam-rest:testIamPermissions {"error":{"code":401,"message":"Request had invalid authentication credentials. Expected OAuth 2 access token, login cookie or other valid authentication credential. See https://developers.google.com/identity/sign-in/web/devconsole-project.","status":"UNAUTHENTICATED","details":[{"@type":"type.googleapis.com/google.rpc.ErrorInfo","reason":"ACCESS_TOKEN_TYPE_UNSUPPORTED","metadata":{"method":"google.cloudresourcemanager.v1.Projects.TestIamPermissions","service":"cloudresourcemanager.googleapis.com"}}]}}
+[debug] [2025-10-07T08:37:54.912Z] Got a 401 Unauthenticated error for a call that required authentication. Refreshing tokens.
+[debug] [2025-10-07T08:37:54.912Z] Checked if tokens are valid: false, expires at: 1755956085034
+[debug] [2025-10-07T08:37:54.912Z] Checked if tokens are valid: false, expires at: 1755956085034
+[debug] [2025-10-07T08:37:54.912Z] > refreshing access token with scopes: []
+[debug] [2025-10-07T08:37:54.913Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2025-10-07T08:37:54.913Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2025-10-07T08:37:55.140Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 400
+[debug] [2025-10-07T08:37:55.141Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2025-10-07T08:37:55.143Z] [iam] error while checking permissions, command may fail: Request to https://cloudresourcemanager.googleapis.com/v1/projects/steam-rest:testIamPermissions had HTTP Error: 401, Request had invalid authentication credentials. Expected OAuth 2 access token, login cookie or other valid authentication credential. See https://developers.google.com/identity/sign-in/web/devconsole-project.
+[debug] [2025-10-07T08:37:55.144Z] Checked if tokens are valid: false, expires at: 1755956085034
+[debug] [2025-10-07T08:37:55.144Z] Checked if tokens are valid: false, expires at: 1755956085034
+[debug] [2025-10-07T08:37:55.144Z] > refreshing access token with scopes: []
+[debug] [2025-10-07T08:37:55.144Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2025-10-07T08:37:55.144Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2025-10-07T08:37:55.243Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 400
+[debug] [2025-10-07T08:37:55.243Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2025-10-07T08:37:55.243Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/steam-rest [none]
+[debug] [2025-10-07T08:37:55.812Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/steam-rest 401
+[debug] [2025-10-07T08:37:55.812Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/steam-rest {"error":{"code":401,"message":"Request had invalid authentication credentials. Expected OAuth 2 access token, login cookie or other valid authentication credential. See https://developers.google.com/identity/sign-in/web/devconsole-project.","status":"UNAUTHENTICATED"}}
+[debug] [2025-10-07T08:37:55.812Z] Got a 401 Unauthenticated error for a call that required authentication. Refreshing tokens.
+[debug] [2025-10-07T08:37:55.812Z] Checked if tokens are valid: false, expires at: 1755956085034
+[debug] [2025-10-07T08:37:55.812Z] Checked if tokens are valid: false, expires at: 1755956085034
+[debug] [2025-10-07T08:37:55.812Z] > refreshing access token with scopes: []
+[debug] [2025-10-07T08:37:55.813Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2025-10-07T08:37:55.813Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2025-10-07T08:37:56.041Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 400
+[debug] [2025-10-07T08:37:56.041Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2025-10-07T08:37:56.041Z] Request to https://firebase.googleapis.com/v1beta1/projects/steam-rest had HTTP Error: 401, Request had invalid authentication credentials. Expected OAuth 2 access token, login cookie or other valid authentication credential. See https://developers.google.com/identity/sign-in/web/devconsole-project.
+[error] 
+[error] Error: Assertion failed: resolving hosting target of a site with no site name or target name. This should have caused an error earlier
+[debug] [2025-10-07T08:45:08.485Z] ----------------------------------------------------------------------
+[debug] [2025-10-07T08:45:08.488Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\lenovo\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy --only hosting --project steam-rest
+[debug] [2025-10-07T08:45:08.488Z] CLI Version:   14.18.0
+[debug] [2025-10-07T08:45:08.488Z] Platform:      win32
+[debug] [2025-10-07T08:45:08.488Z] Node Version:  v22.15.0
+[debug] [2025-10-07T08:45:08.489Z] Time:          Tue Oct 07 2025 14:15:08 GMT+0530 (India Standard Time)
+[debug] [2025-10-07T08:45:08.489Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2025-10-07T08:45:08.702Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-10-07T08:45:08.702Z] > authorizing via signed-in user (avimaybe7@gmail.com)
+[debug] [2025-10-07T08:45:08.702Z] [iam] checking project steam-rest for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2025-10-07T08:45:08.703Z] Checked if tokens are valid: false, expires at: 1755956085034
+[debug] [2025-10-07T08:45:08.704Z] Checked if tokens are valid: false, expires at: 1755956085034
+[debug] [2025-10-07T08:45:08.704Z] > refreshing access token with scopes: []
+[debug] [2025-10-07T08:45:08.705Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2025-10-07T08:45:08.705Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2025-10-07T08:45:09.248Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 400
+[debug] [2025-10-07T08:45:09.248Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2025-10-07T08:45:09.249Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/steam-rest:testIamPermissions [none]
+[debug] [2025-10-07T08:45:09.249Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/steam-rest:testIamPermissions x-goog-quota-user=projects/steam-rest
+[debug] [2025-10-07T08:45:09.249Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/steam-rest:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2025-10-07T08:45:10.749Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/steam-rest:testIamPermissions 401
+[debug] [2025-10-07T08:45:10.749Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/steam-rest:testIamPermissions {"error":{"code":401,"message":"Request had invalid authentication credentials. Expected OAuth 2 access token, login cookie or other valid authentication credential. See https://developers.google.com/identity/sign-in/web/devconsole-project.","status":"UNAUTHENTICATED","details":[{"@type":"type.googleapis.com/google.rpc.ErrorInfo","reason":"ACCESS_TOKEN_TYPE_UNSUPPORTED","metadata":{"method":"google.cloudresourcemanager.v1.Projects.TestIamPermissions","service":"cloudresourcemanager.googleapis.com"}}]}}
+[debug] [2025-10-07T08:45:10.749Z] Got a 401 Unauthenticated error for a call that required authentication. Refreshing tokens.
+[debug] [2025-10-07T08:45:10.749Z] Checked if tokens are valid: false, expires at: 1755956085034
+[debug] [2025-10-07T08:45:10.749Z] Checked if tokens are valid: false, expires at: 1755956085034
+[debug] [2025-10-07T08:45:10.749Z] > refreshing access token with scopes: []
+[debug] [2025-10-07T08:45:10.750Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2025-10-07T08:45:10.750Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2025-10-07T08:45:10.971Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 400
+[debug] [2025-10-07T08:45:10.972Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2025-10-07T08:45:10.973Z] [iam] error while checking permissions, command may fail: Request to https://cloudresourcemanager.googleapis.com/v1/projects/steam-rest:testIamPermissions had HTTP Error: 401, Request had invalid authentication credentials. Expected OAuth 2 access token, login cookie or other valid authentication credential. See https://developers.google.com/identity/sign-in/web/devconsole-project.
+[debug] [2025-10-07T08:45:10.973Z] Checked if tokens are valid: false, expires at: 1755956085034
+[debug] [2025-10-07T08:45:10.973Z] Checked if tokens are valid: false, expires at: 1755956085034
+[debug] [2025-10-07T08:45:10.973Z] > refreshing access token with scopes: []
+[debug] [2025-10-07T08:45:10.974Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2025-10-07T08:45:10.974Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2025-10-07T08:45:11.222Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 400
+[debug] [2025-10-07T08:45:11.222Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2025-10-07T08:45:11.223Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/steam-rest [none]
+[debug] [2025-10-07T08:45:11.978Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/steam-rest 401
+[debug] [2025-10-07T08:45:11.978Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/steam-rest {"error":{"code":401,"message":"Request had invalid authentication credentials. Expected OAuth 2 access token, login cookie or other valid authentication credential. See https://developers.google.com/identity/sign-in/web/devconsole-project.","status":"UNAUTHENTICATED"}}
+[debug] [2025-10-07T08:45:11.978Z] Got a 401 Unauthenticated error for a call that required authentication. Refreshing tokens.
+[debug] [2025-10-07T08:45:11.978Z] Checked if tokens are valid: false, expires at: 1755956085034
+[debug] [2025-10-07T08:45:11.978Z] Checked if tokens are valid: false, expires at: 1755956085034
+[debug] [2025-10-07T08:45:11.978Z] > refreshing access token with scopes: []
+[debug] [2025-10-07T08:45:11.979Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2025-10-07T08:45:11.979Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2025-10-07T08:45:12.211Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 400
+[debug] [2025-10-07T08:45:12.211Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2025-10-07T08:45:12.211Z] Request to https://firebase.googleapis.com/v1beta1/projects/steam-rest had HTTP Error: 401, Request had invalid authentication credentials. Expected OAuth 2 access token, login cookie or other valid authentication credential. See https://developers.google.com/identity/sign-in/web/devconsole-project.
+[error] 
+[error] Error: Assertion failed: resolving hosting target of a site with no site name or target name. This should have caused an error earlier

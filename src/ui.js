@@ -27,26 +27,7 @@ export function initBackToTopButton() {
     });
 }
 
-export function initScrollAnimations() {
-    const animatedElements = document.querySelectorAll('.fade-in-up');
 
-    if (!animatedElements.length) return;
-
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('is-visible');
-                observer.unobserve(entry.target);
-            }
-        });
-    }, {
-        threshold: 0.1
-    });
-
-    animatedElements.forEach(element => {
-        observer.observe(element);
-    });
-}
 
 export function initRippleEffect() {
     const buttons = document.querySelectorAll('.btn');

@@ -575,17 +575,7 @@ input[type="time"] {
     box-shadow: 0 10px 20px rgba(0,0,0,0.2);
 }
 
-/* Scroll Animations */
-.fade-in-up {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-}
 
-.fade-in-up.is-visible {
-    opacity: 1;
-    transform: translateY(0);
-}
 
 /* Hero Animation */
 .hero-bg {
