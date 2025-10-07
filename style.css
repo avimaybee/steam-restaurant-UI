@@ -14,8 +14,8 @@
 }
 
 :root {
-  --primary-color: #C0A062; /* A more elegant, desaturated gold */
-  --accent-color: #A98C54; /* A slightly darker gold for hovers */
+  --primary-color: #8B4513; /* A rich, warm brown */
+  --accent-color: #7A3C10; /* A slightly darker brown for hovers */
   --secondary-color: #121212; /* A very dark, near-black for background */
   --surface-color: #1E1E1E; /* A slightly lighter gray for cards/surfaces */
   --text-primary: #F5F5F5; /* A soft, off-white for main text */
