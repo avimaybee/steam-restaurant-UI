@@ -1,4 +1,5 @@
 import { initRealTimeValidation, validate } from '../validate.js';
+import { triggerHapticFeedback } from '../ui.js';
 
 export function initContactPage() {
     initRealTimeValidation('contact-form');
@@ -29,6 +30,7 @@ export function initContactPage() {
             // In a real app, you would send the form data to a server here.
             // For this demo, we'll just show the success message after a short delay.
             setTimeout(() => {
+                triggerHapticFeedback();
                 submitBtn.classList.remove('loading');
                 submitBtn.disabled = false;
                 successDiv.classList.remove('hidden');

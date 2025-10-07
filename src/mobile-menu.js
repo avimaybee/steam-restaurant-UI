@@ -1,7 +1,7 @@
 export function initializeMobileMenu() {
     const openMenu = () => {
         const mobileMenu = document.getElementById('mobile-menu');
-        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenuButton = document.getElementById('mobile-menu-button-bottom');
         const overlay = document.getElementById('mobile-menu-overlay');
         if (!mobileMenu || !mobileMenuButton) return;
 
@@ -20,7 +20,7 @@ export function initializeMobileMenu() {
 
     const closeMenu = () => {
         const mobileMenu = document.getElementById('mobile-menu');
-        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenuButton = document.getElementById('mobile-menu-button-bottom');
         const overlay = document.getElementById('mobile-menu-overlay');
         if (!mobileMenu || !mobileMenuButton) return;
 
@@ -41,8 +41,8 @@ export function initializeMobileMenu() {
     // Use event delegation for all interactions
     document.body.addEventListener('click', (e) => {
         // Handle menu button click
-        if (e.target.closest('#mobile-menu-button')) {
-            const mobileMenuButton = document.getElementById('mobile-menu-button');
+        if (e.target.closest('#mobile-menu-button-bottom')) {
+            const mobileMenuButton = document.getElementById('mobile-menu-button-bottom');
             if (mobileMenuButton) {
                 const isExpanded = mobileMenuButton.getAttribute('aria-expanded') === 'true';
                 isExpanded ? closeMenu() : openMenu();

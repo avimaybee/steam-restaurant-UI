@@ -35,4 +35,34 @@
     <button id="back-to-top" class="fixed bottom-8 right-8 bg-primary-color text-black p-3 rounded-full shadow-lg hidden opacity-0 transition-opacity duration-300">
         <span class="material-symbols-outlined">arrow_upward</span>
     </button>
+
+    <!-- Bottom Navigation -->
+    <div id="bottom-nav" class="fixed bottom-0 left-0 w-full bg-surface-color border-t border-border-color md:hidden z-50">
+        <div class="flex justify-around items-center h-16">
+            <a href="landing-page.html" class="flex flex-col items-center text-text-secondary p-2">
+                <span class="material-symbols-outlined">home</span>
+                <span class="text-xs">Home</span>
+            </a>
+            <a href="our-menu.html" class="flex flex-col items-center text-text-secondary p-2">
+                <span class="material-symbols-outlined">restaurant_menu</span>
+                <span class="text-xs">Menu</span>
+            </a>
+            <button id="mobile-menu-button-bottom" class="relative z-50 h-16 w-16 text-white flex flex-col justify-center items-center">
+                <div id="hamburger-icon-bottom" class="space-y-1.5">
+                    <span class="hamburger-line block w-6 h-0.5 bg-white"></span>
+                    <span class="hamburger-line block w-6 h-0.5 bg-white"></span>
+                    <span class="hamburger-line block w-6 h-0.5 bg-white"></span>
+                </div>
+            </button>
+            <a href="order-page.html" class="relative flex flex-col items-center text-text-secondary p-2">
+                <span class="material-symbols-outlined">shopping_bag</span>
+                <span id="cart-item-count-bottom-nav" class="absolute top-0 right-1 bg-primary-color text-black text-xs font-bold rounded-full h-4 w-4 flex items-center justify-center hidden">0</span>
+                <span class="text-xs">Cart</span>
+            </a>
+            <a href="profile.html" class="flex flex-col items-center text-text-secondary p-2">
+                <span class="material-symbols-outlined">person</span>
+                <span class="text-xs">Profile</span>
+            </a>
+        </div>
+    </div>
 </footer>

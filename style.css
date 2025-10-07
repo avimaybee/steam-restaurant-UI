@@ -348,16 +348,16 @@ input[type="time"] {
     transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55), opacity 0.2s ease-in-out;
 }
 
-#mobile-menu-button[aria-expanded="true"] #hamburger-icon .hamburger-line:nth-child(1) {
+#mobile-menu-button-bottom[aria-expanded="true"] #hamburger-icon-bottom .hamburger-line:nth-child(1) {
     transform: translateY(8px) rotate(135deg);
 }
 
-#mobile-menu-button[aria-expanded="true"] #hamburger-icon .hamburger-line:nth-child(2) {
+#mobile-menu-button-bottom[aria-expanded="true"] #hamburger-icon-bottom .hamburger-line:nth-child(2) {
     opacity: 0;
     transform: scale(0);
 }
 
-#mobile-menu-button[aria-expanded="true"] #hamburger-icon .hamburger-line:nth-child(3) {
+#mobile-menu-button-bottom[aria-expanded="true"] #hamburger-icon-bottom .hamburger-line:nth-child(3) {
     transform: translateY(-8px) rotate(-135deg);
 }
 
@@ -458,6 +458,23 @@ input[type="time"] {
 
 .btn-primary:hover {
     box-shadow: 0 0 20px rgba(192, 160, 98, 0.3); /* Subtle glow */
+}
+
+.cart-item-content {
+    transition: transform 0.3s ease-out;
+}
+
+.cart-item.swiped .cart-item-content {
+    transform: translateX(-80px); /* Width of the delete button */
+}
+
+#refresh-indicator.show {
+    transform: translate(-50%, 50%);
+}
+
+#toast.show {
+    transform: translate(-50%, 0);
+    opacity: 1;
 }
 
 .btn-secondary {

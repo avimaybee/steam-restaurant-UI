@@ -83,3 +83,9 @@ export function initHeroAnimation() {
         heroBg.style.transform = `translateY(${scrollPosition * 0.5}px)`;
     });
 }
+
+export function triggerHapticFeedback() {
+    if (window.navigator.vibrate) {
+        window.navigator.vibrate(50); // Vibrate for 50ms
+    }
+}

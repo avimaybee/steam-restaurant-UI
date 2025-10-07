@@ -52,6 +52,7 @@ export function updateCartCount() {
 
     const cartItemCount = document.getElementById('cart-item-count');
     const cartItemCountMobile = document.getElementById('cart-item-count-mobile');
+    const cartItemCountBottomNav = document.getElementById('cart-item-count-bottom-nav');
 
     const update = (element) => {
         if (!element) return;
@@ -65,6 +66,7 @@ export function updateCartCount() {
 
     update(cartItemCount);
     update(cartItemCountMobile);
+    update(cartItemCountBottomNav);
 }
 
 export function updateAuthLinks() {

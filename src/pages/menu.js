@@ -26,6 +26,17 @@ function renderTags(tags) {
     return tags.map(tag => `<span class="inline-block bg-gray-700 text-gray-300 text-xs font-semibold px-2 py-1 rounded-full">${tag}</span>`).join(' ');
 }
 
+function showToast(message) {
+    const toast = document.getElementById('toast');
+    if (toast) {
+        toast.textContent = message;
+        toast.classList.add('show');
+        setTimeout(() => {
+            toast.classList.remove('show');
+        }, 3000);
+    }
+}
+
 function renderDineInSection(items) {
     const itemsBySubCategory = items.reduce((acc, item) => {
         const subCategory = item.subCategory || 'uncategorized';
@@ -159,11 +170,11 @@ export async function initMenuPage() {
                 if (e.target.classList.contains('add-to-order-btn')) {
                     const itemId = e.target.dataset.id;
                     store.addToCart(parseInt(itemId));
-                    e.target.textContent = 'Added!';
+                    showToast('Item added to cart!');
                     setTimeout(() => {
                         menuItemModal.classList.add('hidden');
                         menuItemModal.classList.remove('flex');
-                    }, 1000);
+                    }, 500);
                 }
             });
 
@@ -186,4 +197,35 @@ export async function initMenuPage() {
     } finally {
         loadingSpinner.classList.add('hidden');
     }
+
+    const mainContent = document.getElementById('main-content');
+    const refreshIndicator = document.getElementById('refresh-indicator');
+    let touchstartY = 0;
+    let touchendY = 0;
+
+    mainContent.addEventListener('touchstart', e => {
+        touchstartY = e.changedTouches[0].screenY;
+    }, false);
+
+    mainContent.addEventListener('touchmove', e => {
+        const touchY = e.changedTouches[0].screenY;
+        if (window.scrollY === 0 && touchY > touchstartY) {
+            const pullDistance = touchY - touchstartY;
+            if (pullDistance > 50) {
+                refreshIndicator.classList.add('show');
+            }
+        }
+    }, false);
+
+    mainContent.addEventListener('touchend', e => {
+        touchendY = e.changedTouches[0].screenY;
+        if (window.scrollY === 0 && touchendY > touchstartY + 100) {
+            // Trigger refresh
+            refreshIndicator.classList.remove('show');
+            // Reload the menu
+            initMenuPage(); 
+        } else {
+            refreshIndicator.classList.remove('show');
+        }
+    }, false);
 }

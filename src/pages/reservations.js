@@ -1,5 +1,6 @@
 import { initRealTimeValidation, validate } from '../validate.js';
 import { store } from '../store.js';
+import { triggerHapticFeedback } from '../ui.js';
 
 export function initReservationsPage() {
     initRealTimeValidation('reservation-form');
@@ -9,8 +10,15 @@ export function initReservationsPage() {
     const closeModalBtn = document.getElementById('close-confirmation-modal');
     const summaryDiv = document.getElementById('reservation-summary');
     const submitBtn = form.querySelector('button[type="submit"]');
+    const addSpecialRequestBtn = document.getElementById('add-special-request-btn');
+    const specialRequestsContainer = document.getElementById('special-requests-container');
 
     if (!form || !modal) return;
+
+    addSpecialRequestBtn.addEventListener('click', () => {
+        specialRequestsContainer.classList.remove('hidden');
+        addSpecialRequestBtn.classList.add('hidden');
+    });
 
     form.addEventListener('submit', async (e) => {
         e.preventDefault();
@@ -42,6 +50,8 @@ export function initReservationsPage() {
         };
 
         await store.addReservation(reservation);
+
+        triggerHapticFeedback();
 
         submitBtn.classList.remove('loading');
         submitBtn.disabled = false;

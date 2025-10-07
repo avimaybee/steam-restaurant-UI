@@ -32,12 +32,12 @@
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-6">
                     <div>
                         <label class="block text-text-secondary text-sm font-medium mb-2" for="fullName">Full Name</label>
-                        <input class="form-input w-full" id="fullName" name="fullName" placeholder="John Doe" type="text" data-validate="required"/>
+                        <input class="form-input w-full" id="fullName" name="fullName" placeholder="John Doe" type="text" data-validate="required" autocomplete="name"/>
                         <p id="fullName-error" class="text-red-500 text-sm mt-1 hidden"></p>
                     </div>
                     <div>
                         <label class="block text-text-secondary text-sm font-medium mb-2" for="email">Email Address</label>
-                        <input class="form-input w-full" id="email" name="email" placeholder="you@example.com" type="email" data-validate="required|email"/>
+                        <input class="form-input w-full" id="email" name="email" placeholder="you@example.com" type="email" data-validate="required|email" autocomplete="email"/>
                         <p id="email-error" class="text-red-500 text-sm mt-1 hidden"></p>
                     </div>
                 </div>
@@ -61,10 +61,11 @@
                         <p id="guests-error" class="text-red-500 text-sm mt-1 hidden"></p>
                     </div>
                 </div>
-                <div>
+                <div id="special-requests-container" class="hidden">
                     <label class="block text-text-secondary text-sm font-medium mb-2" for="requests">Special Requests (Optional)</label>
                     <textarea class="form-input w-full" id="requests" placeholder="e.g., dietary restrictions, allergies, or special celebrations" rows="4"></textarea>
                 </div>
+                <button type="button" id="add-special-request-btn" class="text-primary-color hover:underline">Add a special request</button>
                 <div class="pt-6">
                     <button class="btn btn-primary w-full btn-lg" type="submit">
                         Confirm Reservation

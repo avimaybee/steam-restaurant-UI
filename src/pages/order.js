@@ -1,4 +1,5 @@
 import { store } from '../store.js';
+import { triggerHapticFeedback } from '../ui.js';
 
 let allMenuItems = [];
 let categorizedItems = {};
@@ -101,22 +102,31 @@ function renderCart() {
         `;
     } else {
         cartItemsContainer.innerHTML = cart.map(item => `
-            <div class="flex items-center justify-between gap-4">
-                <div>
-                    <h4 class="font-semibold text-white">${item.name}</h4>
-                    <p class="text-primary-color font-bold">$${item.price.toFixed(2)}</p>
-                </div>
-                <div class="flex items-center gap-3">
-                    <div class="flex items-center border border-border-color rounded-full">
-                        <button class="quantity-change-btn p-1" data-item-id="${item.id}" data-amount="-1">
-                            <span class="material-symbols-outlined text-sm">remove</span>
-                        </button>
-                        <span class="px-2 text-white text-sm">${item.quantity}</span>
-                        <button class="quantity-change-btn p-1" data-item-id="${item.id}" data-amount="1">
-                            <span class="material-symbols-outlined text-sm">add</span>
-                        </button>
+            <div class="cart-item relative overflow-hidden" data-item-id="${item.id}">
+                <div class="cart-item-content bg-surface-color p-4 transition-transform duration-300">
+                    <div class="flex items-center justify-between gap-4">
+                        <div>
+                            <h4 class="font-semibold text-white">${item.name}</h4>
+                            <p class="text-primary-color font-bold">$${item.price.toFixed(2)}</p>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <div class="flex items-center border border-border-color rounded-full">
+                                <button class="quantity-change-btn p-1" data-item-id="${item.id}" data-amount="-1">
+                                    <span class="material-symbols-outlined text-sm">remove</span>
+                                </button>
+                                <span class="px-2 text-white text-sm">${item.quantity}</span>
+                                <button class="quantity-change-btn p-1" data-item-id="${item.id}" data-amount="1">
+                                    <span class="material-symbols-outlined text-sm">add</span>
+                                </button>
+                            </div>
+                            <p class="font-bold text-white w-16 text-right">$${(item.price * item.quantity).toFixed(2)}</p>
+                        </div>
                     </div>
-                    <p class="font-bold text-white w-16 text-right">$${(item.price * item.quantity).toFixed(2)}</p>
+                </div>
+                <div class="absolute top-0 right-0 h-full">
+                    <button class="delete-cart-item-btn h-full bg-red-500 text-white px-6 flex items-center justify-center" data-item-id="${item.id}">
+                        <span class="material-symbols-outlined">delete</span>
+                    </button>
                 </div>
             </div>
         `).join('');
@@ -144,14 +154,58 @@ function initEventListeners() {
     const orderPage = document.getElementById('order-page');
     if (!orderPage) return;
 
+    const cartItemsContainer = document.getElementById('cart-items-container');
+    let touchstartX = 0;
+    let touchendX = 0;
+
+    cartItemsContainer.addEventListener('touchstart', e => {
+        const cartItem = e.target.closest('.cart-item');
+        if (cartItem) {
+            touchstartX = e.changedTouches[0].screenX;
+        }
+    }, false);
+
+    cartItemsContainer.addEventListener('touchend', e => {
+        const cartItem = e.target.closest('.cart-item');
+        if (cartItem) {
+            touchendX = e.changedTouches[0].screenX;
+            handleSwipe(cartItem);
+        }
+    }, false);
+
+    function handleSwipe(cartItem) {
+        if (touchendX < touchstartX - 50) { // Swiped left
+            // Reset other items
+            document.querySelectorAll('.cart-item.swiped').forEach(item => {
+                if (item !== cartItem) {
+                    item.classList.remove('swiped');
+                }
+            });
+            cartItem.classList.add('swiped');
+        }
+        if (touchendX > touchstartX + 50) { // Swiped right
+            cartItem.classList.remove('swiped');
+        }
+    }
+
     orderPage.addEventListener('click', e => {
         const addToCartBtn = e.target.closest('.add-to-cart-btn');
         const quantityBtn = e.target.closest('.quantity-change-btn');
         const checkoutBtn = e.target.closest('#checkout-btn');
+        const deleteBtn = e.target.closest('.delete-cart-item-btn');
+
+        if (deleteBtn) {
+            const itemId = parseInt(deleteBtn.dataset.itemId, 10);
+            store.removeFromCart(itemId);
+            triggerHapticFeedback();
+            renderCart();
+            return;
+        }
 
         if (addToCartBtn) {
             const itemId = parseInt(addToCartBtn.dataset.itemId, 10);
             store.addToCart(itemId);
+            triggerHapticFeedback();
             renderCart();
             return;
         }
@@ -162,6 +216,7 @@ function initEventListeners() {
             const currentItem = store.getCart().find(item => item.id === itemId);
             if (currentItem) {
                 store.updateCartItemQuantity(itemId, currentItem.quantity + amount);
+                triggerHapticFeedback();
                 renderCart();
             }
             return;
