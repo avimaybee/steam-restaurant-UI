@@ -1,4 +1,5 @@
 import { config } from './config.js';
+import { menuData } from './menu-data.js';
 
 const state = {
     menu: [],
@@ -17,6 +18,7 @@ const USER_STORAGE_KEY = 'restaurantUser';
 const REVIEWS_STORAGE_KEY = 'restaurantReviews';
 const CART_STORAGE_KEY = 'restaurantCart';
 const ORDERS_STORAGE_KEY = 'restaurantOrders';
+const RESERVATIONS_STORAGE_KEY = 'restaurantReservations';
 const LANG_STORAGE_KEY = 'restaurantLang';
 
 // Function to save menu to localStorage
@@ -39,6 +41,19 @@ function loadOrdersFromStorage() {
     const ordersFromStorage = localStorage.getItem(ORDERS_STORAGE_KEY);
     if (ordersFromStorage) {
         state.orders = JSON.parse(ordersFromStorage);
+        return true;
+    }
+    return false;
+}
+
+function saveReservationsToStorage() {
+    localStorage.setItem(RESERVATIONS_STORAGE_KEY, JSON.stringify(state.reservations));
+}
+
+function loadReservationsFromStorage() {
+    const reservationsFromStorage = localStorage.getItem(RESERVATIONS_STORAGE_KEY);
+    if (reservationsFromStorage) {
+        state.reservations = JSON.parse(reservationsFromStorage);
         return true;
     }
     return false;
@@ -144,15 +159,11 @@ export const store = {
     getMenu: async (forceRefresh = false) => {
         if (!forceRefresh && state.menu.length > 0) return state.menu;
         if (!forceRefresh && loadMenuFromStorage()) return state.menu;
-        try {
-            const response = await fetch(config.api.menuUrl);
-            if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-            state.menu = await response.json();
-            saveMenuToStorage();
-        } catch (error) {
-            
-            if (!loadMenuFromStorage()) return [];
-        }
+
+        // Use the hardcoded menu data
+        state.menu = menuData;
+        saveMenuToStorage();
+
         return state.menu;
     },
     addMenuItem: async (item) => {
@@ -228,7 +239,16 @@ export const store = {
     },
 
     // Reservation Management
-    getReservations: async () => state.reservations,
+    getReservations: async () => {
+        if (state.reservations.length === 0) {
+            loadReservationsFromStorage();
+        }
+        return state.reservations;
+    },
+    addReservation: async (reservation) => {
+        state.reservations.push(reservation);
+        saveReservationsToStorage();
+    },
     getReservationsByCustomer: async (customerName) => {
         return state.reservations.filter(r => r.customer === customerName);
     },
@@ -271,7 +291,7 @@ export const store = {
         }
         return null;
     },
-    logout: () => {
+    logout: ().
         state.currentUser = null;
         localStorage.removeItem(USER_STORAGE_KEY);
     },

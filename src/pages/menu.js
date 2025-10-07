@@ -41,7 +41,7 @@ function renderDineInSection(items) {
                 <h3 class="text-3xl font-bold tracking-tight font-serif text-white border-l-4 border-primary-color pl-4 mb-8">${toTitleCase(subCategory.replace(/-/g, ' '))}</h3>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-8">
                     ${itemsBySubCategory[subCategory].map(item => `
-                        <div>
+                        <div class="menu-item p-4 rounded-lg hover:bg-gray-800 cursor-pointer" data-id="${item.id}">
                             <div class="flex justify-between items-start">
                                 <h4 class="text-xl font-semibold text-white pr-4">${item.name}</h4>
                                 <span class="text-xl font-bold text-white whitespace-nowrap">$${item.price.toFixed(2)}</span>
@@ -79,7 +79,7 @@ function renderBeverageSection(items) {
                 <h3 class="text-2xl font-semibold tracking-tight font-serif text-white border-b-2 border-primary-color pb-2">${toTitleCase(subCategory.replace(/-/g, ' '))}</h3>
                 <div class="space-y-5">
                     ${itemsBySubCategory[subCategory].map(item => `
-                        <div>
+                        <div class="menu-item p-4 rounded-lg hover:bg-gray-800 cursor-pointer" data-id="${item.id}">
                             <div class="flex justify-between items-start">
                                 <h4 class="text-lg font-semibold text-white pr-4">${item.name}</h4>
                                 <span class="text-lg font-bold text-white whitespace-nowrap">$${item.price.toFixed(2)}</span>
@@ -130,6 +130,56 @@ export async function initMenuPage() {
         const rawItems = await store.getMenu();
         allMenuItems = enhanceMenuItems(rawItems);
         renderMenu();
+
+        const menuItemModal = document.getElementById('menu-item-modal');
+        const closeMenuItemModalBtn = document.getElementById('close-menu-item-modal');
+        const menuItemModalContent = document.getElementById('menu-item-modal-content');
+
+        if (menuItemModal) {
+            menuContainer.addEventListener('click', (e) => {
+                const menuItemEl = e.target.closest('.menu-item');
+                if (menuItemEl) {
+                    const itemId = menuItemEl.dataset.id;
+                    const item = allMenuItems.find(i => i.id == itemId);
+                    if (item) {
+                        menuItemModalContent.innerHTML = `
+                            <h2 class="text-3xl font-bold text-white mb-4">${item.name}</h2>
+                            <p class="text-text-secondary mb-4">${item.description}</p>
+                            <p class="text-2xl font-bold text-white mb-4">$${item.price.toFixed(2)}</p>
+                            <div class="flex gap-2 mb-4">${renderTags(item.tags)}</div>
+                            <button class="btn btn-primary add-to-order-btn" data-id="${item.id}">Add to Order</button>
+                        `;
+                        menuItemModal.classList.remove('hidden');
+                        menuItemModal.classList.add('flex');
+                    }
+                }
+            });
+
+            menuItemModalContent.addEventListener('click', (e) => {
+                if (e.target.classList.contains('add-to-order-btn')) {
+                    const itemId = e.target.dataset.id;
+                    store.addToCart(parseInt(itemId));
+                    e.target.textContent = 'Added!';
+                    setTimeout(() => {
+                        menuItemModal.classList.add('hidden');
+                        menuItemModal.classList.remove('flex');
+                    }, 1000);
+                }
+            });
+
+            closeMenuItemModalBtn.addEventListener('click', () => {
+                menuItemModal.classList.add('hidden');
+                menuItemModal.classList.remove('flex');
+            });
+
+            menuItemModal.addEventListener('click', (e) => {
+                if (e.target === menuItemModal) {
+                    menuItemModal.classList.add('hidden');
+                    menuItemModal.classList.remove('flex');
+                }
+            });
+        }
+
     } catch (error) {
         
         menuContainer.innerHTML = `<p class="text-center text-red-500">Failed to load menu. Please try again later.</p>`;

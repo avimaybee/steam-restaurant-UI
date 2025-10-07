@@ -1,8 +1,11 @@
 import { store } from '../store.js';
+import { initPasswordToggle } from '../auth.js';
 
 export function initLoginPage() {
     const loginPage = document.getElementById('login-page');
     if (!loginPage) return;
+
+    initPasswordToggle();
 
     const form = document.getElementById('login-form');
     const errorDiv = document.getElementById('login-error');

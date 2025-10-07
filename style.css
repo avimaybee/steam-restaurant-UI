@@ -25,15 +25,7 @@
   --font-sans: 'Manrope', sans-serif;
 }
 
-html[data-theme="light"] {
-    --primary-color: #8a704c;
-    --accent-color: #a78b64;
-    --secondary-color: #FFFFFF;
-    --surface-color: #F5F5F5;
-    --text-primary: #121212;
-    --text-secondary: #555555;
-    --border-color: #EAEAEA;
-}
+
 
 body {
     font-family: var(--font-sans);
@@ -207,6 +199,8 @@ input[type="time"] {
     text-transform: uppercase;
     letter-spacing: 0.05em;
     transition: color 0.3s ease;
+    padding: 0.5rem 0.75rem;
+    border-radius: 0.25rem;
 }
 
 .nav-link:hover {
@@ -237,9 +231,13 @@ input[type="time"] {
 }
 
 #mobile-menu {
+    position: relative;
+    z-index: 50;
     transition: opacity 0.3s ease, transform 0.3s ease;
     transform: translateY(-10px);
     opacity: 0;
+    overflow-y: auto;
+    max-height: calc(100vh - 5rem); /* Assuming header height is around 5rem */
 }
 
 #mobile-menu.open {
@@ -288,6 +286,7 @@ input[type="time"] {
 .nav-link-footer {
     color: var(--text-secondary);
     transition: color 0.3s ease;
+    padding: 0.25rem;
 }
 
 .nav-link-footer:hover {
@@ -427,14 +426,15 @@ input[type="time"] {
 }
 
 .btn-primary {
-    background-color: var(--primary-color);
+    background-image: linear-gradient(to right, var(--primary-color) 0%, var(--accent-color) 51%, var(--primary-color) 100%);
+    background-size: 200% auto;
     color: #121212; /* Dark text on a light button for contrast */
     border-color: var(--primary-color);
+    transition: background-position 0.5s;
 }
 
 .btn-primary:hover {
-    background-color: var(--accent-color);
-    border-color: var(--accent-color);
+    background-position: right center; /* change the direction of the change here */
     box-shadow: 0 0 20px rgba(192, 160, 98, 0.3); /* Subtle glow */
 }
 
@@ -498,7 +498,58 @@ input[type="time"] {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--secondary-color);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--primary-color);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--accent-color);
+}
+
+/* Ripple Effect */
+.ripple {
+    position: relative;
+    overflow: hidden;
+}
+
+.ripple-effect {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: scale(0);
+    animation: ripple 0.6s linear;
+}
+
+@keyframes ripple {
+    to {
+        transform: scale(4);
+        opacity: 0;
+    }
+}
+
 .menu-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+/* Scroll Animations */
+.fade-in-up {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.fade-in-up.is-visible {
+    opacity: 1;
+    transform: translateY(0);
 }

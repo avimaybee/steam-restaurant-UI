@@ -2,7 +2,7 @@ import { loadHeader, loadFooter, updateAuthLinks } from './components.js';
 import { store } from './store.js';
 import { setActiveNavLink } from './utils.js';
 import { initializeMobileMenu } from './mobile-menu.js';
-import { initializeThemeSwitcher } from './theme.js';
+
 import { setupLogout } from './auth.js';
 import { initMenuPage } from './pages/menu.js';
 import { initOrderPage } from './pages/order.js';
@@ -18,6 +18,8 @@ import { initVouchersPage } from './pages/vouchers.js';
 import { initGalleryPage } from './pages/gallery.js';
 import { initAboutPage } from './pages/about.js';
 import { initContactPage } from './pages/contact.js';
+import { initReservationsPage } from './pages/reservations.js';
+import { initBackToTopButton, initScrollAnimations, initRippleEffect } from './ui.js';
 
 
 async function initApp() {
@@ -27,7 +29,10 @@ async function initApp() {
     // Now that the header and footer are loaded, we can initialize everything else.
     initializeMobileMenu();
     setActiveNavLink();
-    initializeThemeSwitcher();
+    initBackToTopButton();
+    initScrollAnimations();
+    initRippleEffect();
+
     updateAuthLinks();
     setupLogout();
 
@@ -46,7 +51,8 @@ async function initApp() {
         '/gift-vouchers.html': initVouchersPage,
         '/gallery.html': initGalleryPage,
         '/about-us.html': initAboutPage,
-        '/get-in-touch.html': initContactPage
+        '/get-in-touch.html': initContactPage,
+        '/table-reservations.html': initReservationsPage
     };
 
     const initializer = Object.keys(pageInitializers).find(key => path.endsWith(key));

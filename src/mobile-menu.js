@@ -2,7 +2,13 @@ export function initializeMobileMenu() {
     const openMenu = () => {
         const mobileMenu = document.getElementById('mobile-menu');
         const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const overlay = document.getElementById('mobile-menu-overlay');
         if (!mobileMenu || !mobileMenuButton) return;
+
+        if (overlay) {
+            overlay.classList.remove('bg-opacity-0', 'pointer-events-none');
+            overlay.classList.add('bg-opacity-50');
+        }
 
         mobileMenu.classList.remove('hidden');
         mobileMenu.classList.add('open');
@@ -15,7 +21,13 @@ export function initializeMobileMenu() {
     const closeMenu = () => {
         const mobileMenu = document.getElementById('mobile-menu');
         const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const overlay = document.getElementById('mobile-menu-overlay');
         if (!mobileMenu || !mobileMenuButton) return;
+
+        if (overlay) {
+            overlay.classList.remove('bg-opacity-50');
+            overlay.classList.add('bg-opacity-0', 'pointer-events-none');
+        }
 
         mobileMenu.classList.remove('open');
         mobileMenu.addEventListener('transitionend', () => {

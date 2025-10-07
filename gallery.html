@@ -7,6 +7,7 @@
     <link rel="icon" href="icons/favicon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="icons/favicon.svg">
     <link rel="shortcut icon" href="icons/favicon.svg">
+    <link rel="manifest" href="manifest.json">
     <meta name="description" content="A glimpse into the world of Steam - our restaurant, our food, and our guests.">
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
@@ -74,6 +75,14 @@
             <button id="close-image-modal" class="absolute -top-4 -right-4 text-white bg-surface-color rounded-full p-1 shadow-lg">&times;</button>
             <img id="modal-image" src="" alt="" class="max-w-full max-h-[90vh] object-contain rounded-lg">
             <div id="modal-caption" class="text-center text-text-primary mt-4 text-lg"></div>
+
+            <!-- Navigation Buttons -->
+            <button id="prev-image" class="absolute top-1/2 left-4 -translate-y-1/2 text-white bg-surface-color rounded-full p-2 shadow-lg">
+                <span class="material-symbols-outlined">arrow_back_ios</span>
+            </button>
+            <button id="next-image" class="absolute top-1/2 right-4 -translate-y-1/2 text-white bg-surface-color rounded-full p-2 shadow-lg">
+                <span class="material-symbols-outlined">arrow_forward_ios</span>
+            </button>
         </div>
     </div>
 

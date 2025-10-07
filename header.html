@@ -1,5 +1,6 @@
 <div id="header-wrapper" class="fixed top-0 left-0 w-full z-50 transition-all duration-300">
-    <header class="container mx-auto flex justify-between items-center px-8 lg:px-16 py-6 text-white">
+    <div id="mobile-menu-overlay" class="fixed inset-0 bg-black bg-opacity-0 pointer-events-none transition-opacity duration-300 md:hidden z-40"></div>
+    <header class="relative container mx-auto flex justify-between items-center px-8 lg:px-16 py-6 text-white z-50">
         <a href="#main-content" class="skip-link">Skip to main content</a>
         <div class="flex items-center gap-3">
             <svg class="h-8 w-8 text-[var(--primary-color)]" fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
@@ -23,10 +24,6 @@
                 <span class="material-symbols-outlined">shopping_bag</span>
                 <span id="cart-item-count" class="absolute -top-1 -right-1 bg-primary-color text-black text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center hidden">0</span>
             </a>
-            <button id="theme-toggle" type="button" class="text-gray-300 hover:text-white transition-colors duration-300 p-2 rounded-full">
-                <svg id="theme-toggle-dark-icon" class="w-6 h-6 hidden" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
-                <svg id="theme-toggle-light-icon" class="w-6 h-6 hidden" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 5.05A1 1 0 003.636 6.464l.707.707a1 1 0 001.414-1.414l-.707-.707zM3 11a1 1 0 100-2H2a1 1 0 100 2h1zM6.464 16.364a1 1 0 01-1.414 0l-.707-.707a1 1 0 011.414-1.414l.707.707a1 1 0 010 1.414z"></path></svg>
-            </button>
         </div>
         <div class="md:hidden flex items-center">
              <a href="order-page.html" id="cart-icon-wrapper-mobile" class="relative p-2 mr-2">
@@ -41,7 +38,20 @@
                 </div>
             </button>
         </div>
-    </header>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const links = document.querySelectorAll("header nav ul a");
+        const currentPath = window.location.pathname.split("/").pop();
+
+        links.forEach((link) => {
+          const linkPath = link.getAttribute("href").split("/").pop();
+          if (linkPath === currentPath) {
+            link.classList.add("active-link");
+          }
+        });
+      });
+    </script>
+</header>
     <!-- Mobile Menu -->
     <div id="mobile-menu" class="hidden md:hidden" role="region" aria-label="Main menu">
         <nav class="flex flex-col items-center gap-4 bg-surface-color p-8">
@@ -54,10 +64,6 @@
             <div id="auth-links-mobile" class="flex flex-col items-center gap-4 mt-4">
                  <!-- Auth links dynamically inserted -->
             </div>
-            <button id="theme-toggle-mobile" type="button" class="text-gray-300 hover:text-white transition-colors duration-300 p-2 rounded-full mt-2">
-                <svg id="theme-toggle-dark-icon-mobile" class="w-6 h-6 hidden" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
-                <svg id="theme-toggle-light-icon-mobile" class="w-6 h-6 hidden" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 5.05A1 1 0 003.636 6.464l.707.707a1 1 0 001.414-1.414l-.707-.707zM3 11a1 1 0 100-2H2a1 1 0 100 2h1zM6.464 16.364a1 1 0 01-1.414 0l-.707-.707a1 1 0 011.414-1.414l.707.707a1 1 0 010 1.414z"></path></svg>
-            </button>
         </nav>
     </div>
 </div>
