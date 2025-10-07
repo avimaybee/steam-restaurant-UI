@@ -5,6 +5,17 @@
       "firebase.json",
       "**/.*",
       "**/node_modules/**"
-    ]
+    ],
+    "rewrites": [
+      {
+        "source": "/",
+        "destination": "/landing-page.html"
+      },
+      {
+        "source": "**",
+        "destination": "/404.html"
+      }
+    ],
+    "cleanUrls": true
   }
 }
