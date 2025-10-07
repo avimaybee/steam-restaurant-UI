@@ -14,8 +14,8 @@
 }
 
 :root {
-  --primary-color: #8B4513; /* A rich, warm brown */
-  --accent-color: #7A3C10; /* A slightly darker brown for hovers */
+  --primary-color: #FFD700; /* Vibrant Gold */
+  --accent-color: #FFA500; /* Darker Gold */
   --secondary-color: #121212; /* A very dark, near-black for background */
   --surface-color: #1E1E1E; /* A slightly lighter gray for cards/surfaces */
   --text-primary: #F5F5F5; /* A soft, off-white for main text */
@@ -138,6 +138,10 @@ input[type="time"] {
     background: radial-gradient(circle at top left, rgba(167, 138, 127, 0.1), transparent 30%), radial-gradient(circle at bottom right, rgba(167, 138, 127, 0.05), transparent 40%);
 }
 
+.contact-gradient-bg {
+    background: linear-gradient(180deg, #1a1a1a, #121212);
+}
+
 /* Styles from beverage-menu.html */
 .beverage-menu-item {
     display: grid;
@@ -186,6 +190,7 @@ input[type="time"] {
 .active-link {
     color: var(--primary-color) !important;
     font-weight: 700; /* bold */
+    border-bottom: 2px solid var(--primary-color);
 }
 
 /* Header Styles */
