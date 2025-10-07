@@ -22,7 +22,8 @@ const menuForm = {
     subCategory: document.getElementById('item-subCategory'),
     image: document.getElementById('item-image'),
     cancelBtn: document.getElementById('cancel-edit-btn'),
-    submitBtn: document.querySelector('#menu-item-form button[type="submit"]')
+    submitBtn: document.querySelector('#menu-item-form button[type="submit"]'),
+    search: document.getElementById('menu-search')
 };
 const menuTableBody = document.getElementById('menu-items-table-body');
 
@@ -33,10 +34,10 @@ const reservationsTableBody = document.getElementById('reservations-table-body')
 
 // --- RENDER FUNCTIONS ---
 
-function renderMenuTable() {
+function renderMenuTable(itemsToRender = menuItems) {
     if (!menuTableBody) return;
     menuTableBody.innerHTML = '';
-    menuItems.forEach(item => {
+    itemsToRender.forEach(item => {
         const row = menuTableBody.insertRow();
         row.className = 'bg-gray-800 border-b border-gray-700';
         row.innerHTML = `
@@ -269,6 +270,11 @@ export async function initAdminPage() {
     menuForm.form.addEventListener('submit', handleMenuFormSubmit);
     menuTableBody.addEventListener('click', handleMenuTableClick);
     menuForm.cancelBtn.addEventListener('click', resetMenuForm);
+    menuForm.search.addEventListener('input', (e) => {
+        const searchTerm = e.target.value.toLowerCase();
+        const filteredItems = menuItems.filter(item => item.name.toLowerCase().includes(searchTerm));
+        renderMenuTable(filteredItems);
+    });
 
     ordersTableBody.addEventListener('change', handleOrdersTableChange);
     ordersTableBody.addEventListener('click', handleOrdersTableClick);

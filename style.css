@@ -227,6 +227,10 @@ input[type="time"] {
     transform-origin: left;
 }
 
+#mobile-menu .active-link {
+    border-bottom: 2px solid var(--primary-color);
+}
+
 #mobile-menu {
     transition: opacity 0.3s ease, transform 0.3s ease;
     transform: translateY(-10px);
