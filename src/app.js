@@ -23,10 +23,8 @@ import { initBackToTopButton, initScrollAnimations, initRippleEffect, initHeroAn
 
 
 async function initApp() {
-    // Wait for header and footer to load before initializing dependent components
-    await Promise.all([loadHeader(), loadFooter()]);
-
-    // Now that the header and footer are loaded, we can initialize everything else.
+    // Header and footer are now part of the static HTML.
+    // We can initialize everything directly.
     initializeMobileMenu();
     setActiveNavLink();
     initBackToTopButton();

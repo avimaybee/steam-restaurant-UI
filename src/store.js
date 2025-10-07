@@ -291,7 +291,7 @@ export const store = {
         }
         return null;
     },
-    logout: ().
+    logout: () => {
         state.currentUser = null;
         localStorage.removeItem(USER_STORAGE_KEY);
     },
