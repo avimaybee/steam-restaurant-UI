@@ -131,7 +131,7 @@ export async function initMenuPage() {
         allMenuItems = enhanceMenuItems(rawItems);
         renderMenu();
     } catch (error) {
-        console.error("Failed to load menu:", error);
+        
         menuContainer.innerHTML = `<p class="text-center text-red-500">Failed to load menu. Please try again later.</p>`;
     } finally {
         loadingSpinner.classList.add('hidden');

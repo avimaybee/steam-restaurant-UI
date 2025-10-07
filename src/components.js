@@ -15,10 +15,10 @@ async function loadComponent(componentPath, elementId) {
         if (element) {
             element.innerHTML = data;
         } else {
-            console.warn(`Element with ID "${elementId}" not found.`);
+            
         }
     } catch (error) {
-        console.error(`Error loading component from ${componentPath}:`, error);
+        
     }
 }
 

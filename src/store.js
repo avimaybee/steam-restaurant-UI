@@ -150,7 +150,7 @@ export const store = {
             state.menu = await response.json();
             saveMenuToStorage();
         } catch (error) {
-            console.error("Could not fetch menu:", error);
+            
             if (!loadMenuFromStorage()) return [];
         }
         return state.menu;
@@ -174,7 +174,7 @@ export const store = {
     addToCart: (itemId, quantity = 1) => {
         const itemToAdd = state.menu.find(item => item.id === itemId);
         if (!itemToAdd) {
-            console.error(`Item with id ${itemId} not found in menu.`);
+            
             return;
         }
 
@@ -328,7 +328,7 @@ export const store = {
             if (!response.ok) throw new Error('Translation file not found');
             state.translations = await response.json();
         } catch (error) {
-            console.error('Error loading translations:', error);
+            
             // Fallback to English if the chosen language fails
             if (state.currentLanguage !== 'en') {
                 state.currentLanguage = 'en';
