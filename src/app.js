@@ -65,11 +65,4 @@ async function initApp() {
     }
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-    document.body.classList.add('loaded');
-    initApp();
-});
-
-window.addEventListener('beforeunload', (e) => {
-    document.body.classList.remove('loaded');
-});
+document.addEventListener('DOMContentLoaded', initApp);
