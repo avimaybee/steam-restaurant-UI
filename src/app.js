@@ -19,7 +19,7 @@ import { initGalleryPage } from './pages/gallery.js';
 import { initAboutPage } from './pages/about.js';
 import { initContactPage } from './pages/contact.js';
 import { initReservationsPage } from './pages/reservations.js';
-import { initBackToTopButton, initScrollAnimations, initRippleEffect } from './ui.js';
+import { initBackToTopButton, initScrollAnimations, initRippleEffect, initHeroAnimation } from './ui.js';
 
 
 async function initApp() {
@@ -59,6 +59,17 @@ async function initApp() {
     if (initializer) {
         pageInitializers[initializer]();
     }
+
+    if (window.location.pathname.endsWith('/landing-page.html')) {
+        initHeroAnimation();
+    }
 }
 
-document.addEventListener('DOMContentLoaded', initApp);
+document.addEventListener('DOMContentLoaded', () => {
+    document.body.classList.add('loaded');
+    initApp();
+});
+
+window.addEventListener('beforeunload', (e) => {
+    document.body.classList.remove('loaded');
+});

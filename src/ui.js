@@ -73,3 +73,13 @@ export function initRippleEffect() {
         });
     });
 }
+
+export function initHeroAnimation() {
+    const heroBg = document.querySelector('.hero-bg');
+    if (!heroBg) return;
+
+    window.addEventListener('scroll', () => {
+        const scrollPosition = window.scrollY;
+        heroBg.style.transform = `translateY(${scrollPosition * 0.5}px)`;
+    });
+}

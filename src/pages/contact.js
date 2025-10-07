@@ -5,6 +5,7 @@ export function initContactPage() {
 
     const form = document.getElementById('contact-form');
     const successDiv = document.getElementById('contact-success');
+    const submitBtn = form.querySelector('button[type="submit"]');
 
     if (form) {
         form.addEventListener('submit', (e) => {
@@ -22,15 +23,22 @@ export function initContactPage() {
                 return;
             }
 
-            // In a real app, you would send the form data to a server here.
-            // For this demo, we'll just show the success message.
-            successDiv.classList.remove('hidden');
-            form.reset();
+            submitBtn.classList.add('loading');
+            submitBtn.disabled = true;
 
-            // Hide the success message after a few seconds
+            // In a real app, you would send the form data to a server here.
+            // For this demo, we'll just show the success message after a short delay.
             setTimeout(() => {
-                successDiv.classList.add('hidden');
-            }, 5000);
+                submitBtn.classList.remove('loading');
+                submitBtn.disabled = false;
+                successDiv.classList.remove('hidden');
+                form.reset();
+
+                // Hide the success message after a few seconds
+                setTimeout(() => {
+                    successDiv.classList.add('hidden');
+                }, 5000);
+            }, 1000);
         });
     }
 

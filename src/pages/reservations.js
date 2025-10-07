@@ -8,6 +8,7 @@ export function initReservationsPage() {
     const modal = document.getElementById('confirmation-modal');
     const closeModalBtn = document.getElementById('close-confirmation-modal');
     const summaryDiv = document.getElementById('reservation-summary');
+    const submitBtn = form.querySelector('button[type="submit"]');
 
     if (!form || !modal) return;
 
@@ -26,6 +27,9 @@ export function initReservationsPage() {
             return;
         }
 
+        submitBtn.classList.add('loading');
+        submitBtn.disabled = true;
+
         const reservation = {
             id: Date.now(),
             customer: form.fullName.value,
@@ -38,6 +42,9 @@ export function initReservationsPage() {
         };
 
         await store.addReservation(reservation);
+
+        submitBtn.classList.remove('loading');
+        submitBtn.disabled = false;
 
         summaryDiv.innerHTML = `
             <p><strong>Name:</strong> ${reservation.customer}</p>
