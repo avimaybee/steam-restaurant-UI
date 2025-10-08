@@ -3,10 +3,15 @@ import { updateAuthLinks } from './components.js';
 
 export function setupLogout() {
     document.body.addEventListener('click', (e) => {
-        if (e.target.matches('#logout-btn, #logout-btn-mobile')) {
+        // Updated to match the dynamically inserted link IDs
+        if (e.target.matches('#logout-link, #logout-link-mobile, #logout-link-footer')) {
+            e.preventDefault(); // Prevent following the href="#"
             store.logout();
-            updateAuthLinks();
-            if (window.location.pathname.endsWith('profile.html')) {
+            updateAuthLinks(); // Re-render the auth links to show "Login/Register"
+
+            // If on a page that requires authentication, redirect to login
+            const protectedPages = ['profile.html', 'admin.html', 'order-tracking.html', 'checkout.html'];
+            if (protectedPages.some(page => window.location.pathname.endsWith(page))) {
                 window.location.href = 'login.html';
             }
         }
