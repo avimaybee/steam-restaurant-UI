@@ -157,10 +157,7 @@ function generateFakeData() {
 export const store = {
     // Menu Management
     getMenu: async (forceRefresh = false) => {
-        if (!forceRefresh && state.menu.length > 0) return state.menu;
-        if (!forceRefresh && loadMenuFromStorage()) return state.menu;
-
-        // Use the hardcoded menu data
+        // Always load fresh data for now to ensure updates apply
         state.menu = menuData;
         saveMenuToStorage();
 
