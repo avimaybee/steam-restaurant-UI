@@ -93,8 +93,18 @@ h1, h2, h3, h4, h5, h6 {
     appearance: none;
     color: var(--text-primary);
     background-color: transparent;
+    border: none;
     border-bottom: 1px solid var(--border-color);
+    padding: 0.5rem 0;
+    border-radius: 0;
 }
+
+.form-input-custom:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: none;
+}
+
 input[type="date"]::-webkit-calendar-picker-indicator,
 input[type="time"]::-webkit-calendar-picker-indicator {
     filter: invert(1);
@@ -121,13 +131,13 @@ input[type="time"] {
 
 /* Header Styles */
 #header-wrapper {
-    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    transition: background-color 0.5s ease, box-shadow 0.5s ease, border-color 0.5s ease;
 }
 
 #header-wrapper.scrolled {
-    background-color: rgba(10, 10, 10, 0.95);
-    backdrop-filter: blur(10px);
-    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+    background-color: rgba(5, 5, 5, 0.95);
+    backdrop-filter: blur(12px);
+    box-shadow: 0 4px 30px rgba(0,0,0,0.5);
 }
 
 .nav-link {
@@ -524,6 +534,27 @@ input[type="time"] {
 
 ::-webkit-scrollbar-thumb:hover {
     background: var(--primary-color);
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+    width: 4px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+    background: #333;
+    border-radius: 2px;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+.no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
 }
 
 /* Ripple Effect */
