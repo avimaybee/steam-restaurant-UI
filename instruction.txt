@@ -1,5 +1,0 @@
-there are a few probelms. the home tab doesnt need to be explicitly shown, the user can go back to              │
-│   home by just tapping on the logo of the restaurant. there are no active state visuals for the current tabs. the about page            │
-│   is missing images. the contact page looks really bad. the use of the brown color is not good. we need to use subtle                   │
-│   gradients instead to elevate the look. most importantly, the menu page is empty. refer the @menu.txt file to see the menu             │
-│   and implement it.                 

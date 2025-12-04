@@ -1,47 +1,60 @@
-# Steam - Modern Restaurant Frontend
+# Steam Restaurant — Modern Asian Fusion
 
-This project is a visually stunning and fully interactive frontend for a modern restaurant website. It has been meticulously designed and developed to provide a seamless user experience, with a completely faked backend that simulates all necessary functionalities, including user authentication, online ordering, and table reservations.
+A premium restaurant web application built with Next.js 16, shadcn/ui, and Framer Motion.
 
-## Features
+![Steam Restaurant](https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=1200)
 
-- **Modern & Responsive Design:** A minimalist, dark-themed design that is fully responsive and looks great on all devices.
-- **Faked Backend:** All backend interactions are simulated using `localStorage`, providing a realistic and persistent user experience without the need for a server.
-- **Full Ordering Flow:** A complete online ordering system, including a dynamic menu, a shopping cart, a checkout process with a simulated payment, and an order tracking page.
-- **User Authentication:** A mock user authentication system that allows users to "register," "log in," and view a profile page with their order and reservation history.
-- **Interactive Pages:** Engaging and interactive pages for the gallery (with a modal for viewing images) and gift vouchers (with a simulated purchase form).
-- **Firebase Ready:** Includes a `firebase.json` file for easy deployment to Firebase Hosting.
+## ✨ Features
 
-## Project Structure
+- **Modern Stack**: Next.js 16 with App Router, TypeScript, Tailwind CSS
+- **Premium UI**: shadcn/ui components with custom luxury dark theme
+- **Smooth Animations**: Framer Motion for professional page transitions and micro-interactions
+- **Responsive Design**: Mobile-first approach with consistent experience across devices
 
-The project is structured as follows:
+## 🍽️ Pages
 
-- `src/`: This directory contains all the main JavaScript source code.
-  - `app.js`: The main application entry point.
-  - `store.js`: Manages the application's state, including the faked backend data in `localStorage`.
-  - `components.js`: Handles the loading of reusable HTML components (e.g., header, footer).
-  - `pages/`: Contains page-specific JavaScript files for all the different pages.
-- `*.html`: The main HTML files for the different pages of the website.
-- `style.css`: The main stylesheet for the project, which includes all the new design styles.
-- `menu.json`: A local JSON file used as a mock data source for the restaurant's menu.
-- `firebase.json`: The configuration file for deploying the application to Firebase Hosting.
+| Route | Description |
+|-------|-------------|
+| `/` | Homepage with hero, philosophy, features, CTA |
+| `/menu` | Interactive menu with category filtering |
+| `/reservations` | Multi-step reservation form |
+| `/about` | Story, team, and awards |
+| `/gallery` | Masonry grid with lightbox |
+| `/cart` | Shopping cart with order summary |
+| `/contact` | Contact form with embedded map |
+| `/gift-cards` | Gift card builder with live preview |
+| `/login` | Authentication with social login |
 
-## Getting Started
+## 🚀 Getting Started
 
-1.  **Clone the repository.**
-2.  **Start a local server:** Since the application uses JavaScript modules, you need to run it from a local server. A simple way to do this is with Python's built-in HTTP server. Open your terminal in the project's root directory and run:
-    ```bash
-    python3 -m http.server
-    ```
-3.  **Open the application:** Open your browser and navigate to `http://localhost:8000/landing-page.html`.
+```bash
+# Install dependencies
+npm install
 
-## How It Works
+# Run development server
+npm run dev
 
-The application is built using vanilla JavaScript, with a focus on modularity and a faked backend to simulate a real-world application.
+# Build for production
+npm run build
 
-- **State Management & Faked Backend:** The `src/store.js` module is the single source of truth for the application's data. It manages the state of the menu, user authentication, shopping cart, orders, and reservations by using `localStorage` to persist the data.
-- **Component Loading:** The `src/components.js` module dynamically loads the header and footer into the pages.
-- **Page-Specific Logic:** Each page with dynamic content has its own JavaScript file in the `src/pages/` directory, which is initialized by `src/app.js`.
+# Start production server
+npm start
+```
 
-## Deployment
+## 🎨 Design System
 
-This project is configured for deployment on Firebase Hosting. The `firebase.json` file includes the necessary settings for a single-page application, including rewrite rules and caching headers. To deploy the application, you will need to have the Firebase CLI installed and configured. Then, you can simply run `firebase deploy` from the project's root directory.
+- **Colors**: Gold (#D4AF37), Black (#050505)
+- **Typography**: Playfair Display (headings), Manrope (body)
+- **Effects**: Grain overlay, shimmer buttons, steam particles
+
+## 📦 Tech Stack
+
+- [Next.js 16](https://nextjs.org/) - React framework
+- [shadcn/ui](https://ui.shadcn.com/) - UI components
+- [Framer Motion](https://www.framer.com/motion/) - Animations
+- [Tailwind CSS](https://tailwindcss.com/) - Styling
+- [Lucide React](https://lucide.dev/) - Icons
+
+## 📄 License
+
+MIT
