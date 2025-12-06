@@ -41,8 +41,8 @@ export function Header() {
             animate={{ y: 0 }}
             transition={{ duration: 0.6, ease: [0.19, 1, 0.22, 1] }}
             className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled
-                    ? "bg-[#050505]/95 backdrop-blur-xl border-b border-white/5 py-3"
-                    : "bg-transparent py-5"
+                ? "bg-[#050505]/95 backdrop-blur-xl border-b border-white/5 py-3"
+                : "bg-transparent py-5"
                 }`}
         >
             <div className="container mx-auto px-6 lg:px-12">
@@ -80,17 +80,15 @@ export function Header() {
                                     <Link
                                         href={link.href}
                                         aria-current={isActive ? "page" : undefined}
-                                        className={`relative text-xs font-medium tracking-[0.1em] uppercase transition-colors py-2 px-3 rounded-full group ${
-                                            isActive
+                                        className={`relative text-xs font-medium tracking-[0.1em] uppercase transition-colors py-2 px-3 rounded-full group ${isActive
                                                 ? "text-black bg-[#D4AF37] shadow-[0_0_0_1px_rgba(212,175,55,0.35)]"
                                                 : "text-gray-300 hover:text-white hover:bg-white/5"
-                                        }`}
+                                            }`}
                                     >
                                         {link.label}
                                         <span
-                                            className={`absolute -bottom-1 left-1/2 -translate-x-1/2 h-px bg-[#D4AF37] transition-all duration-300 ${
-                                                isActive ? "w-6" : "w-0 group-hover:w-6"
-                                            }`}
+                                            className={`absolute -bottom-1 left-1/2 -translate-x-1/2 h-px bg-[#D4AF37] transition-all duration-300 ${isActive ? "w-6" : "w-0 group-hover:w-6"
+                                                }`}
                                         />
                                     </Link>
                                 </motion.div>
@@ -121,53 +119,68 @@ export function Header() {
                             </SheetTrigger>
                             <SheetContent
                                 side="right"
-                                className="w-full sm:w-[400px] bg-[#050505] border-l border-white/10 p-0 overflow-hidden"
+                                className="w-full sm:w-[400px] bg-[#050505] border-l border-[#D4AF37]/20 p-0 overflow-hidden shadow-[0_0_60px_rgba(212,175,55,0.1)]"
                             >
                                 <SheetTitle className="sr-only">Navigation Menu</SheetTitle>
                                 {/* Background Pattern */}
-                                <div className="absolute inset-0 opacity-5 pointer-events-none">
-                                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_#D4AF37_1px,_transparent_1px)] bg-[size:24px_24px]" />
+                                <div className="absolute inset-0 opacity-[0.03] pointer-events-none">
+                                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_#D4AF37_1px,_transparent_1px)] bg-[size:32px_32px]" />
                                 </div>
-                                
+
+                                {/* Gold corner accent */}
+                                <div className="absolute top-0 right-0 w-24 h-24 border-t border-r border-[#D4AF37]/30 pointer-events-none" />
+                                <div className="absolute bottom-0 left-0 w-24 h-24 border-b border-l border-[#D4AF37]/30 pointer-events-none" />
+
                                 <div className="flex flex-col h-full relative z-10">
                                     <div className="flex items-center justify-between p-6 border-b border-white/5">
-                                        <span className="font-[family-name:var(--font-playfair)] text-xl font-bold tracking-[0.15em] uppercase text-white">
-                                            Menu
-                                        </span>
+                                        <div className="flex items-center gap-3">
+                                            <div className="w-1 h-6 bg-[#D4AF37]" />
+                                            <span className="font-[family-name:var(--font-playfair)] text-xl font-bold tracking-[0.15em] uppercase text-white">
+                                                Menu
+                                            </span>
+                                        </div>
                                         <SheetClose asChild>
-                                            <Button variant="ghost" size="icon" className="text-white hover:text-[#D4AF37]">
+                                            <Button variant="ghost" size="icon" className="text-white hover:text-[#D4AF37] hover:bg-transparent">
                                                 <X className="w-6 h-6" />
                                             </Button>
                                         </SheetClose>
                                     </div>
 
-                                    <div className="flex flex-col items-center justify-center flex-1 gap-8 p-8">
+                                    <div className="flex flex-col items-center justify-center flex-1 gap-6 p-8">
                                         {navLinks.map((link, index) => {
                                             const isActive = pathname === link.href;
                                             return (
                                                 <motion.div
                                                     key={link.href}
-                                                    initial={{ opacity: 0, x: 50 }}
+                                                    initial={{ opacity: 0, x: 40 }}
                                                     animate={{ opacity: 1, x: 0 }}
-                                                    transition={{ delay: index * 0.1 }}
+                                                    transition={{ delay: index * 0.08, duration: 0.4, ease: [0.19, 1, 0.22, 1] }}
                                                 >
                                                     <Link
                                                         href={link.href}
                                                         onClick={() => setMobileOpen(false)}
-                                                        className={`font-[family-name:var(--font-playfair)] text-3xl tracking-[0.1em] uppercase transition-colors ${
-                                                            isActive ? "text-[#D4AF37]" : "text-gray-300 hover:text-[#D4AF37]"
-                                                        }`}
+                                                        className={`relative font-[family-name:var(--font-playfair)] text-2xl sm:text-3xl tracking-[0.1em] uppercase transition-all duration-300 group ${isActive ? "text-[#D4AF37]" : "text-gray-300 hover:text-white"
+                                                            }`}
                                                     >
                                                         {link.label}
+                                                        <span className={`absolute -bottom-1 left-0 h-px bg-[#D4AF37] transition-all duration-300 ${isActive ? "w-full" : "w-0 group-hover:w-full"
+                                                            }`} />
                                                     </Link>
                                                 </motion.div>
                                             );
                                         })}
                                     </div>
 
-                                    <div className="p-8 border-t border-white/5 text-center">
-                                        <p className="text-xs text-gray-500 tracking-widest uppercase mb-2">Reservations</p>
-                                        <p className="text-[#D4AF37] font-[family-name:var(--font-playfair)] text-lg">+61 (3) 9123 4567</p>
+                                    {/* Decorative separator */}
+                                    <div className="flex items-center justify-center gap-4 px-8">
+                                        <span className="flex-1 h-px bg-gradient-to-r from-transparent to-[#D4AF37]/30" />
+                                        <div className="w-2 h-2 bg-[#D4AF37] rotate-45" />
+                                        <span className="flex-1 h-px bg-gradient-to-l from-transparent to-[#D4AF37]/30" />
+                                    </div>
+
+                                    <div className="p-8 text-center">
+                                        <p className="text-[10px] text-[#D4AF37]/60 tracking-[0.25em] uppercase mb-2">Reservations</p>
+                                        <p className="text-white font-[family-name:var(--font-playfair)] text-lg">+61 (3) 9123 4567</p>
                                     </div>
                                 </div>
                             </SheetContent>

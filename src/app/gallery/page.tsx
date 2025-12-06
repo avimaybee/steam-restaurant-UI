@@ -53,7 +53,7 @@ export default function GalleryPage() {
             <Header />
 
             {/* Hero */}
-            <section className="relative pt-40 pb-16 overflow-hidden">
+            <section className="relative pt-24 pb-10 overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-to-b from-black via-transparent to-[#0A0A0A]" />
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[radial-gradient(circle,_rgba(212,175,55,0.1)_0%,_transparent_70%)] blur-3xl" />
 
@@ -87,8 +87,8 @@ export default function GalleryPage() {
                                 variant={activeCategory === cat ? "default" : "outline"}
                                 onClick={() => setActiveCategory(cat)}
                                 className={`text-xs tracking-[0.1em] uppercase ${activeCategory === cat
-                                        ? "bg-[#D4AF37] text-black hover:bg-[#E8C547]"
-                                        : "border-white/10 text-gray-400 hover:text-white hover:border-white/30 bg-transparent"
+                                    ? "bg-[#D4AF37] text-black hover:bg-[#E8C547]"
+                                    : "border-white/10 text-gray-400 hover:text-white hover:border-white/30 bg-transparent"
                                     }`}
                             >
                                 {cat}

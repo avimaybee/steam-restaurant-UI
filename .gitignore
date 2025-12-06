@@ -43,3 +43,7 @@ next-env.d.ts
 # Cache
 .turbo
 .cache
+
+# OpenNext / Cloudflare
+.open-next
+.dev.vars

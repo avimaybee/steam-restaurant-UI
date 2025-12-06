@@ -213,7 +213,7 @@ export default function MenuPage() {
             <Header />
 
             {/* Hero */}
-            <section className="relative pt-28 pb-12 overflow-hidden">
+            <section className="relative pt-20 pb-6 overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-to-b from-black via-transparent to-[#0A0A0A]" />
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[radial-gradient(circle,_rgba(212,175,55,0.1)_0%,_transparent_70%)] blur-3xl" />
 
@@ -238,15 +238,15 @@ export default function MenuPage() {
             </section>
 
             {/* Category Tabs */}
-            <section className="sticky top-[72px] z-40 bg-[#050505]/95 backdrop-blur-xl border-y border-white/5">
-                <div className="container mx-auto px-6 lg:px-12 py-2 overflow-x-auto no-scrollbar">
+            <section className="sticky top-[60px] z-40 bg-[#050505]/95 backdrop-blur-xl border-y border-white/5">
+                <div className="container mx-auto px-4 lg:px-12 py-1.5 overflow-x-auto no-scrollbar">
                     <Tabs value={activeCategory} onValueChange={setActiveCategory}>
-                        <TabsList className="bg-transparent h-auto p-0 gap-2 flex-nowrap">
+                        <TabsList className="bg-transparent h-auto p-0 gap-1 sm:gap-2 flex-nowrap w-max">
                             {menuCategories.map((cat) => (
                                 <TabsTrigger
                                     key={cat.id}
                                     value={cat.id}
-                                    className="px-3 py-1.5 text-[10px] sm:text-xs tracking-[0.1em] uppercase whitespace-nowrap data-[state=active]:bg-[#D4AF37] data-[state=active]:text-black data-[state=inactive]:text-gray-400 data-[state=inactive]:hover:text-white border border-white/10 data-[state=active]:border-[#D4AF37] transition-all"
+                                    className="px-2 py-1 sm:px-3 sm:py-1.5 text-[9px] sm:text-xs tracking-[0.08em] uppercase whitespace-nowrap data-[state=active]:bg-[#D4AF37] data-[state=active]:text-black data-[state=inactive]:text-gray-400 data-[state=inactive]:hover:text-white border border-white/10 data-[state=active]:border-[#D4AF37] transition-all"
                                 >
                                     {cat.label}
                                 </TabsTrigger>

@@ -56,7 +56,7 @@ export default function CartPage() {
             <Header />
 
             {/* Hero */}
-            <section className="relative pt-40 pb-12">
+            <section className="relative pt-24 pb-8">
                 <motion.div
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}

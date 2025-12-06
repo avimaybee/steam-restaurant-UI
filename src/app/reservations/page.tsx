@@ -59,7 +59,7 @@ export default function ReservationsPage() {
             <Header />
 
             {/* Hero */}
-            <section className="relative pt-40 pb-16 overflow-hidden">
+            <section className="relative pt-24 pb-10 overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-to-b from-black via-transparent to-[#0A0A0A]" />
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[radial-gradient(circle,_rgba(212,175,55,0.1)_0%,_transparent_70%)] blur-3xl" />
 
@@ -143,8 +143,8 @@ export default function ReservationsPage() {
                                             whileTap={{ scale: 0.95 }}
                                             onClick={() => setSelectedDate(date)}
                                             className={`p-3 border text-center transition-all ${selectedDate?.toDateString() === date.toDateString()
-                                                    ? "border-[#D4AF37] bg-[#D4AF37]/10"
-                                                    : "border-white/10 hover:border-white/30"
+                                                ? "border-[#D4AF37] bg-[#D4AF37]/10"
+                                                : "border-white/10 hover:border-white/30"
                                                 }`}
                                         >
                                             <span className="block text-[10px] uppercase text-gray-500">
@@ -175,8 +175,8 @@ export default function ReservationsPage() {
                                             whileTap={{ scale: 0.95 }}
                                             onClick={() => setSelectedTime(time)}
                                             className={`p-3 border text-sm transition-all ${selectedTime === time
-                                                    ? "border-[#D4AF37] bg-[#D4AF37]/10 text-white"
-                                                    : "border-white/10 text-gray-400 hover:border-white/30 hover:text-white"
+                                                ? "border-[#D4AF37] bg-[#D4AF37]/10 text-white"
+                                                : "border-white/10 text-gray-400 hover:border-white/30 hover:text-white"
                                                 }`}
                                         >
                                             {time}
@@ -219,8 +219,8 @@ export default function ReservationsPage() {
                                             whileTap={{ scale: 0.95 }}
                                             onClick={() => setSelectedGuests(num)}
                                             className={`p-4 border text-center transition-all ${selectedGuests === num
-                                                    ? "border-[#D4AF37] bg-[#D4AF37]/10"
-                                                    : "border-white/10 hover:border-white/30"
+                                                ? "border-[#D4AF37] bg-[#D4AF37]/10"
+                                                : "border-white/10 hover:border-white/30"
                                                 }`}
                                         >
                                             <span className="block text-2xl font-semibold text-white">{num}</span>

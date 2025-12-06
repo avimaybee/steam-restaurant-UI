@@ -56,7 +56,7 @@ export default function GiftCardsPage() {
             <Header />
 
             {/* Hero */}
-            <section className="relative pt-28 pb-12 overflow-hidden">
+            <section className="relative pt-20 pb-6 overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-to-b from-black via-transparent to-[#0A0A0A]" />
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[radial-gradient(circle,_rgba(212,175,55,0.1)_0%,_transparent_70%)] blur-3xl" />
 
@@ -165,8 +165,8 @@ export default function GiftCardsPage() {
                                                     setIsCustom(false);
                                                 }}
                                                 className={`relative p-4 border text-center transition-all ${!isCustom && selectedAmount === option.value
-                                                        ? "border-[#D4AF37] bg-[#D4AF37]/10"
-                                                        : "border-white/10 hover:border-white/30"
+                                                    ? "border-[#D4AF37] bg-[#D4AF37]/10"
+                                                    : "border-white/10 hover:border-white/30"
                                                     }`}
                                             >
                                                 {option.popular && (
@@ -184,8 +184,8 @@ export default function GiftCardsPage() {
                                         <button
                                             onClick={() => setIsCustom(true)}
                                             className={`w-full p-4 border text-left transition-all ${isCustom
-                                                    ? "border-[#D4AF37] bg-[#D4AF37]/10"
-                                                    : "border-white/10 hover:border-white/30"
+                                                ? "border-[#D4AF37] bg-[#D4AF37]/10"
+                                                : "border-white/10 hover:border-white/30"
                                                 }`}
                                         >
                                             <span className="text-sm text-gray-400">Custom Amount</span>
