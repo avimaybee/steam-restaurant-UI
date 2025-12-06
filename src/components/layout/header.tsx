@@ -79,15 +79,18 @@ export function Header() {
                                 >
                                     <Link
                                         href={link.href}
-                                        className={`relative text-xs font-medium tracking-[0.1em] uppercase transition-colors py-2 group ${
-                                            isActive ? "text-white" : "text-gray-300 hover:text-white"
+                                        aria-current={isActive ? "page" : undefined}
+                                        className={`relative text-xs font-medium tracking-[0.1em] uppercase transition-colors py-2 px-3 rounded-full group ${
+                                            isActive
+                                                ? "text-black bg-[#D4AF37] shadow-[0_0_0_1px_rgba(212,175,55,0.35)]"
+                                                : "text-gray-300 hover:text-white hover:bg-white/5"
                                         }`}
                                     >
                                         {link.label}
-                                        <span 
-                                            className={`absolute bottom-0 left-0 h-px bg-[#D4AF37] transition-all duration-300 ${
-                                                isActive ? "w-full" : "w-0 group-hover:w-full"
-                                            }`} 
+                                        <span
+                                            className={`absolute -bottom-1 left-1/2 -translate-x-1/2 h-px bg-[#D4AF37] transition-all duration-300 ${
+                                                isActive ? "w-6" : "w-0 group-hover:w-6"
+                                            }`}
                                         />
                                     </Link>
                                 </motion.div>
