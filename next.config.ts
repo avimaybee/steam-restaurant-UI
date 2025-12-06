@@ -1,9 +1,6 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  experimental: {
-    serverActions: true,
-  },
   trailingSlash: true,
   images: {
     unoptimized: true,
