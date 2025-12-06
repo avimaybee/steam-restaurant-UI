@@ -11,56 +11,45 @@ import { Input } from "@/components/ui/input";
 import { Separator } from "@/components/ui/separator";
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
-
-// Sample cart items
-const initialCartItems = [
-    {
-        id: 1,
-        name: "Sashimi Platter",
-        description: "Tuna, salmon, kingfish with traditional condiments",
-        price: 40,
-        quantity: 1,
-        image: "https://images.unsplash.com/photo-1579871494447-9811cf80d66c?q=80&w=200",
-    },
-    {
-        id: 2,
-        name: "Korean Beef Bulgogi",
-        description: "Soy-garlic glazed tender beef, stir-fried vegetables",
-        price: 40,
-        quantity: 2,
-        image: "https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=200",
-    },
-    {
-        id: 3,
-        name: "Ginger & Lychee Martini",
-        description: "Vodka, lychee liqueur, fresh lime",
-        price: 21,
-        quantity: 2,
-        image: "https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?q=80&w=200",
-    },
-];
+import { useCart } from "@/context/cart-context";
 
 export default function CartPage() {
-    const [cartItems, setCartItems] = useState(initialCartItems);
+    const { cart, addToCart, removeFromCart, deleteItem, isLoading } = useCart();
     const [promoCode, setPromoCode] = useState("");
 
-    const updateQuantity = (id: number, delta: number) => {
-        setCartItems((items) =>
-            items.map((item) =>
-                item.id === id
-                    ? { ...item, quantity: Math.max(1, item.quantity + delta) }
-                    : item
-            )
-        );
+    const cartItems = cart?.items || [];
+
+    const updateQuantity = (item: any, delta: number) => {
+        if (delta > 0) {
+            addToCart({
+                id: item.id,
+                name: item.name,
+                price: item.price,
+                image: item.image
+            });
+        } else {
+            removeFromCart(item.id);
+        }
     };
 
-    const removeItem = (id: number) => {
-        setCartItems((items) => items.filter((item) => item.id !== id));
+    const removeItem = (id: string) => {
+        deleteItem(id);
     };
 
     const subtotal = cartItems.reduce((sum, item) => sum + item.price * item.quantity, 0);
     const tax = subtotal * 0.1;
     const total = subtotal + tax;
+
+    if (isLoading) {
+        return (
+            <main className="min-h-screen bg-[#0A0A0A]">
+                <Header />
+                <div className="flex items-center justify-center min-h-screen">
+                    <div className="text-white">Loading cart...</div>
+                </div>
+            </main>
+        );
+    }
 
     return (
         <main className="min-h-screen bg-[#0A0A0A]">
@@ -138,7 +127,8 @@ export default function CartPage() {
                                                     {item.name}
                                                 </h3>
                                                 <p className="text-gray-500 text-sm truncate">
-                                                    {item.description}
+                                                    {/* Description not in cart item currently, maybe add it? */}
+                                                    {/* For now, just name */}
                                                 </p>
                                                 <span className="text-[#D4AF37] font-semibold mt-2 block">
                                                     ${item.price}
@@ -160,7 +150,7 @@ export default function CartPage() {
                                                     <Button
                                                         variant="outline"
                                                         size="icon"
-                                                        onClick={() => updateQuantity(item.id, -1)}
+                                                        onClick={() => updateQuantity(item, -1)}
                                                         className="h-8 w-8 border-white/10 bg-transparent"
                                                     >
                                                         <Minus className="w-3 h-3" />
@@ -171,7 +161,7 @@ export default function CartPage() {
                                                     <Button
                                                         variant="outline"
                                                         size="icon"
-                                                        onClick={() => updateQuantity(item.id, 1)}
+                                                        onClick={() => updateQuantity(item, 1)}
                                                         className="h-8 w-8 border-white/10 bg-transparent"
                                                     >
                                                         <Plus className="w-3 h-3" />

@@ -69,7 +69,7 @@ export default function ContactPage() {
             <Header />
 
             {/* Hero */}
-            <section className="relative pt-40 pb-16">
+            <section className="relative pt-28 pb-12">
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[radial-gradient(circle,_rgba(212,175,55,0.08)_0%,_transparent_70%)] blur-3xl" />
 
                 <motion.div
@@ -78,12 +78,12 @@ export default function ContactPage() {
                     transition={{ duration: 0.8 }}
                     className="container mx-auto px-6 lg:px-12 text-center relative z-10"
                 >
-                    <div className="flex items-center justify-center gap-4 mb-6">
+                    <div className="flex items-center justify-center gap-4 mb-4">
                         <span className="w-8 h-px bg-[#D4AF37]/50" />
                         <div className="w-2 h-2 bg-[#D4AF37] rotate-45" />
                         <span className="w-8 h-px bg-[#D4AF37]/50" />
                     </div>
-                    <h1 className="font-[family-name:var(--font-playfair)] text-5xl lg:text-7xl font-bold text-white mb-4">
+                    <h1 className="font-[family-name:var(--font-playfair)] text-5xl lg:text-7xl font-bold text-white mb-2">
                         Get in Touch
                     </h1>
                     <p className="text-gray-400 text-lg max-w-md mx-auto">

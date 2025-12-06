@@ -16,7 +16,6 @@ const footerLinks = {
         { href: "/gift-cards", label: "Gift Cards" },
         { href: "/contact", label: "Contact" },
         { href: "/cart", label: "Order Online" },
-        { href: "/login", label: "My Account" },
     ],
 };
 

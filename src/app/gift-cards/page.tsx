@@ -56,7 +56,7 @@ export default function GiftCardsPage() {
             <Header />
 
             {/* Hero */}
-            <section className="relative pt-40 pb-16 overflow-hidden">
+            <section className="relative pt-28 pb-12 overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-to-b from-black via-transparent to-[#0A0A0A]" />
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[radial-gradient(circle,_rgba(212,175,55,0.1)_0%,_transparent_70%)] blur-3xl" />
 
@@ -66,12 +66,12 @@ export default function GiftCardsPage() {
                     transition={{ duration: 0.8 }}
                     className="container mx-auto px-6 lg:px-12 text-center relative z-10"
                 >
-                    <div className="flex items-center justify-center gap-4 mb-6">
+                    <div className="flex items-center justify-center gap-4 mb-4">
                         <span className="w-8 h-px bg-[#D4AF37]/50" />
                         <Gift className="w-5 h-5 text-[#D4AF37]" />
                         <span className="w-8 h-px bg-[#D4AF37]/50" />
                     </div>
-                    <h1 className="font-[family-name:var(--font-playfair)] text-5xl lg:text-7xl font-bold text-white mb-4">
+                    <h1 className="font-[family-name:var(--font-playfair)] text-5xl lg:text-7xl font-bold text-white mb-2">
                         Gift Cards
                     </h1>
                     <p className="text-gray-400 text-lg max-w-md mx-auto">
@@ -89,7 +89,7 @@ export default function GiftCardsPage() {
                             initial={{ opacity: 0, x: -30 }}
                             animate={{ opacity: 1, x: 0 }}
                             transition={{ duration: 0.8 }}
-                            className="sticky top-24"
+                            className="lg:sticky lg:top-24"
                         >
                             <div className="relative aspect-[1.6/1] bg-gradient-to-br from-[#1A1A1A] to-[#0A0A0A] border border-[#D4AF37]/30 p-8 overflow-hidden">
                                 {/* Background Pattern */}

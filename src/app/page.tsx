@@ -57,7 +57,7 @@ function HeroSection() {
   const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
 
   return (
-    <section ref={ref} className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <section ref={ref} className="relative h-[90vh] lg:min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background Image */}
       <motion.div style={{ y }} className="absolute inset-0 z-0">
         <Image
@@ -119,14 +119,14 @@ function HeroSection() {
           {/* Title */}
           <motion.h1
             variants={fadeInUp}
-            className="font-[family-name:var(--font-playfair)] text-5xl sm:text-7xl lg:text-9xl font-bold tracking-tight text-white"
+            className="font-[family-name:var(--font-playfair)] text-4xl sm:text-6xl lg:text-9xl font-bold tracking-tight text-white"
           >
             Steam
             <motion.span
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.8 }}
-              className="block font-[family-name:var(--font-playfair)] text-lg sm:text-xl lg:text-2xl font-normal italic text-[#D4AF37] tracking-[0.2em] mt-4"
+              className="block font-[family-name:var(--font-playfair)] text-base sm:text-xl lg:text-2xl font-normal italic text-[#D4AF37] tracking-[0.2em] mt-2 sm:mt-4"
             >
               Where Tradition Meets Innovation
             </motion.span>
@@ -135,7 +135,7 @@ function HeroSection() {
           {/* Description */}
           <motion.p
             variants={fadeInUp}
-            className="text-gray-300 text-base sm:text-lg max-w-xl mx-auto leading-relaxed"
+            className="text-gray-300 text-sm sm:text-lg max-w-xl mx-auto leading-relaxed px-4"
           >
             Experience the art of contemporary Asian cuisine in an atmosphere
             of refined elegance. Every dish tells a story of heritage and creativity.

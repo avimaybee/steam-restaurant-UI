@@ -11,6 +11,7 @@ import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
 import { toast } from "sonner";
+import { useCart } from "@/context/cart-context";
 
 // Menu data
 const menuCategories = [
@@ -201,29 +202,18 @@ const itemVariants = {
 
 export default function MenuPage() {
     const [activeCategory, setActiveCategory] = useState("all");
-    const [cartCount, setCartCount] = useState(0);
+    const { addToCart } = useCart();
 
     const filteredItems = activeCategory === "all"
         ? menuItems
         : menuItems.filter((item) => item.category === activeCategory);
-
-    const addToCart = (item: typeof menuItems[0]) => {
-        setCartCount((prev) => prev + 1);
-        toast.success(`${item.name} added to cart`, {
-            description: `$${item.price} • View cart to complete order`,
-            action: {
-                label: "View Cart",
-                onClick: () => { },
-            },
-        });
-    };
 
     return (
         <main className="min-h-screen bg-[#0A0A0A]">
             <Header />
 
             {/* Hero */}
-            <section className="relative pt-40 pb-20 overflow-hidden">
+            <section className="relative pt-28 pb-12 overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-to-b from-black via-transparent to-[#0A0A0A]" />
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[radial-gradient(circle,_rgba(212,175,55,0.1)_0%,_transparent_70%)] blur-3xl" />
 
@@ -233,12 +223,12 @@ export default function MenuPage() {
                     transition={{ duration: 0.8 }}
                     className="container mx-auto px-6 lg:px-12 text-center relative z-10"
                 >
-                    <div className="flex items-center justify-center gap-4 mb-6">
+                    <div className="flex items-center justify-center gap-4 mb-4">
                         <span className="w-8 h-px bg-[#D4AF37]/50" />
                         <div className="w-2 h-2 bg-[#D4AF37] rotate-45" />
                         <span className="w-8 h-px bg-[#D4AF37]/50" />
                     </div>
-                    <h1 className="font-[family-name:var(--font-playfair)] text-5xl lg:text-7xl font-bold text-white mb-4">
+                    <h1 className="font-[family-name:var(--font-playfair)] text-5xl lg:text-7xl font-bold text-white mb-2">
                         Our Menu
                     </h1>
                     <p className="text-gray-400 text-lg max-w-md mx-auto">
@@ -249,14 +239,14 @@ export default function MenuPage() {
 
             {/* Category Tabs */}
             <section className="sticky top-[72px] z-40 bg-[#050505]/95 backdrop-blur-xl border-y border-white/5">
-                <div className="container mx-auto px-6 lg:px-12 py-4 overflow-x-auto">
+                <div className="container mx-auto px-6 lg:px-12 py-2 overflow-x-auto no-scrollbar">
                     <Tabs value={activeCategory} onValueChange={setActiveCategory}>
                         <TabsList className="bg-transparent h-auto p-0 gap-2 flex-nowrap">
                             {menuCategories.map((cat) => (
                                 <TabsTrigger
                                     key={cat.id}
                                     value={cat.id}
-                                    className="px-4 py-2 text-xs tracking-[0.1em] uppercase whitespace-nowrap data-[state=active]:bg-[#D4AF37] data-[state=active]:text-black data-[state=inactive]:text-gray-400 data-[state=inactive]:hover:text-white border border-white/10 data-[state=active]:border-[#D4AF37] transition-all"
+                                    className="px-3 py-1.5 text-[10px] sm:text-xs tracking-[0.1em] uppercase whitespace-nowrap data-[state=active]:bg-[#D4AF37] data-[state=active]:text-black data-[state=inactive]:text-gray-400 data-[state=inactive]:hover:text-white border border-white/10 data-[state=active]:border-[#D4AF37] transition-all"
                                 >
                                     {cat.label}
                                 </TabsTrigger>
@@ -323,7 +313,12 @@ export default function MenuPage() {
                                                 <Button
                                                     size="icon"
                                                     variant="outline"
-                                                    onClick={() => addToCart(item)}
+                                                    onClick={() => addToCart({
+                                                        id: item.id.toString(),
+                                                        name: item.name,
+                                                        price: item.price,
+                                                        image: item.image
+                                                    })}
                                                     className="w-9 h-9 border-white/10 hover:border-[#D4AF37] hover:bg-[#D4AF37] hover:text-black transition-all"
                                                 >
                                                     <Plus className="w-4 h-4" />
