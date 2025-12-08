@@ -143,8 +143,8 @@ export default function ReservationsPage() {
                                             whileTap={{ scale: 0.95 }}
                                             onClick={() => setSelectedDate(date)}
                                             className={`p-3 border text-center transition-all ${selectedDate?.toDateString() === date.toDateString()
-                                                    ? "border-[#D4AF37] bg-[#D4AF37]/10"
-                                                    : "border-white/10 hover:border-white/30"
+                                                ? "border-[#D4AF37] bg-[#D4AF37]/10"
+                                                : "border-white/10 hover:border-white/30"
                                                 }`}
                                         >
                                             <span className="block text-[10px] uppercase text-gray-500">
@@ -175,8 +175,8 @@ export default function ReservationsPage() {
                                             whileTap={{ scale: 0.95 }}
                                             onClick={() => setSelectedTime(time)}
                                             className={`p-3 border text-sm transition-all ${selectedTime === time
-                                                    ? "border-[#D4AF37] bg-[#D4AF37]/10 text-white"
-                                                    : "border-white/10 text-gray-400 hover:border-white/30 hover:text-white"
+                                                ? "border-[#D4AF37] bg-[#D4AF37]/10 text-white"
+                                                : "border-white/10 text-gray-400 hover:border-white/30 hover:text-white"
                                                 }`}
                                         >
                                             {time}
@@ -219,8 +219,8 @@ export default function ReservationsPage() {
                                             whileTap={{ scale: 0.95 }}
                                             onClick={() => setSelectedGuests(num)}
                                             className={`p-4 border text-center transition-all ${selectedGuests === num
-                                                    ? "border-[#D4AF37] bg-[#D4AF37]/10"
-                                                    : "border-white/10 hover:border-white/30"
+                                                ? "border-[#D4AF37] bg-[#D4AF37]/10"
+                                                : "border-white/10 hover:border-white/30"
                                                 }`}
                                         >
                                             <span className="block text-2xl font-semibold text-white">{num}</span>
@@ -231,7 +231,7 @@ export default function ReservationsPage() {
                                     ))}
                                 </div>
                                 <p className="text-sm text-gray-500 mt-4">
-                                    For parties larger than 8, please call us at +61 (3) 9123 4567
+                                    For parties larger than 8, please call us at (03) 5985 7700
                                 </p>
                             </div>
 

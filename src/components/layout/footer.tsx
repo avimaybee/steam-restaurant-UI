@@ -43,7 +43,7 @@ export function Footer() {
                             </span>
                         </Link>
                         <p className="text-gray-400 text-sm leading-relaxed">
-                            Experience the art of modern Asian fusion cuisine in an elegant and sophisticated setting.
+                            A funky modern Asian eatery offering tasty food, friendly service and a picturesque setting opposite the beach in Rye on the Mornington Peninsula.
                         </p>
 
                         {/* Social Links */}
@@ -120,15 +120,15 @@ export function Footer() {
                         <div className="flex flex-col gap-4">
                             <div className="flex items-start gap-3">
                                 <MapPin className="w-4 h-4 text-[#D4AF37] mt-0.5 flex-shrink-0" />
-                                <span className="text-gray-400 text-sm">123 Culinary Avenue, Melbourne VIC 3000</span>
+                                <span className="text-gray-400 text-sm">4/2257 Point Nepean Rd, Rye VIC 3941</span>
                             </div>
                             <div className="flex items-center gap-3">
                                 <Phone className="w-4 h-4 text-[#D4AF37] flex-shrink-0" />
-                                <span className="text-gray-400 text-sm">+61 (3) 9123 4567</span>
+                                <span className="text-gray-400 text-sm">(03) 5985 7700</span>
                             </div>
                             <div className="flex items-center gap-3">
                                 <Mail className="w-4 h-4 text-[#D4AF37] flex-shrink-0" />
-                                <span className="text-gray-400 text-sm">hello@steam.restaurant</span>
+                                <span className="text-gray-400 text-sm">Steaminrye@gmail.com</span>
                             </div>
                         </div>
                     </motion.div>

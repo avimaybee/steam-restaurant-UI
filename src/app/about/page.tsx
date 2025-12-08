@@ -11,10 +11,10 @@ import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
 
 const stats = [
-    { icon: Calendar, value: "2018", label: "Established" },
-    { icon: Award, value: "15+", label: "Awards Won" },
-    { icon: Users, value: "50K+", label: "Happy Guests" },
-    { icon: Star, value: "4.9", label: "Average Rating" },
+    { icon: Calendar, value: "2000", label: "Established" },
+    { icon: Award, value: "25+", label: "Years Serving" },
+    { icon: Users, value: "100K+", label: "Happy Guests" },
+    { icon: Star, value: "4.8", label: "Average Rating" },
 ];
 
 const team = [
@@ -147,24 +147,25 @@ export default function AboutPage() {
                                 The Beginning
                             </span>
                             <h2 className="font-[family-name:var(--font-playfair)] text-3xl lg:text-5xl font-semibold text-white mb-6">
-                                From Dream to Reality
+                                A Rye Institution Since 2000
                             </h2>
                             <div className="space-y-4 text-gray-400 leading-relaxed">
                                 <p>
-                                    Steam was born from a vision to create a dining experience that honors the rich
-                                    traditions of Asian cuisine while embracing contemporary innovation. Founded in
-                                    2018 by Chef Marcus Chen, our restaurant quickly became Melbourne&apos;s destination
-                                    for those seeking culinary excellence.
+                                    Steam Restaurant has been nestled in the Rye area ever since 2000. This cozy
+                                    establishment highlights our passion for market-fresh ingredients, honest cooking,
+                                    and an enjoyable atmosphere. Our menu features a selection of dishes, all made
+                                    in-house by our talented chefs.
                                 </p>
                                 <p>
-                                    Every dish tells a story—of heritage, of craftsmanship, of the countless hours
-                                    spent perfecting techniques passed down through generations. We source the finest
-                                    ingredients, work with local farmers and artisans, and pour our hearts into
-                                    every plate.
+                                    Our style is based around share plates and interactive dining so you can either
+                                    choose a little or a lot. Our influences range from Japanese, Chinese, Cambodian,
+                                    Vietnamese, Thai and Indonesian — and we&apos;re not afraid of a bit of spice.
                                 </p>
                                 <p>
-                                    Today, Steam stands as a testament to what happens when passion meets precision.
-                                    We invite you to be part of our continuing story.
+                                    Loved by locals and traveling foodies alike, Steam offers a funky modern Asian
+                                    experience with a picturesque setting opposite the beach on the Mornington Peninsula.
+                                    We offer selections for most dietary needs and are available for group bookings
+                                    and functions upon request.
                                 </p>
                             </div>
                         </motion.div>

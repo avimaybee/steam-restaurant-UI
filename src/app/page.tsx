@@ -77,14 +77,13 @@ function HeroSection() {
       {/* Steam Particles */}
       <SteamParticles />
 
-      {/* Floating Badges */}
       <motion.div
         initial={{ opacity: 0, x: -50 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ delay: 1, duration: 0.8 }}
         className="hidden lg:flex absolute left-12 top-1/2 -translate-y-1/2 -rotate-90 origin-left items-center gap-4 z-10"
       >
-        <span className="text-xs tracking-[0.2em] uppercase text-gray-400">Est. 2018</span>
+        <span className="text-xs tracking-[0.2em] uppercase text-gray-400">Est. 2000</span>
       </motion.div>
 
       <motion.div
@@ -93,7 +92,7 @@ function HeroSection() {
         transition={{ delay: 1.2, duration: 0.8 }}
         className="hidden lg:flex absolute right-12 top-1/2 -translate-y-1/2 rotate-90 origin-right items-center gap-4 z-10"
       >
-        <span className="text-xs tracking-[0.2em] uppercase text-gray-400">Fine Dining</span>
+        <span className="text-xs tracking-[0.2em] uppercase text-gray-400">Rye, Victoria</span>
       </motion.div>
 
       {/* Content */}
@@ -128,7 +127,7 @@ function HeroSection() {
               transition={{ delay: 0.8 }}
               className="block font-[family-name:var(--font-playfair)] text-base sm:text-xl lg:text-2xl font-normal italic text-[#D4AF37] tracking-[0.2em] mt-2 sm:mt-4"
             >
-              Where Tradition Meets Innovation
+              Asian Restaurant • Rye Beach
             </motion.span>
           </motion.h1>
 
@@ -137,8 +136,8 @@ function HeroSection() {
             variants={fadeInUp}
             className="text-gray-300 text-sm sm:text-lg max-w-xl mx-auto leading-relaxed px-4"
           >
-            Experience the art of contemporary Asian cuisine in an atmosphere
-            of refined elegance. Every dish tells a story of heritage and creativity.
+            A funky modern Asian eatery with tasty food, friendly service,
+            and a picturesque setting opposite the beach on the Mornington Peninsula.
           </motion.p>
 
           {/* CTA Buttons */}

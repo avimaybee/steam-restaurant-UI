@@ -1,10 +1,12 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  output: "export", // Static export for Firebase Hosting
-  trailingSlash: true, // Recommended for static hosting
+  trailingSlash: true, // Recommended for Cloudflare Pages
+  eslint: {
+    ignoreDuringBuilds: true, // Skip ESLint during build (run it separately)
+  },
   images: {
-    unoptimized: true, // Required for static export
+    unoptimized: true, // Required for Cloudflare Pages
     remotePatterns: [
       {
         protocol: "https",
@@ -15,3 +17,4 @@ const nextConfig: NextConfig = {
 };
 
 export default nextConfig;
+

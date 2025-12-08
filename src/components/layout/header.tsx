@@ -41,8 +41,8 @@ export function Header() {
             animate={{ y: 0 }}
             transition={{ duration: 0.6, ease: [0.19, 1, 0.22, 1] }}
             className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled
-                    ? "bg-[#050505]/95 backdrop-blur-xl border-b border-white/5 py-3"
-                    : "bg-transparent py-5"
+                ? "bg-[#050505]/95 backdrop-blur-xl border-b border-white/5 py-3"
+                : "bg-transparent py-5"
                 }`}
         >
             <div className="container mx-auto px-6 lg:px-12">
@@ -69,7 +69,11 @@ export function Header() {
                     {/* Desktop Navigation */}
                     <nav className="hidden lg:flex items-center gap-8">
                         {navLinks.map((link, index) => {
-                            const isActive = pathname === link.href;
+                            // Normalize pathname to handle trailing slashes
+                            const normalizedPathname = pathname.endsWith('/') && pathname !== '/'
+                                ? pathname.slice(0, -1)
+                                : pathname;
+                            const isActive = normalizedPathname === link.href;
                             return (
                                 <motion.div
                                     key={link.href}
@@ -80,17 +84,15 @@ export function Header() {
                                     <Link
                                         href={link.href}
                                         aria-current={isActive ? "page" : undefined}
-                                        className={`relative text-xs font-medium tracking-[0.1em] uppercase transition-colors py-2 px-3 rounded-full group ${
-                                            isActive
+                                        className={`relative text-xs font-medium tracking-[0.1em] uppercase transition-colors py-2 px-3 rounded-full group ${isActive
                                                 ? "text-black bg-[#D4AF37] shadow-[0_0_0_1px_rgba(212,175,55,0.35)]"
                                                 : "text-gray-300 hover:text-white hover:bg-white/5"
-                                        }`}
+                                            }`}
                                     >
                                         {link.label}
                                         <span
-                                            className={`absolute -bottom-1 left-1/2 -translate-x-1/2 h-px bg-[#D4AF37] transition-all duration-300 ${
-                                                isActive ? "w-6" : "w-0 group-hover:w-6"
-                                            }`}
+                                            className={`absolute -bottom-1 left-1/2 -translate-x-1/2 h-px bg-[#D4AF37] transition-all duration-300 ${isActive ? "w-6" : "w-0 group-hover:w-6"
+                                                }`}
                                         />
                                     </Link>
                                 </motion.div>
@@ -128,7 +130,7 @@ export function Header() {
                                 <div className="absolute inset-0 opacity-5 pointer-events-none">
                                     <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_#D4AF37_1px,_transparent_1px)] bg-[size:24px_24px]" />
                                 </div>
-                                
+
                                 <div className="flex flex-col h-full relative z-10">
                                     <div className="flex items-center justify-between p-6 border-b border-white/5">
                                         <span className="font-[family-name:var(--font-playfair)] text-xl font-bold tracking-[0.15em] uppercase text-white">
@@ -143,7 +145,10 @@ export function Header() {
 
                                     <div className="flex flex-col items-center justify-center flex-1 gap-8 p-8">
                                         {navLinks.map((link, index) => {
-                                            const isActive = pathname === link.href;
+                                            const normalizedPathname = pathname.endsWith('/') && pathname !== '/'
+                                                ? pathname.slice(0, -1)
+                                                : pathname;
+                                            const isActive = normalizedPathname === link.href;
                                             return (
                                                 <motion.div
                                                     key={link.href}
@@ -154,9 +159,8 @@ export function Header() {
                                                     <Link
                                                         href={link.href}
                                                         onClick={() => setMobileOpen(false)}
-                                                        className={`font-[family-name:var(--font-playfair)] text-3xl tracking-[0.1em] uppercase transition-colors ${
-                                                            isActive ? "text-[#D4AF37]" : "text-gray-300 hover:text-[#D4AF37]"
-                                                        }`}
+                                                        className={`font-[family-name:var(--font-playfair)] text-3xl tracking-[0.1em] uppercase transition-colors ${isActive ? "text-[#D4AF37]" : "text-gray-300 hover:text-[#D4AF37]"
+                                                            }`}
                                                     >
                                                         {link.label}
                                                     </Link>
@@ -167,7 +171,7 @@ export function Header() {
 
                                     <div className="p-8 border-t border-white/5 text-center">
                                         <p className="text-xs text-gray-500 tracking-widest uppercase mb-2">Reservations</p>
-                                        <p className="text-[#D4AF37] font-[family-name:var(--font-playfair)] text-lg">+61 (3) 9123 4567</p>
+                                        <p className="text-[#D4AF37] font-[family-name:var(--font-playfair)] text-lg">(03) 5985 7700</p>
                                     </div>
                                 </div>
                             </SheetContent>

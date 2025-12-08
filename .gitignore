@@ -29,8 +29,10 @@ yarn-error.log*
 .env*.local
 .env
 
-# Vercel
-.vercel
+# Cloudflare
+.wrangler
+.open-next
+.dev.vars
 
 # TypeScript
 *.tsbuildinfo
@@ -43,3 +45,4 @@ next-env.d.ts
 # Cache
 .turbo
 .cache
+

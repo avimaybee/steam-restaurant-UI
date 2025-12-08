@@ -3,185 +3,198 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
-import { Plus, ShoppingBag } from "lucide-react";
+import { Plus } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
-import { toast } from "sonner";
 import { useCart } from "@/context/cart-context";
 
-// Menu data
+// Menu data - Real Steam Restaurant menu items
 const menuCategories = [
     { id: "all", label: "All" },
-    { id: "raw-bar", label: "Raw Bar" },
-    { id: "small-plates", label: "Small Plates" },
-    { id: "mains", label: "Main Plates" },
-    { id: "sushi", label: "Sushi" },
-    { id: "desserts", label: "Desserts" },
-    { id: "beverages", label: "Beverages" },
+    { id: "appetizers", label: "Appetizers" },
+    { id: "mains", label: "Mains" },
+    { id: "noodles-rice", label: "Noodles & Rice" },
+    { id: "drinks", label: "Drinks" },
 ];
 
 const menuItems = [
-    // Raw Bar
+    // Appetizers / Starters
     {
         id: 1,
-        name: "Natural Oysters",
-        description: "Freshly shucked, served with lemon & condiments",
-        price: 16,
-        image: "https://images.unsplash.com/photo-1615141982883-c7ad0e69fd62?q=80&w=400",
-        category: "raw-bar",
-        tags: ["GF"],
+        name: "Spring Rolls",
+        description: "Crispy vegetable spring rolls with sweet chilli dipping sauce",
+        price: 14,
+        image: "https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=400",
+        category: "appetizers",
+        tags: ["V", "VEG"],
     },
     {
         id: 2,
-        name: "Sashimi Platter",
-        description: "Tuna, salmon, kingfish with traditional condiments",
-        price: 40,
-        image: "https://images.unsplash.com/photo-1579871494447-9811cf80d66c?q=80&w=400",
-        category: "raw-bar",
+        name: "Salt & Pepper Squid",
+        description: "Tender squid, lightly seasoned, served with aioli",
+        price: 18,
+        image: "https://images.unsplash.com/photo-1565557623262-b51c2513a641?q=80&w=400",
+        category: "appetizers",
         tags: ["GF"],
     },
     {
         id: 3,
-        name: "Seafood Tower",
-        description: "Sashimi platter, prawns, calamari, dressed scallop",
-        price: 80,
-        image: "https://images.unsplash.com/photo-1553621042-f6e147245754?q=80&w=400",
-        category: "raw-bar",
-        tags: ["For Two"],
+        name: "Satay Skewers",
+        description: "Grilled chicken skewers with house-made peanut sauce",
+        price: 16,
+        image: "https://images.unsplash.com/photo-1529692236671-f1f6cf80d66c?q=80&w=400",
+        category: "appetizers",
+        tags: ["GF", "DF"],
     },
-    // Small Plates
     {
         id: 4,
-        name: "Duck Pancakes",
-        description: "Braised duck, iceberg, Asian herbs, chilli-plum glaze",
-        price: 25,
-        image: "https://images.unsplash.com/photo-1496116218417-1a781b1c416c?q=80&w=400",
-        category: "small-plates",
+        name: "Prawn Dumplings",
+        description: "Steamed prawn dumplings with soy-ginger dipping sauce",
+        price: 18,
+        image: "https://images.unsplash.com/photo-1563245372-f21724557954?q=80&w=400",
+        category: "appetizers",
         tags: [],
     },
+    // Mains
     {
         id: 5,
-        name: "Spicy Wagyu Dumplings",
-        description: "Chilli-soy ponzu, sesame, micro herbs",
-        price: 25,
-        image: "https://images.unsplash.com/photo-1563245372-f21724557954?q=80&w=400",
-        category: "small-plates",
-        tags: [],
+        name: "Thai Vegan Curry",
+        description: "Tofu, carrot, beans, spinach, coriander, coconut, chilli, served with jasmine rice",
+        price: 35,
+        image: "https://images.unsplash.com/photo-1455619452474-d2be8b1e70cd?q=80&w=400",
+        category: "mains",
+        tags: ["V", "GF", "DF"],
     },
     {
         id: 6,
-        name: "Bao Buns",
-        description: "Choice of pork belly, chicken, or tofu. 2 per serve",
-        price: 22,
-        image: "https://images.unsplash.com/photo-1585032226651-759b368d7246?q=80&w=400",
-        category: "small-plates",
-        tags: ["VEG"],
+        name: "Khmer Seafood Curry",
+        description: "Fish, prawn, beans, spinach, coconut, lime, cherry tomato, coriander, chilli with jasmine rice",
+        price: 50,
+        image: "https://images.unsplash.com/photo-1534939561126-855b8675edd7?q=80&w=400",
+        category: "mains",
+        tags: ["GF"],
     },
     {
         id: 7,
-        name: "Karaage Chicken",
-        description: "Pickled vegetables, daikon, house mayo",
-        price: 20,
-        image: "https://images.unsplash.com/photo-1529692236671-f1f6cf9683ba?q=80&w=400",
-        category: "small-plates",
-        tags: [],
+        name: "Barramundi",
+        description: "Soy sauce, ginger, dashi, shiitake mushroom, broccolini, spinach, furikake, jasmine rice",
+        price: 46,
+        image: "https://images.unsplash.com/photo-1569058242253-92a9c755a0ec?q=80&w=400",
+        category: "mains",
+        tags: ["GF"],
     },
-    // Main Plates
     {
         id: 8,
-        name: "Korean Beef Bulgogi",
-        description: "Soy-garlic glazed tender beef, stir-fried vegetables, sesame",
-        price: 40,
-        image: "https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=400",
+        name: "Durry Duck",
+        description: "Baby corn, lychee, carrot, cherry tomato, coriander, chilli, spinach, served with jasmine rice",
+        price: 45,
+        image: "https://images.unsplash.com/photo-1580554530778-ca36943938b2?q=80&w=400",
         category: "mains",
         tags: [],
     },
     {
         id: 9,
-        name: "Red Duck Curry",
-        description: "Lychee, tomato, coconut chilli broth, steamed rice",
-        price: 34,
-        image: "https://images.unsplash.com/photo-1455619452474-d2be8b1e70cd?q=80&w=400",
-        category: "mains",
-        tags: [],
-    },
-    {
-        id: 10,
-        name: "Pad Thai",
-        description: "Choice of prawn or tofu with rice noodles",
-        price: 32,
-        image: "https://images.unsplash.com/photo-1512058564366-18510be2db19?q=80&w=400",
-        category: "mains",
-        tags: ["GF", "VEG"],
-    },
-    {
-        id: 11,
-        name: "Barramundi Fillet",
-        description: "Soy-ginger dashi, shiitake, steamed greens, jasmine rice",
-        price: 45,
-        image: "https://images.unsplash.com/photo-1569058242253-92a9c755a0ec?q=80&w=400",
+        name: "Sizzling Beef Eye Fillet",
+        description: "Spring onion, chilli, peanut oil, mushroom soy, sesame oil, Asian greens stir fry",
+        price: 55,
+        image: "https://images.unsplash.com/photo-1504674900247-0877df9cc836?q=80&w=400",
         category: "mains",
         tags: ["GF"],
     },
-    // Sushi
+    {
+        id: 10,
+        name: "Korean Beef Bulgogi",
+        description: "Finely sliced beef, onion, zucchini, carrot, garlic, ginger, soy sauce, sesame, rocket, jasmine rice",
+        price: 45,
+        image: "https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=400",
+        category: "mains",
+        tags: [],
+    },
+    {
+        id: 11,
+        name: "Braised Pork Belly",
+        description: "Soy sauce, dark sauce, garlic, ginger, shiitake mushroom, sesame, bok choy, chilli, spring onion",
+        price: 45,
+        image: "https://images.unsplash.com/photo-1623653387945-2fd25214f8fc?q=80&w=400",
+        category: "mains",
+        tags: [],
+    },
     {
         id: 12,
-        name: "Salmon Nigiri",
-        description: "Fresh sushi-grade salmon over hand-pressed seasoned rice",
-        price: 20,
-        image: "https://images.unsplash.com/photo-1617196034796-73dfa7b1fd56?q=80&w=400",
-        category: "sushi",
-        tags: [],
+        name: "Chicken Sambal",
+        description: "Spicy chicken with chilli, shallot, ginger, garlic, cherry tomato, mozzarella cheese, jasmine rice",
+        price: 38,
+        image: "https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?q=80&w=400",
+        category: "mains",
+        tags: ["GF", "Spicy"],
     },
+    // Noodles & Rice
     {
         id: 13,
-        name: "California Roll",
-        description: "Avocado, salmon, cucumber, and Philadelphia cream cheese",
-        price: 20,
-        image: "https://images.unsplash.com/photo-1579584425555-c3ce17fd4351?q=80&w=400",
-        category: "sushi",
-        tags: [],
+        name: "Pad Thai - Prawns",
+        description: "Rice noodles, bean shoots, peanuts, house made sauce",
+        price: 35,
+        image: "https://images.unsplash.com/photo-1559314809-0d155014e29e?q=80&w=400",
+        category: "noodles-rice",
+        tags: ["DF"],
     },
-    // Desserts
     {
         id: 14,
-        name: "Mochi with Seasonal Fruit",
-        description: "Served with fresh cream",
-        price: 10,
-        image: "https://images.unsplash.com/photo-1563805042-7684c019e1cb?q=80&w=400",
-        category: "desserts",
-        tags: ["V", "GF"],
+        name: "Pad Thai - Tofu",
+        description: "Rice noodles, bean shoots, peanuts, house made sauce",
+        price: 32,
+        image: "https://images.unsplash.com/photo-1512058564366-18510be2db19?q=80&w=400",
+        category: "noodles-rice",
+        tags: ["V", "VEG", "DF"],
     },
     {
         id: 15,
-        name: "Affogato",
-        description: "Vanilla ice cream, espresso pearls, hot espresso",
-        price: 15,
-        image: "https://images.unsplash.com/photo-1594488506255-ee7bca8f1a39?q=80&w=400",
-        category: "desserts",
-        tags: [],
+        name: "Nasi Goreng - Chicken",
+        description: "Indonesian chicken fried rice, egg, ginger, garlic, cassava crackers, spring onions, coriander",
+        price: 34,
+        image: "https://images.unsplash.com/photo-1512058564366-18510be2db19?q=80&w=400",
+        category: "noodles-rice",
+        tags: ["DF"],
     },
-    // Beverages
     {
         id: 16,
-        name: "Ginger & Lychee Martini",
-        description: "Vodka, lychee liqueur, fresh lime, ginger syrup",
-        price: 21,
-        image: "https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?q=80&w=400",
-        category: "beverages",
+        name: "Nasi Goreng - Tofu",
+        description: "Indonesian tofu fried rice, egg, ginger, garlic, cassava crackers, spring onions, coriander",
+        price: 32,
+        image: "https://images.unsplash.com/photo-1603133872878-684f208fb84b?q=80&w=400",
+        category: "noodles-rice",
+        tags: ["VEG", "DF"],
+    },
+    // Drinks
+    {
+        id: 17,
+        name: "House Wine",
+        description: "Choice of red, white, or rosé",
+        price: 45,
+        image: "https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?q=80&w=400",
+        category: "drinks",
         tags: [],
     },
     {
-        id: 17,
-        name: "Premium Teas",
-        description: "Jasmine Pearls, Sencha Green, English Breakfast",
+        id: 18,
+        name: "Soft Drink",
+        description: "Soda, Sprite, Pepsi & Diet Coke",
         price: 6,
-        image: "https://images.unsplash.com/photo-1556679343-c7306c1976bc?q=80&w=400",
-        category: "beverages",
+        image: "https://images.unsplash.com/photo-1581098365948-6a5a912b7a49?q=80&w=400",
+        category: "drinks",
+        tags: [],
+    },
+    {
+        id: 19,
+        name: "Cocktails",
+        description: "Aperol Spritz, Gin & Tonic, Mojito",
+        price: 23,
+        image: "https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?q=80&w=400",
+        category: "drinks",
         tags: [],
     },
 ];
@@ -232,7 +245,7 @@ export default function MenuPage() {
                         Our Menu
                     </h1>
                     <p className="text-gray-400 text-lg max-w-md mx-auto">
-                        A symphony of flavors where tradition meets innovation
+                        Modern Asian fusion — share plates & interactive dining
                     </p>
                 </motion.div>
             </section>
@@ -336,7 +349,7 @@ export default function MenuPage() {
             {/* Allergen Info */}
             <section className="py-12 bg-black border-t border-white/5">
                 <div className="container mx-auto px-6 lg:px-12 text-center">
-                    <h3 className="text-sm font-semibold text-white mb-4">Allergen Information</h3>
+                    <h3 className="text-sm font-semibold text-white mb-4">Dietary Information</h3>
                     <div className="flex justify-center flex-wrap gap-6 mb-4">
                         <span className="text-sm text-gray-400"><span className="text-[#D4AF37] font-semibold">GF</span> Gluten-Free</span>
                         <span className="text-sm text-gray-400"><span className="text-[#D4AF37] font-semibold">DF</span> Dairy-Free</span>
@@ -344,7 +357,7 @@ export default function MenuPage() {
                         <span className="text-sm text-gray-400"><span className="text-[#D4AF37] font-semibold">VEG</span> Vegetarian</span>
                     </div>
                     <p className="text-xs text-gray-500 max-w-xl mx-auto">
-                        Please inform your server of any allergies or dietary restrictions. While we take precautions, we cannot guarantee a completely allergen-free environment.
+                        Please inform your server of any allergies or dietary restrictions. GF options available for most dishes. Prices are in AUD.
                     </p>
                 </div>
             </section>
