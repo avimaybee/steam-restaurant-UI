@@ -1,5 +1,6 @@
 "use client";
 
+import { Assets } from "@/lib/assets";
 import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
@@ -190,7 +191,7 @@ export default function LoginPage() {
                 {/* Background Image */}
                 <div className="absolute inset-0">
                     <Image
-                        src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?q=80&w=1920"
+                        src={Assets.interior.large1}
                         alt="Restaurant interior"
                         fill
                         className="object-cover opacity-30"

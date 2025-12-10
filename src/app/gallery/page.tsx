@@ -1,5 +1,6 @@
 "use client";
 
+import { Assets } from "@/lib/assets";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
@@ -12,18 +13,28 @@ import { Footer } from "@/components/layout/footer";
 const categories = ["All", "Interior", "Dishes", "Events", "Team"];
 
 const galleryImages = [
-    { src: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=800", category: "Interior", title: "Main Dining Room" },
-    { src: "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?q=80&w=800", category: "Interior", title: "Private Dining" },
-    { src: "https://images.unsplash.com/photo-1579871494447-9811cf80d66c?q=80&w=800", category: "Dishes", title: "Sashimi Selection" },
-    { src: "https://images.unsplash.com/photo-1559339352-11d035aa65de?q=80&w=800", category: "Dishes", title: "Chef's Special" },
-    { src: "https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=800", category: "Dishes", title: "Wagyu Beef" },
-    { src: "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?q=80&w=800", category: "Interior", title: "Bar Area" },
-    { src: "https://images.unsplash.com/photo-1577219491135-ce391730fb2c?q=80&w=800", category: "Team", title: "Executive Chef" },
-    { src: "https://images.unsplash.com/photo-1560717789-0ac7c58ac90a?q=80&w=800", category: "Events", title: "Wine Tasting" },
-    { src: "https://images.unsplash.com/photo-1512058564366-18510be2db19?q=80&w=800", category: "Dishes", title: "Pad Thai" },
-    { src: "https://images.unsplash.com/photo-1466978913421-dad2ebd01d17?q=80&w=800", category: "Interior", title: "Kitchen" },
-    { src: "https://images.unsplash.com/photo-1600891964092-4316c288032e?q=80&w=800", category: "Team", title: "Plating Excellence" },
-    { src: "https://images.unsplash.com/photo-1504674900247-0877df9cc836?q=80&w=800", category: "Dishes", title: "Signature Dish" },
+    { src: Assets.interior.welcomeToSteam, category: "Interior", title: "Welcome to Steam" },
+    { src: Assets.interior.decor, category: "Interior", title: "Dining Room" },
+    { src: Assets.interior.decor1, category: "Interior", title: "Atmosphere" },
+    { src: Assets.interior.placeAtOpening, category: "Events", title: "Opening Night" },
+    { src: Assets.interior.large1, category: "Events", title: "Celebration" },
+    { src: Assets.interior.large2, category: "Interior", title: "Restaurant View" },
+    { src: Assets.food.sashimi, category: "Dishes", title: "Sashimi Tasting Board" },
+    { src: Assets.food.oysters4Ways, category: "Dishes", title: "Oysters 4 Ways" },
+    { src: Assets.food.oystersFresh, category: "Dishes", title: "Fresh Oysters" },
+    { src: Assets.food.scallops, category: "Dishes", title: "Charred Scallops" },
+    { src: Assets.food.softShellCrab, category: "Dishes", title: "Soft Shell Crab" },
+    { src: Assets.food.barramundi, category: "Dishes", title: "Crispy Skin Barramundi" },
+    { src: Assets.food.beefEyeFillet, category: "Dishes", title: "Sizzling Eye Fillet" },
+    { src: Assets.food.beefTartare, category: "Dishes", title: "Beef Tartare" },
+    { src: Assets.food.betalLeafPork, category: "Dishes", title: "Sticky Pork Betel Leaf" },
+    { src: Assets.food.porkBetalLeaf, category: "Dishes", title: "Pork Betel Leaf" },
+    { src: Assets.food.gyoza, category: "Dishes", title: "Japanese Gyoza" },
+    { src: Assets.food.sweetCorn, category: "Dishes", title: "Sweet Corn & Coriander" },
+    { src: Assets.drinks.sake, category: "Dishes", title: "Sake Selection" },
+    { src: Assets.food.generic1, category: "Dishes", title: "Noodle Dish" },
+    { src: Assets.food.generic2, category: "Dishes", title: "Spicy Chicken" },
+    { src: Assets.food.generic3, category: "Dishes", title: "Spring Rolls" },
 ];
 
 export default function GalleryPage() {

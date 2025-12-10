@@ -1,5 +1,6 @@
 "use client";
 
+import { Assets } from "@/lib/assets";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import Link from "next/link";
@@ -61,7 +62,7 @@ function HeroSection() {
       {/* Background Image */}
       <motion.div style={{ y }} className="absolute inset-0 z-0">
         <Image
-          src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=2070"
+          src={Assets.interior.welcomeToSteam}
           alt="Restaurant ambiance"
           fill
           className="object-cover"
@@ -199,7 +200,7 @@ function PhilosophySection() {
             className="relative aspect-[4/5] overflow-hidden group"
           >
             <Image
-              src="https://images.unsplash.com/photo-1559339352-11d035aa65de?q=80&w=1974"
+              src={Assets.interior.decor}
               alt="Chef preparing dish"
               fill
               className="object-cover grayscale-[20%] group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700"

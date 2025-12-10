@@ -1,5 +1,6 @@
 "use client";
 
+import { Assets } from "@/lib/assets";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import Image from "next/image";
@@ -21,19 +22,19 @@ const team = [
     {
         name: "Chef Marcus Chen",
         role: "Executive Chef",
-        image: "https://images.unsplash.com/photo-1577219491135-ce391730fb2c?q=80&w=400",
+        image: Assets.interior.large2,
         bio: "20+ years mastering Asian fusion cuisine across Tokyo, Singapore, and Melbourne.",
     },
     {
         name: "Sophia Williams",
         role: "Head Sommelier",
-        image: "https://images.unsplash.com/photo-1594744803329-e58b31de8bf5?q=80&w=400",
+        image: Assets.interior.decor1,
         bio: "Certified sommelier with expertise in pairing wines with Asian flavors.",
     },
     {
         name: "David Park",
         role: "Pastry Chef",
-        image: "https://images.unsplash.com/photo-1583394293214-28ez5d9bf3ae?q=80&w=400",
+        image: Assets.food.generic5,
         bio: "Creating East-meets-West desserts that delight and surprise.",
     },
 ];
@@ -74,7 +75,7 @@ export default function AboutPage() {
             <section ref={heroRef} className="relative h-[70vh] flex items-center justify-center overflow-hidden">
                 <motion.div style={{ y }} className="absolute inset-0">
                     <Image
-                        src="https://images.unsplash.com/photo-1466978913421-dad2ebd01d17?q=80&w=1920"
+                        src={Assets.interior.placeAtOpening}
                         alt="Restaurant kitchen"
                         fill
                         className="object-cover"
@@ -179,7 +180,7 @@ export default function AboutPage() {
                         >
                             <div className="relative aspect-[4/5] overflow-hidden">
                                 <Image
-                                    src="https://images.unsplash.com/photo-1600891964092-4316c288032e?q=80&w=800"
+                                    src={Assets.interior.large1}
                                     alt="Chef at work"
                                     fill
                                     className="object-cover"

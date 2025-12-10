@@ -1,5 +1,6 @@
 "use client";
 
+import { Assets } from "@/lib/assets";
 import { useState } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
@@ -82,7 +83,7 @@ export default function ContactPage() {
                 {/* Background Image */}
                 <div className="absolute inset-0">
                     <Image
-                        src="https://images.unsplash.com/photo-1514933651103-005eec06c04b?q=80&w=1920"
+                        src={Assets.interior.decor}
                         alt="Restaurant interior"
                         fill
                         className="object-cover"
