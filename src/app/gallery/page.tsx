@@ -4,7 +4,7 @@ import { Assets } from "@/lib/assets";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
-import { X, ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { Header } from "@/components/layout/header";
@@ -122,7 +122,7 @@ export default function GalleryPage() {
                         >
                             {filteredImages.map((image, index) => (
                                 <motion.div
-                                    key={image.src}
+                                    key={`${image.title}-${index}`}
                                     initial={{ opacity: 0, scale: 0.9 }}
                                     animate={{ opacity: 1, scale: 1 }}
                                     transition={{ delay: index * 0.05 }}

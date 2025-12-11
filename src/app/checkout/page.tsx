@@ -45,7 +45,7 @@ const luhnCheck = (num: string) => {
 
 export default function CheckoutPage() {
   const { cart, isLoading, clearCart } = useCart();
-  const items = cart?.items || [];
+  const items = useMemo(() => cart?.items ?? [], [cart?.items]);
 
   const [customerInfo, setCustomerInfo] = useState({
     name: "",

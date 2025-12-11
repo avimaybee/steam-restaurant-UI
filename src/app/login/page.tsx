@@ -7,7 +7,6 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { Eye, EyeOff, Mail, Lock, ChefHat, Wine, Award, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Separator } from "@/components/ui/separator";

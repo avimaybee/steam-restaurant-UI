@@ -331,7 +331,7 @@ export default function MenuPage() {
                                                         id: item.id.toString(),
                                                         name: item.name,
                                                         price: item.price,
-                                                        image: item.image
+                                                        image: typeof item.image === "string" ? item.image : (item.image as any).src,
                                                     })}
                                                     className="w-9 h-9 border-white/10 hover:border-[#D4AF37] hover:bg-[#D4AF37] hover:text-black transition-all"
                                                 >
